@@ -600,8 +600,8 @@ arguably fail by their own standards %-- this has
 engendered a trickle of computer scientists 
 criticizing Semantic Web implementations 
 more than motives, and presenting alternative 
-models (such as Conceptual Spaces) in its place.  
-We will analyze these in some detail in chapters 
+models (such as Conceptual Spaces) which we 
+will analyze further in chapters 
 6 and 9.  Meanwhile, graph database technology 
 itself is more general than the Semantic Web 
 alone, and non-`RDF; formats (more expressive 
@@ -649,14 +649,19 @@ that scientists really do prioritize expressive
 data models, microcitations (see below), 
 integration with machine-readable text, and 
 other data-publishing features we mention in 
-this introduction and elsewhere in the book. 
+this introduction and elsewhere in the book.  
+In addition, the repository contains machine-readable 
+text of the book's individual chapters, encoded 
+as separate documents using a special 
+text-representation system designed to facilitate 
+cross-references between publications and data sets.  
 `p`
 
 `p.
-The book's supplemental materials include both (sample) 
-data sets as well as code libraries.  This is 
-in keeping with the design 
-patterns that we discuss in later chapters, which assume that 
+The book's supplemental materials also include code libraries 
+targeted at the (sample) data sets.  This is 
+in keeping with design 
+patterns we will discuss in later chapters, which assume that 
 data sets will in general be publishing alongside code libraries 
 providing functionality to read and manipulate the associated 
 data, including parsers for the data's serialization format.  
@@ -700,8 +705,8 @@ concept of Semantic Web `i.Ontologies` has become
 rather conventionalized, such that so-called 
 Ontologies tend to serve essentially as 
 Controlled Vocabularies or Taxonomies, 
-constraining classifications of data within 
-structured information space and labels 
+constraining the classifications of data within 
+structured information spaces, and the labels 
 used to connect disparate data points.
 `p`
 
@@ -719,28 +724,29 @@ by a graph) and graph edges
 that may be asserted between nodes).  Ontologies 
 are `i.controlled vocabularies` in the sense 
 that conformant graphs may only utilize 
-node or edge labels proscribed by the 
-specific Ontologies applied to the graph.  
-The are `i.taxonomies` in that labeled 
-terms may be enumerated `i.hierarchically`/, 
-so that some labels refer to classification 
-elements which are super- or subclasses 
-of elements designated by other labels.     
+node or edge labels proscribed by Ontologies 
+applied to the graph.  
+They are `i.taxonomies` in that labeled 
+terms may be sorted `i.hierarchically`/: 
+labels can name classification 
+elements which are super- or subkinds, 
+relative to other elements in their respective Ontology.     
 `p`
 
 
 `p.
-Philosophers, however, understand the 
+Philosophers understand the 
 term `q.ontology` to name something of 
 much greater metaphysical weight 
 than just taxonomies on graph data-stores.  
-But the term `q.Ontology` was not chosen 
-by accident; every domain-specific concrete 
+Notwithstanding that background, 
+the term `q.Ontology` was not chosen 
+by accident; every `i.domain-specific`  
 Ontology, essentially a data-model applied to 
 empirical data sets, is understood 
 by Semantic Web practitioners to be 
 potentially unified into more general 
-`q.upper` Ontologies, which have a broader 
+`q.upper` Ontologies, which have broader 
 (and more philosophical) scope.  Upper 
 Ontologies aspire a global classification 
 of `q.objects` in general, both abstract 
@@ -772,7 +778,7 @@ on this metaphysical scale and more
 focused on the use of `i.axioms` and 
 other Ontology constructions adding structural 
 detail to Semantic data models.  Ontologies 
-use axioms and annotations to assert constraints 
+employ axioms and annotations to assert constraints 
 or patterns on how classifications and relations 
 are used.  Ontologies may assert that 
 two relations are inverses (parenthood and 
@@ -817,8 +823,9 @@ even ideology closely aligned with
 `AI; and the Semantic Web has also been a 
 source of criticism, either from 
 perspectives which are skeptical about 
-the more holistic claims of `AI; visionaries 
-or those which feel that the Semantic Web's 
+the more holistic claims of `AI; 
+(or `q.Artificial `i.General` Intelligence`/) 
+visionaries, or those which feel that the Semantic Web's 
 fairly modest data-representation paradigms 
 do not fully harness the power of `AI; 
 (or some combination of the two).  
@@ -853,24 +860,24 @@ At some level these are relatively minor
 episodes in Intellectual History, 
 and of course the philosophical germination 
 of the Semantic Web has relatively little 
-bearing on a researcher who uses a 
+bearing on a researcher who adopts a 
 specific `OBO; Ontology, for example, 
 as a structuring device for their 
-data.  But the philosophical 
-background helps alert us to 
+data.  But philosophical 
+controversies around the Semantic Web 
+help alert us to 
 what is at stake in data-sharing protocols.  
 Why is a vision such as the Semantic Web 
 --- a globally synthesized network of 
 knowledge subject to common meta-models 
 which can be concretized in domain-specific 
 standards, potentially synthesizing 
-data from networks spanning 
-the entire World Wide Web --- what is 
+data from myriad sources --- what is 
 the intuitive appeal of a vision of 
 standardization and broad-based 
 integration along these lines?  The 
-underlying dynamic in debates such as 
-(say) Conceptual Spaces vs. Ontologies 
+underlying dynamic in debates about  
+(say) Conceptual Spaces versus Ontologies 
 appears to lie in scientists' search 
 for data `i.representations` which 
 seem to intuitively capture the 

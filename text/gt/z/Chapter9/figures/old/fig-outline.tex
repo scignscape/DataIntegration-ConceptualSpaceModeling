@@ -1,0 +1,108 @@
+
+%\colorlet{footnotecolor}{red!40!black}
+
+\makeatletter
+\let\ofnt\@makefntext
+
+\renewcommand\@makefntext[1]{%
+\parindent 1em\noindent
+\hb@xt@.7em{%
+%\hss
+\@textsuperscript{\normalfont\textcolor{purple!60!red}{\@thefnmark}}}#1}
+\makeatother
+
+\begin{figure}[t!]
+
+\caption{Diagram of Annotation-Associated Datatypes}	
+
+\edef\savedfootnotenumber{\number\value{footnote}}
+
+\let\oldthefootnote=\thefootnote
+
+\renewcommand{\thefootnote}{\textbf{\color{purple!60!red}{\alph{footnote}}}}
+
+
+\setcounter{footnote}{0}
+
+\begin{center}
+
+\hspace*{-1em}\begin{tikzpicture}[tips=proper]
+
+\tikzstyle{every node}=[font=\small]
+
+\colorlet{blbl}{blue!70!black}
+\colorlet{blblor}{blbl!70!orange}
+
+\colorlet{gror}{green!40!orange}
+
+
+\node (dummy) at (0,0) {};
+
+\colorlet{blor}{black!80!orange}
+
+\node (ann) at (3,-3) [draw, align=right,inner sep = 5] {Annotation};
+
+\node (anns)  [above=6mm of ann, draw, align=right,inner sep = 5] {Annotation Set\footnotemark{}};
+
+\node (anne)  [above=6mm of anns, draw, align=right,inner sep = 5] {Annotation Environment};
+
+\node (gi)  [right=6mm of ann, draw, align=right,inner sep = 5] {Ground Image};
+\node (gimd)  [below=6mm of gi, draw, align=right,inner sep = 5] {Image Metadata};
+
+
+
+
+\node (shape)  [left=6mm of ann, draw, align=right,inner sep = 5] {Annotation Shape};
+
+\node (pointset)  [below=6mm of shape, draw, align=right,inner sep = 5] {Point Set};
+\node (lengthset)  [below=6mm of pointset, draw, align=right,inner sep = 5] {Length Set\footnotemark{}};
+
+\node (spec)  [below=6mm of lengthset, draw, align=right,inner sep = 5] {Special Curve};
+
+
+\node (visual)  [below=12mm of spec, draw, align=right,inner sep = 5] {Visual/\\Presentation};
+\node (aref)  [below=6mm of visual, draw, align=center,inner sep = 5] {Annnotation\\Reference};
+
+
+
+\node (isequence)  [below=6mm of gimd, draw, align=right,inner sep = 5] 
+{Image Sequence\footnotemark{}};
+\node (iseries)  [below=6mm of isequence, draw, align=right,inner sep = 5] 
+{Image Series\footnotemark{}};
+
+\node (ari)  [below=12mm of iseries, draw, align=right,inner sep = 5] 
+{Annotation\\Region Image\footnotemark{}};
+
+
+
+\end{tikzpicture}
+
+\setcounter{footnote}{\savedfootnotenumber}}
+
+\end{center}
+
+
+\label{fig:outline}
+\end{figure}
+
+\begingroup
+  \renewcommand*{\thefootnote}{\alph{footnote}}
+\footnotetext[1]{Annotation Sets could potentially contain other annotation sets.}
+\footnotetext[2]{We use \q{length} set to denote the set of any magnitudes 
+needed to geometrically specify the desired annotation-shape.}
+\footnotetext[3]{Inage \q{Sequence} referring to transformed versions of a ground 
+image (after grayscaling, morphological operators, or related modifications 
+intended to make the image more amenable to analysis).}
+\footnotetext[4]{Inage \i{Sequence} referring to logically related ground images.}
+\footnotetext[4]{\q{Annotation Region Image} refers to a mask-image 
+(e.g. a binary or grayscale image) intended to demarcated 
+the contours of an annotation shape.}
+\endgroup
+
+
+\makeatletter
+\let\@makefntext\ofnt
+\makeatother
+
+
+

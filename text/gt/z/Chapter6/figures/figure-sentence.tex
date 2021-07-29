@@ -1,0 +1,225 @@
+\begin{figure}[t]
+
+\caption{Semantic Constructions as (Verb-Centered) 
+Information-Amplification Pathways}	
+
+\hspace{-7pt}\begin{tikzpicture}
+
+\node (dummy) at (0,1) {};
+
+\node (text) at (-1.5,0) [draw=red!50!black,fill=red!10, inner sep=10pt,
+minimum size=25pt,
+text width=8.5cm,rounded corners = 10pt,align=left]{Sentence: 
+\sethlcolor{white}
+\hl{I saw that you went to the store downtown, so did yall 
+get your dogs treats with those coupons?}};
+
+%\pgfmathsetmacro\n{6}
+%\pgfmathsetmacro\r{1*(360/\n)}
+
+\node (saw) at (-3,-1.5) [circle,draw=black, inner sep=0pt,
+minimum size=23pt]{saw};
+
+\node (I) [below right=5mm and 13mm of saw, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{I};
+
+\node (that) [right=13mm of I, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{that};
+
+\node (went) [below=19mm of saw, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{went};
+
+\node (you) [below right=14mm and 3mm of went, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{you};
+
+\node (to) [right=11mm of you, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{to};
+
+\node (downtown) [above right=5mm and 6mm of to, 
+circle,draw=black, inner sep=0pt, align=center,
+minimum size=23pt]{down\\[-3pt]town};
+
+\node (store) [below=2mm of to, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{store};
+
+\node (the) [right=21mm of store,
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{the};
+
+\node (so) [below left=7mm and 10mm of went, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{so};
+
+\node (get) [below=24mm of went, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{get};
+
+\node (did) [below left=2mm and 7mm of get, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{did};
+
+
+\node (yall) [below right=22mm and -22mm of get, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{yall};
+
+\node (dogs) [right=15mm of yall, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{dogs};
+
+\node (your) [below=12mm of dogs, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{your};
+
+
+\node (treats) [right=7mm of dogs, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{treats};
+
+\node (with) [right=7mm of treats, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{with};
+
+\node (those) [below right=-3mm and 9mm of with, 
+circle,draw=black, inner sep=0pt,
+minimum size=23pt]{those};
+
+\node (coupons) [below=11mm of with, 
+circle,draw=black, inner sep=0pt,align=center,
+minimum size=23pt]{cou-\\[-3pt]pons};
+
+
+
+\colorlet{blbl}{blue!70!black}
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (I) -- (saw)
+node [midway, xshift=-13pt, yshift=-7pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{subject}
+; 
+
+\draw [line width=2pt, blbl!60, ->,  >=stealth,
+shorten <= 1mm, shorten >= 1mm] (that) -- (saw)
+node [midway, xshift=23pt, yshift=1pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{object}
+; 
+
+\draw [line width=2pt, blbl!60, ->,  >=stealth,
+shorten <= 1mm, shorten >= 1mm] (that) -- (went)
+node [midway, xshift=33pt, yshift=-1pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{subordinator}
+; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (you) -- (went)
+node [midway, xshift=-19pt, yshift=-1pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{subject}
+; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (to) -- (went)
+node [midway, xshift=30pt, yshift=-4pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{object}
+; 
+
+\draw [line width=2pt, blbl!60, 
+shorten <= -1mm, shorten >= -1mm] (store) -- (to);
+
+\draw [line width=2pt, blbl!60, 
+shorten <= -1mm, shorten >= -1mm] (with) -- (coupons);
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (the) -- (store)
+node [midway, xshift=1pt, yshift=-9pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{determiner}
+; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (those) -- (coupons)
+node [midway, xshift=31pt, yshift=-1pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{determiner}
+; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (your) -- (dogs)
+node [midway, xshift=-51pt, yshift=-3pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{possessive determiner}
+; 
+
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (downtown) -- (went)
+node [midway, xshift=11pt, yshift=8pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{locative}
+; 
+
+\draw [line width=2pt, blbl!60, 
+shorten <= -1mm, shorten >= -1mm] (did) -- (get);
+
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (yall) -- (get)
+node [midway, xshift=-26pt, yshift=-10pt, 
+fill=brown!60, fill opacity=.8, text=black] 
+{subject}
+; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (dogs) -- (get)
+node [midway, xshift=6pt, yshift=-4pt, align=center,
+fill=brown!60, fill opacity=.8, text=black] 
+{indirect\\object/\\benefactive}
+; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (treats) to [out=100,in=-10] 
+node [near start, xshift=18pt, yshift=-4pt,
+fill=brown!60, fill opacity=.8, text=black] 
+{object}
+(get)
+; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (with) to 
+[out=105,in=10] node [near start, xshift=37pt, yshift=-2pt,
+fill=brown!60, fill opacity=.8, text=black] 
+{instrumentive}
+ (get)
+; 
+
+
+\draw [line width=2pt, blbl!60, |-, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (so) -- (get.north west)
+node [midway, xshift=-27pt, yshift=-12pt,align=center, 
+fill=brown!60, fill opacity=.8, text=black] 
+{conjunction/\\subordinator}
+; 
+
+\draw [line width=2pt, blbl!60, |-, >=stealth,
+shorten <= 1mm, shorten >= 1mm] (so) -- (saw.south west)
+node [midway, xshift=-28pt, yshift=16pt,align=center, 
+fill=brown!60, fill opacity=.8, text=black] 
+{conjunction/\\subordinator}
+; 
+
+\end{tikzpicture}
+
+
+
+\label{fig:sentence}
+\end{figure}
+

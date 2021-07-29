@@ -1,0 +1,340 @@
+
+`hoctitle.Chapter 6:  Using Code Models 
+to \\`makebox.Instantiate` Data Models`
+
+`section.Introduction`
+`p.
+In their synthesis of hypergraph categories and Conceptual Space theory 
+that we reviewed in earlier chapters, Coecke `i.et al.` 
+`cite<InteractingConceptualSpaces>; adopted an 
+approach for `i.syntax` (based on hypergraph categories) 
+which is familiar in a computer-science setting, 
+while favoring for `i.semantics` a paradigm (Conceptual Spaces) 
+which emerged from a linguistic context.  Category 
+theory is not without precedent in linguistics, and 
+likewise some projects have attempted to formalize 
+Conceptual Spaces for computational applications, 
+such as data modeling 
+`cite<RaubalAdams>;, `cite<RaubalAdamsCSML>;, `cite<MartinRaubal>;,
+`cite<Zenker>;, `cite<FrankZenker>;  
+and `AI; `cite<GardenforsEtAl>;, 
+`cite<LucasBechberger>;, `cite<PaulaGudwin>;, `cite<GustUmbach>;, 
+`cite<LawryTang>;, `cite<LewisLawry>;,  
+`cite<UrbanGrzelinska>;.  Nevertheless, Coecke `i.et al.`/'s  
+hypergraph-and-conceptual-space 
+approach, rooted in Quantum `NLP; %-- 
+Natural Language Processing carried out on quantum computers 
+(or simulations thereof engineered for research purposes) 
+`cite<IlyaMakarov>;, `cite<Meichanetzidis>;,
+`cite<GallegoOrus>;, `cite<LiCunningham>;, `cite<LJOriordon>;, 
+`cite<VahidSalari>; %-- represents a hybrid paradigm integrating 
+perspectives from both 
+formal analyses of computations and programming languages 
+and from natural language.
+`p`
+
+`p.  
+Correlations between formal and natural languages are of particular 
+interest to `NLP; %-- because `NLP; by definition needs to use 
+computers, equipped only with formal algorithmic capabilities, 
+to understand (often ambiguous or context-sensitive) natural language.  
+Conversely, formal programming language theory (e.g., Software Language Engineering) 
+may draw ideas from natural language on the premise that (although 
+first and foremost grounded on the affordances and limitations of 
+digital artifacts such as parsers and compilers) programming 
+languages are designed by people, where (at least for high-level 
+languages, as compared to machine and assembly code) human readability 
+and understandability is an important aspect of well-written code.  
+This chapter will focus on 
+programming languages, not natural language, but the use of 
+hypergraph categories to structure the framing of 
+`NLP; problems in terms suitable for 
+Quantum processors (with quantum gates, qubits, 
+and so forth) will serve as a motivating 
+example for structures we present as a 
+generalization on hypergraph categories.
+`p`
+
+
+
+
+`p.
+In the case of Coecke `i.et al.`/, 
+the authors emphasize that syntax and semantics should mirror 
+one another so that dynamic processes in both areas can be 
+linked together (specifically, in Category-theoretic terms).  
+In their words: `q.[T]he general programme is [to] interpret the 
+compositional structure of the grammar 
+category in the semantics category 
+via a functor preserving the type reduction structure .... 
+This functor maps type reductions in the grammar category onto algorithms for
+composing meanings in the semantics category` (p. 2).  
+Adapted to Conceptual Spaces, their `q.programme` can 
+be more rigorously laid out: `q.[W]e construct a new categorical 
+setting for interpreting meanings which respects the important 
+convex structure emphasized in conceptual
+spaces theory.  We show that this category has the necessary 
+abstract structure required by categorical compositional models.  
+We then construct convex spaces for interpreting the types for
+nouns, adjective and verbs.  Finally, this allows us to use 
+the reductions of the pregroup grammar to compose meanings in conceptual spaces` 
+(p. 2-3).
+A core specification here is that `i.type reductions in the 
+in the grammar category` map onto `i.algorithms for composing meanings.`
+`p`
+
+`p.
+It is obvious that `q.meaning is compositional` (a 
+paradigm so entrenched, or perhaps so self-evident, 
+that Jerry Fodor could teasingly insinuate its 
+`i.a priori` resolving all questions about 
+whether thought precedes language or vice-versa 
+`cite<JerryFodor>;).  The notion of 
+compositionality is more substantive in the context 
+of `q.syntax-semantic interface,` or specifically 
+questions about how syntax and semantics 
+respectively contribute to linguistic composition 
+`cite<KubotaLevine>;, `cite<DebusmannEtAl>;, 
+`cite<HovavLevin>;.  Coecke `i.et al.` make the 
+further implicit claim that the syntax-semantics 
+interface can be formally modeled 
+via Category Theory: semantic composition 
+is driven by compositions 
+on the syntactic level with a force and 
+causal precision that can be expressed mathematically, 
+as if semantic constructions are transpositions 
+or translations of syntactic constructions,  
+akin to mapping a set onto its image under a 
+mathematical operator.`footnote.
+To be sure, almost every `NLP; method assumes that 
+syntactic and semantic construction-patterns 
+can be tightly integrated, because this is precisely 
+what can make semantic tractable to computer 
+algorithms.  The `i.issues` at stake 
+in this assumption %-- first `i.whether` 
+quasi-mathematical treatments of semantic 
+constructions being the map-image of 
+syntactic constructions is sufficiently true 
+for natural language, without oversimplifying 
+linguistic nuance, and second `i.how` 
+syntax and semantics are integrated in this manner 
+%-- can be tightly expressed by adopting 
+terms and perspectives from Construction 
+Grammar `cite<FriedOstman>;, `cite<MichaelisLambrech>;,
+`cite<vanTrijp>;.  Specifically, we can say 
+that semantic constructions (or `i.paradigmatic` 
+constructions, alluding to the paradigmatic/syntagmatic 
+opposition) are `i.determined by` syntactic (likewise, or 
+`i.syntagmatic`/) constructions if our cognitive 
+construal of a given paradigmatic construction, 
+a given construction on the paradigmatic `q.pole` 
+of language, is `i.caused by` our apply 
+certain `i.rules` to synthesize syntactic 
+elements into a syntactic construction.  
+`footnote`  We can then ask what `i.causes` 
+syntactic constructions to engender 
+semantic ones.  As will be analyzed 
+more thoroughly in Chapter 9, we take
+the perspective here that semantic 
+constructions have `i.more information 
+content` than their component parts,
+and that syntactic constructions thereby 
+derive causative force from their encoding 
+rules for how semantic elements can be 
+unified with a specific emphasis on 
+`i.increasing` information content.`footnote.
+In effect, we can incorporate certain notions
+from `i.situational semantics` (see e.g. 
+`cite<KeithDevlin>;, 
+`cite<FriederikeMoltmann>; or `cite<WalterPedriali>;) 
+paired with `i.construction grammar`/, with the 
+connections between the syntax and semantics 
+modeled through what we will call (departing 
+from both situation and construction theories) 
+`q.paths.`
+`footnote`  
+`p`
+
+`p.
+We can, in short, picture semantics as a kind of `i.path` which leads in a direction 
+of more information, more detail, and more specificity, wherein 
+the terminus of that path is a sentence's overall complete idea 
+(e.g., the proposition which a sentence conveys, if it 
+is expressed in illocutionary terms %-- as an assertion 
+rather than a question, request, expression of desire, and so forth).`footnote.
+Taking seriously Juan Uriagereka's metaphor  in `cite<JuanUriagereka>; 
+that `q.syntax carves a path` which semantics `q.follows,` 
+though without committing to such following being automatic 
+or possible without interpretive effort 
+(which can be visualized by saying that a `q.syntagmatic 
+path` can actually engender multiple `q.paradigmatic` 
+paths, and that nuanced interpretation may be needed 
+to disambiguate them).
+`footnote`
+Bob Coecke implies a similar information-theoretic 
+model when he suggests that syntactic relations 
+`q.change` words (viz., the cognitions they tokenize; 
+sentences `q.update their meanings`/): 
+`q.A sentence is not a state, but a process, 
+that represents how words in it are updated by that sentence` 
+`cite<[p. 18]BobCoecke>;.  Coecke `i.et al.`/'s Category-Theoretic 
+machinery serves (without using these specific 
+terms) to specify the nature of information-augmentation 
+paths via morphisms at the syntactic level 
+(providing `q.steps` toward a sentence's total information content) 
+which engender information-bearing constructions at the semantic 
+level.  The phenomenon of semantic constructions being 
+reflected images of syntactic ones can be accounted 
+for, on this perspective, by treating 
+semantic content as some body of information that 
+is built in stages, thereby implying a path 
+`i.leading` along a gradient of information-augmentation 
+to the construction in its totality; such 
+paths are causally grounded in the 
+corresponding syntactic construction, and, on this 
+theory, these paths thereby form the causative 
+nexus of the syntax-semantics interface.
+`p`  
+ 
+`p.
+For reasons to be clarified in Chapter 9,
+we will use the term `i.syntagmatic constructions`  
+to refer to models of syntactic construction which 
+are explicitly based on this notion of 
+information-content amplification.  Whereas 
+syntactic rules are static conventions that 
+are apparent in the context of individual phrases, 
+we will argue that `q.syntagmatic` models address 
+the underlying dynamics governing the evolution, 
+entrenchment, and cognitive internalization 
+of syntax; notions of information content thereby 
+serve as a hypothesis concerning the 
+principles underlying syntagmatic dynamics.  
+Moreover, we claim that these interlinked 
+notions of information content, syntactic 
+and semantic constructions, and `q.path` models of 
+the interface between them, provide 
+a foundation for grammars that have applications in programming 
+languages and data modeling as well as 
+(natural) linguistics.  In particular, 
+this theory points to connections between 
+natural-language parse-graphs and 
+formal representations of source code 
+(apart from the obvious similarity 
+between two models which both 
+diagram structures derived from applying 
+parsers to an input language): specifically, 
+one can examine graphs in both 
+contexts in terms of `i.directions` 
+of information increase.  
+`p`
+
+
+`p.
+There are additional details which may be added to this 
+graph-theoretic picture, but the central point 
+is that graphs meeting certain criteria (which 
+we will briefly define here, deferring 
+to later chapters a linguistic justification 
+for this model)  
+codify intuitions about cognitive and conceptual 
+processes guiding the dynamics (the `q.syntagmatic` 
+tendencies) which underlie concrete syntax.  For sake 
+of discussion, we will refer to such graphs as 
+`q.Syntagmatic` graphs, a terminology which is 
+only distantly related to the usual sentence 
+of `q.syntagma,` but which captures the notion 
+that these specific graph-structures are stipulated 
+according to desiderata arising from the syntagmatic 
+dynamics operating within language (or so 
+claimed by our underlying theory).  In this 
+sense, the discussion below will describe 
+`i.Syntagmatic Graphs` as a specific class 
+(or maybe Category) of graphs which are 
+equipped with certain structural rules and 
+features.  Syntagmatic Graphs 
+differ in some respect 
+from the Categories examined in Coecke `i.et al.`/, 
+but arguably these graphs capture many of the 
+details and intuitions informing those author's 
+use of hypergraph categories, and in general 
+Syntagmatic Graphs can therefore provide one 
+system for representing structures in natural 
+language.  However, we will also 
+argue here that Syntagmatic Graphs may be 
+useful tools for representing `i.formal` 
+(e.g., programming) languages.
+`p`
+
+`p.
+Coecke `i.et al.`/'s reasons for adopting 
+hypergraph categories to model natural-language 
+grammar were not, first and foremost, 
+philosophical; instead, they were looking 
+for representations of language which are 
+conducive to analysis or recapitulation 
+via operations that can be programmed 
+on a Quantum computer.  As such, the 
+value of hypergraphs in this context 
+lies above all in how hypergraphs 
+organize data so that operations on 
+data can be `q.compiled to,` or 
+implemented in terms of, a 
+computational machine instantiating 
+quantum-computing logic.
+`p`
+
+`p.
+Our proposals here are analogous in 
+that we recommend a specific 
+variety of hypergraphs (Syntagmatic 
+Graphs) whose properties are selected 
+to facilitate implementation of a 
+virtual machine to evaluate queries 
+over data sets and data models.  As 
+(summarily)
+formulated here, this 
+virtual machine would be classical 
+(not Quantum).`footnote.
+Although via parallelization 
+tactics similar to the Gremlin 
+virtual machine (for property-graph 
+query evaluation) it could 
+conceivably be optimized by factoring 
+certain algorithms into Quantum form 
+(perhaps using Coecke's existing 
+quantum-computing hypergraph models as a 
+starting point).
+`footnote`  Nevertheless, the overarching 
+methodology here applies for 
+both Quantum and classical settings: 
+graphs models can be articulated 
+with particular concern for 
+`i.the nature of virtual machines 
+which evaluate queries against 
+the graphs` and moreover 
+problems in multiple domains 
+(e.g., data integration and 
+`NLP;), which are not apparently 
+graph-theoretic on the surface, 
+can be translated to 
+`i.queries against graph structures`/.  
+In combination, these principles 
+point to criteria for 
+optimally formulating 
+graph meta-models: pay 
+attention to how real-world 
+problem-domains give rise 
+to graph-queries and then 
+to the design of virtual 
+machines evaluating 
+those queries, which 
+are constrained 
+by the structures of 
+graphs encoding the queried information. 
+This chapter will examine 
+these dynamics in the context 
+of (what we call) Syntagmatic Graphs.
+`p`
+
+

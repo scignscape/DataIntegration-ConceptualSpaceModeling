@@ -1,0 +1,908 @@
+
+`section.Hypergraph Representations for Data-Persistence Bridge Code`
+`p.
+This chapter's discussion has addressed the features 
+and affordances of hypergraph data modeling, particularly 
+via Syntagmatic Graphs and pointcut expressions, 
+in three of the four `q.radii` of the `q.Semiotic Saltire`/: 
+inter-type connections for `GUI; components paired 
+with underlying data types; `q.grounding` for underlying 
+types' serialization; and Syntagmatic Graph models 
+of procedure-call logic at meta-procedural, expression-level, 
+and subprocedural level (fully elaborating a 
+theory of these three levels would require additional 
+discussion outside the scope of this chapter, so 
+we leave the terminology not-too-rigorously 
+defined at this point, but hopefully examples 
+such as remote procedure calls, verifying scale-unit 
+consistency, and bindings/temporary objects accumulating 
+data for procedure-calls, respectively, illustrate 
+the kinds of computational phenomena applicable 
+to these three levels).  This final section 
+will address hypergraphs in the context of the 
+fourth Saltire aspect (data persistence). 
+`p`
+
+
+`p.
+As earlier in this chapter, we assume that 
+data and code models are tightly interconnected %-- 
+specifically, that data models are instantiated 
+by code libraries wherein data types that 
+are intrinsically or schematically described in a 
+data model become explicitly implemented in 
+data types coded via programming languages, 
+particularly general-purpose languages such as 
+`Java; or `Cpp;.  As such, data `i.persistence` can be defined as the 
+process of storing typed values which are 
+instances of types implemented in a code base 
+so that those values may be used in the future 
+(and/or shared with other applications employing the 
+same code base).  As intimated above, there need 
+not be a direct isomorphism between databases 
+and implemented types %-- for instance, it is 
+not necessarily the case that every table 
+in a relational database can be paired with a 
+type whose fields correspond to the table's columns 
+%-- but treating databases as persistence engines 
+for a project's data types is a useful 
+perspective from which to examine data modeling, sharing, 
+and representation patterns.
+`p`
+
+`p.
+The correspondence between databases and implemented 
+data-types is especially strong in the case of 
+`i.object` databases, which are designed so 
+that almost any values used by an application 
+can be directly stored in a database, with 
+little extra code needed to marshal data between 
+different representations.  While object databases 
+have been explored for at least a quarter-century, 
+they have not emerged as mainstream architectures 
+comparable to either `SQL; (relational) databases or 
+predominant `NoSQL; models.  Perhaps the 
+mismatch between live program memory %-- how data 
+is represented while an application is running %-- 
+and the structure needed to efficiently persist 
+and then retrieve data, evinces a gap too 
+wide for object databases to serve as viable 
+replacements for `SQL; or for the most popular 
+`NoSQL; architectures `cite<[page 6\i{ff}]SikhaBagui>;.
+`p`
+
+`p.
+Instead, the optimal database architecture 
+probably lies in between the rigidity of the 
+`SQL; model, where the structure of information 
+within the database is significantly different 
+from the natural structure of programming-language 
+data types, and object databases where database 
+structure tries to directly mimic in-memory 
+data layouts.  Successful database systems 
+find a reasonable balance between employing 
+structures which are conducive to efficient data 
+storage and query-evaluation and, at the same 
+time, minimizing the degree of difficulty 
+apparent in the translation of application-level 
+data types to data stored within the database itself. 
+`p`
+
+
+`p.
+Concerns about data `i.layout` and `i.query evaluation` 
+have the consequence that application data 
+must be structurally transformed in order to be 
+stored in a persistent database.  It is worth pointing out 
+the specific complications introduced by layout 
+and query-evaluation concerns in order to 
+motivate database engineering solutions 
+to the problem of bridging application data types 
+to in-database structures.
+A database first and foremost holds data values for 
+an indefinite amount of time, but such data persistence 
+is only one part of its full suite of roles and 
+requirements.
+`p`
+
+`p.
+In and of itself, constructing a 
+persistable representation of most data types is 
+not especially difficult: most programming
+environments have some sort of `q.binary stream` 
+encoding where numbers are directly represented 
+in their binary form, character strings can be 
+encoded by assigning a number to each distinct 
+symbol in the strings' character set, and composite 
+structure can be encoded by encoding each of 
+their parts (e.g. date-times can be encoded as a 
+single value, such as milliseconds-since-epoch, or 
+as a tuple of second-minute-hour-day-month and so forth).  
+In `Qt;, for instance, the `b.QDataStream` class 
+can serialize most data structures in binary form 
+by passing individual fields into the `q.stream` 
+(e.g., `b.qds << person.name() << person.age()` 
+and so on for a `b.qds` datastream and hypothetical 
+`b.person` class).  Using classes such as 
+`b.QDataStream` (or their equivalents in other 
+languages/environments) it is not difficult to create binary 
+packages representing most or all of the data 
+in a given typed value, so that this binary 
+encoding may be stored within a database and 
+eventually reconstructed as a duplicate of 
+the original value, yielding data persistence without 
+much programming effort.  At this level, then, 
+data persistence does not require a complex 
+database architecture.
+`p`
+
+
+`p.
+There are two main problems with this simplistic approach 
+to persistence: first, the resulting data storage might not 
+be `i.efficient`/, with the consequence that individual values take 
+up more memory-space than needed, which can be a 
+problem if a database extends to the scale of millions 
+(or billions) or distinct values; and, second, 
+the problem of `i.finding` individual values from a 
+large data-collection.  It is one 
+thing to have some value in application 
+memory while running the application on one occasion; 
+it is a different matter to re-find that value  
+(maybe years) later amongst millions of other values.  
+`p`
+
+
+`p.
+When values are binary-encoded via classes such as 
+`b.QDataStream`/, the data within the stream is, 
+in general, `q.opaque` to the persistent database 
+engine: the engine cannot `q.read` values within the 
+stream, and from that perspective the stream 
+is only a sequence of bytes with no specific 
+meaning.  In a working database at least 
+some content associated with a given aggregate 
+data-value must be exposed to the larger engine; if a value 
+represents a `i.person`/, say, the engine would probably 
+need to identify the person's `i.name` so that 
+one could find a person's record if one knows 
+their name in advance.  In other words, although 
+`i.some` of the data in a given application-level 
+typed value may be exported to a database simply as 
+an opaque binary stream, at least some part of 
+this data must be expressed in a queryable fashion, 
+one which is tractable to the surrounding database engine. 
+`p`
+
+
+`p.
+Accordingly, with an instance of an application-level 
+data type %-- or in general a type implemented within a 
+code base associated with a corresponding data model %-- 
+one desideratum for database persistence (which can 
+be formally addressed in the data model) is 
+how to divide the data within each specific type 
+into `q.opaque` data which does not need to be 
+queried (outside the context of a fully-instantiated 
+instance of the data type) and `i.queryable` data 
+which might be used to locate that specific value 
+against many others.  For instance, in an `EHR; database 
+almost certainly a patients' first and last name 
+would need to be queryable because it is normal 
+to attempt to locate a person's records by providing 
+their full name (if a patient calls their doctor 
+they are more likely to identify themselves by 
+name than by some in-hospital id number, for example).
+`p`
+
+
+`p.
+Queryable data, moreover, can sometimes take the 
+form of individual-value fields (such as first and last 
+name) but can also take the form of collections.  
+For instance, given an `EHR; database which tracks 
+medications, it is reasonable to form queries based 
+on the one-to-many relationship between a patient 
+and the medicines they have been prescribed; 
+e.g., to list all 
+patients who are currently taking a particular pharmaceutical.  
+Such a query can only be evaluated if the 
+list of medicines prescribed to each patient 
+is queryable in the system (and not opaque data 
+that can only be read by reconstructing a 
+whole patient-object at the application level).  
+`p`
+
+`p.
+In short, information stored in a database can 
+be divided into three groupings: 
+`i.opaque` (non-queryable) data, 
+non-collections queryable data, and 
+collections (multi-valued) queryable data (which 
+we might call `q.multi-queryable`/); 
+each of these forms of data have different 
+layout and management requirements.  An 
+effective database engine will store 
+data in a concise manner (to use as little 
+memory as possible) without making queries 
+inefficient (it must be possible 
+be locate queryable data fields relatively 
+quickly).  Different database engines 
+use different techniques to optimize 
+memory-layout; the details of such optimizations 
+are outside the scope of this chapter 
+(and are not the direct concerns of application 
+code in general), but we can point out that 
+application data models do need to identify 
+which data fits into which medium 
+(opaque, queryable, and multi-queryable).
+`p`
+
+`input<figure-prepr>;
+`p.
+Different database engines, aside from 
+identifying `q.queryable` data (typically without 
+actually employing this term), also have different 
+strategies for `i.relating` queryable data to 
+its associated overall data-type instance.  For 
+example, consider the process of locating a 
+patient record using the patient's full and last name.  
+In `SQL;, the two-column conjunction of 
+first and last name might serve as a compound key 
+uniquely identifying patient-records in a 
+patient table.  In a property-graph database, 
+the compound first-and-last-name value may serve as a 
+property annotating a patient-node, utilizable to 
+locate that specific node (potentially within a 
+large graph will many other patient nodes).  In 
+an `RDF; graph database or `q.triplestore,` 
+the combination of a fixed last-name and first-name 
+node-value (together with `q.last-name` and 
+`q.first-name` as edge-labels) might provide 
+`q.shape constraints` which filter nodes down to 
+a unique match yielding the desired patient-node.  
+In short, the graph and/or tuple-structures and terminology 
+which govern how queryable data serves as an index 
+to retrieve records from a database differs 
+according to the underlying database architecture. 
+`p`
+
+
+`p.
+A given application and/or code base therefore has 
+multiple options with regard to the requirement 
+of modeling how a data-type instance should 
+be registered in a database in queryable fashion.  
+Queryable data may be exposed as a `i.property` 
+(uniquely identifying an overall type-instance), 
+as a node within a hypernode (in the case of 
+hypergraph databases), as a foreign-key or an index 
+value (in a relational context), and so forth.  The 
+specific structures and terminology will depend on 
+the specific database which the application uses for 
+data-persistence.  However, abstracting from the 
+details of different architectures, we can consider 
+an `i.abstract` persistence model which would recognize 
+structures such as properties and hypernodes as generic 
+patterns which can be translated into the architecture-specific
+forms of different databases as a concrete instantiation 
+of a more general abstract model.
+`p`
+
+`p.
+Presuming this possibility, then, we propose the notion 
+of a general-purpose `i.persistence model` which fits 
+into our earlier `q.Semiotic Saltire` picture, where 
+the persistence for an individual data type would 
+employ properties, hypernodes, queryable and multi-queryable 
+values, and similar formations to construct a representation 
+of how data type-instances should be encoded when 
+represented in persistable form.  This persistence model 
+can be thought of as a data-structure recipe targeting a 
+`q.virtual` database engine which incorporates 
+features of specific database architectures, such as 
+property graphs and hypergraphs.  By expressing data-persistence 
+logic in this generic fashion, the data-model thereby 
+includes as one part a persistence-model which provides an 
+abstract picture of how types within the data model 
+should be persisted (taking memory-layout and 
+queryability concerns into account).  Specific code 
+libraries could then translate this abstract persistence 
+model into concrete representations suitable 
+for specific database engines which may be used as 
+back-ends.  (One benefit of this generic model 
+is that the persistence logic is not tied to a 
+specific back-end; the same abstract model 
+can be compatible with many different back-ends, so 
+that different back-ends may be selected as 
+application evolves and different database 
+features become more important; for example, 
+over time, it might be necessary to select a new database 
+engine which places greater emphasis on 
+scalability, or on automated backup and replication). 
+`p`
+
+`p.
+Earlier in this chapter we suggested that a 
+`i.pointcut expression language` can be 
+grounded in hypergraph semantics in the 
+sense that, insofar as source code is 
+modeled via Syntagmatic Graphs, pointcut 
+expressions become in effect one form 
+of hypergraph site-location/traversal query.  
+In the context of data persistence, according 
+to the `q.abstract` model just presented, we 
+similarly suggest that a `i.bridge language` 
+for representing data type-instances in 
+pre-persistence forms is similarly grounded 
+in hypergraph semantics in that these 
+bridge representations are an example 
+of hypergraph serializations.  
+In this sense, such a pre-persistence language 
+(referring to representations that 
+constitute an intermediate step derived from 
+in-memory data, but from which in-database 
+structures can subsequently be constructed) 
+can be paired with pointcut expressions 
+and grounded-serializations as representational 
+concerns (relating to different radii on 
+the Semiotic Saltire) that all translate 
+to hypergraph queries (and therefore 
+can be implemented in terms of a common 
+hypergraph-query parsing and evaluation engine). 
+These three paradigms (pointcut expressions, 
+grounded serialization, and pre-persistence 
+bridge forms) are three aspects of the 
+prototype hypergraph-query language 
+which this book examines as a case-study 
+in data-integration tools. 
+`p`
+
+`p.
+As just laid out, bridge pre-persistence 
+is distinct from pointcuts and runtime reflection 
+in general (despite their common hypergraph 
+background).  However, the data-modeling 
+issues which should be addressed when 
+selecting a pre-persistence scheme 
+for individual data types does overlap 
+with code-model concerns that would be 
+exercised via pointcut expressions.  
+For example, annotating data fields 
+as queryable or multi-queryable 
+tends to impute on those fields semantics 
+which are also apparent in construction 
+patterns for the type in question 
+(e.g., a field which uniquely selects 
+a given type-instance in a query environment 
+where many such instances are present may well 
+be a field whose value cannot be default-constructed, 
+so that some mechanism should be in place for 
+indicating that fully-constructed instances 
+must initialize that field in particular).  
+Likewise, annotating a field as multi-queryable 
+implies that it is a collections formation 
+with a set of state-management 
+procedures (insertions and deletions) 
+whose pre- and post-conditions would 
+be specified by a rigorous code model.  
+All told, then, in practice, design patterns for 
+pre-persistence and pointcut-expression 
+use-cases for their common hypergraph 
+description/query language would tend 
+to intersect. 
+`p`
+
+
+`subsection.Multipart Relations with Roles`
+`p.
+Another facet of pre-persistence involves 
+optimizing the database layout to 
+represent relationships between relatively 
+complex objects; that is, between 
+objects which have enough internal structure 
+where it is unlikely that one would usefully 
+be encoded as a single field or 
+property inside the other.  In relational 
+databases, this is the kind of situation addressed 
+by foreign-key references linking two 
+tables.  In graph databases, such 
+scenarios lead directly to  
+labeled edges connecting two nodes (or hypernodes).  
+In principle, any node in a graph 
+database can be connected to any other 
+node, so it is straightforward to 
+connect any two data-values with however 
+much degree of internal structure they 
+may have, so long as a single 
+node (or hypernode, in hypergraph contexts) 
+encapsulates or delegates reference to 
+each value respectively.  
+`p`
+
+`p.
+A familiar problem in graph-database data modeling, 
+however, concerns `i.multi-part` relations, 
+where fully asserting all details of a given 
+instance of the relation requires naming 
+more than two values (or objects, nodes, 
+etc.).  A popular example for examining 
+multi-part relations is how the familiar 
+binary relation of `i.marriage` can be 
+generalized to a more complex structure if 
+we identify details such as `i.whom` 
+(officially) married the bride to the groom.  Similarly, 
+a `i.divorce` is a multi-part relation 
+which (minimally) includes a husband 
+and wife, but also requires a marriage 
+contract of some sort which is voided 
+by the divorce-event (and therefore 
+such details as a marriage date, 
+with the divorce then marking a temporal range 
+when the marriage was in effect, followed by  
+a time when it is annulled; plus perhaps details 
+confirming the prior marriage's legal status, because 
+only an `q.official` marriage can be superseded by a divorce).  
+For sake of discussion, consider 
+marriage and divorce dates, 
+as well as identifiers for 
+the officiating parties who 
+certified the marriage and the later 
+divorce, as added details marking `i.divorce` 
+as a multi-part rather than 
+binary relation.
+`p`
+
+`p.
+Different data-modeling strategies address 
+multi-part relations in different ways.  
+In general, the relation in question 
+can either be treated as a 
+compound whose individual 
+components are distinguished in terms 
+of the roles they play in the larger 
+whole, or as a data structure which 
+functions as a peer to the 
+data-values connected by the 
+relation.  In a graph database, 
+say, where nodes represent `q.values` 
+or `q.objects` and edges represent 
+relations, multi-part relations 
+can be modeled as `i.nodes`/, in 
+which case the elements participating 
+in the relation would be represented 
+in accord with any other node-structure, 
+as data fields or nested-nodes 
+encoded via whatever structuring 
+representations the database architecture 
+supports (properties, hypernodes, 
+shape-constrained neighborhoods, etc.).  
+For example, we would have a `q.divorce` 
+node whose data-fields represent 
+the relevant husband, wife, 
+marriage date, divorce date, 
+certifications, and whatever related 
+data; nodes representing the 
+two spouses would then be connected 
+to this divorce-node to model the 
+spouses being divorced.  
+The fact that divorce is also a `i.relation` 
+%-- we can say that John `i.is divorced 
+from` Jane %-- is then implicit 
+in the existence of the `q.divorce node` 
+to which both parties are connected: 
+the structure does not explicitly 
+notate this relation as a connection 
+between, say, the `JaneJohn; 
+nodes.     
+`p`
+
+`p.
+Alternatively, the notion of multi-part 
+`i.roles` %-- which is a prominent 
+feature of graph databases targeted 
+at `AI; applications, such as 
+`b.Grakn` %-- tries to more directly 
+model what we perceive to be 
+the real-world semantics of multi-part 
+relations, where `i.divorce` 
+(say) is indeed a `i.relation` between 
+two parties even as it has additional 
+structure.  We can accommodate the 
+extra structure by noting that different 
+parts of the relation fit into the larger 
+whole in different ways: so the divorce 
+has one part which is a husband, one part a 
+wife (of course same-sex divorces are a
+also possible; we speak in gendered terms 
+simply to refer conveniently to the 
+distinct parties), other parts are dates 
+and certificate ids, and so forth.  
+The complete relation is semantically 
+the totality of individuals or details 
+playing each of these implied roles. 
+`p`
+
+`p.
+In effect, multi-part relations %-- 
+which we will refer to for analytic 
+purposes as `q.multi-relations` %-- can 
+either be modeled by `i.role-sorting`/, 
+which ascribes distinct roles to 
+different participants, or `i.reification`/, 
+which converts a relation that would 
+ordinarily be represented as a 
+`i.connection` between two objects 
+(an edge) and converts it to an 
+object in its own right (a node, 
+taking here `q.object` to mean 
+any compound data structure with 
+its own fields to be graph-represented).  
+The most semantically accurate 
+representation is arguably 
+to combine these two options.  
+Consider the function of 
+multi-part relations from the 
+perspective of graph queries and 
+traversals: suppose I know 
+`i.John`/, and wish to learn 
+the name of his ex-wife (or 
+analogously a traverser is 
+on the John-node and wants to 
+visit `i.her` node).  
+The divorce-relation should take 
+me between those two nodes; 
+this expectation remains 
+in effect even if the 
+relation is multi-part, because 
+a multi-relation should 
+still serve as a fact authenticating 
+a step between two related nodes 
+on the basis of that relation being 
+known as a fact.  
+`p`
+
+`input<figure-tangle>;
+`p.
+In other words, a multi-relation 
+should supply traversal steps 
+no less than would a binary relation; the 
+difference is that multi-relations 
+enable `i.several` traversal paths, 
+and we can use `i.roles` to select 
+one direction or another.  Getting to 
+`i.Jane` from `i.John` traverses 
+the `i.divorce` relation, but specifically 
+the `i.spouse` role embedded in that 
+relation.  Invoking other roles 
+(say, marriage-date) would cut 
+across the multi-relation in an 
+alternative direction.  From the 
+perspective of queries and traversals, 
+accordingly, the multi-relation 
+behaves functionally like a 
+set of binary relations: divorce 
+encompasses `i.ex-spouse`/, `i.marriage 
+date`/, `i.divorce date`/, and so 
+forth.  However, these implied
+binary relations are not independent graph elements; 
+instead, the multi-relation
+enforces interdependencies among them.  
+If (say) a correction were to update the 
+`i.divorce date` value, this would 
+necessarily alter the implicit 
+relations identifying `i.John`/'s 
+and `i.Jane`/'s divorce-dates, 
+respectively. 
+`p`
+
+`p.
+Semantically, then, multi-relations 
+could most accurately be described 
+as interconnected sets of edges 
+(or structures that logically play 
+a role akin to edges) %-- i.e., 
+from one multi-part relation 
+there is a collection of different 
+traversal-steps which can be 
+taken via the data encoded in the 
+relation as an authenticator 
+(on the premise that knowledge-graph 
+facts `q.legitimize` steps between 
+nodes when one is seeking to obtain 
+information constrained by known facts, 
+e.g., to get information about an 
+ex-spouse starting from the other 
+former spouse).  However, these implicit 
+step-possibilities are, 
+not `q.autonomous` as they 
+would be with a disparate collection 
+of edges instead of one 
+multi-relation that logically implies those 
+edges; changes to node-values 
+related to one part of the relation 
+may potentially propagate 
+to other parts and participants 
+in the relation.  In this sense 
+the multi-relation operates akin 
+to an aggregate of `q.reactive 
+values` in Functional Reactive 
+Programming, where state-changes 
+triggering updates in one value 
+may (as an implementational 
+requirement on the reactive engine) 
+cascade to updates on the other values 
+(see e.g. `cite<RamsonHirschfeld>; 
+or `cite<WolfgangJeltsch>;).`footnote.
+A `i.reactive expression` is a kind of 
+union between a single value 
+and a stored-expression which yields 
+a value upon deferred evaluation, 
+with the specific property that 
+the value updates whenever 
+the value of the stored expression 
+would change due to modifications 
+in its components (akin to a deferred 
+expression which can be re-evaluated 
+arbitrary many times, rather 
+than only once, but canonically 
+a side-effect-free expression that 
+should only be re-evaluated when 
+its components have changed).  
+For example, a deferred expression 
+in a `GUI; context might be the 
+aspect-ratio of a `GUI; window, 
+which gets updated when the window is 
+resized.  Reactive expressions thereby 
+`q.tangle` their components 
+(in the window case, those would 
+be the window's width and height, 
+and/or corner coordinates).  Reactive expressions 
+are bound to object-state (for some 
+updatable object, e.g. a `GUI; components) 
+with the idea that a reactive engine 
+uses those expressions to 
+maintain certain constraints (such as 
+`GUI; layout constraints) even in 
+response to external 
+change (which the engine reacts 
+to); declaring constraints in terms 
+of reactive expressions obviates 
+the need to implement procedural 
+logic which enforces those 
+constraints via callback handlers.  
+Multi-relations could potentially 
+be seen as akin to reactive 
+expressions which provide 
+satisfaction for constraints 
+implicit in the coexistence 
+of component relations in the 
+single multi-relation; for instance, 
+if John has divorced from Jane, 
+then John's divorce-date is 
+constrained to be the same as Jane's.
+`footnote`  
+For sake of discussion, call 
+a collection of edges which are 
+interdependent along these lines (in the sense that 
+node-value changes in the neighborhood 
+of one edge may propagate to others) 
+an `q.edge tangle.`  A multi-relation 
+is then in effect a data structure 
+which merges the semantic and operational 
+roles of `i.edge tangles` and of `i.relation-reifying` 
+objects (in effect, the 
+multi-relation object simultaneously 
+reifies each edge in the edge-tangle).
+`p`
+
+
+`p.
+This chapter has concentrated 
+on procedure-calls more than on  
+graph structures, but the two 
+notions are interrelated, an 
+idea which is especially apparent 
+in the case of multi-relations.  
+In graph modeling, a relation 
+serves to guide or 
+legitimate a traversal 
+step; in some contexts, a relation 
+may provide operational possibilities 
+effectively akin to a function 
+(e.g., a procedure): using a 
+graph-edge to obtain the 
+node of an ex-spouse from that 
+of the other ex-spouse is analogous 
+to calling a procedure which outputs 
+the one ex-spouse when passed the 
+other.  Stepping from one node to 
+another by following a constrained 
+traversal strategy is, in short, 
+not unlike calling a function 
+which inputs the origin node and 
+outputs the destination node.
+`p`
+
+`p.  
+Pursuing this analogy: a multi-relation 
+acts like a function which 
+can branch in different ways 
+(e.g., by indexing branch options 
+according to disparate roles) %--  
+in this sense multi-relations 
+are effectively dual to 
+single-return procedures.  A procedure 
+(in general) takes many inputs and 
+returns one output, whereas a 
+multi-relation (in the context 
+of a single traversal or query) 
+takes one starting node and 
+presents multiple possible 
+traversal directions.    
+`p`
+
+
+`p.
+The fact that `i.roles` can be 
+used to differentiate multiple 
+destination-paths for a 
+multi-relation suggests the 
+dual idea that roles can 
+similarly index different 
+`i.input` sources for a 
+procedure.  Such an idea 
+has not been pursued in full 
+generality by mainstream 
+programming languages 
+%-- named (rather than positional) 
+parameters and 
+distinctions such as `qb.this` 
+objects from ordinary arguments 
+(which we have modeled in terms 
+of `q.channels`/) are rudimentary 
+examples of parameter-role systems, 
+but a more complete such system 
+would support user-defined roles 
+responding to the semantics of 
+the target domain (rather than 
+just the semantics of the programming 
+language).  However, parameter-roles 
+can certainly be declared 
+through a code-annotation system 
+and therefore externally introduced 
+and runtime-reflected using 
+pointcut semantics as discussed earlier 
+in this chapter.  In this regard, 
+parameter-roles can both 
+add further expressiveness to 
+external code-reflection and 
+can leverage the idea of 
+procedures and multi-relations 
+being in some sense dual 
+(and thereby potentially subject to 
+similarly-structured metadata).  
+We will discuss this aspect of 
+parameter-roles further in 
+Chapter 9, particularly
+in the context of Conceptual Spaces.  
+We will argue that attempts 
+to model procedural semantics 
+via `q.blended` Conceptual 
+Spaces, which is essential 
+to Coecke `i.et al.`/'s 
+strategy for employing Conceptual 
+Spaces as a grounding semantics 
+for simulations of natural 
+language, call strongly 
+for the structural details 
+afforded by parameter-roles.
+`p`
+
+
+`subsectionbox.Syntagmatic Graphs and 
+Conceptual Spaces`
+`p.
+This chapter has, to varying degrees of detail, 
+examined pointcut expressions, pre-persistence 
+bridge representations, and `q.grounded` serialization 
+as three different aspects of data-and-code-modeling 
+which can be subsumed within a common hypergraph-based 
+description/query language.  Each of 
+these representational use-cases come into play 
+in different coding concerns which need to 
+be addressed when developing a robust 
+code model that can cover the various dimensions of a 
+full-fledged application (or code base which may be 
+used by one or more applications), such as database persistence, 
+serialization, and `GUI; integration.  We suggested that 
+these variegated coding concerns can be schematized by the 
+visual `q.Saltire` device, connecting a central data type 
+to associated types and/or representations which 
+track how the type is restructured to accommodate 
+different computing environments (e.g., databases, 
+`GUI;s, and network-based data sharing where 
+serialization/deserialization protocols come into effect).  
+This picture illustrates how hypergraph-based 
+codes and data representations can be exported to these 
+various aspects of the overall application-development 
+process.
+`p`
+
+
+`p.
+In particular, pointcut expressions, pre-persistence, and 
+serialization, according to the schemas we suggest here, 
+all have a hypergraph basis, where query syntax and evaluation 
+reduces to various forms of hypergraph site-locating 
+and traversal.  In other words, there is an underlying 
+hypergraph semantics which provides the structures 
+leveraged by the relevant hypergraph-query functionality.  
+This semantics has not been formally set forth here, 
+but a prototype of a semantic model adhering to the 
+principles we have outlined is provided in the 
+accompanying code, which can hopefully serve via 
+demonstration-by-implementation as a useful 
+proxy for a mathematical exposition of the underlying 
+semantics.
+`p`
+
+
+`p.
+Since the initial form of this semantics was also 
+presented in the context of Coecke `i.et al.`/'s 
+work on hypergraph categories, it is reasonable 
+then to consider how the hypergraph semantics 
+underlying our pointcut/pre-persistence/serialization 
+schema can be related to the Conceptual-Space-based 
+semantics marshaled by Coecke `i.et al.`/'s formulation.  
+For example, we summarily discuss paths in Syntagmatic 
+Graphs as tracing increases in information content, 
+or `q.accretion of detail,` which lead toward 
+satisfaction of preconditions for procedures 
+(or verbs, in the natural-language context) as 
+prerequisite for procedure calls.  The Syntagmatic 
+constructions underlying such a path-model is 
+analogous to the syntactic constructions analyzed 
+by Coecke `i.et al.`/: in effect, Syntagmatic 
+paths are analogous to morphism-chains in Hypergraph 
+categories.
+`p`
+
+`p.
+In Coecke `i.et al.`/, however, 
+an essential point of their analysis is that there 
+is a tight coupling between paths in the syntactic 
+and semantic sense: morphism-chains implicitly 
+`q.carry,` in the sense of compelling and serving as 
+a map-image for, structurally resonant paths in 
+(some form of) Conceptual Space.  The analogous semantic 
+notion on our account would be `q.expansions` of Information 
+Content, but this is a less structurally detailed 
+construction of `i.semantic` paths than Coecke `i.et al.`/'s 
+model.  As such, we can consider 
+whether (and how) to adopt Conceptual Spaces 
+as a source for a more rigorous `q.path semantics` to 
+mirror our Syntagmatic Graph syntax, by comparison 
+to how Coecke `i.et al.` use Conceptual Spaces 
+to provide an image-domain (in a sense to mirror) 
+morphism-chains in hypergraph categories.  One 
+difference between the two models is the 
+nature of the hypergraph categories involved 
+%-- Coecke `i.et al.` work with straightforward 
+monoidal structures whereas hypergraph 
+semantics in our context involve query-processing 
+states for hypergraph query languages, so the 
+hypergraph basis on our end has more structure 
+(although for reasons just outlined the 
+path-semantics side, at least so far, has 
+`i.less` structure).  We will consider these 
+comparisons in greater detail in Chapter 9.
+`p`
+
+
+`p.
+
+`p`
+
+

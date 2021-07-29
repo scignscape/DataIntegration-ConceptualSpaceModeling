@@ -1,0 +1,1237 @@
+`section.Annotations and Radiomics`
+
+`p.
+We feel that image-annotations serve as a good 
+case-study for issues surrounding 
+modular design, which is why 
+we have devoted space to annotations and 
+their associated data structures.  
+However, the practical consequences of 
+modular design-choices 
+may be more apparent when considering 
+the larger bioinformatic systems wherein 
+annotations are a relatively 
+small part, so we turn to this larger picture next. 
+`p`
+
+
+`subsection.GUI Operations Involving Images and Image-Annotations`
+`p.
+An annotation module meeting the general profile just outlined 
+%-- maintaining a self-contained window showing 
+ground images and annotations drawn on them, but 
+delegating image-management to other modules %-- 
+would presumably need to be paired 
+with modules through which users find images 
+of interest in the first place.  Applications would invoke 
+procedures in the annotation module only after loading 
+image requested by the user through a database query, 
+filesystem search, or simply opening a local image file.   
+`p`
+
+`p.
+In this scenario the annotation module would have 
+capabilities to display each ground image itself, 
+but in general would not implement separate 
+`GUI; classes for other operations related 
+to images proper (as compared with operations 
+pertaining to actual annotations, that are its 
+proper domain).  For example, the annotation module 
+might skip implementation of functionality to 
+open a new image (replacing the current ground image 
+with a different one), or to search for images 
+(in a database or file system) that users would 
+load to replace the ground image currently viewed.  
+`p`
+
+`p.
+With that said, however, it would certainly be 
+plausible that responsive `GUI; would allow users to 
+indicate the desire to load and/or search for a 
+new image via actions performed on the 
+`GUI; objects managed by the annotation module.  
+For example, a context menu activated on points 
+within the background image (at least those 
+not covered by an annotation) could have, as one 
+of its menu items, the option to look for a new 
+image to load in lieu of the one currently 
+being rendered (along with its annotations).  
+The module would in that case, presumably, 
+indicated via a signal-emission or procedure-call 
+that the user intends to search for a new 
+image, and delegate to other modules or 
+components the process of showing 
+dialog boxes or other tools responding to that request.
+`p`
+
+`p.
+Assuming this overall plan for routing requests, there 
+are then two different scenarios where an 
+annotation module would be rendering a new image 
+and its annotations (new in the sense that 
+the image is not currently visible on-screen).  
+One scenario is that the module was not active previously 
+(during the current run of the surrounding application, 
+anyway) or at least that any windows showing 
+ground-images have been closed.  An alternative 
+scenario is that the module is managing an 
+open window with its ground image and annotations 
+initialized, and receives a signal that the 
+user now wishes to view a different image 
+which the user has opened or selected  
+(potentially that signal could be indirectly 
+a response to an earlier signal from the 
+module itself asserting the user's preliminary 
+desire to switch images).  Identifying these 
+two different sorts of `q.entry` scenarios 
+can be useful for building a procedural 
+model relating to the module's `q.procedural 
+exposure` concerns.   
+`p`
+
+`input<fig-flow>;
+
+`p.
+Figure~`ref<fig:flow>; sketches out a few of the 
+more important procedural steps that would be 
+involved in proceeding from when the module 
+receives an identifier or data structure for a 
+new image to the point where this ground 
+image (and its annotations) is rendered.  
+This is not a very schematic picture (leaving 
+out many potential steps and not really 
+clarifying the branching logic between showing 
+an initial image and replacing the image on an 
+already-visible window) but it is intended 
+simply to give an impression of how procedures 
+can fit together into logical sequences, and 
+also how a module may have specific `q.entry` 
+points.  By this terminology we mean that 
+at entry points the module is receiving data 
+from an external source and is also 
+receiving notice that some procedural chain 
+should be initiated.  In this running example 
+there are two kinds of `q.entries` in this sense: 
+one is initializing a new window with the 
+image-data provided, and the other is replacing 
+the image with another viewed within the former 
+image's windowing context. 
+`p`
+
+
+`p.
+In general, it is worthwhile to tag every point where a 
+module may receive data from an external source; 
+it is also worthwhile to tag where an external 
+source may trigger (or request) a chain of 
+actions which the module implements.  An 
+`q.entry point` would then be a location (e.g., 
+a join-point; see Chapter 6) where both of
+these conditions are met.  Rigorous procedural 
+models should accordingly identify such 
+entry points, and the code should be designed 
+to facilitate this process.  One way to accomplish 
+this is to provide one specific procedure for 
+each entry point (i.e., each site in a logical 
+model of what the module should accomplish 
+which would serve as an entry point).  The entry-point 
+procedures might call other procedures, of course, 
+but providing entry-point procedures which encapsulate 
+the initial steps in a `q.logical` picture of 
+modules' functionality (abstracting from implementation 
+details) can then make it easier to trace the 
+`q.flow of information` within the module.  
+Moreover, once entry-point procedures are specified 
+and identified as such, they are obvious 
+candidates for being exposed to scripting, testing, 
+and remote-invocation engines.  
+`p`
+
+
+`p.
+Many systems exist to diagram procedures in a module 
+(or code library, software component, or analogous 
+body of interrelated code) and the logic of how 
+data passes between them, as well as how groups 
+of procedures follow in sequence to perform a 
+specific task.  Analyzing these sorts of 
+diagrams (their vocabularies and the attributes 
+they may identify per procedure) is outside the 
+scope of this chapter, but suffice it to 
+say that once a procedural model is created 
+(perhaps informally), such a model 
+can serve as a template for establishing 
+a module's `q.procedural exposure.`  Procedures
+which appear to be particularly important 
+in recurring sequence-patterns are likely 
+to be ones which could be targets of script-based 
+adapters, unit tests, and other scenarios 
+where such procedures might be invoked dynamically.  
+Likewise, the collection of exposed procedure 
+serves as an introduction to the overall 
+functionality of a module, so that procedures 
+which seem most functionally important 
+in a module should be exposed partly because 
+they provide an overview for developers 
+trying to become familiar with the 
+module's implementation.   
+`p`
+
+
+`p.
+Image Annotations have only limited use in isolation; 
+in contexts related to bioimaging, the main purpose 
+of annotations is to call attention to biomedically 
+significant image features, where are identified 
+either by a human expert evaluating the image 
+or by image-processing algorithms.  Once identified, 
+these image-features suggest additional facts 
+about the biological material sampled within the 
+image, and accessing such non-image data requires 
+capatibilities that presumably lie outside 
+the scope of the annotation module proper.  
+Accordingly, this module would need to 
+provide users opportunities to follow up 
+on image-view focused actions to those 
+handled by other modules.
+`p`
+
+`p.  
+Because image markers 
+can be one of the more effective means 
+of discovering and presenting biomedical 
+facts or predictions, hypothetical 
+application-sessions where users start with 
+capabilities provided through an 
+image-annotation module is a reasonable 
+case-study for analyzing issues in 
+how modules would interoperate.  
+This provides a rationale for emphasizing 
+image-annotation as we have here, though 
+the remainder of this chapter will 
+transition to other forms of biomarkers.  
+`p`
+
+
+
+`subsection.Image Processing in the Context 
+of Broader-Scale Workflows`
+`p.
+Bioimage analyses 
+are usually most valuable when they can yield 
+relatively simple data structures which have 
+unambiguous biomedical interpretations.  For 
+example, image segmentation in the context 
+of cervical cancer yields a classification 
+of imaged nuclei into different bins, where 
+one category corresponding to likely cancer 
+cells, typically on the basis of one or 
+two derived parameters, such as measurements 
+of nuclear enlargement and deformity 
+(relative to healthy cells).  Similarly, 
+the density of blood vessels within 
+tumor microenvironments can be estimated via 
+`q.fractal dimensions,` which measure the
+cumulative length of blood-vessel structures 
+connecting tumors to surrounding tissues.  
+In general, we want image biomarkers to 
+yield statistical measures from images 
+which correspond to bioinformatic 
+quantities yielding diagnostic and/or 
+prognostic results: what proportion 
+of cells in a blood sample are cancerous?  
+How aggressively has a tumor started to 
+`q.colonize` surrounding tissue?  
+Where has scarring 
+diminished blood supply to damaged 
+heart tissue?  How 
+extensively has SARS-CoV-2 infection 
+compromised lung functioning (visible 
+due to `q.ground-glass opacity`/)?
+`p`
+
+`p.
+Often these sorts of biomedical questions, for which 
+bioimaging can provide partial answers, may also 
+be answered in part by other means, such as 
+genomic tests or biochemical assays.  The opens 
+the possibility of bioimaging and (say) 
+biomolecular results mutually reinforcing 
+one another.  For example, Immunohistochemistry staining 
+(`IHS;) is often used in biopsies diagnosing 
+many forms of cancer: antibodies are 
+introduced into a tissue sample causing 
+the sample to be stained whenever specific 
+proteins are present that bind to the introduced 
+antibodies.  There are hundreds of different 
+`IHS; antibodies that can potentially be utilized, 
+depending on which specific proteins are targeted.  
+Assessments of the quantity of target protein evident 
+in a sample can itself depend on image-analysis, usually 
+comparatively simple measurements of the degree and 
+intensity of sample staining.  Immunohistochemistry 
+(`IHC;) and `IHS; are one of several antibody protocols; 
+Flow Cytometry, for example, provides an 
+alternative (see, say, `cite<WangHoffman>; or 
+`cite<ODonnellEtAl>;).  In this context immunostaining is based on 
+immunofluorescence antibodies rather 
+than visible staining, resulting in cells containing 
+the target proteins emitting fluorescent signals that 
+are detected using `FCM; equipment.  
+`p`
+
+`p.
+The visible final stages of an immunostaining assay may therefore 
+be a microscopy image showing obvious staining patterns that 
+can be graded by human or software analysts, or may potentially 
+be `FCM; plots where each cell corresponds to an `q.event` 
+wherein the cell has generated fluorescent signals 
+captured by an `FCM; channel (this data can then be 
+modified via `FCM; methods such as dimensional transforms and 
+gating to yield an intuitive visualization of the event-data).
+`p`
+
+`p.
+The resulting visualizations, however, are only the 
+end stages of complex assays that require disciplined 
+lab methods during sample preparation and analysis.  
+Bioimaging in the context of biochemical assays is 
+different from noninvasive image-process using radiology, 
+for example, to picture solid tumors.  With diagnostic 
+assays, modifications are induced within a tissue 
+sample to control how the sample's physical properties 
+(e.g. the presence of one or more specific proteins) 
+becomes visually expressed under bioimaging.  
+Scientists can physically manipulate the samples to be 
+imaged, instead of or in addition to tweaking 
+the image-analysis process, to improve diagnostic accuracy.   
+At the same time, this means that data concerning 
+how tissues are sampled and prepared needs to be 
+modeled alongside of the image-data proper.
+`p`
+
+`p.
+In a paper devoted to more precise `IHC; quantitative 
+methodology, for example, `cite<LovchikEtAl>; 
+(also discussed in Chapter 4) argue that:
+
+`displayquote,
+The commercially sourced
+antibodies in [`IHC;] protocols often vary in their specificity
+and sensitivity, thus requiring meticulous optimization
+and testing.  Hence, there is a need to enable users to
+rapidly screen parameter spaces to determine practical
+assay conditions for the specific biochemicals used. The
+ability to `i.quantitatively characterize` 
+detected signals, perform `i.multiplexed detection of 
+various antigens simultaneously`/, and `i.rapidly implement 
+IHC protocols` that are
+standardized or modified according to user need are facets
+of research that would be essential to fostering the next
+generation of methods in cancer research and diagnostics.  
+(page 1)
+`displayquote`
+
+|.|
+
+In other words, the authors are implicitly calling for 
+greater standardization `i.both` of `q.assay conditions` 
+and assays' `q.parameter spaces` `i.and` of 
+the algorithms generating their quantitative results.  
+For their specific workflow, `cite<[page 3]LovchikEtAl>; 
+identify several adjustable parameters within the 
+assay protocol, such as temperature, `q.the flow velocity 
+of the processing liquid` and `q.incubation time` 
+(because these authors' methods depend on a two-step 
+binding process involving two different antibodies, 
+the ratio of the second and first incubation 
+times is also a consequential data point (page 8)).  
+In a prior article `cite<AdityaKashyap>;, the same authors also discuss 
+novel quantitative techniques for measuring 
+assay results, such as what they call 
+`q.Saturation Approach Matrix` (`SAM;).  The 
+`SAM; metric considers not only staining intensity 
+once antibodied have been maximally bound to their 
+target `q.analytes` (e.g., proteins), but also 
+the rate at which these reactions occur.  
+In this sense, `SAM; data is not only a form 
+of image-biomarker derived from static images, 
+but an (indirect) measurement of biochemical 
+reactions occurring prior to the assay's 
+final state (whereas conventional analyses would 
+consider only the final state in isolation).
+`p`
+
+
+`p.
+The quantitative techniques introduced in 
+`cite<AdityaKashyap>; depend on `q.Microfluidic Probes` 
+(`MFP;s), which can freely move over the surface of a 
+sample and (if desired) modify the sample at 
+specific points, e.g. by introducing new material, 
+while also picturing a local region of the sample 
+around it current target point via an inverted 
+microscope `cite<DavidJuncker>;, `cite<KentaShinha>;, etc.
+Although `MFP; devices capture image-data 
+via integrated microscopes, they may also 
+be equipped with sensors that read signals in other 
+media; `cite<[page 7]QasaimehEtAl>;, for example, 
+propose `q.MFP ... combined with microelectrode array
+technology to study the electrical changes in neuronal networks
+in response to topical application of neuromodulators` 
+(they cite in turn `cite<ThomasMPearce>;).  
+The `MFP; probes, in turn, are one example of 
+`q.biosensors` which collect data about tissue samples 
+by detecting optical, electric, or fluorescent 
+signals.  Whereas older biosensors tended to be 
+fixed in place, recent technologies such as 
+`MFP; enable probes to freely move around a sample's 
+surface.  In some cases, biosensor data is 
+mapped against single locations in a sample, 
+so that the data has characteristics of a 
+bioimage (wherein individual pixels roughly 
+correspond to individual `q.points` on the sample).  
+However, this image-like data is not necessarily 
+acquired via the same physical mechanisms as a 
+microscopic or radiographic picture.  
+For example, a popular class of sensors 
+is constructed according to the physics of 
+`q.Surface Plasmon Resonance`  (`SPR;), 
+where sensors detect `q.modulations` in 
+patterns of light waves' resonance against a biological 
+sample (when it is introduced into a specific  
+configuration of instrument layers involving glass 
+and gold) `cite<EdyWijaya>;.  The `q.picture` 
+which emerges infers properties of the underlying 
+sample via properties of light waves, but instead 
+of only capturing wavelength (color) as in an 
+optical microscope, `SPR; results in more 
+complex refraction-modulation data which is 
+then subject to digital processing.
+`p`
+
+`p.
+As examples such as `SPR; and fluorescent 
+Flow Cytometry illustrate, there are a wide 
+range of physical mechanisms by which 
+properties of a biological sample can be 
+investigated via properties of light waves 
+that emerge from or interact with biological materials.  
+What we conventionally call `q.images` 
+are only one manifestation of the larger principle that 
+information about objects is encoded in the 
+light that they emit, refract, and/or reflect.  
+Consequently, it becomes unexpectedly 
+difficult to identify the proper scope 
+of domains such as `q.bioimaging` and 
+`q.image annotation.`
+`p`
+
+`p.
+Should `i.images` in these contexts refer to the classical 
+sense of a `q.picture` which encodes information 
+via `i.colors`/, with the color of a single 
+pixel being considered (as an indealization) 
+the color of light reflected from a miniscule 
+patch on the surface of the imaged medium, 
+analogous to human vision?  Or should we accept 
+a broader notion of `i.images` encompassing a 
+wide range of technologies which 
+acquire spatially extended data about a sample 
+by probing light waves for different physical 
+properties, not only in the sample's `q.natural` 
+state but potentially after probing the sample 
+with external energy-sources, such as lasers?  
+Moreover, what about physical 
+phenomena `i.other than` light waves, such as  
+piexoelectric sensors?      
+`p`
+
+
+`p.
+These questions are not philosophical 
+speculations on the `q.nature` of an image; 
+more concretely, they address problems 
+of integrating biomedical information 
+acquired from a heterogeneous suite of devices.  
+If we remain within the context of `q.classical` 
+images, e.g., those derived from optical 
+microscopy or radiography, there is a relatively 
+well-defined ecosystem of digital formats 
+and software capabilities, reflecting  
+shared assumptions about the nature of `q.image data` 
+which different software components will all 
+be acting upon.  For example, images are encoded 
+within several canonical formats such 
+as `JPG;, `PNG;, and `TIFF;, and there
+are specific kinds of meta-data which 
+are ubiquitous as preconditions for 
+properly reading image data, such as 
+dimensions/resolution, color depth, 
+and the orientation of orthogonal 
+axes relative to the pixel matrix.  Analytic 
+notions such as regional contours, morphology 
+operators, color transforms (such as grayscaling), 
+image-masks, color averages and interpolations, 
+region areas and perimeters, and so forth, 
+are relatively consistent across different image 
+formats and image-processing methods.  We can, for 
+example, ask about (say) the area of a region 
+measured as a proportion of the area of its 
+minimum enclosing circle, or about the morphology 
+of its convex hull, whether we are calculating these 
+results via `OpenCV; or `ITK; (to mention two 
+popular image-processing libraries) and whether 
+the underlying image is saved as a `PNG; or `TIFF; 
+file.     
+`p`
+
+
+`p.
+Because of the relative consistency among different 
+image-processing and image-viewing applications %-- 
+If we remain within the `q.classical` imaging scope %-- it is 
+possible to investigate image-analysis pipelines as 
+generic workflows abstracted from 
+the specific software tools with which the workflows would 
+ultimately be implemented.  Moreover, analytic 
+libraries can be paired with image-viewing software and 
+image-acquisition sources in different combinations.  
+The process of obtaining raw image from (for example) a 
+`DICOM; image series, subjecting those images to a 
+predefined analytic method, and visualizing the results 
+via image-viewing software, is sufficiently standardized 
+that some variant of this methodological outline can 
+be implemented on a wide range of components.  
+This standardization allows users' understanding 
+of image-related software to largely carry over 
+to other software (even if it is implemented in a different 
+programming language, distributed in a different commercial or open-source 
+environment, and so forth) and allows image-related software 
+components serving different roles to interoperate.  
+`p`
+
+`p.
+Widening the scope of `q.bioimaging` `i.outside` 
+classical image-acquisition modalities, on the 
+other hand, has the effect that 
+this degree of standardization and interoperability 
+becomes diminished.  The terminology and mathematical 
+models for manipulating `q.image` data deviates from `q.classical` 
+images the more that the physical mechanisms of acquiring 
+this data deviate from microscopy or radiography.  
+For example, Flow Cytometry gating evinces idiosyncratic 
+terminology and quantitative frameworks despite the fact 
+that geometrical principles behind gating overlap 
+in many respects with concepts from Image Annotation 
+(leading to proposals in the `FCM; community, for example, to 
+integrate their own data models within `DICOM;;  
+`cite<[page 1, e.g.]RobertLeif>; argues `q.The large overlap between imaging and flow cytometry provides strong evidence that
+both modalities should be covered by the same standard`/).  
+As we suggested earlier in the chapter, expanding 
+the scope of data models too far runs the risk 
+of such models being over-complicated with 
+special use-cases and special-purpose extensions which 
+are tangential to the core foci of the model.  
+On the other hand, failure to synthesize 
+interrelated data models can 
+result in the unnecessary `q.fragmentation` of 
+software ecosystems which give rise to 
+(and are shaped by) data models, as we 
+argued in Chapter 4.
+`p`
+
+
+`subsection.Data Profiles for Annotation and Image Markup`
+`p.
+Chapter 6 sketched the rationale
+for `b.aim-client`/, a code library 
+included as supplemental materials 
+for this book which facilitates the 
+use of data sets employing `AIM; 
+annotations.  This section will 
+continue that discussion by 
+delving further into the 
+`AIM; data model and how 
+we try to refine certain 
+elements of `AIM;'s 
+semantics with `b.aim-client`/.  
+In practical terms, `b.aim-client` 
+is first and foremost a utility 
+library for deserializing `AIM; 
+data.  We demonstrate `b.aim-client` 
+through sample data sets published 
+alongside this book, where 
+`b.aim-client` can be used to 
+programmatically study 
+`AIMLib;, aside from the extra 
+features added by `b.aim-client`/.  
+`p`
+
+`p.
+Since it was standardized, `AIMLib;'s 
+adoption in radiology and related 
+bioimaging fields has been driven 
+mostly by clinical software which 
+adopted the `AIM; format 
+(as one mode for exchanging 
+annotation data, along 
+others, such as `DICOMSR; %-- `DICOM; Structured 
+Reporting).  We are not aware of 
+software packages which provide 
+access to `AIM; data in a standalone 
+fashion, outside the context of a 
+larger bioimaging application, 
+which could potentially stymie 
+researchers who wish to examine 
+library code directly to get a 
+more thorough grasp on 
+`AIM; data and architecture.  
+Potentially `b.aim-client` can 
+help in this regard because 
+`b.aim-client` sets up an environment 
+where `AIM;-compliant data 
+(such as `XML; files) can be 
+read and parsed, yielding  
+instances of `AIM; classes that 
+can be examined at runtime 
+(e.g., through a debugger).  
+This book's republished data 
+set is bundled with code in 
+the form of a `Qt; project 
+which links against 
+both `AIMLib; and `b.aim-client`/; 
+users can accordingly load sample `AIM;-compatible 
+`XML; files in a `Qt; environment.  
+For example, a natural way to use the 
+`b.aim-client` project is by running 
+the code in `Qt; creator, a 
+`Cpp; Integrated Development Environment 
+(`IDE;) particularly targeted at `Qt; projects.
+The `IDE;'s debugging features 
+(for setting breakpoints, examining 
+local variables, searching the 
+code base for symbol-names, and so forth) 
+can then be exploited to decipher 
+`AIM; data structures after 
+they have been initialized from `XML; 
+files.  
+`p`
+
+`p.
+Given a properly-formatted `XML; serialization, then, 
+we can use the `AIM; `b.XmlModel` class, 
+which provides a `bx.ReadAnnotationCollectionFromFile` 
+method that returns an `b.AnnotationCollection`/.  
+This latter type is a base class whose subtypes 
+differentiate annotations-on-annotations (metadata) 
+from annotations-on-images, which are our 
+primary concern.  The 
+`b.ImageAnnotationCollection` type is a 
+convenient way to accommodate the fact that 
+some images may have multiple image-annotations 
+(multiple Regions of Interest), even though 
+in practice an image may have only one, 
+so the `q.collection` is actually a holder 
+for one `i.single` annotation-instance 
+(this is the case for all the files 
+in our sample data set).  Most of the 
+important structure, then, lies with 
+this `b.ImageAnnotation` class.  
+Each Image Annotation is a holder 
+for collections of several object-types, 
+including `q.image references` which 
+connect the annotation to the 
+image it annotates; `q.annotation 
+statements` which assert the 
+annotation's significance 
+(i.e. its biological/diagnostic rationale); 
+and `q.segmentation` or `q.markup entities` 
+(which carry information about 
+image-regions defined as 
+geometric objects on or segments of the image).
+`p`
+
+`p.
+In addition to the actual annotation, 
+`AIM; needs to account for many data points 
+concerning the utilization of annotations 
+in a diagnostic setting, such as 
+diagnostic codes,  
+confidence-levels that the image-interpretation 
+is correct, metadata concerning the graphics 
+properties of the image itself and how 
+it was acquired, biological descriptions 
+of the phenomena or entities (such as 
+cells, tissues, lesions, etc.) 
+visible at the Region of Interest (assuming 
+correct interpretation), and so forth.  
+As a result, the overall `AIM; data model 
+encompasses many data types which 
+are not explicit representations of annotation 
+geometry itself.  However, in 
+order to organize the overall data model 
+exemplified via `AIM; it is useful to 
+start with the model specifically 
+representing geometrically described 
+annotations, and then introduce 
+diagnostic and biomedical metadata as 
+refinements of that core model. 
+In `AIMLib;, these fundamental 
+data types are implemented via 
+subclasses of a base `b.MarkupEntity` 
+class.  These subclasses, such as 
+`b.GeometricShapeEntity`/, are therefore a 
+natural starting-point for examining the 
+profiles of `AIM; data.
+`p`
+
+`p.
+For sake of discussion, we will mostly consider 
+images and corresponding annotations 
+in `TwoD; (the `ThreeD; cases are similar 
+but harder to visualize).  Positions in `twospace; 
+are represented by `AIM;'s `b.TwoDimensionSpatialCoordinate` 
+class.  Unlike other libraries which work with 
+spatial data, such as the Computational Geometry
+Algorithms Library (`CGAL;), `AIM; 
+only recognizes a single scalar magnitude for 
+spatial intervals (a `b.double`/, i.e., double-precision 
+floating-point number).  This appears to be 
+an implementational choice, not a `q.semantic` one, 
+in the sense that encodings of spatial regions and 
+magnitudes can potentially utilize a diversity of quantifying 
+strategies and coordinate systems.  For instance, 
+`CGAL; supports both normal Cartesian coordinates 
+and also `q.homogeneous` coordinates %-- which are 
+based on projective geometry %-- and allows coordinate 
+systems to be parametrized on different kinds of 
+scalar values, such as integers rather than 
+pseudo-reals (which arguably better matches the 
+image domain for many purposes, since one cannot 
+have a fraction of a pixel); or rational/floating-point 
+numbers with varying degrees of precision 
+(a simple example would be using single-precision 
+`b.float`/s in lieu of double-precision, which makes 
+geometric representations more memory-efficient, 
+or in the other direction using more exotic 
+numeric types for greater mathematical precision) 
+`cite<[page 14]AndreasFabri>;.  Also, some 
+image-analysis algorithms are expedited using 
+polar coordinates `cite<[for example]ParadowskiEtAl>;, 
+implying that polar-valued 
+annotations also have a role in documenting 
+image-features tagged by those algorithms.
+`p`
+
+`p.  
+These comments are tangential to `AIM; `i.per se`/, 
+because a `b.double`//Cartesian coordinate 
+framework is probably the most sensible default 
+option, and `AIM; use-cases may not warrant 
+generalizing the code for other coordinate options 
+that would rarely be leveraged.  Nevertheless, 
+this example points to how even a seemingly simple 
+construction such as two-dimensional spatial 
+points can encompass a fairly detailed 
+space of semantic alternatives.  Code libraries 
+which seek to operationalize a relatively 
+thorough semantic model of the space-coordinate 
+domain, encapsulating the diversity of representations 
+that are computationally useful in different 
+contexts for designating spatial points, regions, 
+and magnitudes, would need to recognize a 
+wider range of coordinate systems and numeric 
+types than exemplified by `AIM;.  This case 
+illustrates the kinds of situations where 
+data-mismatch problems can arise: exporting data 
+back-and-forth between `AIMLib; and other 
+software components might require bridge code 
+to handle coordinate conversions.  Data-integration 
+projects for which `AIM; annotations represent 
+one data source would correspondingly need to 
+anticipate the possibility of mismatches 
+involving coordinate systems and the need for 
+suitable bridge code as part of the integration 
+workflow.  Since `AIM; does not internally 
+support a choice of coordinate-systems, using 
+`b.double`//Cartesian exclusively, 
+`AIM; also does not explicitly notate 
+its choice of coordinate systems, so 
+that it takes some exploration of the 
+`AIMLib; code to grasp what may be 
+necessary for interoperating `AIMLib; 
+with other libraries.  
+`p`
+
+
+`p.
+In any case, `TwoD; coordinate vectors 
+then define geometric shapes straightforwardly.  
+One noteworthy design choice is that the 
+class representing `TwoD; points (likewise 
+for `ThreeD;) includes an extra data field 
+asserting the `q.index` of that specific point 
+in the coordinate vector to which it belongs.  
+Depending on the geometric shape spanned 
+by the vector, coordinate indices could have a 
+fixed patten; for example, `AIM; describes 
+circles by asserting the location of the 
+center point and then a location on the 
+circumference.  By giving coordinate points a 
+predetermined order, shapes such as circles and 
+ellipses can be defined by a simple coordinate 
+vector rather than by assigning separate data 
+fields for points playing specific roles, 
+such as centers or focal points; the coordinate 
+index for each point implicitly indicates 
+its role, and fixing this index for distinct 
+roles ensures that the coordinate vector 
+unambiguously encodes the respective 
+roles (a circle center cannot be confused 
+with a circumference-point, for example).  
+The `AIM; shape subclasses provide 
+their own `b.enum` types mapping 
+indices to roles, so that code using these 
+types can refer to the indices via 
+descripive names (e.g., `b.CenterPoint`/) 
+rather than an index number.
+`p`
+
+
+`p.
+With this system (perhaps designed in part to 
+facilitate interoperation with `DICOM; 
+Structured Reporting), `AIM; recognizes 
+five principle types of shapes, mimicking 
+`DICOMSR; `cite<[page 94]DavidAClunie>;: 
+points, circles, ellipses, multipoints, 
+and polylines.  The difference between 
+the latter two is that polylines must 
+be closed (there is a presumed line 
+connecting the last point in the collection 
+to the first).  These shape-types 
+are derivatives of `AIM;'s 
+`b.TwoDimensionGeometricShapeEntity` 
+class (the `ThreeD; case is similar, but 
+supports additional `q.polygon` and `q.ellipsoid` 
+types, the former enforcing that vertices be co-planar) 
+and are also identified 
+via an `b.enum` naming each of the 
+five options, so given a pointer
+to the `b.TwoDimensionGeometricShapeEntity` base 
+one can determine the nature of the 
+shape represented by that object 
+(however, given a generic `b.MarkupEntity`/, 
+which has several different subclasses, 
+one cannot determine without type-reflection 
+whether the encoded shape is `TwoD; or 
+`ThreeD;, for example).  The range 
+of shape-types is therefore expressed 
+both by the `b.ShapeType` enumeration 
+values and by subclassing the generic 
+(two or three dimensional) base.   Note 
+that hypothetical extensions to `AIM; 
+intending to introduce different shape-types 
+would need to modify these `b.enum` 
+values as well as provide the appropriate subclasses.
+`p`
+
+
+`p.
+As mentioned in Chapter 6, `AIM;'s coordinate vectors
+for representing geometric shapes is logically 
+separate from graphical declarations affecting 
+how the shapes are visually displayed.  
+Properties such as line width and line opacity, 
+accordingly, are treated as visual artifacts 
+that are not intrinsic to the corresponding 
+annotation %-- there is no notion of 
+lines, or in general one-dimensional 
+(potentially curved) paths, with an optional 
+measure of line-thickness, being a form 
+of annotation in themselves.  The 
+`b.GeometricShapeEntity` class provides a 
+range of information `i.other than` 
+the actual coordinates; in this sense 
+`b.GeometricShapeEntity` is more general 
+than `b.TwoDimensionalGeometricShapeEntity` 
+(or its `ThreeD; equivalent) but is not a 
+base class of these, being rather an 
+ordinary data member sibling to 
+the coordinate collection.  
+`p`
+
+
+`p.
+In addition to visual/presentation details, 
+`b.GeometricShapeEntity` supplies data 
+(and metadata) concerning `i.calculations`/, 
+such as lengths, areas, and volumes 
+(more complex calculations are also 
+possible, such as the area difference 
+between an enclosing and enclosed 
+circle `cite<[page 698]PattanasakMongkolwat>;).  
+In addition to notating the calculation 
+results, `AIM; supports meta-data 
+explaining the purpose 
+(e.g., diagnostic significance) 
+of the calculation, including 
+`q.QuestionTypeCodes` based on 
+one data point stipulated 
+in the `b.iso 21090` health data exchange standard.
+`p`
+
+
+`p.
+As this overview demonstrates, geometric, visual/presentation, 
+and biomedical data tend to be woven together 
+in the context of bioimage annotations.  
+For example, consider a simple one-line annotation with a 
+given length and start/end points.  The vertices themselves 
+are `i.geometric` data, whereas the bioinformatic 
+interpretation accorded to the length-calculation 
+depends on the image's biological context (e.g., that 
+the length of the line measures the width of a tumor 
+or lesion, say).  Extrinsic to both geometric 
+and bioinformatic details, the `q.presentation state,`
+or visual display parameters, governing how an 
+annotation is currently being viewed (or should 
+be viewed by default) within an image-viewer, 
+represent graphics data (colors, line-widths and opacity, 
+and so forth) which should be consumed by image 
+software but is not significant for 
+interpreting the annotation itself.  This 
+visual data would determine how the line is 
+rendered when viewed as a graphic superimposed 
+on the underlying image.
+`p`
+
+`p.
+Continuing with data `visavis; one line segment, 
+the `i.scale` through which the 
+line's length would be interpreted depends on the 
+image-resolution and on the image-acquisition 
+process.  For example, a one-centimeter length would 
+correspond to a line segment 1cm long when viewed 
+on the image at its regular size (the visible 
+segment would be a different length if the image 
+is zoomed in or out).  In the event that 
+an annotation is performed by a radiologist viewing the image 
+at a different scale, the visual form as seen by the 
+annotation's creator would need to be scaled accordingly 
+(`AIM; does not appear to support a record of the 
+viewing conditions under which annotations are first 
+made, information that could potentially be 
+relevant for double-checking the original work).
+Moreover, 1cm `i.on the image` 
+would have different interpretations as a length 
+within the actual tissues (or organs or microscopy slides) 
+viewed through the image.  All of these details 
+surround a single-line annotation, which is 
+geometrically the simplest shape (other than a 
+single point); similar comments would apply 
+to more complex annotations as well.
+`p`
+
+`p.
+As this review illustrates, a data model for 
+image annotations will actually encompass 
+several different parts, which are 
+mostly autonomous from one another.  
+One could picture an annotation data model 
+as lying at the `i.intersection` of several 
+larger data models, each of which have 
+semantics that overlap but also 
+extend beyond the concerns of image-annotation 
+itself.  These various domains %-- including 
+details of images' optical properties, their 
+biomedical/laboratory provenance, their clinical 
+origins, and so forth %-- would be 
+represented in finer detail than provided 
+by `AIM; (or similar annotation frameworks) 
+in the context of their own domain-specific applications; 
+image-processing software for image biomarkers, 
+for example, or decision-support systems 
+for clinical data.  Such applications would 
+employ `AIM; as a data-sharing mechanism 
+when needing to export or import 
+image annotations in particular; but 
+because each application has its own 
+domain focus and internal data models 
+targeted at their specific domain, 
+it is likely that applications' 
+information would need to be 
+restructured to some degree in 
+order to match `AIM;'s serialization format.
+`p`
+
+`p.
+Insofar as there are at least four larger 
+domains which `q.intersect` `visavis; 
+image-annotation %-- shape geometry, 
+image-acquisition and image-encoding details, 
+visual/presentation environments, and clinical context 
+%-- there are at least four areas where 
+`q.bridge` code may be needed to marshal data 
+between `AIMLib; and applications 
+using `AIM; as an image-annotation standard.  
+Each situation where bridge-code is needed 
+along these lines presents a context 
+where data-integration may require special-purpose 
+programming, rather than following seamlessly 
+from the co-ordination of inter-related 
+data models.  Because it was formulated 
+to serve as a common standard for biomedical 
+image annotation in general, `AIM; facilitates 
+data integration in that specific context; however, 
+its influence as a data-integration paradigm 
+is bounded by the scope of its primary focus 
+(on bioimage annotation in particular). 
+`p`
+
+
+`subsection.Tradeoffs Between Data Models' Narrower and Wider 
+Scope`
+`p.
+Our point here is not that `AIM; is too narrowly 
+focused, but rather that it provides a 
+case-study in the trade-offs between 
+standards' complexity and their scope as 
+data-integration tools.  In particular, 
+`AIM; coexists with other formats that 
+address concerns related but not identical 
+to image-annotation.  For example, 
+`i.gating` in the context of Flow Cytometry 
+uses geometric regions as classifiers for 
+cytometric plots (these were discussed 
+in Chapter 4) which are geometrically
+similar to image annotations, but the 
+underlying data takes the form of cytometry 
+event matrices rather than image pixels.  
+Accordingly, Flow Cytometry has its 
+own coordinate systems and coordinate 
+transforms, with domain-specific 
+encodings such as `GatingML;.  Similarly, 
+image analysis using Computer Vision 
+can result in feature-vectors which 
+are analogous to image-annotations 
+in that they are superimposed on 
+underlying pixel-data and often represent 
+segments or regions of interest in an 
+image; however, image-features 
+can represent patterns  
+which have mathematical qualities 
+distinct from the geometric shapes, 
+calculations, and textual descriptions 
+characteristic of image-annotations.  
+Image feature-vectors and cytometric 
+gating are examples of domains which 
+are similar to image-annotation proper 
+but sufficiently removed from annotation 
+concerns that they require their 
+own data structures and processing algorithms.
+`p`
+
+
+`p.
+In the last two chapters we have examined more widely-scoped  
+image-annotation possibilities that could 
+potentially integrate multiple data profiles 
+that are in some sense `q.similar` to 
+`AIM;-style annotations proper, such as 
+image feature (and image biomarkers interpreted 
+from them) and cytometry gating.  
+Wider scope makes data-integration 
+paradigms more substantial, because 
+there is a commensurately wider range 
+of scenarios where data conformant 
+to the relevant standards can interoperate, 
+but wider scope also makes standards 
+more complex and harder to implement.   
+`p`
+
+
+`p.
+The case of `AIM; illustrates how data standards' 
+scope is typically driven by specific use-cases; 
+for example, `AIM; was motivated by problems 
+in sharing annotations derived from diagnostic 
+environments, particularly those created 
+by pathologists and radiologists to explain 
+diagnostic findings.  Neither cytometry statistics 
+nor `AI;-driven image analysis are directly 
+relevant to this specific genre of
+diagnostic workflow.  It is therefore understandable 
+that `AIM;'s data model would not incorporate 
+the kind of details which would be necessary to 
+include (say) cytometric and image-biomarker 
+annotations within its overall scope.
+`p`
+
+`p.
+Nevertheless, it is certainly possible that `i.applications` 
+using `AIM; would also need to manage 
+cytometric and/or image-biomarker data.  For 
+example, consider software to manage patients' 
+clinical records which attempts to provide 
+visual tools for multiple kinds of diagnostic 
+evaluations which were used for a given 
+patient.  Such an application might certainly 
+benefit from distinct components to view 
+Flow Cytometry plots, image-annotations, 
+and image-analysis feature summaries insofar 
+as all three of these analytic modalities 
+supply various kinds of clinically-relevant biomarkers.  
+Similarly, an application for viewing biomedical 
+research data sets might want to encapsulate 
+capabilities for importing and displaying 
+data sets derived from cytometry, automated 
+image-processing, and manual image-annotation 
+respectively.  
+`p`
+
+
+`p.
+General-purpose software as just described would therefore 
+be working with three (or more) analytic and imaging 
+domains which are similar in some ways but noticeably 
+different in others.  Such a mixture of similarity 
+and divergence raises its own architectural 
+questions.  Certainly applications could support 
+distinct data domains via separate 
+modules: a clinical or data-set visualization 
+program could incorporate `AIM; for annotations, 
+tools such as `ITK; for image-processing, and 
+libraries such as `cytoLib; for cytometry.  
+They would therefore have the capabilities 
+to read and manipulate data structures in each 
+of these domains, but only in isolation from 
+one another.
+`p`
+
+`p.
+The problem here is that the domains `i.do` overlap in 
+some nontrivial respects.  For example, the `GUI; logic 
+wherein a user can modify an annotation 
+(by dragging `GUI; handles targeting 
+annotation elements such as points and lines) 
+would be very similar for `AIM; annotations 
+and for cytometric gates.  Likewise, 
+the `GUI; logistics for displaying image 
+metadata could well be identical 
+for the cases of image-annotation and 
+image-processing/radiomics.  Keeping the 
+annotation, processing, and cytometric 
+components fully isolated would therefore 
+result in significant code-duplication 
+in contexts such as `GUI; (similar 
+comments could be made for database persistence).
+`p`
+
+`p.
+Recall our picture of the `q.Semiotic Saltire` 
+from Chapter 6: data structures tend to expand
+outward to encompass concerns such as 
+database integration and `GUI; design.  
+Continuing the example of image-annotation, 
+radiomics, and Flow Cytometry as three 
+related but distinct domains, the structural 
+differences between their `i.core` data 
+models do not propagate outward along 
+the `q.rays` of the Saltire as much as 
+they are evident in their central data 
+profile.  While there are logistical 
+rationales for separating out these 
+data models (in that a hypothetical 
+combined standard which encompasses 
+all three would be more complex than 
+existing standards for each in isolation), 
+there are also rationales for 
+integrated these models in contexts 
+such as database persistence/queries 
+and `GUI; implementations %-- to 
+avoid code-duplication and the co-existence 
+of multiple similar but autonomous 
+`GUI; and/or database `q.modules` 
+in the same application. 
+`p`
+
+
+`p.
+Standardization projects such as `AIM; often 
+fail to consider `GUI; requirements in any 
+detail, presumably because they are 
+conceived as protocols for sharing 
+information `i.between` applications, whereas 
+`GUI; design has to do with how 
+individual applications interact with their 
+users.  Different applications can have different 
+`GUI; layouts and styles even if they 
+adhere to the same data standards; in this 
+sense `GUI; design (or `q.visual object` models, 
+using our terms from Chapter 6) is more idiosyncratic,
+less standardized, across diverse applications 
+than are data models themselves.  Similar points 
+could be made about data persistence: strategies 
+for encoding annotations in a relational 
+(or `NoSQL;) database may be noticeably 
+different than image feature-vectors, for 
+example.  This difference can obscure 
+opportunities for applications to have a 
+unified interface for interacting 
+with a database back-end (as opposed to 
+developing data-persistence and query logic 
+separately for annotations and for feature 
+vectors, assuming that there are among 
+the domains which an application seeks 
+to support).   
+`p`
+
+
+`p.
+Nonetheless, the trade-offs between complexity and 
+scope are still in effect: wider-scoped 
+data models can help reduce 
+code-duplication in areas such as 
+`GUI; design and database integration, 
+but engender more complex data models 
+in the core domain.  These trade-offs 
+can serve as impediments limiting 
+the scope of data models which become 
+popular as common standards.  The desire 
+to keep standards intended for wide adoption 
+relatively simple is understandable, 
+but details of the trade-offs involved 
+may not be fully evident without taking 
+such concerns as `GUI; design and 
+data-persistence into consideration.
+`p`
+
+`p.  
+Our proposals for `q.multi-aspect modular` 
+design may not produce `i.a priori` solutions 
+to these issues, but they can potentially 
+introduce a framework for exploring software 
+engineering solutions which find an 
+effective balance between the competing 
+priorities of standards' simplicity and code-reuse.  
+Multi-aspect modules are by design relatively 
+self-contained and multi-featured, but distinct 
+modules can share code which is applicable 
+across their respective domains, so the 
+combination of modular autonomy and 
+code-reuse provides an infrastructure for 
+optimizing domain-specific code where 
+necessary, but identifying code-sharing 
+strategies when possible.
+`p`
+
+
+
+`p.
+`p`
+
+
+
+

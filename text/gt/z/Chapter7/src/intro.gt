@@ -1,0 +1,34 @@
+
+`hoctitle.Chapter 7: Multi-Aspect Modules and Image Annotation`
+
+`section.Introduction`
+`p.
+Modularity is a canonical principle in software engineering: 
+it is almost universally accepted that modularity is desirable, even 
+if not practiced as ubiquitously as that would imply.  
+In this chapter we will not attempt to offer 
+any new insights into modular design in general, 
+but will instead focus on the version of 
+this paradigm which we introduced last 
+chapter as `q.multi-aspect` modular design.  
+The key detail about this approach is that each module, 
+in the general case, provides features associated with a 
+range of software-development aspects, such as 
+data persistence, `GUI; design, serialization, and 
+capabilities related to runtime-reflection and 
+participating in multi-component workflows.  
+Multi-aspect modules provide a compromise 
+between monolithic stand-alone applications 
+and more narrowly focused modules typical 
+of conventional modular design.  Our discussion of 
+modules' `q.aspects` builds off of ideas presented 
+in earlier chapters, and the intuitive `q.Semiotic Saltire`
+schematic diagram,
+where database, serialization, `GUI; (or `q.visual objects`/) 
+and `q.code models` were pictured as four aspects 
+circling around a central data type (mimicking the 
+`q.saltire` pattern of, e.g., the Scottish flag). 
+`p`
+
+
+

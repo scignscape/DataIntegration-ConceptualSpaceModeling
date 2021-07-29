@@ -1,0 +1,1051 @@
+
+`section.Syntagmatic Graphs and Pointcut Expression Semantics` 
+`p.
+The last few paragraphs have outlined, at 
+least in brief sketch, what 
+amounts to a `q.theory of language` in which the 
+crucial dynamic of linguistic understanding %-- manifest 
+in both syntax and semantics %-- is a certain 
+expansion in information content driven by an 
+effective co-ordination between semantic and 
+syntactic constructions.  On one level, 
+this may seem obvious (it is hardly 
+newsworthy to claim that sentences 
+convey information) but we intend 
+to emphasize the idea that information 
+is accumulated in `i.stages`/, and that 
+these stages thereby can be modeled 
+via `i.paths` situated in both semantic 
+and syntactic `q.spaces` or structures 
+(of some kind still to be elaborated).  We can then 
+connect linguistic models (such as 
+Coecke `i.et al.`/'s mixture of hypergraph 
+categories and Conceptual Spaces) 
+to computational and graph-theoretic 
+contexts where notions of `i.path` 
+and `i.information content` are well-defined.
+`p`
+
+`p.  
+A full discussion of this theory in linguistic terms 
+is outside the scope of this chapter, but what 
+`i.is` relevant here is the structural format which 
+emerges when we try to express this linguistic picture in 
+formal models, e.g., parse-graphs.  The meaning of 
+individual linguistic units, in particular, are the 
+details they provide %-- the information content they 
+contribute %-- to the accretion of detail `visavis; 
+an overarching semantic construction.  As we will 
+argue in Chapter 9, grammars fluidly
+modeling this information-theoretic perspective 
+are generally `q.verb centric,` insofar 
+as semantic constructions are canonically 
+designations of states, events, or processes 
+which are concretized in the root-verb 
+of a relevant clause.  
+Parse-graphs, for example, would embody word-to-word relations 
+where each word adds detail to a verb-profiled scenario, 
+and where `q.paths` tracing word-to-word connections 
+lead toward verb-nodes, following `q.contours` of 
+greater information content.  In graph-theoretic 
+terms, this implies directed, labeled graphs 
+(the labels being lexemes/morphemes and parts of speech 
+on nodes, and inter-word relation kinds, as in Link 
+Grammar `cite<SleatorTamperley>;, `cite<HongEisner>;, 
+`cite<SleatorTamperley>;, on edges) with the property that 
+every directed edge belongs to a path leading 
+to a verb-node and verb-nodes are, in general, 
+`i.targets` (rather than `i.source-nodes`/) of 
+edges.  Edges can be classified in terms 
+of the `i.kind` of information they 
+contribute to their construction 
+(see `makebox<Figure>;~`ref<fig:sentence>; for a 
+visual diagram of this model). 
+`p`
+
+`p.
+For sake of discussion, we will stipulate that 
+verb-nodes are always `i.only` target-nodes.  Of 
+course, verbs form clauses which can be incorporated 
+into other verb-profilings (as their own details) 
+%-- this is why sentences can have more than one 
+verb.  In many cases nested clauses are `q.packaged` 
+via hinge-words such as `q.that,` as in `i.I saw 
+that you went to the store`/: here `i.went` has its 
+own cluster of details (its subject, say, is 
+`i.you`/), while `i.saw` has a different cluster 
+(among other things, `i.it's` subject is `i.I`/).  
+The pivot which bridges these two different foci 
+%-- we go from in some sense picturing or 
+learning about the occasion of someone 
+going to a store to learning about the fact 
+that this even was `i.witnessed` directly or 
+indirectly by the speaker %-- is the 
+conjunction `i.that`/, which we can 
+say points in two different directions: 
+on the one hand it connects to the inner 
+clause which it `q.packages` and, on the other, 
+to the outer clause which draws in the 
+inner clause as a component part (usually playing a 
+noun role; e.g. a going-to-the-store as object of `i.saw`/).  
+As this suggests, the paths leading `i.between` verbs 
+can be defined in terms of hinge-nodes which 
+are incident, as source nodes, to two different 
+edges targeting two different verb-nodes.  This 
+form of structure may be introduced as a defining 
+principle of Syntagmatic Graphs to preserve the 
+stipulation that verbs are always target nodes 
+rather than source nodes.
+`p`
+
+`input<figure-sentence>;
+`p.
+Such a convention differs from Coecke `i.et al.`/, 
+who approach verbs from the perspective 
+of Category-Theoretic morphisms; in graph terms, 
+their perspective implies that verbs 
+have `i.inputs` and `i.outputs`/, analogous 
+to mathematical functions, which carries over to verb-nodes 
+having `i.input edges` and `i.output edges`/.  
+However, in practice, programming language 
+runtimes generally hold the results of procedure-calls 
+in `q.temporary` values, if not lexically or 
+globally scoped variables.  As such, unfolding the 
+execution sequence when the result of one procedure 
+is passed to another, there is indeed an 
+intermediary value of some sort %-- which may be 
+subject to further actions, such as a type-cast 
+or, say, in `Cpp;, call to a copy-constructor 
+%-- and which for graph-representations would be 
+roughly analogous to a linguistic conjunction-node 
+such as `i.that`/.
+`p`
+
+`p.
+We therefore propose a modification
+of the conventional scheme for encoding syntactic 
+structures in parse-graphs (whether for natural 
+or formal languages); in the model used here directed edges 
+always point `i.toward` nodes representing 
+procedures/verbs (the distinction between 
+`q.inputs` and `q.outputs` thereby being 
+established by annotations on edges or 
+their source nodes, rather than by edge-direction). 
+`p`
+
+
+`p.
+Such an inversion may seem to be a minor notational 
+variation, but it arguably points to a 
+larger shift in perspective, which can be 
+considered in terms of both natural and 
+programming languages.  In the natural-language context, 
+we have sketched a theory whose central feature 
+construes semantics in terms of amplification 
+in information content; in Chapter 9 we will
+more specifically define information content 
+in terms of `q.accretion of detail` 
+`visavis; verbs in particular.  This means that for each verb we 
+can identify a collection of `q.details` associated 
+with the verb, which are all `q.fed` into some 
+cognitive process that conceives an 
+event/state/process which the verb profiles.  
+All meaning-content in a sentence is therefore 
+`q.pulled in` to one or another cognitive 
+verb-profiling.  At the same time, the full 
+mass of relevant detail is brought to bear 
+on the cognitive process; we are able to cognize 
+the verb-profiling which the speaker intends 
+to communicate because we mentally assemble 
+the details relevant to the verb as a 
+precondition for considering the 
+verb (or its associated meanings) as a cognitive 
+phenomenon. 
+`p`
+
+
+`p.
+Via the analogy of natural-language verbs to programming-language 
+procedures, we can similarly see a running program 
+as undergoing an `i.accretion of computational content` 
+which results in there being sufficient data available 
+to execute a given procedure.  Procedure-calls in 
+formal computer science are often considered in terms 
+of `q.reductions,` as in lambda calculus: a procedure 
+call `q.reduces` to the value which the procedure 
+returns, in the sense that this value takes the 
+logical place of the procedure in subsequent code 
+(sometimes an optimizing compiler will literally 
+replace a procedure's return value for the procedure 
+call itself if that value can be determined at compile time).
+However, an equally salient picture is that 
+before the lambda `q.reduction` there is an `i.expansion` 
+in the sense that the total data for a procedure call 
+accumulates by determining (if necessary, evaluating nested 
+expressions) the values for all the procedure's 
+input parameters.
+`p`
+
+`input<figure-vend>;
+`p.
+This analogy fits better with 
+process calculi in lieu of lambda calculi, in 
+that (in the language of process-calculi and 
+Petri Nets) a procedure 
+can only be called when all `q.bindings` or 
+`q.markings` are 
+in place (see, e.g., `cite<LuisLopes>; or 
+`cite<FeiLiu>;).  As such, a `q.Syntagmatic` computational 
+model can be defined in terms of computations 
+instantiating evolutionary processes whereby 
+data is accreted (according to specifications 
+registered by parameter-bindings) and must 
+reach a threshold of completeness in 
+order for a procedure to be called 
+(or `q.fired,` still borrowing 
+Petri Net terminology %-- values are `q.fed into` 
+a procedure much like coins into a vending machine, one 
+of the examples often used to illustrate Petri Nets; 
+procedure outputs are then akin to your candy bars 
+released by the machine when it has enough coins).  Once  
+a satisfactory level of information content is reached 
+%-- by resolving all symbols and nested expressions 
+forming procedural inputs %-- calling the actual 
+procedure is the next computational step. 
+Indeed, in some distributed-object systems 
+(such as Vission `cite<teleaVission>;) 
+such an `q.accretion of content` provides the 
+explicit form of the calling-interface: the origin 
+code constructs values and binds them to `q.slots` 
+in a remote environment, then (when all needed  
+bindings are defined) explicitly signals that 
+the procedure is ready for execution.
+`p`
+
+`p.
+As much as vending-machine-type analogies are 
+popular small examples of Petri Nets (or, say, 
+Finite State Machines), an interesting detail that 
+rarely seems to get noted in this case is how 
+adding coins to the machine does not 
+merely `i.change the state` of the system.  
+It also `i.augments the amount` of money in the machine.  
+In other words, we have a natural ordering of most 
+or all possible states based on the total value 
+of all coins deposited at the point when a given 
+state obtains.  This ordering affects state-transition rules, 
+because the rationale for transitioning 
+to an `i.end` state %-- not just awaiting more 
+coins, but rather releasing a candy bar and resetting 
+to a ground (no coins) state %-- is that the total 
+value of coins dropped overtakes the target value 
+of the purchased product (we represent this 
+scenario pictorially in Figure~`ref<fig:vend>;).  
+`p`
+
+`p.
+Our analogy between vending machines and procedure-calls 
+derives from the idea that evaluating nested 
+expressions %-- or reading the value of symbols 
+which are input as single tokens %-- can be 
+modeled as adding `q.information content` 
+akin to vending-machine coins increasing 
+the total amount of money.  The idea 
+of information content %-- and of ordering 
+systems' states in terms of 
+variant `i.amounts` of such content %-- introduces 
+new semantic possibilities to the potential 
+utlization of graph or hypergraph-based 
+representations for different data structures.  
+We think this intuitive notion has 
+possible applications to natural language as 
+well as formal (programming) languages.  Indeed, we 
+will sketch out a theory which finds 
+certain overlaps between the syntax and the semantics 
+applicable for several different  
+domains: (1) representations of natural language; 
+(2) representations of programming languages 
+and source code; (3) representations of 
+assertions and beliefs within data and `q.knowledge` bases; 
+and (4) serializations of data structures.`footnote.  
+For this most part this book uses natural-language 
+formations as motivating examples (on the premise 
+that formal-language semantics can emulate linguistics 
+proper all else being equal) and we are not 
+focusing on `NLP; itself, although our discussions 
+in the natural-language context could point 
+to a query-architecture for text-mining and textual database 
+engineering, potentially.
+`footnote`  We will point out how introducing `i.increase 
+in information content` as a core structural 
+feature within these diverse domains helps 
+solidify our understanding of their overlap, 
+which could potentially be underdetermined 
+without a theoretical background: while there 
+may be superficial connections between (say) 
+natural and programming languages, or 
+between source code and serialized data 
+structures, we need a theory which can 
+leverage such similarities for them to 
+have any practical value.
+`p`
+
+`p.
+In itself, a generic appeal to `q.information content` 
+does not carry very much theoretical weight 
+either, but it `i.can` serve as structural 
+ground for more well-developed syntactic or 
+semantic accounts.  For example, information content 
+could be leveraged in the context of natural language's 
+distinction between `q.theta` and `q.thematic` roles 
+(to be discussed further in Chapter 9); theta-roles
+derive from verb/subject or verb/object pairings, whereas 
+thematic roles derive from syntactically more distant 
+details (consider `i.I drove some students to a conference 
+in Philadelphia`/: the `i.conference` and `i.Philadelphia` 
+are `i.thematic` in their grammatic relation to the 
+verb, and likewise are more peripheral semantically 
+than the `q.thetic` verb-subject `i.I` or object 
+`i.some students`/).  This distinction 
+at the level of clause-formation primes us to 
+place different levels of emphasis on the 
+information contributed by theta-role content 
+versus thematic-role phrases.  
+`p`
+
+`p.
+In the context of programming languages, we can identify 
+different `i.varieties` of information content.  
+Some of these are (potentially) determined 
+as a static invariant within source code, such as 
+the types of every parameter passed in to a 
+procedure, or such as a procedure's memory address 
+(which is thereby associated with any source-code 
+token naming that procedure).  Some of these 
+details may `i.or may not` be fully resolved at compile-time.  
+For example, a virtual method would typically be 
+referenced via a source-code token that maps 
+to multiple procedures at runtime (based on the 
+actual type of its `b.this` object) and argument 
+types (assuming we distinguish supertypes from subtypes) 
+would likewise be opaque for static analysis.  Meanwhile, 
+specifics such as the actual values of procedure arguments 
+would (outside of unusual cases) be open-ended until 
+the runtime procedure is actually called.
+`p`
+
+`p.
+We can compare these cases through the lens of information 
+being added on at different times %-- some details 
+are fixed by the compiler, some deferred to 
+runtime, and some occupy an intermediate status 
+where both `q.early binding` or `q.late binding` is 
+possible.  Given such a classification for 
+information-content `visavis; procedures, we can 
+then consider how details `i.other` than type-attributions 
+and value-bindings fit in to the compile-time/runtime 
+contrast, such as argument ranges and typestates 
+in conjunction with procedural preconditions. The 
+net result would then be a model for computer code 
+which theoretically buttresses the abstract idea 
+of `i.information content` with a classification 
+system structured around notions of 
+compile-time/runtime and early/late binding.  
+`p`
+
+
+`p.
+In the same way that natural-language semantics 
+can be glossed with the picture that all 
+meaning provides details which supply information 
+content for a verb, we can adopt the perspective 
+that computational processes involve declared 
+or evaluated values supplying data for a procedure 
+call: any time there is a concrete value which is 
+part of a program's running state, there is a 
+procedure toward which that value will be targeted 
+as one requisite parameter.  To fix the `q.meaning` of 
+a value, then, we need to identify the 
+procedure where that value is used.  This is one 
+rationale for adopting a convention wherein 
+all nodes not themselves representing 
+procedures (instead encoding 
+literals or scoped symbols) point toward procedure-nodes.  
+In such a graph, each procedure-node is 
+surrounded by nodes representing  
+data that must be concretized (such as 
+input values that will be bound to the  
+procedure's input parameters) as a 
+precondition for the procedure to be runnable.  
+Although when looking at source code 
+we may see this as a static phenomenon (a single 
+expression being a unit of a computation, 
+analogous to one clause being a unit of 
+linguistic meaning) during execution 
+this process unfolds over multiple stages, 
+wherein each step represents one piece 
+of preconditional data being set in place 
+anticipating a procedure call.
+`p`
+
+`p.
+Such a picture justifies the model that `i.all` 
+non-procedure nodes, even those representing 
+output values, become source-nodes of edges directed 
+`i.toward` procedures.  For example, a 
+procedure can only be called if memory is allocated 
+to hold the procedure's return value %-- although 
+the actual return value is not provided until 
+the procedure itself runs its course (being 
+as such a `i.postcondition` of the procedure) 
+it is a `i.precondition` that the return 
+value will be `q.held` somewhere, so the 
+edge connecting the node representing 
+this `q.carrier` (using terms from Chapter 5)
+can point `i.toward` the procedure node 
+because the carrier (albeit not an actual 
+value) is a precondition for the procedure 
+running.  Output and input nodes are 
+therefore `i.both` procedure-preconditions; 
+the difference is that input-nodes 
+are preconditional in needing an actual 
+`i.value` whereas output nodes need only 
+represent the capacity to `i.hold` a value.`footnote.
+As an example, the `b.[[nodiscard]]` attribute in 
+`Cpp; enforces a requirement that the result of a 
+procedure be accounted for %-- bound to a variable or 
+passed to another procedure %-- which means that 
+the context for the call to proceed is not correct 
+without additional code that uses that return 
+value.  This situation is roughly analogous to 
+passing an argument by reference which is 
+intended to hold  
+the result of a computation (a common pattern in 
+languages that can only return one sole value 
+from functions %-- if multiple returns our 
+needed, the others are handled instead by 
+overwritable references which the called 
+procedure initializes so as to communicate 
+the value that would otherwise be returned).
+A non-optional parameter must, of course, 
+be passed in to a procedure in order 
+for the call to be possible.  But passed-in 
+parameters sometimes serve the `i.semantic` 
+role of being initialized (or re-initialized) 
+as if they were return values; in short, 
+the syntactic difference between 
+a return value (as bound to, 
+say, `i.y` in `b.y = f(x)`/) and an 
+overwritten reference parameter is 
+a surface-level distinction; semantically 
+the two constructions are similar.  
+Insofar as each (non-optional) parameter 
+is a `i.precondition` for the procedure-call, 
+then there is no reason not to consider 
+a `i.return` value (or more precisely 
+some mechanism in the calling context 
+to use that value) as equally a precondition 
+(which is appropriately modeled by 
+connecting a node representing this value 
+`i.to` the procedure node, rather than 
+having the edge point in the opposite 
+direction).  After all, both a (non-optional) 
+parameter and a (non-discarded) use of a 
+a return value are preconditions for a 
+procedure-call (in this analogy, the 
+`i.absence` of a non-discard attribute 
+would be equivalent to allowing 
+an `i.input` parameter to be optional 
+rather than required).
+`footnote` 
+`p`
+
+`p.
+In the case of natural language parse-graphs, `q.bridge` 
+nodes between verbs represent parts of speech such  
+as subordinators/conjunctions (e.g., `i.that`/).  The 
+analogous construction in programming languages would 
+be output nodes for one procedure becoming 
+input nodes for a `q.parent` procedure (`visavis; expression 
+nesting).  However, the model of Syntagmatic Graphs 
+presented here proposes a modification of this scheme 
+in which such `q.pivot` nodes are essentially split 
+in two.  In general we want each node in a 
+parse-graph to be `i.uniquely` adjacent to one 
+procedure-node (nodes are uniquely adjacent if 
+they are adjacent to only one edge whose other node 
+has the relevant unique property %-- in this 
+case that of being a procedure node).  Instead of a 
+single pivot node, therefore, with two different 
+procedure target-nodes, we prefer a 
+pivot `q.edge` connecting two 
+distinct nodes, one representing the output 
+of a procedure and the other the input of a 
+different (parent-expression) procedure, with the 
+`i.edge` between those non-procedure nodes 
+representing the phenomenon of one's return 
+value being the other's input parameter 
+(the edge thereby representing source-code 
+sites and program-runtime stages where 
+details such as type-cases and temporary-object 
+constructors/destructors come into play).  
+We present this as a further stipulation 
+on Syntagmatic Graphs intended to model 
+computer code.
+`p`
+
+`input<figure-n0>;
+`p.
+This overview does not fully exhaust all considerations
+needed to circumscribe the relevant class or Category 
+of Syntagmatic Graphs.  One  
+point we have not yet mentioned is that the actual procedures 
+called in a program might itself be evaluated 
+at runtime, so that what appears as a procedure 
+node in source code may in fact be a procedure 
+which `i.yields` a procedure which `i.then` gets 
+called %-- in other words, a single procedure 
+node in this kind of case embodies `i.two` 
+(or more) procedure-calls, where the first yields 
+a value which holds the second (as a function-pointer, 
+say), the actual procedure called to complete the 
+expression not being known until runtime (until, 
+that is, the first procedure returns, and then 
+in turn other layers' if applicable).  This 
+scenario can be accommodated by allowing 
+inputs/outputs to a procedure node to be 
+sorted into layers, one layer 
+representing an expression which when 
+called yields a procedural `i.value`/, that 
+in turn constitutes the procedure whose 
+parameters are bound through the second layer, 
+and (potentially) so on iteratively.  The analogous 
+construction in natural language would be 
+adverbs modifying verbs to form verb-phrases; 
+it is these modified `q.verbs` which form 
+the nexus of `q.details` informing the 
+relevant verb-profiling.   
+`p`
+
+`p.
+With these further constructions at least sketched 
+provisionally, we can clarify the specific 
+properties of Syntagmatic Graphs that for 
+this analysis we employ to model 
+programming language code.  Syntagmatic Graphs 
+for these purposes are characterized by 
+properties such as:
+
+`description,
+`item ->> Procedure nodes => Nodes in general are labeled 
+with type-attributions, and by extension nodes whose 
+types represent procedural values (those with input 
+and/or output parameters and/our side effects, as opposed 
+to static values) can be distinguished from other nodes; ;;
+
+`item ->> Procedure nodes as target nodes => Procedure 
+nodes are `i.target nodes` but never `i.source nodes` for 
+edges labeled with annotations representing computational 
+constructions, i.e., the label semantics requisite 
+to render directed labeled graphs as models of 
+computational processes, embodying lambda or process 
+calculi (this does not preclude procedure-nodes 
+being potential source nodes from a fully distinct 
+class of edge-labels, such as those representing 
+sequencing between distinct source-code statements); ;;
+
+`item ->> Procedure nodes as path targets => All 
+paths (when constructed via edges whose label semantics 
+represent the subset of labels specific to 
+modeling computational processes, as in the previous item) 
+terminate in procedure nodes, and each procedure node 
+is adjacent to a collection of non-procedure 
+nodes, each of which are adjacent to no other procedure node 
+%-- for sake of discussion, although this is technically 
+a non-standard way of using the term, the set of 
+a procedure node and its `q.surrounding` input/output 
+nodes can be called a `q.neighborhood,` so that a 
+program's source-code graph can be decomposed into 
+distinct neighborhood, each representing a distinct expression;`footnote.
+To be precise, we could define a `i.neighborhood` in a 
+`i.directed` graph (this is a term more common in 
+undirected graph theory) as the in-neighborhood 
+of a node with outdegree zero.`label<fn:neighborhood>;
+`footnote` ;;
+
+`item ->> Carrier-transfers as inter-neighborhood pivots => With 
+source-code graphs divided into neighborhoods in this manner, 
+a specific group of edge-kinds can be defined to 
+represent bridges between expressions, wherein the 
+node representing one procedure's return value 
+is connected (in the sense of passing a value to) 
+one representing another procedure's input 
+(expressing `q.carrier-transfer` semantics as described 
+in Chapter 5); ;;
+
+`item ->> Channels and layers => Edges incident to a common 
+target-node can be grouped into `q.channels` as defined 
+in Chapter 5, representing collections of input or output
+nodes with similar semantics (e.g., regular inputs are a
+channel distinct from object message-receivers, which have a 
+different semantics, and regular outputs are distinct 
+from thrown exceptions), and `q.layers` to accommodate 
+where procedures return values which are themselves 
+other procedures %-- that are then called with bindings 
+derived from a different collection of nodes in the 
+same `q.neighborhood.`/`footnote.
+To expand upon the notion of `q.neighborhood` 
+introduced in Footnote~`ref<fn:neighborhood>;, 
+we'll call a neighborhood 
+as defined there a `q.0-neighborhood,` 
+meaning the in-neighborhood of an outdegree-0 
+node (called the `i.center` node), and a `q.1-neighborhood` to be 
+the in-neighborhood of an outdegree-1 
+node.  A `q.1-neighborhood` therefore has 
+one edge which can be called the `q.escape` 
+edge, referring to the one edge incident to  
+the neighborhood center node as `i.source` 
+(or `i.(direct) predecessor,` for the 
+terms `i.predecessor`/`i.successor` being 
+common expressions in lieu of what we 
+call `i.source` and `i.target`/).  
+By analogy, we can say that an `i.escape edge` 
+is an edge which is source-incident to 
+a node in a 0-neighborhood which is 
+`i.not` the center node; a 0-neighborhood 
+would have a `i.unique` escape-edge if 
+there is only one escape edge (e.g., when 
+modeling a procedure call in an environment 
+where procedures may not return 
+multiple values).  An `i.escape channel` 
+would be a channel formed by aggregating 
+all escape-edges in a 0-neighborhood.  
+A `i.layered neighborhood` can then 
+be a neighborhood where non-center 
+nodes are indexed by a number denoting 
+a layer; we can stipulate that 
+an escape node/channel on a neighborhood 
+may only include nodes from the highest-index layer.  
+`footnote` ;;
+`description`
+
+|.|
+
+Syntagmatic Graphs meeting these criteria are `i.hypergraphs` 
+because edges incident to a given procedure-node are grouped 
+together; instead of one input and one output node 
+we have edge-collections structured via channels and 
+layers.  Coecke `i.et al.` generalize graphs to 
+hypergraph categories so as to model similar arity-variance 
+among inputs and/or outputs (procedures may input and/or output 
+zero, one, or more than one value), though (as outlined in the 
+prior paragraphs) Syntagmatic Graphs have additional 
+structural details than defined for those authors' 
+hypergraph categories.  We contend that Syntagmatic Graphs 
+as defined here serve similar roles to their hypergraphs 
+but, being somewhat more expressive, present more 
+detailed modeling features.
+`p`
+
+`subsection.Query-Evaluation Foundations for Syntagmatic Graphs`
+`p.
+Our rationale in setting out schemata such as these definitions/constraints 
+for Syntagmatic Graphs is not primarily presentational %-- as we 
+have intimated, there are numerous non-isomorphic or not-fully-compatible 
+but nonetheless similar structures which can model computational 
+phenomena such as procedure calls; structural differences may 
+iconify philosophical variations in how we choose to `q.think about` 
+computation (or, say, formal data models), but it should not be 
+taken for granted that subtly alternative philosophical framings 
+are consequential from the perspective of implementing useful 
+technologies.  For our purposes, the importance of 
+structures such as Syntagmatic Graphs lies in the project of 
+codifying the operational and implementational environments 
+contextualizing technologies that work on data structures such as 
+graphs as digital resources.  This involves 
+graph query languages and the engines which evaluate such 
+queries, as well as software for representing and serializing 
+graphs, which in turn should be designed with consideration to 
+how query-evaluation engines would work; the in-memory and on-disk 
+representations of graphs provide the structures on which 
+graph query engines operate.
+`p`
+
+`p.
+Structural features defined for a particular 
+kind of graph correspond to graph-elements which may be identified 
+within queries, incorporated into underlying representations, and 
+accounted for when evaluating queries against such representations.  
+Structural features can be motivated, as such, based on 
+whether they make queries more expressive and/or whether they support 
+representational devices that 
+are helpful for query-evaluation.  In this sense distinct 
+structural formats (e.g., several different graph Categories) 
+may have noticeable differences in terms of the forms of 
+queries they engender and the ease and flexibility with which 
+those queries are evaluated and adapted to problem-domains 
+based on how a graph technology is being used, in context.
+`p`
+
+`p.  
+For example, consider the edge marked `q.carrier transfer` 
+in Figure~`ref<fig:n0>; (between nodes 
+`b.<r>` and `b.<l>`/).  This edge does not represent an 
+example of the kind of program execution step 
+(i.e., a `q.join-point`/) 
+that is apparent on the procedural (source-code) level, 
+but it could be defined as analogous to a join-point 
+on a `q.subprocedural scale` (we'll discuss these terms 
+below).  Moreover, this edge describes a consequential 
+point in program execution, because it is possible 
+that operations will be performed behind-the-scenes 
+here (e.g., type casts and class constructors/destructors).  
+It would be beneficial, accordingly, to implement 
+a pointcut-expression system  wherein 
+designating that specific runtime moment is possible, motivating the use of 
+multiple nodes with `q.escape` edges and handoffs 
+to represent return values being passed to outer procedures.
+`p`
+
+`p.
+As a terminological aside: we employ the phrase `q.hypergraph queries` 
+to encompass several kinds of expressions that could 
+be evaluated in the context of hypergraph structures 
+and databases (following conventional usage in the 
+context of formal languages for manipulating databases).  
+More specific kinds of hypergraph queries would 
+include `i.traversals` (logic for moving between 
+different graph-locations); `i.descriptions` 
+(stipulating conditions on hypergraphs 
+for a specific purpose); `i.site-locating`/, 
+or more concisely `i.siting`/, referring to 
+finding graph-locations meeting some criterion; 
+`i.serialization` (encoding a hypergraph 
+so it may be shared between different applications 
+or computing environments), and `i.extraction` 
+(pulling information out a hypergraph, 
+by matching the structure around some `i.site` 
+with a `i.shape` specifying how this structure 
+encodes data that is expressed in that 
+part of the graph).`footnote.
+In graph databases in general, a `i.shape constraint` 
+designates requirements on the structures 
+evident between graph elements %-- e.g., 
+which edges exist between nodes taking into 
+consideration edge and node labels %-- which 
+then indirectly encodes how the graph structure 
+is used to express data for that specific 
+graph-encoding scenario.  The canonical 
+example of a shape-constraint would be using a 
+collection of nodes to encode named 
+data fields of a central data value: one node 
+represents that value, and it is connected 
+via labeled edges whose labels reproduce 
+(or at least are uniquely associated with) 
+data-field names, where the incident 
+nodes of each edge are labeled with the 
+corresponding field values (a `b.last-name` 
+label annotates the edge pointing to a 
+node whose label is a person's last name, for 
+example).  A shape constraint this stipulates 
+that a given node must have at least those 
+edges whose labels correspond to fields which 
+must be present for the value represented 
+by the central node to be correctly 
+instantiated.  Conversely, then, 
+extracting data from such graph-sites %-- 
+e.g., getting a person's last name %-- 
+leverages the appropriate shape-constraint 
+to determine which graph site (e.g., which 
+node) holds or can be manipulated to 
+obtain the desired information 
+(shape-constraints are analyzed 
+in e.g. `cite<ThomasHartmann>;, 
+`cite<ParetiEtAl>;, `cite<GayoEtAl>;).
+`footnote`  
+`p`
+
+`p.
+Our general goal in this book is to reduce data-integration problems 
+to hypergraph query problems.  In other words, assuming we 
+have a hypergraph-representation strategy which can 
+support the various additional constructions we have been 
+or will be setting forth (channels, layers, neighborhoods, and so 
+on) such a paradigm lays the foundation for a collection of 
+primitive operations on hypergraphs (thus defined) and the 
+possibility of decomposing hypergraph-query algorithms to 
+a set of such operations.  Our claim that many data-integration 
+problems can be reduced to hypergraph queries does 
+not entail that a query language designed for data-integration 
+solutions should explicitly refer to `q.low-level` hypergraph 
+terms or concepts; instead, the high-level query language 
+should employ vocabulary and grammatical formations 
+which reflect the high-level domain relevant to each 
+part of the language (e.g., pointcuts and pre-persistence 
+representations, using terms to be discussed later in this 
+chapter).
+`p`
+
+`p.
+That being said, insofar as query evaluations on 
+these various domains are `q.reducible` to hypergraph 
+queries, then it should be possible to (within the 
+requisite query-processing engine) translate or `q.compile` 
+the high-level concepts to hypergraph concepts that 
+can be addressed by the hypergraph operations just mentioned.  
+These principles encapsulate our query-evaluation strategy; 
+although this chapter presents only a summary insofar 
+as we do not identify examples of these kernel  
+operations or translations explicitly, this overview sketches out 
+what would constitute a complete theory of the relevant 
+hypergraph algorithms and the compiler-architecture to 
+translate high-level queries to those algorithms. 
+`p`
+
+`subsection.Use-Cases for Source-Code Graphs`
+`p.
+Our `q.Syntagmatic` Graph model has more structural detail than 
+other systems for representing computer code %-- such as 
+Abstract Syntax Trees or Semantic Web style `RDF; graphs 
+%-- and one claim 
+of this chapter is that this distinct form of 
+graphs bears consequential differences to other 
+code-representation strategies, rather than 
+being just a superficially different notational 
+convention.  We need to explain, however, why 
+the representations proposed here go beyond mere 
+notational variations (manifest mostly at a
+meta-discursive level); in other words, why 
+these variations in how source-code is `i.described` 
+translate to variations in algorithms or logics 
+for how source code is analyzed or otherwise manipulated. 
+`p`
+
+
+`p.
+To address this question, note that there are several 
+different reasons why formal representations of 
+computer code are important.  One reason 
+is that such representations are a precondition 
+for translating high-level source code to machine 
+or virtual-machine instructions, but even outside 
+of compiler theory there are several use-cases 
+for formal code representations.  One is the fact that 
+source-code files represent digital assets in their 
+own right which are interactive/visual objects in the 
+context of software programs such as Interactive Development 
+Environments (`IDE;s), where users expect features such as 
+syntax highlighting and code completion %-- displaying 
+code with different colors for tokens bearing different 
+roles (variables distinct from procedure-names and from 
+literals, for example), and with interactive capabilities 
+such as providing information about procedures 
+via context-menus bound to source-code tokens bearing
+their names.  Displaying source-code files as interactive 
+documents in this manner is only possible when `IDE;s 
+can build structural models of source code, rather 
+than treating the files as unstructured text files.
+`p`
+
+`p. 
+Another use case is run-time reflection: examining source-code 
+allows programs to make certain capabilities (such as 
+executing a procedure by supplying its name dynamically) 
+available at runtime (more on this kind of use-case 
+below); or aspect-oriented behavior modification (where 
+code is added to adjust how the program behaves at 
+certain specific execution-points).  Moreover, an 
+additional scenario %-- which overlaps with aspect-orientation 
+in this sense %-- is that source files need to be 
+processed as `q.queryable` assets, where we can search for 
+one (or multiple) code-locations meeting some specific 
+criterion (an example would be applying aspect-oriented 
+modifications at the locations thereby identified, 
+but such code-searching equally well applies to using 
+`IDE;s, or to scripts composed for code-analysis, 
+where for instance programmers conduct code-review 
+by locating points in code which reflect specific 
+design patterns, or which tend to be sources of bugs 
+and coding errors).        
+`p`
+
+
+`p.
+In short, a number of different kinds of software components 
+%-- including compilers, `IDE;s, and code-libraries 
+which implement various runtime-reflection and/or 
+aspect-oriented runtime modification systems %-- need 
+to construct and manipulate formal representations of 
+computer code.  Therefore, strategies for code-representation 
+are important insofar as precise and expressive representations 
+make such components easier to design and implement.  
+Formal source-code models come into play at several 
+stages of working with code-representations, including 
+building such representations in the first place %-- although 
+code-models can be instantiated by parsing source code 
+directly, in many contexts one can construct more 
+refined code-representations by extending a given 
+code base with annotations either inline with or external 
+to the code itself.  Therefore, one use-case for code models
+is designing languages for `i.annotating` the code which 
+is actually seen by a compiler.
+`p`
+
+`p.
+A second use-case is 
+designing languages for `i.describing` code-locations 
+subject to further examination or processing %-- 
+in aspect-oriented parlance, such location-descriptions 
+are called `q.pointcut expressions.`  So an essential dimension
+of code-annotation languages is the capability to formulate 
+pointcut expressions which can be used to select 
+points of interest (often called `i.join points`/)
+within a body of source code.`footnote.
+Hence a `i.pointcut` is a set of `i.join points`/, 
+and `i.pointcut expression` is a formula for 
+filtering join points into a pointcut.
+`footnote`  A further 
+use-case for code representation is to actually 
+support such designations; that is, to traverse source 
+code in order to specifically identify the pointcuts 
+described by a given pointcut expression.  Code 
+representations can be more or less efficacious in terms 
+of how well they support such query-guided traversals to 
+evaluate pointcut expressions. 
+`p`
+
+`p.
+Note that how best to articulate the 
+semantics of pointcut expressions is an 
+open question %-- there are several options 
+for making explicit the general idea 
+that join-points represent 
+`q.locations` in source code.  That could 
+literally mean points in source 
+code taken as a textual document, but it 
+can also mean some step in the 
+runtime execution of a program %-- which 
+in the latter case engenders a need to 
+define `q.execution steps.`  Ultimately, the
+individual operations which collectively 
+constitute a running computer program are 
+determined by the computer's machine 
+language, but it is not straightforward 
+to map source-code-level join points to 
+individual machine-language instructions.  
+Amongst other problems, the same source 
+code may compile to different kinds of 
+machine language for different operating 
+systems (and will also vary according 
+to which compiler is being used), so 
+if machine language instruction-sets were 
+chosen to provide rigorous semantics for 
+join-points and pointcuts these semantics would 
+have to be defined separately for each 
+operating system and compiler.
+`p`
+
+`p.
+An alternative 
+is to consider abstract or `i.virtual` machines 
+designed at least in part to provide this 
+kind of semantic framework for defining 
+program execution steps (at a finer scale 
+than high-level source code).  Another alternative 
+is to define source-code locations not in terms 
+of actual source code but in terms of 
+that code as compiled to some graph- or tree-like 
+representation (such as Syntagmatic Graphs).  
+Our approach is compatible with either 
+of these final two options, or indeed with a 
+combination of the two.
+`p`
+
+`p.
+Moreover, as we will discuss later in this chapter, 
+pointcut-semantics can extend over different 
+`q.scales` in source code (or program execution).  
+Consider, for example, a remote procedure 
+call (`RPC;) which is carried out by encoding a 
+message with instructions to perform some 
+calculation exposed as a web service on a remote 
+machine, with the request itself 
+encoded in `HTTP;.  This `HTTP; content 
+is not itself a procedure call, and would 
+not adhere to the conventions of an 
+`ABI; (but rather to the remote service 
+`API;, or Application `i.Programming` Interface 
+rather than `i.Binary` Interface), but 
+in terms of code design and purpose such a 
+web request can play a `i.role` akin to a 
+local function-call.  Also, remote and local procedure 
+calls have enough structural similarity 
+(in terms of their pre- and post-conditions) that 
+one can certainly use the same sorts of expressions 
+to describe calls of both kinds.  Given these 
+considerations, it is reasonable that a pointcut 
+expression language could be designed to 
+generalize to broader phenomena such as 
+remote procedure calls, which (we propose below) 
+involves a notion of multiple Syntagmatic 
+`q.scales.`  In this guise pointcut
+expression languages would overlap with 
+service-description (`SDL;) languages and with 
+analyses to confirm that an `RPC; confirms to 
+the target `SDL; protocol.   
+`p`
+
+`p.
+The practical consequences of models such as Coecke `i.et al.`/'s 
+hypergraph categories %-- and, we propose, variations 
+such as Syntagmatic Graphs as in this chapter %-- are accordingly 
+that these various lines of research can point to more 
+effective code-representation strategies, which can 
+then lead (among other results) to more detailed or powerful 
+pointcut-expression languages and evaluators.  The  
+open question of pointcut expression semantics 
+in Aspect-Oriented programming, as 
+well as in Software Language Engineering in general 
+%-- we should note that the notion of pointcut 
+expressions is not limited to aspect-oriented 
+paradigms exclusively, but also applies 
+to debugging, static analysis, and runtime-reflection 
+scenarios (see `cite<Cazzola>; and `cite<KloseOstermann>; 
+for a good overview) %-- cuts across both 
+source-code-representation theories and 
+compiler/virtual-machine design.  It is obvious 
+that pointcuts are collections of `q.locations` in 
+source code, but such a definition needs to be 
+more rigorous, because source-code is a structured 
+system (not just text) and locations represent 
+sites within those structures.  Applying models 
+such as Hypergraph Categories or Syntagmatic Graphs allows 
+us to ground these semantics by defining 
+source-code structures in hypergraph 
+terms.  In effect, pointcut expressions thereby 
+become a genre of `i.hypergraph queries` %-- designations
+of hypergraph sites %-- so that pointcut-expression 
+languages may be treated (and implemented) as subsets of 
+more general hypergraph-query languages.  Syntagmatic 
+Graphs, as a form of hypergraphs formulated to represent 
+computer code, can thereby provide a semantic 
+structure-space suitable for a general-purpose 
+pointcut-expression semantics. 
+`p`
+
+
+`p.
+This discussion has therefore presented one specific rationale 
+for pursuing Syntagmatic Graphs as a theoretical construct 
+%-- we claim that such graphs form an effective framework 
+for designing and implementing pointcut-expression languages, 
+and by extension for code-modeling in general.    
+However, our overarching goal is not 
+code-modeling `i.per se`/, but `i.data` modeling; so 
+we will also clarify how code and data modeling 
+can be interconnected.
+`p`
+
+
+
+

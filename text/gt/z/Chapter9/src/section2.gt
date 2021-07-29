@@ -1,0 +1,1556 @@
+
+`section.Conceptual and Thematic Roles`
+`p.
+Chapter 6's discussion of `i.multi-relations`
+(relations with multiple parts and components), 
+together with distinct `i.roles` attributed 
+to participants in the relation, 
+alluded to the processes whereby 
+multi-relations contribute multiple 
+facets of information to the knowledge-contexts 
+where they are believed/asserted.  Consider an 
+assertion that (continuing that chapter's example) 
+`i.John` divorced `i.Jane` (together with details 
+such as divorce and marriage dates).  Clearly 
+that relation, to the degree that it is 
+taken and used as fact in some relevant 
+reasoning context, provides specific 
+information. The `i.nature` of this 
+information depends on our reasoning
+purposes, which (in a graph-modeling context) 
+amounts to how we are traversing a graph.
+`p`
+
+`p.
+If, say, we are `q.visiting` the John node and 
+wish to learn his ex-wife's name, the 
+`q.divorce` multi-relation supports that 
+query (by stepping through the relation to the 
+`i.Jane` node).  The multi-relation (at least 
+with data mentioned in Chapter 6) also supports
+the step of learning a divorce `i.date` by 
+traversing to `i.that` (date) node.  Similarly, 
+it supports the confirmation that John 
+`i.has been` married, because there is a 
+path from John to a `i.marriage` node 
+(via the `i.divorce` node).   
+`p`
+
+
+`p.
+In short, while we speak generically of 
+`q.information content,` we can be more
+precise about the operations `i.entailed` by 
+information content be examining 
+the processes afforded by information-encodings 
+(such as via knowledge-graphs).  The 
+information content contained within a 
+graph element (e.g., a `q.divorce` node) 
+corresponds to the traversal-options 
+accorded to paths through or across that 
+element, and how these paths yield 
+data at the sites which they visit.  
+Implicit information content is `q.accessed` 
+%-- make `i.explicit` %-- by following 
+paths in an information-space/knowledge-space 
+(any space encoding an aggregate body of 
+information/knowledge).  Such a notion of 
+`i.paths` falls quite naturally out of 
+knowledge engineering, and we can 
+consider how it resonates with the 
+analogous picture of `i.semantic paths` 
+in the context of natural language.  
+`p`
+
+
+`p.
+In Chapter 6 we also suggested that
+multi-relations are in a sense 
+`q.dual` to `i.procedures`/.  
+Steps in Syntagmatic Graphs involve 
+accretion of detail targeted at 
+supplying enough information 
+to run a procedure.  As a precondition for 
+calling a procedure, one must bind values 
+to each required parameter, so all of 
+these parameters point toward the procedure 
+in the sense of supplying data prerequisite 
+for the culminating procedure-call step 
+to proceed.  Collectively, each input 
+parameter is then a kind of aggregate 
+step, or a collation of steps into 
+a multi-part step where each step's purpose 
+must be satisfied.  Syntagmatic graphs can 
+encode semantic requirements if we 
+argue that procedure-node neighborhoods 
+encode the totality of information which 
+must be available prior to a procedure-call, 
+and that a collection of individual steps 
+each providing `i.one` point of info 
+(one parameter-binding) logically 
+entail a kind of `i.multi-` step 
+which is the epistemic phenomenon 
+of achieving the full information 
+content requisite for a given 
+continuation (e.g., a procedure-call).
+`p`
+
+
+`p.
+The logic of this picture is structurally 
+dual in several different respects for 
+multi-relations in lieu of procedures.  
+A typical multi-relation is traversed 
+from one initial node (one `i.input`/, 
+from the perspective of a specific 
+traversal occasion) and can branch 
+into multiple destinations (multiple 
+outputs); this is dual to procedures 
+taking (in general) multiple inputs 
+to one output.  These outputs are 
+possible steps that `i.may` be 
+followed (so we can picture 
+the steps unified by a disjunction, a 
+modal combination of steps being 
+the set of steps which `i.may` be 
+taken) whereas procedure inputs 
+`i.must` be supplied (a step-`i.conjunction`/).  
+In general, a procedure's output for a 
+given input is not known `i.a priori` 
+(this is why the procedure is called 
+in the first place), so this response 
+is located `i.in the future` relative 
+to the procedure call; whereas 
+the information contained in a multi-relation 
+has been provided `i.in the past` 
+(stored in the database/knowledge-base) but 
+now has to be retrieved again.  In short, 
+introducing modal and temporal 
+operators serves to sharpen the duality 
+of procedures and multi-relations.   
+`p`
+
+`p.
+Since duality implies structural 
+similarity, these considerations 
+suggest that Syntagmatic Graphs 
+are useful for modeling multi-relations 
+as well as procedures, an idea that is 
+borne out by considering how 
+multi-relations aggregate information 
+content.  We can adopt the convention 
+that nodes `i.point in` to a multi-relation 
+node, since each node in the relation's 
+neighborhood supplies data: in the 
+`i.divorce` example, `i.John`/, 
+`i.Jane`/, `i.2015`/, and `i.2020` 
+all contribute a field to the data 
+structure embodying their divorce.  
+So we can traverse from the suppliers 
+of data to the target where that 
+data is synthesized.  On the other 
+hand, if we are `i.traversing` the 
+graph (some time later than when the 
+data is first assembled), 
+we move from the multi-relation 
+node to one of its neighbors 
+(from `i.John`/, say, to `i.divorce` and 
+then `i.Jane`/, to learn that Jane 
+was whom John divorced).  In short, 
+directions associated with `i.traversal` 
+are often inversions of those associated 
+with `i.information content`/.  This is analogous 
+to the input/output parameter distinction 
+for procedure-neighborhoods.  As 
+we argued in Chapter 6, even output nodes
+`i.contribute information to` a 
+procedure (e.g. a type-constraint 
+on its return type), so as a `i.static` 
+model (e.g., for a compiler), a 
+return-value node provides information 
+`i.to` the procedure-node.  However, 
+in the `i.dynamic` case of actually 
+stepping through a source-code graph, 
+we can step `i.out` from the procedure 
+to its output node.
+`p`
+
+`p.
+In general, the `i.effects` of a 
+procedure propagate in inverse 
+directions from the accretion of 
+detail which preconditions 
+the procedure.  All parameters 
+affected (both input and output) 
+supply information (type-constraints 
+if not actual values) to the procedure, 
+while at the same time the procedure 
+may affect (by overwriting) those 
+parameters.  In fact, in type-and-effect-systems 
+one commonly refers to `i.reading` 
+a value (not just `i.writing`/) as an 
+`i.effect`/, because rigorously speaking 
+reading values change the state of 
+their carriers (for example because the 
+area of contexts where the value is known 
+is then enlarged, which is consequential 
+in logical systems for Cybersecurity, say).
+Thus anything which supplies information 
+content to a procedure may potentially 
+be affected `i.by` the procedure, 
+with the definition of `q.affected by` 
+depending on the `q.effect system` 
+one chooses for modeling procedural 
+side-effects.  However, following 
+such effects is not a `i.traversal step` 
+along graph-paths; rather, it involves 
+tracing evolution in the `i.program state` 
+which is modeled by source-code graphs.  
+Effect-directions are therefore 
+not explicit structures in the graph 
+but indirect pathways introduced 
+via code-graphs' semantic interpretation. 
+`p`
+
+
+`p.
+In the case of multi-relations, a 
+given relation-node centers a neighborhood 
+of multiple other nodes, each supplying 
+some information into an aggregate.  
+The static picture encoded in such a 
+neighborhood involves how those 
+disparate data points are merged into a 
+data structure embodied by the 
+central node (this expresses the aspect 
+of multi-relations where they resemble 
+`i.objects`/).  On the other hand, 
+dynamically, a multi-node is 
+traversed `i.from` a neighboring 
+node `i.to` a neighboring 
+node (this expresses the aspect 
+where multi-relations act more like 
+`q.edge tangles`/), so `q.dynamic` traversal 
+represents different path-directions than 
+`q.static` traversal, similarly to procedures.
+`p`
+
+`p.
+The question of `i.which` node will 
+step `q.into` the multi-relation, and 
+which will be the destination, depends 
+on dynamic context.  For procedures, the 
+totality of information available in the 
+system once calculations are performed is 
+greater than the information statically 
+modeled by code graphs.  The graphs 
+capture open-ended information possibilities 
+but closed traversal options, in that 
+one can only `q.step into` a procedure 
+(using terms canonical to debuggers) 
+after multiple prior steps (for 
+parameter-bindings) are completed, and 
+can only `q.step out of` the procedure 
+to a specific output node.  Dually, 
+for multi-relations, the information 
+is not open-ended (it is fixed ahead 
+of time) but the dynamics of 
+how the multi-relation node is traversed 
+are open-ended in that they are 
+context-dependent on the state 
+of whatever software if `q.visiting` the 
+relevant data/information space.
+`p`
+
+
+`p.
+Both procedures and multi-relations 
+reveal structural parallels in terms 
+of static `i.a priori` data 
+contrasts with dynamic 
+context-specific data, and in terms 
+of how these contrasts align 
+with path-directions on the 
+graphs.  In both forms 
+of representation there is a 
+distinction between explicit 
+graph-structure (which supports 
+certain kinds of paths) and 
+dynamic context which provides a 
+semantic interpretation to 
+the graph yielding alternative 
+paths (e.g. following procedures 
+to their side-effects).  Such indirect 
+paths are not fully explicated 
+in the procedural context until 
+there is a dynamic context 
+(an actual procedure call) where, 
+for instance, side-effects can 
+be observed; analogously, 
+paths across a multi-relation to 
+neighboring nodes (the 
+edge-tangle guise of the relation) 
+may only be concretely available 
+with a running context wherein 
+one is visiting a specific input 
+node to the relation.  In the case 
+of multi-relations, `i.roles` can 
+provide guides for these 
+dynamic contexts, consolidating 
+which path `i.out` of the multi-relation 
+is appropriate for the context.
+`p`
+
+
+`p.
+In effect, it is only through roles 
+that multi-relations can be a 
+basis for well-defined traversal in 
+the first place, because roles 
+specify how to `i.leave` the 
+relation-node once it is 
+`i.entered`/.  For example, the 
+`q.divorce date` role permits a 
+visitor to step from John to `i.divorce` 
+and then 2020 to learn the desired 
+datum, that 2020 was when John divorced.
+Roles provide sufficient structure 
+for multi-relations to be 
+nexus-points from the 
+perspective of graph-traversal.  
+`p`
+
+`p.
+We will argue that roles can potentially 
+be used in a `i.procedural` context 
+for in effect a dual purpose, in the 
+sense that `i.accunulating information 
+content` (adding in data) is dual to 
+`i.accessing` information content 
+(`q.pulling out` data).  Specifically, 
+roles can play a disambiguating service 
+with respect to how information content 
+`i.plugs in` to a procedure by analogy 
+to how roles `q.disambiguate` the 
+range of traversal path-options 
+for multi-relations when their information 
+is accessed.  This effect is 
+more pronounced in natural language 
+than programming languages, we will 
+argue, but a similar notion of 
+`q.roles` can potentially be 
+useful in a programming context. 
+`p`
+
+`subsection.Disjoint Conceptual Spaces`
+`p.
+Above we suggested that Conceptual Space 
+theory has perhaps overemphasized the 
+`q.narrowing` logic of concept-juxtapositions, 
+and implied that we can have rigorous 
+accounts of information content that 
+do not depend on scope-narrowing to 
+realize the paradigm wherein 
+semantic paths converge to precise 
+meanings.  Although scope-narrowing 
+is one manifestation of a dynamics 
+tailored to greater precision, what 
+is really at stake in semantic paths 
+%-- according to the syntax-semantics 
+interface as we outlined it earlier 
+%-- is that semantic paths lead 
+toward greater information content.  
+In other words, the juxtaposition 
+of two concepts should produce 
+greater information content 
+than either concept alone; 
+however, this model does not 
+require that such amplification 
+occur `i.because` the concepts' 
+narrow each other's scope.
+`p`
+
+`p.
+In this chapter we will turn to `i.roles` 
+in the `AI; sense %-- and indirectly 
+to analogous ideas in Conceptual 
+Role Semantics %-- to provide an 
+alternative model of information 
+accretion.  Two concepts 
+can be juxtaposed to an effect 
+of `i.more information` insofar as 
+they have `i.distinct roles`/, 
+even if the concepts are 
+not mutually-narrowing.  
+In `i.I drove her to the store` 
+the respective concepts 
+(`i.I`/, `i.drove`/, `i.her`/, `i.store`/) 
+do not appear to combine by limiting 
+each other's scope, but rather by 
+offering different roles 
+to the overall meaning (agentive, 
+patientive, locative).  To the 
+degree that we can perceive `q.spaces` 
+around these respective contexts, 
+it seems that the holistic 
+meaning emerges not from a blending 
+of the respective spaces, but from 
+collating them `i.in an ordered fashion` 
+by indexing in terms of roles, so to speak.
+`p`
+
+
+`p.
+Conceptual Space theory appears motivated by 
+the notion that concept-juxtapositions acquire 
+specificity by how conceptual spaces 
+interact.  Word-jumbles, which would 
+seem to tokenize random assortments 
+of disparate concepts (and their spaces) 
+do not carry substantive meaning 
+apparently because they do not 
+permit the concepts to combine in productive 
+ways.  This would obviously be the 
+case with pairings having no interpretive 
+path linking one concept to another (`i.curried 
+theorems`/, say).  But we can also imagine 
+encountering words in a context where one 
+could suppress the idea that they have any syntactic 
+linkage (consider a scattering of newspaper 
+clippings on the floor).  So (say) `i.red` and `i.square` taken 
+as just happening to mention two different 
+concepts does not contain any specificity, 
+but the construction `i.red square` implies that 
+the two concepts are to be `i.combined`/, 
+and this combination is interpreted 
+by intersections and unions of dimensions.
+`p`
+
+`p.
+When concepts are combined by 
+attributing them different roles, 
+the pairing is neither completely free-form 
+(they are still a linguistic 
+`i.construction`/, not a random jumble of words) 
+but nor is it dependent on dimension intersection/union 
+for significance.  For example, 
+`i.drove her` is neither an unstructured 
+tokening of two words without any implication 
+that they form a linguistic unit,  
+nor the construction of a fused 
+concept such as `i.red square`/.  In effect,
+roles (subject/object/location/benefactive 
+and so forth) provide a compositional 
+principle `i.alternative to` the 
+quantitative models typically advanced 
+by Conceptual Space theory. 
+`p`
+
+
+`p.
+Coecke `i.et al.`/'s strategy wherein Conceptual Spaces 
+provide a semantic paradigm above pregroup grammars, for 
+example, applies most directly to simple 
+verb-constructions with subjects and objects.  In such 
+contexts %-- at least for `qb.SVO` languages 
+with the verb (for normal clauses)`footnote.Not 
+questions, and so forth.` positioned 
+between its subject and object %-- pregroup 
+structures formally predict the type-reduction of 
+the verb to a proposition given left-combination and 
+right-combinations with nouns.  As with 
+Combinatory Categorial Grammar 
+(see `cite<BiskriDescles>;,
+`cite<ErwanMoreau>;, or `cite<Rossi>;), reductions based 
+on left and right adjacency can thereby formalize 
+conceptual constraints on our semantic interpretations 
+of the relevant clause: reduction of the verb-construction 
+to a proposition captures how 
+our attributing Parts of Speech to component words 
+guides understanding of how the components should 
+fit together; in the case of a finite clause, 
+they should combine into a propositionally complete 
+idea.  Type reductions at the syntactic level 
+thereby map onto communicated meanings at the semantic 
+level, or at least onto interpretive parameters 
+which allow those meanings to be deciphered. 
+`p`
+
+`p.
+This picture is more complex, however, when we consider the 
+full range of verbs' `q.theta roles` (which extend beyond 
+subject/object to include patient and agent roles and/or 
+indirect objects) and then to the full range of thematic 
+roles available through nested clauses and/or case-marking.  
+With as many as three theta roles and potentially 
+several other thematic roles, verbs do not just 
+`q.look` left and right for their `b.S` and `b.O`/; 
+they also accept links to other words or phrases which are
+neither subject nor object but instead provide some 
+other kind of detail.
+All of this complicates the pregroup-grammar model of 
+type reductions (see `cite<[especially chapter 4]GabrielGaudreault>; 
+for a formal statement of similar issues).
+`p`
+
+`p.
+Additional complications arise from the possibility of `q.movement` 
+in theta roles, canonically (in English) the 
+transpositions exemplified by sentences such as  
+`i.I gave the book to John` and `i.I gave John the book`/. 
+Also, `i.polyvalent` verbs present a problem 
+because we need to understand which `q.theta frame` 
+(determining the roles related to agent/patient 
+status we expect to be linked to the verb) applies 
+to each such verb in a given usage; and thematic 
+roles can be `q.optional` in that we hear 
+some thematic clauses as required by the 
+verb-sense in force while others are supplemental 
+details.  The normal sense of `i.put`/, for instance, 
+requires a patient `i.and` a location 
+(`i.I put her book on the table`/), whereas 
+for, say, `i.read` the location is supplemental 
+(`i.I read her book on the train`/).        
+`p`
+
+`p.
+All of these phrase-structure options force 
+verb-clause theories to have more structure 
+than left- and right-adjoints (as in pregroup 
+grammars) alone, which complicate the calculus 
+of type-reductions over clauses.  These may  
+not be intractable problems for approaches 
+such as Coecke `i.et al.` from the 
+`i.syntactic` side, since multiple thematic 
+roles can always be treated as additional 
+verb-arguments; instead of `q.left` and 
+`q.right` we can posit a trivalent or multi-valent 
+set of `q.directions` which link the 
+verb to different subsidiaries %-- indexed by 
+thematic role rather than by directions in the 
+surface expression (as an aside, needing 
+to accommodate these multiple `q.directions` is 
+further motivation for our `q.Syntagmatic` 
+graph paradigm where all edges point `i.toward` 
+procedure nodes).`footnote.
+Because multivalent verbs imply multiple 
+directions of `q.adjacency,` rather
+than the binary options of `q.input` and `q.output.`
+Edge directions therefore no longer line up 
+neatly with `q.adjacency` directions; the latter 
+is an additional structural detail `i.on` the 
+graph-representation, so edge-direction is not 
+interpreted as fixing the imputed direction 
+in this sense.  Instead, edge-direction is an 
+artifact of the graph on the basic Syntagmatic level, 
+driven by the convention that procedure-nodes are 
+canonically targets but not sources, which in turn 
+is motivated by the goal of partitioning 
+graphs into neighborhoods with few edges 
+crossing between them.
+`footnote`  Type reduction is then 
+a multi-stage process that depends on 
+contributions from each component thematically 
+related to the verb.
+`p`
+
+`p.
+The question is how 
+to accommodate this more complex notion of 
+type-reduction to Coecke `i.et al.`/'s 
+derivation of semantic constructions being 
+`i.engendered` by syntactic constructions, 
+with the meaning-combination being effectively 
+an `q.image` of a mathematically determined 
+map `i.from` the syntactic construction.  
+The authors show us how this syntax/semantics 
+interface works in the context of simple 
+bivalent verbs, where the relevant semantic `q.image` 
+is a blend of two concepts.  
+In the case of multi-valent verbs, we 
+have multiple concepts which have to be 
+merged together according to thematic roles.  
+And this is precisely the kind of scenario 
+where we have argued that concepts tend 
+to co-exist in situational models with their 
+own internal details rather than blend into a 
+dimensionally-integrated whole.  In 
+`i.I drove the van to Philly`/, say, 
+the `i.van` and `i.Philly` are situationally 
+autonomous in the sense that one could 
+plausibly drive the former many places, and plausibly 
+travel to Philly via many means.  
+The spaces `q.around` the patient and location 
+roles are largely disjoint.`footnote.
+For sake of discussion we assume the role of `i.van` 
+is `i.patientive` when it is a direct object 
+(what was driven), though perhaps `visavis; cognitive 
+framing its signified role is more instrumentive 
+`i.except for` cases where the specific purpose of 
+the drive was to deposit the van; otherwise the 
+vehicle is merely the means selected for 
+travel.  Syntactically, though, the van is 
+only presented in an instrumentive mode 
+when it is not a direct object (`i.I drove 
+them to Philly in the van`/).  
+`footnote`
+`p`
+
+`p.
+In this sort of example, any quantitative 
+dimensions endemic to 
+the respective concepts are in most 
+cases autonomous, as if the sortal 
+effects of their respective roles 
+`i.inhibits` dimensional convolution.  
+At most we could say that the 
+dimensions are `q.latent` and provide 
+cognitive background that can 
+`i.potentially` interact %-- an 
+example would be `i.I took 
+the express train to Philly in under two hours`/.  
+Here the geospatial dimension ambient to 
+conceptualizing Philadelphia intersects with the 
+figurative `q.dimension` involving different kinds 
+of trains, because the sentence intimates 
+that the length of the trip was 
+affected by the train being of the `q.express` variety.  
+But opportunities for dimensional interactions 
+along these lines are latent rather than 
+intrinsic to role-indexed constructions; 
+in the usual case different concepts 
+(and their dimensions) remain mutually 
+autonomous.  To the degree that 
+this is true, quantitative models 
+of concept blending need to be 
+supplanted with situational models 
+that place greater emphasis on 
+how multiple role-construals 
+synthesize into cognitive schemata.  
+It is not clear that this 
+happens on a linguistic level at 
+all, rather than a prelinguistic 
+level of cognitive construals and 
+anticipations of the 
+unfolding affairs around us.   
+`p`
+
+`p.
+Furthermore, insofar as one goal of 
+Conceptual Spaces is to model similarity and 
+prototype effects, it seems hard to isolate 
+thematic roles from accounts of how we judge 
+the scope and applicability of concepts.  
+In an analysis utilizing `i.birds` as a case-study, 
+for instance, `cite<[page 158]MatiasOstaVelez>; constructs a 
+`q.bird space` whose regions correspond to 
+types of birds, analogous to color-concepts being regions in 
+color space.  
+Moreover, there are exemplars within this space such 
+that `i.robins`/, for example, are more 
+prototypical than `i.penguins` or `i.ostriches`/.
+`p`
+
+`p.  
+We can, of course, compare birds in different 
+ways (size, color, quickness, etc.), and it is 
+likely that we do indeed as a community share an 
+exemplary bird-notion which some bird species 
+embody more than others.  These two factors 
+make pictures of a Euclidean `q.bird space` 
+intuitively appealing, because they capture all together  
+the geometric possibility of a prototype, the 
+gradations of similarity/dissimilarity and 
+prototypicality, and the multi-faceted nature of 
+`q.inter-bird` comparisons.  But the success of such a  
+picture in 
+iconifying these intuitions is not `i.prima facie` 
+evidence that most intra-concept comparisons 
+can be situated along a numeric axis 
+(like size), or even domains of multiple axis-dimensions 
+(like color).  Penguins and ostriches are atypical 
+birds largely because they do not fly, and 
+`i.flight/non-flight` is not a quantifiable domain 
+in any straightforward sense; instead, this distinction 
+depends on our appraising birds' traits and behaviors 
+as functionality organized adaptations to their 
+environment.
+`p`
+
+`p.
+Functional criteria along these lines 
+tend to be captured conceptually via thematic roles 
+more than via grade scales.  Cars, trains, and buses
+are all plausible vehicles to take us somewhere but 
+they are not geometrically comparable like 
+red, green, and blue; rather, they provide 
+somewhat different enactive affordances and 
+each subconcept presents, via its tokens, a distinct 
+genre of functionally-organized system.  Our background 
+knowledge of how maneuvering into and within a 
+`i.car` differs from `i.bus` and `i.train` is 
+most likely to be exercised in the course of 
+sentences where these concepts would 
+be pressed into service as instrumentives 
+for verbs of geospatial motion.  Our cognitive 
+resources for construing such vehicles 
+as `q.movement tools` supply the scaffolding 
+wherein instrumental constructions along 
+these lines are given sense %-- what it 
+means for a car/bus/train to be an `q.instrument.`
+Apparently the same prelinguistic 
+knowledge is manifest in our grasping the 
+similarities and differences between 
+car/bus/train as `q.vehicle` subtypes.  So 
+it seems hard to model the conceptual space 
+wherein the subtypes acquire their 
+patterns of similarity/dissimilarity 
+(and their respective prototypic cores) 
+without focusing on their distinct patterns 
+of functional integration (in terms of how 
+they operate and in terms of how we make 
+use of them).
+`p`
+
+`p.
+While we can abstractly 
+imagine a `q.space of possible functional 
+organizations` wherein cars, buses, and 
+trains would have their own regions, 
+in reality such a space would seem to be 
+at most an emergent summary of 
+our background knowledge `visavis; 
+modes of transport %-- the basis 
+for our constrasting car/bus/train 
+is all the accumulated knowledge we have of 
+their basic workings, the mental `q.scripts` 
+we subconsciously follow when entering/boarding 
+a vehicle, or interpreting its movement or 
+planning a trip, and so forth; we do 
+not rely on immediate perceptual cues 
+like size or color to establish 
+inter-token comparisons, in general.  
+Instead, such comparisons derive 
+from situational reasoning and anticipation 
+as we are either in the process of 
+traveling via car/bus/train or planning to do so. 
+`p`
+
+`p.
+We do not intend to doctrinairely 
+pursue this point, since one 
+can find implicit counter-arguments in the 
+Conceptual Space literature: 
+`Gardenfors; and others, for instance, 
+have specifically written about 
+modeling phenomena such as 
+functional organization and such as 
+spatial paths via (quantitative) 
+Conceptual Spaces `cite<GardenforsWarglien>;
+(see also  `cite<LucasChampollionO>;, 
+`cite<LevinHovav>;, 
+`cite<BridgetCopley>;, `cite<RalfVogel>;, 
+`cite<[especially section 3]GregCarlson>;, 
+or `cite<[especially pages 5-7]GardenforsInvariances>;).`footnote.
+One problem examined by the authors just cited is 
+that an event construed in different ways 
+could be taken instead %-- amongst 
+linguists anyhow trying to decide how best to 
+set up philosophical parameters on event 
+semantics %-- as more than one event, or 
+not.  Does `i.drive to Philly` name the 
+same event as `i.drive to the conference` 
+in cases where someone does the former so 
+as to do the latter?  There are counterfactuals 
+which might suggest that these are in fact 
+two different albeit strongly overlapping 
+events: e.g., were they stuck in traffic and 
+late to the conference one could still say 
+they were `i.in Philly` on time.  On the 
+other hand, coutnerfactuals are, indeed, 
+contrary to fact: arguably `i.one` event 
+`i.could potentially` have been two 
+events were some factor to intervene.  
+Event-semantics literature does not 
+seem to settle such issues.  But 
+by extension the questions involve 
+seem to impinge on whether spacetime 
+and force-dynamic construals are `i.sufficient` 
+to characterize events or whether we 
+`i.also` need some notion of thematic 
+roles, which would help negotiate 
+counterfactuals and other complicating 
+factors.  E.g., if we read `i.Philly` as 
+meaning the `i.patient` of the 
+drive-to-conference action, then they 
+have not actually driven `q.to Philly` if 
+they are within that city's municipal 
+boundaries but not at their destination, 
+since in the context of that particular 
+sentence Philly plays a thematic role 
+which is not satisfied by just 
+any trajectory which happens to terminate 
+somewhere in the city.  It is not clear 
+how that treatment of the counterfactual 
+would be possible `i.without` thematic roles, 
+or what a more `q.quantitative` gloss 
+on the counterfactual would look like.   
+`footnote`  
+So there is precedent
+for modeling (say) verb-plus-locative 
+constructions as indeed quantifiable 
+narrowings (akin to `i.dark red`/) 
+rather than as the basically 
+unblended juxtaposition of two 
+distinct conceptual spaces `cite<WarglienEtAl>;.
+Accepting one or another analytic 
+strategy presumably depends on 
+how strongly one is convinced by 
+a `Gardenfors;-style encoding 
+of themes such as spatial paths, 
+movements, situational contexts, 
+prototype/borderline contrasts, etc., as quantifiable 
+structures (with sufficient 
+abstractness almost anything can be 
+seen as part of an at least 
+metaphorically quantitative 
+`q.space,` but the degree of abstraction
+involved may seem to weaken the force 
+of the overarching model, even though 
+we have to grant theories the 
+option of establishing claims in 
+more concrete cases, where the 
+theoretical commitments may be 
+more clearly demonstrated 
+%-- such as color-spaces as 
+canonical cases of perceptual 
+dimensions %-- and then generalize 
+to analyses where the terms of the
+theory need to be applied more 
+abstractly or obliquely).  
+Nevertheless, we can 
+accept the premise that certain cognitive 
+details pertaining to individual 
+concepts have (to varying degrees) 
+quantitative form without arguing that 
+concept `i.combination`/, and therefore 
+meaning-composition (in linguistic 
+contexts) is often defined by 
+a quantitative merger of the two concepts 
+involved. 
+`p`
+
+
+`p.
+In `i.drove to the store` one can, for example, certainly 
+argue that `i.to the store` has a scope-narrowing 
+effect on `i.drove`/; by itself the verb 
+is open-ended, but the subsequent phrase 
+narrows the verb's scope and concretizes 
+its profiling by supplying a destination 
+for `i.drove`/.  This narrowing, however, 
+appears to be a matter of information 
+content being supplied to fill in an 
+abstract slot with concrete details 
+(the `q.where?`//`q.to where?`  of `i.drive`/) %-- i.e., a 
+narrowing from abstract (compatible 
+with many possible states of affairs) 
+to concrete (empirically 
+specific).  This sense of narrowing 
+is different from the refinement 
+effects of, say, `i.dark red`/, and 
+it is hard to see how `i.to the store` 
+could `i.quantitatively` alter 
+`i.drove` akin to how `i.dark` 
+alters `i.red`/.  
+`p`
+
+
+`p.
+In reading `Gardenfors;-inspired literature on 
+event semantics one might get 
+the impression that in different places 
+thematic roles (i.e., the concepts 
+that play them) are sometimes understood 
+to `i.have` quantitative dimensions 
+(e.g., a locative is the culmination of a 
+spatial movement and so picks up the 
+dimensions of the space wherein such 
+movement occurs) and sometimes 
+understood to `i.be` dimensions 
+%-- perhaps reflecting how proponents of this 
+theory have not converged on a paradigm 
+for incorporating event/situational semantics.
+In, say, `i.Last week I took some students to Philly 
+by train to attend a conference`/,  
+the multiple thematic roles provide a kind 
+of mental `q.checklist` of details the 
+speaker feels relevant enough to warrant 
+mention.  We can picture the full set 
+of (sufficiently relevant) details as a 
+kind of virtual dimension characterizing 
+the verb (no less than the quantitative 
+dimensions that would literally model 
+the movement, i.e., a spatial trajectory 
+ending in Philly).  According 
+to `Gardenfors;, indeed, `q.The cognitive structure of events is 
+relational, gluing together objects, actions and locations` 
+`cite<[page 6]GardenforsInvariances>;, which 
+sounds as if the theory pictures events as bundling 
+components which each have distinct 
+cognitive status.  The `i.dimensions` 
+of such a construction would seem to be the 
+components themselves, that provide relata 
+`q.glued together` into an aggregate.  
+While not explicitly Conceptual Space oriented, 
+but in a theory with detailed analyses of dimensional 
+structures, Lucas Champollion invites a similar 
+reading in summarizing how (in his `q.strata` theory) 
+`q.events ... are thought of as occupying regions
+in an abstract space whose dimensions specify, among others, their spatial and
+temporal extent` where `q.thematic roles and 
+measure functions [are also] among the dimensions of this abstract
+space.` `cite<[page 127]ChampollionDissertation>;
+In other words, situations entail a 
+`q.space of thematic roles` (including but 
+not limited to `i.theta` roles) and players of  
+individual roles (locative, say) are akin 
+to `q.points` in this space.
+`p`
+
+`p. 
+But elsewhere `Gardenfors; uses language 
+such as `q.the force exerted
+by the agent will be modified by the instrument and thus different from the force
+vector affecting the patient` `cite<[page 21]WarglienEtAl>;, 
+which sounds as if subject and instrument are 
+not `i.related` so much as `q.fused` into a 
+`q.single` force-vector which is the one `q.affecting the patient.`
+If `i.that` is the theory's archetype, then 
+thematic roles would paradigmatically blend into 
+quantifiable domains, so the `q.points` in the blended  
+Conceptual Space would not be enumerative discretized 
+spaces of possible thematic roles but would 
+be more mathematical and quantitative, e.g., 
+force-vectors, which seems a different picture 
+than `q.objects, actions and locations` 
+`q.glued together` (at least insofar as the 
+`q.glue` is a situational inter-coherence innate 
+to thematic roles).
+`p`
+
+`p.
+Our point is not that `Gardenfors; is being 
+inconsistent, but rather that neither thematic 
+relations nor quantitative dimensions alone 
+can model event-semantics: roles and dimensions 
+situationally interoperate in many different 
+ways.  For example, Champollion's strata theory, 
+which we just mentioned, is a case-study in how 
+formal semantics can integrate the qualitative 
+aspects of thematic roles with the quantitative 
+features of conceptual dimensions characterizing 
+the concept-instances which play those 
+toles.`footnote.
+Dimensional structures help to 
+organize semantic constructions in a number of 
+patterns (such as partitives, mereologically-inflected 
+reference, and quantifier-scope): 
+attributes such as mereology and granularity 
+(as well as quantitative notions of magnitude 
+and comparison operators) can all play a role 
+in the semantic rules governing part/whole 
+relations (in contexts such as `i.each of the ...` 
+or `i.a few of the ...`/), gradations 
+(`i.more ... than ...`/), effects related 
+to the completion or partiality of events 
+(`i.for an hour` vs. `i.in an hour`/), and so forth.  
+All of this builds up a theory of dimensional 
+structures as constituents of referential scenarios 
+whose linguistic encodings appear to be conventionalized 
+within construction templates involving partitives, 
+quantifiers, comparatives, etc.  
+However, Champollion explicitly allows for 
+these concerns to be applicable 
+to different thematic roles within an 
+overall event semantics: to the degree 
+that (glossing his arguments with terms other 
+that his more precise but technical alternatives) 
+`i.dimensional structures` offer a kind of 
+`i.semantic frame` governing recurring 
+quantity/mereology-related construction-patterns, 
+then such a frame `q.distributes over` 
+(which `i.is` his term) thematic roles. 
+Intuitively, each player of a role 
+(each `q.theta,` in his terms) can have
+its own such semantic frame.  Dimensional 
+structures are, that is, `qthetaIndexed; 
+in the sense that `thetasym; becomes one 
+`q.parameter` (selecting the relevant 
+thematic role) alongside parameters 
+defining dimension-related structures such as 
+granularity (see `cite<[page 33]LucasChampollionC>;).  
+This would be an example of how dimensional structures 
+come into play `i.in the scope of` one specific 
+thematic role, so that the totality of 
+dimensions appertaining to a semantic 
+construction %-- and to the semantics of an 
+event %-- can be defined only by 
+considering `i.both` the qualitative 
+distinctions between roles `i.and` the 
+quantitative aspects of concepts 
+through which we make sense of the 
+entities playing those roles.
+`footnote`
+`p`
+
+
+
+`p.
+In general, we would argue 
+that roles more often than not `i.inhibit dimensional interactions`/, 
+so that quantitative representations such as 
+`Gardenfors;'s `q.two-vector` system typically 
+apply only to agent and patient roles; 
+other thematic roles should be analyzed situationally 
+rather than as `q.vectors` (although they may 
+have latent dimensions which can `i.potentially` 
+be semantically convoluted with the central 
+agent/patient schema in some cases, as in our  
+express-train example, which availability 
+should be taken as part of the semantic 
+arsenal comprising a clause's overall meaning).  
+`p`
+
+`p.
+For the most overarching analysis
+(such details as `q.latent` comparatives aside),  
+rather than treating 
+concept-combinations as 
+meaning-effects which have to be 
+modeled numerically, we can instead 
+interpret concept-constructions as 
+organized situationally:  
+different concepts lend different 
+sorts of detail, each of which add 
+concreteness and specificity, 
+leading from situational abstractness 
+or prototypes to concrete states of 
+affairs.  Ordering concepts by their 
+conceptual `i.roles` can thereby 
+take the place of quantitative 
+modeling for conceptual blends.  
+This role-inflectional approach 
+%-- which we might characterize 
+in terms of `i.qualitative` rather than 
+`i.quantitative` concept-combination 
+%-- is arguably better motivated 
+by natural language.  The fundamental 
+aspect of qualitative combination in 
+this sense is that the  
+spaces of two concepts typically 
+do `i.not` blend but rather 
+remain intellectually isolated, with the 
+rationale of the concept combination 
+being articulated through distinct 
+syntactic and (correlatively) situational roles 
+rather than through dimensional interconnections.  
+Dimensional structures for individual 
+concepts may still be important as 
+part of our holistic semantic assessments, but 
+in many contexts the situational composition 
+fusing multiple concepts is more significant 
+for overall meaning than the  
+precision afforded by concepts' quantitative 
+dimensions (e.g., the color-space boundaries 
+marked by the concept `i.red`/).   
+`p`
+
+`p.
+Autonomous concept-blends still, we would argue, 
+evince certain (often partly metrizable) dimensions; 
+indeed, concepts `q.glued together` have a larger 
+space of domains and dimensions than concepts 
+individually.  Given a kernel event like 
+`i.travel to Philly` we can elaborate on many 
+dimensions detailing that situation, such as 
+`i.how long`/, or `i.where exactly`/, or `i.when`/; 
+some of these details take a scalar or geometric 
+form.  But here we transition from 
+dimensional structures `i.constituting` 
+constructional meanings (as is arguably 
+the case for simple aggregates like 
+`i.red square`/) to dimensions being 
+`i.available for elaboration`/, which 
+implies that they supplement a completed 
+signifying process which the dimensions 
+themselves (or any 
+interactions and convolutions thereof) 
+do not fully explicate. 
+`p`
+
+`p.
+Indeed, to the degree that concepts within a construction are 
+autonomous, it is not immediately evident 
+what there is to analyze %-- we can always 
+say that language-users `q.glue` concepts together 
+in the mind, and that they are cued about 
+concepts' respective roles by morphosyntax 
+(which so to speak `q.sieves` concepts into distinct thematic 
+roles), but that sounds like simply restating the explanandum 
+rather than explaining it.  The charge for the 
+`i.syntactic` side of the theory is clearer, because 
+linguists have to demonstrate how clauses are 
+parsed into role-attributions in the first place.  
+We claim that a thorough account of such a process 
+can be derived via expanding from pregroup 
+grammars to hypergraphs, where graph edges 
+track (collections of) nodes to corresponding 
+verbs via the roles they carry.
+`p`
+
+`p.
+One can indeed find apparent rules or conventions in 
+clause-structure which appear to govern this process, such as 
+patterns in how thematic roles become registered 
+via theta-roles or relegated to secondary status, 
+and the relation of roles to speaker epistemics.  
+Such observations can found a bonafide `q.theory` of 
+clausal construction on the `i.syntactic` side.  
+But semantically, the more that concepts 
+are distinguished in a construction by playing 
+distinct roles, the harder it is to find 
+convincing formulae reducing their aggregation 
+to some formalizable meaning-generator, as 
+opposed to invoking a largely-prelinguistic 
+`q.situational cognition` outside the 
+scope of (linguistic) analysis.
+`p`
+
+`p.  
+We contend that approaching semantic constructions 
+from the perspective of information-delta 
+`i.paths` sheds some light on this 
+situation, and can form the core of a 
+theory which does more than hand-wave at the
+problems of role-indexed semantic constructions.  
+Even within such a theory, nonetheless, we should 
+be receptive to the possibility that 
+unpacking semantic constructions really 
+`i.is` in many ways pre-linguistic; if 
+nothing else a theory can demarcate the 
+boundary between processes endemic to 
+language-understanding %-- as they play out 
+in the context of semantic constructions 
+%-- and those which defer to `q.situational 
+cognition,` something perhaps too subtle for
+linguistic analysis and arguably too 
+`q.human` for `q.artificial` intelligence.
+`p`
+
+`p.
+Yet what we `i.can` do, 
+even in the confines of linguistics 
+proper, is identify where patterns 
+in situational reasoning (including 
+intersubjective `q.theory of other minds` 
+effects) appear to drive linguistic 
+(and pragmatic/discursive) conventions, 
+for example in how clause-constructions 
+are organized around the `q.speaker's 
+point of view,` and the need to
+establish common reference points and 
+situational framings between all 
+participants in a linguistic context.  
+That still leaves a lot for linguistics 
+to talk about.  Even if some majority 
+of cognitive situational process is 
+pre-linguistic, there are still many different 
+mental operations which could be pressed 
+into service to construe the affairs around 
+us.  Language surely uses semantic and syntactic 
+cues to activate certain prelinguistic 
+capabilities from the full set that 
+could be potentially triggered 
+within ambient situations.`footnote.
+Recurring patterns in situational 
+construals, perhaps especially `i.perceptual` 
+construals, can then be seen to engender 
+specific types of `q.semantic frames` 
+(for force dynamics, mereology-related 
+as mentioned above `visavis; Champollion, 
+modality (in the sense of modal logic) and counterfactuals, 
+belief-attributions and `q.other minds,`
+etc.)  
+which encapsulate how language 
+via construction-templates and patterns 
+can invoke cognitive faculties, not just 
+isolated mental processes but 
+interconnected sets of logical and 
+operational schema through which we 
+organize conscious experience.  
+`footnote`
+`p`
+
+`p.
+A perspective which emphasizes concepts' situational 
+roles can thus leverage many facets of 
+Conceptual Space theory, even while 
+de-emphasizing mathematical accounts of 
+concept-blending, and moreover would 
+still be consistent with 
+data-modeling and meta-scientific 
+applications of Conceptual Spaces 
+as found in projects such as 
+Conceptual Space Markup Language.  
+That is, a `i.conceptual role` based 
+framework can be one way to 
+integrate this data-modeling branch 
+of Conceptual Space theory with the 
+formal-linguistic considerations 
+prioritized by (e.g.) 
+Coecke `i.et al.`/.`footnote.
+See e.g. `cite<JoeyPollack>;, 
+`cite<CarlosMontemayor>;,
+`cite<DanRyder>;, or `cite<BradleyRives>; 
+for overviews of `q.Conceptual Role Semantics` in 
+particular.
+`footnote`  It is in this guise, `cobel<one can argue>;, 
+that Conceptual Space theory as a model 
+for `i.natural language` semantics 
+can also be a reference-point for 
+settings such as data and code semantics, 
+which lack the former's situational nuance.
+`p`
+
+`p.
+There is, however, one useful analogy which 
+may be drawn between the natural-language 
+and data/code semantics cases.  Consider 
+the basic idea that role-indexed constructions 
+tend by default to allow component concepts' 
+relative autonomy (by contrast to conceptual 
+blends without obvious thematic-role 
+decompositions, like `i.red square` or 
+`i.dark red`/).  Due to such autonomy the 
+ultimate `q.meaning` of concepts' combinations 
+might not be constructed through linguistic 
+means at all, but rather defer to cognitive-situational 
+faculties.  The relevant analogy in data semantics 
+is that the full semantic constitution of a 
+data space %-- of the types and schemas which 
+are embodied by, instantiated in, or constraints on a 
+data set or database %-- cannot be defined through 
+schematic declarations or axioms alone (e.g., 
+Web Ontologies).  Data sets' full 
+semantic import derives from how the 
+software components that use them replicate 
+or analyze some real-world situations, 
+which ultimately depends on `i.procedures 
+implemented` more than on static representations 
+such as data fields or inter-object 
+relations.  Thus data modeling is only 
+preliminary to code implementation, 
+and the `i.semantics` of data models 
+lies largely in how they can guide, 
+and then make reference to (as 
+data-structural specifications) implementation 
+features and procedures.  We would argue 
+that this is roughly analogous to how 
+features of linguistic constructions 
+both `i.refer` and `i.defer` to 
+`q.cognitive procedures` which 
+provide our ambient situational reasoning 
+prerequisite for language. 
+`p`
+
+`subsection.Conceptual Spaces and Scientific Data`
+`p.
+When multiple concepts 
+are merged into meaningful constructions, 
+each concept contributes distinct 
+information which collectively 
+produce a larger information content.  
+Without referring to information content 
+specifically, Conceptual Space theory 
+alludes to this process and presents one 
+version of how it operates, particularly 
+in the context of conceptual blends 
+%-- blended concepts (like `i.dark red` 
+or `i.red square`/) quantitatively mix 
+their concept-components to procure a 
+more narrowly-extended (and thus 
+more information-bearing) prototype 
+than each concept on its own.  As 
+we have argued, however, we can continue the 
+general idea of information-content 
+amplification without restricting 
+analyses to these blend-cases; 
+for example, concepts combined
+qualitatively assemble information content 
+by organizing concepts' contributions 
+in terms of situational roles more than 
+interpenetrations of dimensional 
+structures.  Yet however we 
+figure concept-combination, the 
+crucial detail is marking 
+how such combinations use the 
+coordination of multiple concepts 
+to augment levels of information 
+content against that of 
+concepts individually.  This 
+foundational question appears 
+to lie at the core of Conceptual 
+Space theory as a linguistic semantics.
+`p`
+
+`p.
+Not long after `Gardenfors;'s initial 
+language-focused publications there 
+emerged some follow-up research which 
+shifted emphasis from the semantics 
+of natural language to that of 
+scientific theories and scientific 
+data.  This included formulation of 
+Conceptual Space Markup Language 
+(`CSML;) as a 
+data-description framework, with an 
+emphasis on conceptually and 
+statistically rigorous documentation 
+of the parameters which collectively 
+define a scientific theory or model.  
+The `CSML; language is a 
+rigorous and well-motivated 
+approach which deserves to be 
+widely adopted in some fashion 
+%-- particularly given the more 
+recent emphasis on data sharing and 
+research transparency, which is 
+even more pronounced now than 
+when `CSML; was first published, 
+as well as the presence of 
+more recent data-sharing 
+protocols that could be 
+integrated with `CSML;, 
+such as the Digital Curation Center (`DCC;) lifecycle 
+`cite<FrankAndreasSposito>;, `cite<TammaroEtAl>;, 
+`SciXML; `cite<CopestakeEtAl>;, `cite<CJRupp>;, 
+`cite<SateliWitte>;, `cite<IanLewin>;,
+`cite<SimoneTeufel>;, `cite<TeufelEtAl>;,
+`IeXML; `cite<TiagoNunes>;, `cite<DietrichRebholzSchuhman>;, 
+`cite<PedroSernadela>;, the suite 
+of `MIBBI; (Minimum Information for 
+Biological and Biomedical Investigations) guidelines 
+`cite<ChrisTaylor>;, `cite<PeterMcQuilton>;,
+and Stuart Chalk's `b.SciData` Ontologies `cite<StuartChalk>;. 
+`p`
+
+
+`p.
+With that said, although formalizations 
+of Conceptual Spaces such 
+as `CSML; fit in well with these 
+various attempts to standardize 
+scientific data-sharing, much of 
+`CSML;'s details or vocabulary 
+is not endemic to Conceptual 
+Space theory `i.per se`/.  For example, 
+Conceptual Space theory places particular 
+emphasis on concepts' (and by 
+extension scientific models') 
+domain and dimensional properties, 
+which in the data-modeling context 
+inspires especially rigorous 
+attention to phenomena such as 
+the statistical scale 
+(Nominal, Ordinal, Interval, Ratio), 
+measurement units, ranges, and 
+autonomy/correlation among 
+different modeling parameters.  However, 
+documenting such statistical qualities 
+of a data set is hardly specific to 
+Conceptual Space theory.
+`p`
+
+`p.  
+On the other hand, notions such as `q.contrast classes` and 
+the partitioning a larger conceptual space 
+into regions associated with concept-prototypes 
+`i.are` more specifically rooted in 
+`Gardenfors;'s original theory, 
+but such techniques seem more 
+applicable for use cases such as 
+`NLP;-driven text mining of corpora 
+`i.about` scientific models than 
+formulating (digital representations of) 
+models in the first place.
+`p`
+
+`p.
+In short, the quantitative techniques derived 
+from Conceptual Space notions of 
+concepts' dimensional overlap or 
+prototyping are more relevant for 
+mining data sets already established 
+than for constructing and sharing 
+data sets in the first place.  
+These are the same quantitative 
+methods which we earlier qualified 
+`visavis; applicability to natural 
+language: we argued that there are 
+many cases of concept-combination 
+that do `i.not` involve (at least 
+to a substantial effect) 
+numerically analyzable dimensional 
+blends, and that role-based 
+situational models can take 
+the place of quantitative inter-dimensional 
+calculations.  It seems plausible 
+that role-based models could 
+offer a similar perspective on 
+concept-blending in the area of data models.
+`p`
+
+`p.
+When formulating a data model, the core 
+project is to identify the data types 
+through which information contained 
+in (instances of) the model may be 
+classified, to define those 
+data types in terms of the 
+specific data points and fields 
+which they aggregate.  The key 
+organizing principle is data `i.fields` 
+which aggregate into data structures, 
+or compound values, that are type-instances 
+(which therefore have internal structure 
+but also some integrity as a 
+single conceptual unit).  Data fields 
+can in turn be single or multi-valued, 
+with multi-valued fields typically 
+being variant-sized collections such as 
+lists or unordered sets.  A specific 
+data point is attached to a type-instance 
+through the value of an individual 
+(single) data field or one value 
+inside a collection (multi-value) field.  
+Via such connections, each data point 
+contributes some information to the 
+total data encompassed by the larger 
+type-instance.  In effect, type-instances 
+encapsulate the totality of information 
+content contained in their component parts. 
+`p`
+
+`p.
+None of this discussion is particularly 
+original or insightful, 
+but it is worth highlighting these 
+basic principles so as to draw 
+attention to the implicit role of 
+`i.information content`/: each field within a 
+type-instance amplifies the larger instance's 
+total information content, which is 
+the basic rationale for joining 
+fields to instances.  Data models are 
+successful to the degree that they reinforce 
+this phenomenon.  For instance, metadata 
+associated with specific data fields 
+is valuable if it `i.increases the degree 
+to which` the field-value augments 
+the information content of the larger object.  
+Annotating fields with scale and metric 
+info (referring back to Chapter 6,
+`S;6.2.1)
+provides benefit because, at least 
+in many contexts, such annotations 
+increasing the amount of information 
+supplied by an individual data field.
+`p`
+
+`p.  
+This perspective points to a strategy 
+for integrating Conceptual Space theory 
+more rigorously with data-modeling 
+paradigms: we can adopt Conceptual Spaces 
+to study the degree and nature of 
+information-content elevation which 
+is associated with individual data 
+fields seen as information-contributors, 
+whose contributions are in turn 
+mediated (and potentially augmented) 
+by the relevant data model.  Conceptual 
+Space theory, as we have argued, 
+tends to analyze `i.increase in information 
+content` via quantitative models of conceptual-blends, 
+but we have suggested that such 
+quantitative accounts are merely one 
+way to operationalize the basic idea 
+of studying information-amplification 
+as a construction-driven phenomenon.  
+In the data-modeling context we 
+can similarly focus on the more 
+general rise in information-content, 
+which may or may not be driven 
+by numerically analyzable combinations 
+between data-contributing elements.  
+What we can focus on instead 
+is the core principle that 
+data `i.models` add value to 
+data `i.sets` by `i.increasing the 
+degree to which data-contributing 
+elements in each model-instance 
+augment the information content 
+of the overall model` (for sake 
+of discussion, we can 
+call these `i.information delta` 
+effects).  When 
+considering strategies for 
+developing or refining data models, 
+then, the essential question to 
+ask is `i.how does a particular 
+strategy contribute to the 
+models' effect of raising 
+the information-amplification of 
+individual elements`/?  This 
+points to some tactics for defining, 
+assessing, and formalizing 
+data-modeling strategies: to 
+rigorously characterize a 
+strategy is effectively to 
+clarify how that strategy 
+contributes to information-delta 
+effects.
+`p`
+
+`p.
+Likewise, defining 
+delta effects can lay a foundation 
+for strategy implementations, 
+in terms of kernel operations 
+for query-evaluation virtual 
+machines, for example, which 
+would allow data-validation, 
+and data-integration strategies 
+to be implemented as sequences 
+of kernel operations.  That is 
+to say, a theory of delta-effects 
+should guide construction of 
+virtual machine operation-sets 
+in the data set and data-query 
+contexts.  In this sense, 
+modeling information-delta 
+`visavis; data sets serves as a 
+continuation on the related notion of 
+information-delta in the 
+context of procedural code models 
+discussed in Chapter 6: in both
+cases information-delta analysis 
+can be practically operationalized 
+via query-evaluation virtual 
+machines.
+`p`
+
+
+
+

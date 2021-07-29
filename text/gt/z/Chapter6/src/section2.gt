@@ -1,0 +1,1298 @@
+
+`section.Applying Pointcut Expressions for Data Modeling`
+`p.
+Constructions designed for code models do not automatically 
+translate to `i.data` models; however, code and data 
+models often overlap because one of the specific 
+purposes of computer code is to instantiate data models.  
+This is particularly true if one adopts strongly-typed 
+data-modeling conventions, where information spaces 
+in general are decomposed into distinct data types.  
+Almost all data `i.sets`/, for example, can be structured 
+as collections (which may be ordered or unordered sets 
+of individual values/records/objects) whose elements are data structures 
+which each have the same type, and accordingly 
+have similar patterns of organization (e.g., the same set of individual 
+data-fields).  Dividing a data set into distinct 
+collections-types and individual-value types yields the 
+possibility of modeling some or all of these collections 
+and/or `q.individual` values (which in general are not `i.one` 
+single value but rather single data structures 
+with some record-like structure, e.g., tuples of named attributes) 
+via corresponding data types implemented in computer code.
+`p`
+
+`p.  
+Even though one could manipulate data sets and/or databases 
+without such code-instantiations in some case (for instance via 
+database queries), it is generally possible `i.at least in theory` 
+to consider any data type internal to a data set and/or database 
+to be convertible to data types in a programming 
+language, with a corresponding implementation 
+in terms of procedures such as constructors and field-accessors 
+(some of the various procedure-roles were outlined in Chapter 5).
+This translatability is directly applicable 
+to data-integration, because any integration scenario 
+too complex to be achieved via database queries 
+alone may be resolved by providing full-fledged 
+programming-language implementations of any data types 
+which need to contribute values to an integrated 
+data model.
+`p`
+
+`p.
+A complicating factor here is that 
+different database models exhibit different levels of 
+schematic rigor: in a `JSON;-based model where 
+database objects may be arbitrary associative arrays, there 
+is no guarantee that the key-names for an arbitrary 
+object will match field-names for a recognized 
+data type, so strong typing in such an environment 
+is more difficult.  However, data models can impose 
+greater structure than required by a database 
+engine itself; marshaling existing data to 
+conform to a more rigorous model can then 
+be one part of a data-integration pipeline.    
+Whether or not concrete 
+implementations are actually used for a given 
+data type in a given project %-- and considering 
+that integration workflows can include elevating 
+more weakly-typed to more strongly-typed 
+transpositions of data sources as necessary`footnote.
+This may sound as if we are passing off as 
+almost trivial what is often the most difficult 
+part of data-integration (a trap lucidly and amusingly 
+captured, in the Semantic Web context, by Clay Shirky: 
+`bhref.https://www.karmak.org/archive/2004/06/semantic_syllogism.html`/).  
+However, transposing a data space to a canonical format is not any 
+more complex a problem than integrating multiple 
+strongly-typed spaces; so any computational environment 
+wherein the latter is feasible should make the 
+former feasible as well.  When weakly-typed 
+data sources are an integration hindrance, 
+this suggests a two-step strategy 
+wherein the sources are first normalized as strongly-typed 
+assets to begin with, so that type-theoretic 
+constructions are available to strategies at the 
+second (integration) stage.     
+`footnote` %-- we can  
+develop theories related to database management 
+built around strong-typing assumptions 
+with respect to partitioning database or 
+data sets' contents via type-attributions, 
+and expression of data-model constraints 
+in type-theoretic terms. 
+`p`
+
+
+`p.
+In practice, a central tool in the data-integration 
+arsenal is that of translating data types internal 
+to a data set/database into implemented data types 
+in some general-purpose programming language.  
+Once that occurs %-- and in the scope of 
+data-integration scenarios where such translation 
+is useful %-- we therefore have a body of computer 
+code whose explicit purpose is to provide 
+computational resources manipulating data types 
+that embody information present in a given 
+data source (e.g., a data set or database).  
+It is in this context that specifications 
+in the `i.data model`/, endemic to the data 
+source in question, can be carried over to 
+specifications in the `i.code model`/, 
+manifest in coding constructs and annotations 
+pertaining to the procedures whereby 
+units of data present in the original data source 
+are manifest as typed values in the corresponding 
+computer code.  There are many ways in which 
+data and code models in such contexts may 
+overlap. 
+`p`
+
+`p.
+Strong typing also offers a productive theoretical perspective 
+in which to discuss design patterns for data sets and 
+data-integration strategies.  Insofar as data sets are 
+(in principle) strongly classified into types, 
+a canonical (though not exclusive) mode of interacting 
+with data sets is to (via queries of some sort) 
+obtain typed values meeting certain criteria.  
+That is, many queries against a data set will 
+yield responses which take the form of a type-instance, 
+or a collection of type-instances, or an iterator 
+to step through such a collection.  Type-instantiation 
+thereby becomes an essential facet of the data set's 
+interactions and query capabilities.  In this sense, 
+a crucial detail that we may consider at any 
+site in a data-model instance (which we 
+assume may be logically represented in graph/hypergraph fashion)
+is: `i.what typed value can be initialized with elements 
+in the neighborhood of this site`/?  Shape-constraints provide a 
+way to explicitly annotate graph-neighborhoods with 
+type-initialization routines when appropriate.  
+Let's call this the `i.shape-constrained initialization` 
+(or `i.instantiation`/)
+concern (`q.concern` in the sense of a core implementation 
+detail for query engines).    
+`p`
+
+`p.
+Of course, in the typical scenario we do not happen 
+to be at a site `i.a priori` and seek to populate 
+a type-instance accordingly; instead, we want 
+to find sites which allow instances to be 
+constructed based on some criterion.  In other 
+words, we want to know whether 
+a type-instance initialized from the site will 
+have some property (some data field equaling 
+some value, or lying in some range, etc.).  
+Call this the `i.type-instance selection` problem.  
+For a given site, we want to know both 
+whether a type-instance can be constructed and, 
+if so, whether it would be selected when 
+filtered through criteria within 
+current query or traversal specification.
+Note that query optimization should assume 
+than the `i.selection` problem does 
+not depend on actually constructing 
+type-instances (otherwise we are not 
+really providing query evaluation, only 
+deserialization capabilities and 
+deferring to application code the 
+ability to select type-instances 
+based on logical criteria).  That 
+is to say, a database and/or data set 
+should be structured with enough 
+information to resolve 
+selection-problem questions 
+without `i.completing` 
+type-instantiation, though it 
+should be determined whether 
+instantiation is `i.possible.`/`footnote.
+In some cases, one could then 
+use data leveraged for selection-queries to 
+yield query-results that do not 
+depend on type-instances; this 
+would in keeping with conventional 
+query paradigms such as `SQL;.  
+In other words, we can return 
+results akin to what a type 
+instance `i.would` give for a 
+data-field or some other computation 
+if the instance were fully constructed 
+from the relevant neighborhood.  
+However, in query environments 
+such as we discuss here we prefer to consider 
+these `q.as if` constructions 
+to be merely a special case of 
+querying based on type-instantiation 
+in conjunction with selective 
+filters, where the step of 
+constructing a full instance 
+can be skipped in some 
+cases but is still logically 
+central to designing and implementing 
+the query engine. 
+`footnote`
+`p`
+
+`p.
+Note that the necessary expressiveness of shape-constraints 
+applied to selection/instantiation concerns expands according 
+to the range of graph structures one 
+seeks to target via a query engine.  
+For a hybrid property/hypergraph model, 
+for example, the process of initializing data points can be 
+connected to type-instances through multiple 
+pathways, including property-assertions, 
+hypernode/subvalue relations, inter-hypernode 
+edges, and foreign keys or similar `q.proxy` 
+values that (under semantic interpretation) 
+connect nodes to other nodes (which may not 
+be explicitly connected via graph mechanisms).  
+Each of these configurations have to be 
+accounted for when providing kernel 
+operations applicable to selection/initialization 
+evaluations and also when specifying 
+(and parsing) the query-language syntax 
+(see Figure~`ref<fig:prepersistence>; 
+for a visual illustration of these 
+different modalities where 
+information pertaining to a type-instance may 
+be accumulated).
+`p`
+
+`p.
+We claim in general that selection and 
+type-instantiation problems are the 
+most important desiderata for 
+designing data models and the data 
+sets that instantiate them.  
+In the current context, note also 
+that these are essential considerations 
+for designing query-evaluation 
+engines.  At the core of any 
+query-engine virtual machine 
+should be logic for initializing 
+type-instances from a graph-site 
+and for testing hypothetical 
+such instances against selective 
+filters.  
+`p`
+
+`p.
+We postpone until Chapter 9 a more
+thorough discussion of instantiation 
+and selection in these senses; for the 
+time being, note merely 
+that data-model features which 
+render selection and instantiation 
+problems tractable tend to 
+propagate to code-model features 
+in the context of code 
+libraries that implement the 
+corresponding data types.  
+Thus, the structural properties 
+of data models which are exercised 
+in selection/instantiation query 
+processing are also relevant 
+to code-models, and tend to be 
+visible in the numerous 
+concerns where code and data models overlap.  
+Some of these will be discussed 
+in greater detail in this chapter.
+`p`
+
+
+`subsection.Code Annotation with Units of Measurement`
+`p.
+As a concrete example of data/code overlap, consider the 
+problem of specifying units of measurement (this 
+chapter will address dimensional annotation 
+in terms of code models; we will revisit 
+this issue in later chapters in the context 
+of data models %-- particularly those 
+connected to image-annotations and image feature-vectors).
+Units-annotations document the scales of measurement 
+applied to data-points, which are therefore 
+endowed with more structure than just single numbers.  
+For example, in many applications involving computer 
+graphics and digital documents (such as `PDF;s), 
+`i.lengths` (on-screen or on-page distances) cam be expressed 
+in several different units, including inches, 
+centimeters, millimeters, and `q.points` 
+(which are `raisebox -> -1pt -> $`sfrac -> 1 -> 72 
+;;$ ;;nd of an inch), as well as 
+numerous other scales (in the context 
+of typesetting, and by extension document-viewing 
+software, one considers also lengths determined 
+by font-face designs, such as those based on the 
+letters `i.m` and `i.x`/, but such scale-units can 
+be set aside for the current discussion, other than 
+to note that a single dimension such as length 
+may indeed give rise to a surprisingly large 
+range of potential measurement scales).
+`p`
+
+`p.
+One important feature of robust code is ensuring that 
+procedures which operate on lengths (and 
+other unit-denominated measures) check that 
+input parameters match the 
+procedure's requirements (one should not 
+attempt to add inches and centimeters, for example).  
+There are various strategies to enforce 
+unit requirements.  One technique is to simply 
+recognize values measured according to different 
+scales simply as different types.  Then a procedure 
+which expects measures in (say) points simply 
+cannot be called with lengths in (say) 
+inches, because such a call would not type-check 
+(for the same reason that a procedure expecting 
+integers could not be called with, e.g., a character-string).  
+This forces calling code to explicitly check 
+that local values are defined in units compatible 
+to called procedures' expectations (converting between 
+scales if necessary), which prevents scale-mismatch 
+errors.  (One limitation of this approach is that 
+procedures playing the same role often then have to be defined multiple 
+times, for various plausible measurement scales, which is 
+facilitated by template programming but nonetheless leads to 
+a proliferation of distinct procedure implementations, particularly 
+if one tries to be strict about dimensional analysis %-- for 
+example, the product of two inch-lengths would, scientifically 
+at least, be an `i.area`/, inches `i.squared`/, and in general 
+every multiplication-operation yields a return type different 
+from the input types, so that there is a logically 
+unbounded number of distinct types needed to represent 
+arithmetic operations on a dimensionally-typechecked 
+measurement-units system).
+`p`
+
+`p.
+An alternative convention is 
+to use a `i.single` type for a given `i.dimension` 
+(regardless of measurement scale) but include in the 
+type-instance a data point indicating which scale applies 
+to the associated value.  In other words, each instance 
+has `i.both` a raw (scalar) value and a code indicating 
+the scale applicable to that value (e.g., inches, points, 
+millimeters, or centimeters).  Unit-checking (and 
+inter-scale conversions) can therefore be performed at 
+runtime, which is more flexible (even if less foolproof 
+then compile-type checks).  
+`p`
+
+
+`p.
+A different approach to scale-measure consistency is to 
+simply define procedures as taking raw values 
+(presuming that they are expressed as or converted 
+to a given scale prior to the call) but ensuring through 
+code analysis, annotation, and/or documentation that 
+procedures will never be called with wrongly-scaled 
+value.  For instance, if a procedure requires that its input 
+values be scaled in points, we can attempt to verify %-- 
+by examining every point in source code where 
+this procedure is called %-- that its values are 
+guaranteed to be measured in points (rather than 
+inches, say).  In the code accompanying this 
+book, for example, the procedure which is run when 
+locating a sentence's extrema `PDF; coordinates 
+receives a `q.baseline skip` value in (fractional) points, 
+but (in this code base) that procedure is only invoked 
+in the context of having parsed a metadata file where 
+the relevant baseline-skip measure is deserialized.  
+The deserialization code explicitly checks that the 
+relevant numeric value is properly described 
+(i.e., marked with `q.pt` according to `LaTeX; convention as indicator 
+that points are employed as the length-scale); in other
+words, the deserializer only accepts strings of the 
+form `q.number-plus-units` where the unit declaration 
+is restricted to `q.pt.`  This example demonstrates
+how scale-consistency may be enforced by simply 
+exercising proper care at any point where 
+unit-denominated values are obtained and then passed 
+to procedures where scale-measures impinge on 
+the procedure's outcomes. 
+`p`
+
+
+`p.
+This kind of explicit code-verification can be confirmed 
+by keeping track of code-locations where such 
+unit-denominated values are read.  Although some values 
+are expressed directly in source code, the more 
+common situation is that runtime values derive from 
+one of three sources: database query results; deserializing 
+markup which encapsulates values via binary codes 
+and/or character strings; or `GUI; components where 
+values are interactively entered by users.`footnote.
+This does not 
+mean users actually `i.type` values; instead they 
+may select values from a list, or by manipulating 
+some `GUI; gadget; consider selecting the 
+temperature on a virtual thermometer by turning a dial 
+or pulling a slider `q.widget` where, say, 
+clockwise or `i.up` signifies `q.warmer.`
+`footnote`  In the 
+`GUI; case, it is the component's responsibility 
+to declare which units of measurement are 
+assumed when translating the user-visible cues 
+(e.g. a dial or slider's angular or orthogonal position) 
+to a scaled measure (does a virtual thermometer 
+model temperature in Celcius or Farenheit?).  In the 
+case of database queries, the database itself 
+should specify units for non-scalar values.  
+In the case of serialization, scale-units 
+may be explicitly marked (by character strings such as 
+`q.pt` adjoined to numbers or via separate notations, 
+such as `XML; attributes) or else globally declared 
+for a given markup format (e.g. via an `XML; `DTD;).  
+In any event, the procedure which procures a value 
+from a database, markup serialization, or `GUI; object 
+can verify that it scales this value appropriately 
+by either deferring to the origin-points documentation 
+of its own units convention, if that is provided, or 
+else by performing explicit checks when those are 
+documented as necessary (e.g., number-plus-unit 
+strings in markup).
+`p`
+
+`p.
+In order to guarantee that code in this scenario is 
+managing scale integrity properly it is therefore 
+necessary to identify all procedures which input and 
+output scale-delimited values, and confirm that 
+(1) those which `i.input` such values specify 
+the unit or units they can properly work on; (2) 
+those which `i.output` such values either correctly 
+assume that the values are properly-scaled within the 
+origin-source from which these values are obtained or 
+else explicitly check for the value's declared units, 
+and perform scale-conversions as necessary; and 
+(3) that every procedure in the first case 
+(inputting scale-delimited values) is paired with a 
+procedure in the second case (outputting scale-delimited values).  
+That is, every time a value is passed as scale-sensitive 
+`i.input` we must be able to locate where it originates 
+as scale-verified `i.output`/.  Any of these checks 
+are preconditioned on capabilities to identify source-code locations %-- that is, 
+they all require pointcut expressions, 
+or similar code-site designations.  
+`p`
+
+`p.
+The example of scale-delimited values therefore presents a use 
+case of how data-modeling stipulations translate to code-modeling 
+implementation-patterns.  The units of measure by which particular 
+data values or fields are expressed is a non-trivial 
+detail of a `i.data` model.  One way that such details 
+become manifest as coding `i.requirements` is that 
+the code which implements data types instantiating a data 
+model includes sites where the corresponding unit-marked 
+values are obtained and/or used, and these sites collectively 
+represent source-code locations where specifications in 
+the associated data-model would be accommodated and/or 
+verified (assuming the code is implemented properly).  
+In these scenarios, a pointcut expression language 
+(querying for sites in `i.code`/) becomes indirectly 
+a modeling device for the underlying data, because 
+the concretization of the data model in 
+code-implementations serves to document, 
+codify, and exhibit the requirements expressed by the 
+data model.  In short, pointcut expressions 
+query (and their evaluators traverse) the code which 
+`i.documents by implementation` (in the sense of a `q.reference 
+implementation`/) specifications 
+pertaining to the relevant data model.  For this 
+reason, pointcut expression languages can be 
+considered intrinsic parts of languages for 
+querying (or specifying/validating) `i.data` 
+models, not just code models.
+`p`
+
+`subsection.Documentation by Implementation`
+`p.
+Insofar as code models `i.document by instantiating` 
+an underlying data model, it is important to 
+trace the features and aspects of a code body 
+which are directly related to that data model. 
+In general, the relevant code will be any components 
+where associated data-instances are read from (or 
+sent to) a data source, are manipulated and 
+calculated upon, and are (by themselves 
+or as transformed via calculations) shown 
+(statically or interactively) to human users.  
+A particular data-type may therefore be subject 
+to several different transformations or adaptations 
+to specific use-cases, in particular (1) persistence 
+to a database; (2) sharing via serializations; 
+(3) presentation via `GUI; components; 
+and (4) exposed to different algorithms 
+which extract information from the data (via 
+statistics or any other analyses, depending on the 
+kind of data involved).  We can picture this as a 
+diagram where a central data type is figured into 
+four different contexts (database, serialization, 
+`GUI;, and procedural capabilities implemented to 
+support the analyses relevant to that form of data) 
+%-- for sake of discussion, we'll call this 
+sort of diagram a `q.Semiotic Saltire` (`q.semiotic` 
+because the transforms of a given data type according to 
+these various adaption-contexts is an example of 
+what Joseph Goguen calls a `q.semiotic morphism` 
+`cite<JosephGoguen>;, and `q.saltire` because 
+this graphic-design/iconography term denotes 
+X-shaped patterns such as a central type with 
+four type-morphism radii):
+
+{raw>>
+\vskip 1.2em
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+
+\node (m11) at (0,0) {Persistence Model};
+\node (m12) [right = 8mm of m11] {};
+\node (m13) [right = 8mm of m12] {Serialization Model};
+
+\node (m21) [below = 7mm of m11] {};
+\node (m22) [right = 14mm of m21] {Data Type};
+
+\node (m31) [below = 7mm of m21] {Visual Object Model};
+\node (m33) [right = 19mm of m31] {Procedural Model};
+
+\draw (m11) -- (m22);
+\draw (m22) -- (m33);
+
+\draw (m31) -- (m22);
+\draw (m22) -- (m13);
+
+\end{tikzpicture}
+\vspace{1em}
+<<raw} 
+
+`noindent;Pointcut expression 
+languages extend to designations of type-transformations 
+across different radii in this kind of `q.semiotic` 
+intertype-space. 
+`p`
+
+`p.
+Consider, for example, the use of `GUI; components to 
+interactively visualize values of a given type.  
+For sake of discussion, assume a type 
+correlated with its distinct `GUI; class expressly 
+implemented to display values of that 
+underlying type %-- in this case the 
+relation between the central data-type and 
+the `GUI; visual-object type is 
+one of directly pairing off one type with 
+another, because an instance of the underlying 
+type is necessary to populate the 
+`GUI; type.  We can then `q.map` elements 
+of one type to another %-- in other words, 
+fields in the underlying type can be 
+displayed as text/drop-down selection labels 
+or visual gadgets in the `GUI; type.
+`p`
+
+`p.
+Imagine an `EHR; form,  
+with labels showing a patient's age,  
+gender (maybe from a fixed selection such as 
+Male, Female, Trans, Nonbinary, and so forth), 
+first and last name, etc.  Data-fields 
+such as `q.age` may well map directly between 
+the two types, but even with direct type-to-type correlations 
+such inter-type mapping can be more complex in 
+general.  Suppose, for example, that a  
+`EHR; form class incorporates a list of the 
+patient's current prescribed medications.  Because 
+this list will be of varying sizes for different 
+patients, the `GUI; representation would have to be 
+not a single label (or some other single-valued visual) 
+but rather an expandable subcontrol (such as a list 
+or table display) where the software can add rows 
+to list each of the medications declared 
+by the patient's record.  In the underlying data 
+type this information is a `i.collection`/, rather 
+than a one-off value (recall our definition of 
+mereotropic fields in Chapter 5).
+`p`
+
+`p.
+Consequently, in the 
+underlying-to-`GUI; `q.morphism` a 
+`i.collection` field must be associated with 
+multiple `i.procedures` on the `GUI; side, 
+insofar as visual objects representing 
+each element `i.within` the collection have to be 
+accounted for %-- the graphical display for  
+collections needs to expand and be generally 
+modified (for instance, column-widths adjusted, 
+in the case of table displays) to accommodate 
+the variant-sized nature of the originating data 
+source.  In short, the underyling-to-`GUI; association 
+is fully specified only by enumerating `i.multiple` 
+procedures and multiple code points %-- ones 
+where the `GUI; object is modified to accommodate 
+dynamic variations, such as variant-sized collections, 
+in the underlying type %-- such that the 
+identification of these code locations is again 
+an example of pointcut expressions.  
+`p`
+
+
+`p.
+In sum, pointcut expressions are intrinsic to rigorous 
+documentation of at least two of the 
+four points (that we have discussed so far, 
+i.e., visual objects and procedural models) 
+in the `q.Semiotic Saltire` diagramming 
+how a single data type morphs into different structures 
+to accommodate different coding requirements.  Expressing a 
+data type in `GUI; form is of course relevant 
+for end-user applications, but this is also relevant for 
+data integration because some data-integration scenarios 
+may require users to expressly examine data values 
+to confirm an integration-computation %-- a common scenario 
+in cases where, for instance, provisional machine-learning 
+outcomes are subject to confirming human reviews.
+`p`
+
+`p.
+Moreover, pointcut expressions can also be applied to 
+`i.serialization` at least in the context of 
+(what we can call) `q.grounded` serialization, where 
+serializing markup is annotated with metadata indicating 
+how the serialization format connects with an 
+underlying type system.  A simple example of `q.grounding` in 
+this sense is the annotation that a markup region 
+serializes a single instance of a specific data type, 
+but more complex grounding declarations can relate a 
+serialization artifact (such as the encoding of a 
+specific data field) to one or more implementation code-procedures 
+(such as the accessors which collectively define the 
+interface for a encapsulated field, which can be 
+seen as procedural manifestations of that field as it 
+is described in a data model, with a single data-model 
+field mapping to multiple accessor-procedures).  In 
+this sense serialization-grounding metadata and 
+pointcut expressions share similar procedure-denotational 
+building blocks, aside from the possibility 
+(e.g. via virtual properties implemented through 
+procedure `q.views`/) that grounding would reference 
+pointcuts directly.   
+`p`
+
+`p.
+This discussion therefore suggests that pointcut 
+expressions cut across data-to-code-modeling 
+for three of the four points of the `q.Semiotic 
+Saltire.`  There are scenarios where
+pointcut expressions may apply directly to 
+`i.database` logic (the fourth angle of the Saltire), 
+but we will argue that the deeper connection 
+between pointcut expressions and database concerns 
+lies in the underlying hypergraph model, as will 
+be explicated in the next full section.
+Prior to that discussion, however, it is relevant to 
+point out certain additional areas of overlap between pointcuts and 
+procedural interfaces, aside from those already alluded 
+to above, particularly in contexts such as runtime 
+reflection and remote procedure calls.
+`p`
+
+`subsection.Annotation-Based Reflection and Procedural Binary Equivalence`
+`p.
+We said earlier that pointcut expressions `q.locate` points in 
+source code.  However, the mechanisms through which 
+such expressions are evaluated may depend on `i.annotations` 
+applied to the code, so the scope of a pointcut expression 
+language (or a hybrid code annotation and query language 
+which includes pointcuts as one construct) encompasses 
+annotations which provide the infrastructure for 
+pointcut expression targets, as well as pointcut expressions 
+themselves.  Although code-annotations are potentially 
+an intrinsic language feature %-- `Java;, `CSharp; `Cpp; and 
+other mainstream enterprise-level languages all have 
+some built-in annotation (aka attribute or `q.decoration`/) 
+mechanisms (`Cpp; with the caveat 
+that annotations are compiler-specific and not uniformly 
+standardized, although that is gradually changing 
+`cite<CorentinJabot>;) %-- this discussion will
+focus on the (potentially more flexible) use of 
+`i.external` annotations, where a given code base 
+is accompanied by a distinct code body (potentially 
+in a different language, one unrelated to any standard 
+or compiler/runtime capability associated with the 
+original language) that describes properties, requirements, 
+metadata, or runtime-usable documentation about the 
+original code.  A good case-study in the use for 
+such annotations is support for dynamic method calls: 
+providing an application (or in general a code base) 
+the capability of invoking a procedure by 
+expressing a textual description (most simply just 
+the procedure-name) of the desired procedure, along 
+with a textual representation of the desired 
+arguments.  Exposing procedures to textual 
+runtime-reflection in this sense has applications 
+for unit-testing, for embedded scripting languages, 
+for fine-tuning the behavior of a running application, 
+and for documenting data-model requirements 
+(because we can dynamically examine requirements 
+declared for different code elements, such as 
+data types, data fields, and procedures, allowing 
+these requirements to be interactively documented 
+as a feature of the associated software application).   
+`p`
+
+
+`p.
+To develop the theory of dynamic runtime procedure-calls, 
+consider first that, without runtime reflection,  
+procedures can only be `i.statically` invoked; in other 
+words, a procedure runs only if there is a point 
+in the source code where it is instructed to run.  
+Of course, applications do not in general know 
+exactly which procedures need to be performed in order 
+to respond to the user's request, since 
+one cannot know what exactly the user will do 
+(the only exception to this principle 
+might be behind-the-scenes programs, such as those 
+which run when an operating system first starts up, 
+but these programs do not typically interact with 
+users at all, and therefore they are not technically 
+`i.applications`/).  Most real-world programs, 
+in short, do not follow a fixed sequence; instead, after 
+some preliminary startup, they enter a mostly 
+inactive state (e.g., an `i.event loop`/) and wait 
+for user input.  They then respond on the basis of 
+what the user does (clicks the mouse at a given 
+screen location, types on a keypad, etc.).`footnote.
+Neither theories emphasizing concurrency %-- such as 
+Petri Nets or $\pi$-calculus %-- nor conventional lambda 
+calculi seem especially well-suited for modeling 
+program flow in `GUI; applications.  Responses 
+to user actions %-- which would typically span multiple 
+procedures %-- nay run in parallel (because the user 
+may oresent new action before a prior response has 
+completes), but the specific modeling challenges 
+in this context are not centered on concurrency 
+`i.per se`/, but rather on indeterminacy `visavis; 
+`i.which` action the user will perform and the fact 
+that one single overall application state can be 
+affected by any number of possible actions.  Perhaps 
+some not-yet-formalized hybrid of (say) $\lambda$ and $\pi$ 
+calculi could appropriately model the semantics of `GUI; applications 
+in this sense.  A good foundation might be so-called `q.object` 
+Petri Nets (see `cite<RadekKoci>; or `cite<KohlerRolke>;, for example).
+`footnote`  The 
+user's actions are typically called `i.signals`/, and 
+the steps taken by the application to usefully respond 
+to those actions are `i.handlers`/.  Handlers generally 
+call different procedures based on the nature of the 
+user's actions, but all logic involved in translating 
+a given action to one or more procedure-calls 
+has to be hard-coded in the application code.
+`p`
+
+`p.
+Dynamically invoking procedures via runtime reflection 
+varies in this scenario because the `q.signal` which 
+the application responds to %-- assuming the 
+application is in a passive state waiting for input 
+%-- is not a mouse or keypad event (or other user 
+device) but rather an explicit description of the 
+desired procedure (so the procedure does not need 
+to be inferred by parsing a less-specific input 
+event).  For example, when a user clicks on a `q.save` 
+button they may very well be unaware that satisfying 
+their intended request requires calling a function 
+called (something like) `q.`bb.saveFile()`/`/; but a 
+dynamic runtime-reflection invocation would 
+explicitly designate the relevant procedure 
+(e.g., `b.saveFile()`/) by name.  To be sure, 
+in most cases users would not themselves type 
+in the procedure they want to invoke 
+(although some software, such as `b.emacs`/, 
+works expressly by users typing 
+instructions).  On the other hand, one design 
+principle for adaptive user-facing software 
+is to map user-actions and related `GUI; elements 
+(such as buttons and menu items) to text descriptions  
+in lieu of hard-coded procedure calls %-- a 
+`qb.save` button may be mapped to a text string 
+(or even a text file somewhere) containing the 
+instruction `qbcomma.saveFile()` which ends up calling 
+that procedure.  Using such a text-string as an 
+intermediate evaluation-step would permit the application 
+to be tweaked by modifying the text to call 
+a different procedure, or multiple procedures, as 
+needed %-- typically the user would not 
+modify the text directly, but it could 
+be changed during some sort of application upgrade, 
+or to sync the application with an external 
+cloud service, or some other post-install adaptability 
+feature.  
+`p`
+
+
+`p.
+Even when runtime-reflection procedure-calls are 
+not implemented for adaptive purposes along these lines, 
+such capabilities may still be relevant for 
+testing, documentation, and requirements engineering.  
+For example, if a data model stipulates certain 
+data-management requirements (such as unit-scales as 
+discussed above), one can verify that the code 
+base handles those requirements properly by 
+executing a test suite which dynamically calls 
+procedures that are affected by these 
+specifications, verifying that they manage 
+values (and correctly handle malformed data) 
+properly.  Aside from double-checking that 
+the code base is properly implemented, the 
+code supporting such testing capabilities 
+provides documentation of the underlying 
+model (according to the principle we 
+earlier referred to as `q.documentation-through-implementation`/).  
+In general, runtime-reflection promotes documentation-through-implementation 
+by allowing documentative descriptions or scripts to 
+manifestly demonstrate features of an underlying data model 
+by invoking procedures where these features 
+are relevant.  In short, one strategy 
+for rigorously enforcing data models through 
+code models is to provide external annotations 
+sufficient to allow data-model-sensitive code 
+to be tested via external invocations.  
+`p`
+
+`p.
+To be sure, external invocation requires more 
+than just describing a desired procedure: 
+the runtime-reflection code needs to 
+parse some encoding of arguments `i.to` 
+the procedure, and moreover this runtime-reflection code 
+needs to set up the procedure call so as 
+to `i.mimic` the Application Binary Interface 
+(`ABI;) which collectively represents the 
+compiler, operating system, and programming-language 
+specifications for how procedures may be called 
+at the machine-language level (this is less 
+applicable to dynamic languages such as `Lisp;, 
+or indeed languages such as `Java; or `CSharp; 
+with built-in reflection capabilities, but 
+it applies directly to lower-level 
+languages such as `C; and `Cpp;).
+`p`
+
+`p.
+We'll concentrate on `Cpp; in particular: there 
+are several different strategies for 
+supporting `Cpp; reflection, each with 
+distinct trade-offs.  One powerful solution 
+is to use an expansive runtime-metadata 
+framework (particularly `LLVM;) which allows 
+almost any procedure to be exposed to a 
+reflection system (and therefore invoked 
+dynamically from an external call-description); 
+the problem with libraries such as `LLVM; 
+is that they tend to make code 
+bases much more difficult to compile and 
+install than the equivalent code base on its 
+own, which limits the feasibility of distributing 
+the entire code base in source-code fashion.
+`p`
+
+`p.
+A different solution is typified by 
+`Qt; (the most widely used cross-platform 
+`Cpp; Application-Development framework), which 
+relies on preprocessing certain source-code 
+files; this approach is limited by the 
+necessity of that preprocessing step and 
+also by the restriction that only procedures 
+(and likewise data-fields)  
+which fit certain technical criteria 
+may be exposed to the `Qt; reflection system.
+`p`
+
+`p. 
+The AngelScript embedded scripting 
+language is a good example of a third alternative, 
+where the language runtime translates certain 
+runtime logic directly to assembly language, 
+adapted for a number of different operating 
+systems and compilers %-- the limitation 
+of such a solution is (first) that such 
+code becomes, for all intents and purposes, 
+completely opaque for any programmers who 
+are not intimately familiar with multiple 
+target platform's assembly instruction set 
+and (second) that it demands fairly complex 
+programmer-supplied code to describe exposed 
+data types (as well as procedures) to the 
+AngelScript runtime.
+`p`
+
+`p.
+A fourth scenario is 
+represented by `Lisp; dialects such as 
+`ECL; (Embeddable Common Lisp) `cite<ECL>; and 
+`Clasp; `cite<Schafmeister>;, where `Cpp;
+functions can be exposed to `Lisp; code via a 
+`q.foreign-function interface` (or, at least 
+in `Clasp;, can potentially be compiled 
+directly into the `Clasp; system as 
+hidden procedures in object-file scope).  These 
+approaches require that `Cpp; bridge code 
+be able to work directly with `Lisp; 
+constructions such as pointer-fixnum unions 
+and cons cells, which leads to very non-standard-looking 
+`Cpp;.  Such problems are characteristic 
+of the general approach taken by most 
+`C; or `Cpp;-interoperating scripting languages, 
+which is either a fifth alternative (when 
+enumerating `Cpp; reflection strategies) or a 
+variation code pre-processing; namely 
+the implementation (either manually coded or 
+automatically derived via a preprocessing 
+tool) of `q.wrapper` procedures which marshal 
+data back and forth between `Cpp; (or, likewise 
+but less complexly, `C;) and the relevant 
+scripting language (Python, Ruby, JavaScript, etc.).     
+`p`
+
+
+`p.
+In this book we are proposing (and illustrating in prototype 
+fashion) a framework for general code annotation and 
+pointcut-expression declarations/evaluations, which 
+includes a system for resolving procedure-descriptions 
+to `ABI;-compatible invocation structures at runtime.  
+While any of the strategies just enumerated could 
+potentially be applied to such a framework, 
+we propose a system based on the notion of 
+`i.procedural binary equivalence`/, which 
+eliminates almost all of the problems 
+associated with the above-mentioned reflection 
+paradigms while significantly reducing the 
+programming effort (and boilerplate code) 
+needed to provision applications with runtime-reflection 
+capabilities.  The central observation for this 
+technique is to note that from an `ABI; perspective 
+the machine-level code is not concerned with the 
+actual types accepted by a signature, but simply with 
+the binary profiles (the byte-lengths and, potentially, 
+constructor/destructor/cast functions called on 
+temporary values) of values conformant to those types.  
+In other words, a pointer to a function of one 
+type can safely be cast to a related function-pointer-type 
+so long as the types constituting the latter type's 
+binary and temporary-value aspects are the same as 
+the actual types of the targeted procedure.  
+Via such equivalences, the expansive range of 
+types which enter into procedure signatures can be 
+scoped down to a much smaller collection of 
+`q.canonical` types, or (the terminology we 
+propose) `q.pretypes,` so that we construct 
+equivalence classes of many different functions 
+that are distinct on the type/signature level 
+but binary-equivalent on the `q.pretype` level.  
+Exposing a procedure to runtime-reflection 
+thereby entails simply classifying the procedure 
+within one of the binary equivalence classes.
+`p`
+
+
+`p.
+This technical framework comes with some caveats.  First, 
+binary equivalence is (to some extent) compiler-specific, 
+so adopting these techniques involves either knowing 
+`i.a priori` that a code base is specifically targeting 
+a given compiler (`GCC;, say) or else using runtime 
+and/or compile-time checks.  In addition to 
+compiler variation, binary equivalence may also 
+depend on factors endemic to the code base such 
+as whether smart pointers are utilized, or whether 
+certain specific data types are prominent 
+(such as `b.QString` or `b.QVariant` for 
+application composed via the `Qt; framework); the 
+actual binary equivalence-space may accordingly 
+vary from one code base to another.
+`p`
+
+`p.
+A second caveat is that 
+combinatorial expansion of the number of distinct 
+binary equivalence classes needed to support relatively 
+fully flexible procedure-exposure can potentially 
+make compile-times too long.  It is, in short, unrealistic 
+to expect `i.every` procedure in a code base to be 
+directly invoked using techniques described here; 
+for procedures with unusually complex signatures, it 
+may still be necessary to provide wrapper code 
+(e.g. instead of a function which takes variant-length 
+argument packs provide a version taking a reference-to-vector, 
+expose this latter function to reflection and call 
+the former function from the latter).  Nevertheless, 
+binary-equivalence techniques should make it possible 
+to greatly reduce the number of occasions in which 
+wrapper code needs to be written or generated.  
+For procedures whose signatures fit within a 
+given binary-equivalence scheme, exposing the 
+procedure to a runtime-reflection engine would 
+then be as simple as annotating the procedure 
+with a single numeric code matching the procedure 
+to an equivalence-class.  The practical details 
+of such annotations are outside the scope 
+of this chapter, but are documented in some 
+detail in the book's supplemental materials. 
+`p`
+
+
+`p.
+With such a reflection system in place, it is 
+possible without significant modification to 
+provide runtime-reflection to a code base, 
+particularly one implementing a `q.documentation-through-implementation` 
+project wherein individual procedures (and their properties declared 
+as code meta-data) instantiate and exhibit data-model 
+specifications.  Such an approach raises the possibility 
+of examining code in the vicinity of specific 
+procedure-calls to verify and/or document the 
+connections between code and data models %-- i.e., 
+test that the code base accurately instantiates 
+an underlying data model and/or document the 
+data model by expositing its implementation in the code.  
+An example of such documentation might follow from 
+the above discussion of unit-scale verification: 
+the code's logic for checking scale-measure 
+properties on input/output values and lexically-scoped 
+variables could be tested by externally simulating 
+calls to procedures which input scale-delimited 
+values as well as calls to the outer procedures 
+which call such procedures in their function body.  
+In general, an outer procedure may go through 
+several steps to ensure that parameters passed 
+to a called procedure are in accord with 
+data-model requirements.  A useful design pattern 
+is to implement this preparatory logic 
+in anticipation of the code being verified/tested 
+by external runtime-reflection calls; here both 
+outer and called procedures would be exposed to 
+the reflection engine and, moreover, a logging 
+or documentation mechanism could be implemented 
+for the code `i.surrounding` the inner procedure-call 
+to clarify steps taken to ensure data integrity.  
+`p`
+
+\phantom{x}
+
+`subsection.Meta-Procedural, Procedural, and Sub-Procedural 
+Syntagmatic Scales`
+`p.
+The above discussion points to a larger topic in the overall theory 
+of modeling computational processes: a computational step 
+which functions logically as a single procedure-call 
+may encompass several additional steps before or 
+after the actual procedure-call involved, as data 
+entering (and returning from) that procedure 
+is assembled and/or validated.  This expanding-outward 
+phenomenon is particularly evident in the case of 
+`i.remote` procedure calls, which are more complex 
+than simply temporarily delegating execution to a 
+different subroutine than the one currently 
+running.  A procedure which invokes a different 
+procedure on some remote service (a cloud service, 
+say) may be unable to simply pass raw values 
+(there is no `ABI; binding remote procedures), but 
+instead may need to encode inputs in (say) a 
+textual markup format, and similarly deserialize 
+data received as response.  More often than not 
+the calling procedure does not wait for the remove 
+call to return, but rather provides an anonymous 
+procedural value to act as a return-handler.  So 
+in a typical scenario remote procedure calls 
+involve data serialization/deserialization and 
+intermediate procedural values (moreover, 
+on the remote endpoint, clients do not typically 
+requested actual procedures directly but 
+invoke `i.services`/, or what may be called 
+`i.meta-procedures`/, which perform data-marshaling 
+and delegate to `i.de facto` procedures based 
+on the provided request).  In short, 
+remote procedure-calls involve preparatory 
+code on both endpoints which serve as a 
+logical framing of actual procedure calls 
+with additional data-marshaling/handling.
+`p`
+
+
+`p.
+As noted above in the context of Syntagmatic 
+Graphs, a single procedure-call is built up in 
+stages, even though from the perspective of 
+high-level programming-language syntax a call 
+can be expressed as one single expression-unit 
+(the intermediate stages being largely 
+invisible in the surface-level code but implicit 
+in the compilation of this code to machine 
+and/or virtual-machine representations).  On 
+the other hand, as the examples of scale-measure 
+checking and remote-procedure calls demonstrate, 
+sometimes the multi-stage framing of a call 
+propagates to computational steps that `i.are` explicitly 
+visible in high-level code, and sometimes (as 
+in remote-procedures) the logic actually involves 
+`i.meta-`/procedures which augment the structures 
+of procedure calls themselves with extra 
+data-marshaling and handling logic.
+`p`
+
+`p.
+Formally representating 
+the temporal sequencing involved in performing and 
+managing a single procedure-call can therefore 
+concern several different levels of code `q.granularity,` 
+that `q.below` the original source-language (as 
+in compiler-related intermediate representations) and 
+`q.above` (as in networking with remote-procedure 
+providers) as well as on the level of the source-language.  
+This is why we propose a sufficiently expressive 
+code-representation system (e.g., Syntagmatic Graphs) 
+to embody coding structures at each of 
+these levels.  By extension, code-validation 
+via runtime-reflection can test/document coding 
+assumptions by testing implementations at 
+each of these three levels.  This is a further 
+rationale for using code-modeling 
+as a data-modeling device, and also points 
+to another feature which a code-annotation 
+language should support: the capability of 
+expressing code structures at the three levels 
+(from what we might call `q.sub-procedural` to 
+`q.meta-procedural`/) described here.  
+These represent different coding environments 
+where the `q.procedural` aspect of the 
+`q.Semiotic Saltire` would be in effect. 
+`p`
+
+`p.
+In effect, the general model of computation that 
+we are operating with here %-- where the 
+lambda-calculus notion of `q.reduction` is 
+replaced by a process-calculus-like 
+`q.binding,` implying a connection 
+between descriptions of computataton 
+and epistemic semantics based on `q.information 
+content` %-- this model can be manifest 
+at several different levels or scales of 
+computations, insofar as these are identified 
+in computer code.  We'll call these 
+subprocedural, procedural, and meta-procedural 
+`i.Syntagmatic scales` so as to have 
+convenient terms for such levels.  Again, the 
+main goal of introducing and arguing for 
+special terminology is to established 
+structural features that will be 
+useful for query languages; insofar as a 
+pointcut expression language can be 
+incorporated as one part of a 
+hypergraph description/siting language, 
+terms for different Syntagmatic scales 
+can become terms used and recognized 
+in the query language.   
+`p`
+
+`subsection.Case Study: Annotation and Image Markup`
+`p.
+This section will conclude by outlining how 
+themes discussed in this chapter can 
+be demonstrated via one specific data 
+format and code library, namely the 
+Annotation and Image Markup project 
+(`AIM;) `cite<ChanninEtAl>;, 
+`cite<PattanasakMongkolwat>;,
+`cite<RubinSupekar>;, 
+`cite<SchaerEtAl>;,  
+`cite<KorenblumEtAl>;. 
+Originally part of the cancer Biomedical Informatics Grid 
+(`caBIG;), `AIM; standardized the encoding and 
+sharing of image-annotations used by 
+radiologists and other pathologist to 
+diagnose conditions (tumors, for 
+example) from medical images.  
+An image-annotation in this context 
+is typically a geometric description 
+or designation of a `q.Region of 
+Interest` (`RoI;) which the examiner 
+believes is diagnostically significant.  
+Regions of Interest can be demarcated 
+in simplified geometric forms (via circles, 
+rectangles, and so forth) or 
+isolated by creating overlays which themselves 
+have an image-based format (the simplest 
+example being a black-and-white picture 
+where white pixels represent the region/foreground 
+and black the background), so as to represent an 
+`RoI; more granularly.  
+`p`
+
+`p.
+For sake of discussion, we will examine `AIM; in the 
+context of a data set obtained from The 
+Cancer Imaging Archive (`TCIA;), 
+which is sampled and partially-reproduced 
+as supplemental materials for this book.  
+This specific data set comprises a 
+collection of `XML; files which conform 
+to specifications for serializing 
+`AIM; data.  We also republish 
+code within the `AIM; `Cpp; library 
+(`AIMLib;) with minor changes for 
+modern compilers (the original code 
+was developed around 2013).  That code 
+includes parsers for consuming `AIM; 
+`XML; files.  More substantially, 
+we provide a client library 
+to simplify the process of 
+loading annotations as runtime 
+objects from `AIM; serializations.  
+This `AIM; client library
+(published as an `b.aim-client` `Qt; project),
+which wraps some of the functionality 
+exposed by `AIMLib;, hopefully 
+demonstrates how specifications within  
+data models can be translated to 
+requirements or functionality implemented 
+within code models.  The `b.aim-client` 
+code provides several forms of runtime-reflection 
+which supplements the underlying  
+`AIMLib; code base, such as dynamic 
+procedure-invocation and also type-reflection 
+capabilities.  For example, `b.aim-client` 
+packages standard `Cpp; `b.typeinfo` 
+functionality into an `AIM;-specific 
+type-reflection class that manages 
+details such as type-name demangling.  
+A typical use-case for type-reflection, 
+demonstrated in the book's accompanying 
+code, involves casting an abstract 
+`b.MarkupEntity` pointer (a base 
+class that is specialized for different 
+annotation-shapes) to its 
+specific annotation type.  Such reflection 
+capabilities simplify the 
+process of extracting the core annotations 
+from the full suite of details 
+encoded via an `AIM; annotation collection 
+(specifically, an instance of the 
+`b.AnnocationCollection` class). 
+`p`
+
+`p.
+Bioimage annotations intrinsically represent 
+three different sorts of information %-- 
+geometric data constituting annotations 
+themselves; presentation data governing 
+how annotations are made visible to human 
+users; and bioinformatic content which 
+provides an interpretive context for the 
+image data (e.g., a description of the 
+specific tissues, organs, or organ systems 
+visible in a bioimage).  One step 
+in semantically organizing the totality 
+of annotation information is to 
+clarify which data points serve which 
+roles.  For example, in the `b.GeometricShapeEntity` 
+class, data fields such as `b.LineColor` 
+(and line thickness, opacity, style, etc.) 
+are presentation details, whereas the 
+annotation's vertex coordinates (a sibling 
+class to `b.GeometricShapeEntity`/) 
+are underlying spatial data (logically 
+separate from any visualization).  
+The `b.aim-client` library uses several 
+techniques to render these semantic details 
+more explicit, relative to the 
+underlying `AIMLib; code; for example, 
+we provide stronger typing for 
+geometric and presentation details 
+(colors and line-graphics specifications 
+are objects rather `Cpp; strings, for instance).  
+More details concerning the resulting code-model, which 
+provides a semantically richer interface packaging 
+`AIM; data, will be discussed in Chapters 7 and 8.
+For the time being, we will merely suggest that 
+`b.aim-client` concretely illustrates 
+certain themes we have claimed as data-integration 
+strategies over the course of this chapter, 
+such as employing runtime-reflection 
+capabilities as a device for data-modeling.  
+`p`
+
+
+

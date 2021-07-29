@@ -1,0 +1,95 @@
+\begin{figure}[t]
+
+\caption{Role-Deltas on a Localized Syntagmatic Graph}	
+
+\begin{center}
+\begin{tikzpicture}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\colorlet{blbl}{blue!70!black}
+\colorlet{blblor}{blbl!70!orange}
+
+\colorlet{gror}{green!40!orange}
+
+
+\node (dummy) at (0,0) {};
+
+\colorlet{blor}{black!80!orange}
+
+\node (ti) at (3,-7.5) [draw,minimum width=10mm,minimum height=13mm,
+regular polygon, rotate=90, regular polygon 
+sides=6, yscale=2.4,label=center:Type-Instance,align=center] {};
+
+\node (sv1) at (0,-.7) [draw,ellipse,minimum width=11mm,minimum height=5mm,
+rotate=3,fill=white,label=center:subvalue] {\phantom{subvalue}};
+\node (sv2) at (2,0) [draw,ellipse,minimum width=11mm,minimum height=5mm,
+rotate=4,fill=white,label=center:subvalue] {\phantom{subvalue}};
+\node (sv3) at (4.2,-.5) [draw,ellipse,minimum width=11mm,
+minimum height=5mm,fill=white] {subvalue};
+
+\begin{pgfonlayer}{background}
+\node (svs) [draw,ellipse,fill=blblor!40,fit=(sv1) 
+ (sv2) (sv3), inner sep=-3pt,rotate=3,xscale=0.9] {};
+\end{pgfonlayer}
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 10pt, shorten >= 9mm, out=-85,in=95] 
+([xshift=4pt]svs.west) to (ti.north west) node 
+[near start, fill=brown!60, fill opacity=.8, 
+text=black,xshift=-5mm,yshift=-16mm] {Hypernode};
+
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= -4pt, shorten >= 3mm] 
+(sv3.south) to ([xshift=20mm]ti.north east) node 
+[near start, draw=blue!20!black,inner sep=9pt,rounded corners=9pt, 
+fill=blue!10, fill opacity=.95, text width=4.5cm, 
+align=left, line width=1pt, double,
+text=black,xshift=40mm,yshift=-34mm] {Subvalue Data 
+Field, with annotations such as:\\
+\hfill\begin{minipage}{4cm}{\textcolor{black}{%
+\begin{itemize}[itemsep=-2pt]
+\item{} Type
+\item{} Value
+\item{} Units/Scale
+\item{} Range
+\item{} Distribution Metric
+\item{} Distance Metric
+\end{itemize}
+}
+\end{minipage}
+};
+
+
+\node (prop) [regular polygon, regular polygon 
+sides=6, yscale=.4,fill=gror!50!black,
+fill opacity=.6,
+inner sep=4pt,rotate=90,
+label=center:{\colorbox{white}{key:value}}] at (-1,-5.4) 
+{\phantom{key:value}};
+
+\node (prop1) [regular polygon, regular polygon 
+sides=6, yscale=.4,fill=gror!50!black,
+fill opacity=.6,
+inner sep=4pt,rotate=90,
+label=center:{\colorbox{white}{key:value}}] at (-1,-6.9)  
+{\phantom{key:value}};
+
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 5pt, shorten >= 9mm,out=-45] 
+([xshift=-4pt,yshift=-4pt]prop.south) to ([xshift=-1mm]ti.north west) node 
+[midway, fill=brown!60, fill opacity=.8, 
+text=black,xshift=4mm,yshift=-61.4mm] {Properties};
+
+
+
+\end{tikzpicture}
+\end{center}
+
+
+\label{fig:delta}
+\end{figure}
+

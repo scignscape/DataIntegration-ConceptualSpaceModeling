@@ -1,0 +1,1059 @@
+
+`section.Delta Roles and Conceptual Space Markup Language`
+
+`p.
+Recall that in the Chapter 6 we
+highlighted `q.selection` and `q.instantiation` 
+concerns in the context of queries against data sets.
+To reiterate, imagine a data set (or alternatively 
+a database) as encoding the totality of its 
+information in the form of a single graph, so 
+that pulling information from the data set 
+is analogous to performing graph queries.  
+Assuming the data set is strongly-typed, one 
+property of such a graph is that all of its 
+information content is sorted into type-instances.  
+In general, this means that structures within the graph 
+%-- which may be hypernodes, edges, properties, 
+and so forth %-- supply data-points 
+which define a specific type-instance 
+(either the values of data-field indexed 
+by name, or one value in a multi-value 
+collection).
+`p`
+
+`p.
+Data spaces can of course have 
+many different structures; only in special 
+circumstances will they be `i.explicitly` 
+encoded via graphs.  With a suitably 
+general and expressive graph model, however 
+%-- for instance, one which combines 
+property and hypergraphs (as discussed in earlier 
+chapters) %-- we can always treat existing 
+data-set layout as isomorphic to a 
+graph schema subject to certain evolutionary 
+and usage/query constraints.  For this reason 
+we will proceed by anchoring all discussion 
+in hypothetical data sets presented as hypergraphs, 
+setting aside the details of how to translate queries 
+formulated in other context to queries 
+against hypergraphs. 
+`p`
+
+`subsection.Information Delta and Data Modeling`
+`p.
+Starting from the principle that certain 
+graph-sites anchor type-initialization 
+opportunities, we can refer 
+to an `i.instantiation neighborhood` of a graph, demarcated 
+by all parts of the neighborhood 
+supplying data to the same 
+type-instances.  For example, a 
+type-instance may be encoded via one 
+hypernode, leveraging values inside 
+the hypernode, along with (potentially) 
+properties asserted on the hypernode 
+itself or any node inside it (which 
+may carry other data-points).  
+We can then expand the neighborhood 
+to include other hypernodes 
+which are necessary to initialize 
+the neighborhood's `q.root` 
+instance.  In this sense 
+neighborhoods may overlap.`footnote.  
+If desired, we can distinguish 
+hypernodes whose purpose is to 
+provide the equivalent of individual 
+data fields %-- e.g., multi-value 
+collections %-- from top-level 
+hypernodes that carry instances 
+of types which are primary from 
+the point of view of the governing 
+data model; secondary type-instances 
+are then logically `q.part of` 
+primary type-instances, providing 
+at least in terms of logical interpretation 
+a `q.nesting` effect characteristic 
+of hypergraphs.
+`footnote` 
+`p`
+
+`p.
+According to the terminological conventions 
+we employ here, a `q.site` in a graph 
+is any structuring element %-- hypernodes, 
+`q.hyponodes` (nodes inside other nodes), 
+edges, properties, channels, named 
+subgraphs, and so forth.  Sites are  
+associated with type-instances based 
+on the neighborhood where they are contained.`footnote.
+Without further qualification we will use `q.neighborhood` 
+in this discussion to loosely mean `q.instantiation` 
+neighborhoods (in our terms; note that these are somewhat 
+different now from the definitions we proposed in Chapter 6).
+`footnote`  Each site 
+then contributes some data, directly or 
+indirectly, to its associated type-instance.  
+Any query engine targeting the graph must therefore 
+be able to identify `i.how` sites contribute 
+data, and incorporate these details into 
+its query-evaluation strategies, particular 
+in the context of selection and instantiation 
+queries.
+`p`
+
+
+`p.
+To demonstrate, first consider `q.instantiation` or 
+`q.initialization` queries, which recall are 
+those confirming that in the neighborhood 
+of a given graph-site we have sufficient 
+data to populate an instance of some type.  
+Essentially, this means at least that there 
+are data points for every field that is 
+required for initializing a value of that 
+type, where these data points are 
+embodied in structures attached to the 
+site.  Determining instantiation-queries 
+therefore involves matching requisite 
+fields against sites in the relevant 
+neighborhood providing those fields' 
+data.  For such a process to 
+proceed unambiguously, neighborhood-sites 
+would be annotated with metadata specifying 
+how they contribute to instance-initialization 
+for some type; this metadata may be inferred 
+by the graph engine or directly asserted 
+by the governing data model.   
+If it is inferred, we assume that the basis for this 
+inference is some unambiguous property 
+of the data model, with the 
+data modeling language being formulated at 
+least in part to drive that kind of inference.  
+For instance, associating subvalue-nodes (hyponodes) 
+with a named field and declaring that field as 
+necessary for type-initialization %-- as part 
+of the declaration for some type %-- signals 
+that a subvalue indexed via that name 
+is an initialization-precondition, and that 
+the relevant hyponode thereby plays 
+an initializing role in the surrounding neighborhood.  
+The relevant type- and field-documentation 
+therefore serves as a form of initialization-annotation. 
+`p`
+
+
+`p.
+In effect, then, we can stipulate %-- as a precondition on a 
+suitable data-modeling framework %-- that 
+annotations may define 
+how data sites contribute to 
+type-instantiation (allowing for this 
+metadata to be implicit in other, related 
+declarations).  Considered from the 
+perspective of `i.information content`/, 
+we can then investigate how each 
+site's contributions to an initialization 
+%-- the nature of the information the 
+supply %-- augment information 
+content in different ways.
+`p`
+
+`p.
+For example, suppose we have either a property 
+or a subvalue-field providing a named field 
+(in a record-like data structure), 
+and `i.moreover` an annotation 
+asserting units of measurement.  This could 
+take the form of a global guarantee that 
+values for this field will always be 
+represented according to a specific 
+measurement-scale, or alternatively 
+a contract that such units-data is 
+available as a component data-point 
+in the scale-delimited values on a 
+case-by-case basis.  These annotations 
+therefore provide information 
+about units of measurement which 
+affects how the relevant values 
+may be used to initialize 
+neighborhood type-instances.  
+`p`
+
+`p.
+It is conceivable that scale-annotations are 
+not necessary in some contexts because of 
+alignment between data sources and data-processing 
+routines which ensures that measurement details 
+are fixed and unambiguous for the lifetime 
+of the data set, but in general the presence of 
+scale-annotations would supply a greater quantity of 
+information than raw values without such annotation.  
+If, under these motivations, a data model explicitly requires that 
+units declarations (for any quantities that 
+are not simple magnitudes) be confirmed 
+as a precondition for type-initialization, 
+then that facet of information content 
+supplied by the annotated site 
+fits in to the type-instantiation 
+concern; it is relevant to 
+instantiation queries and forms 
+part of the interface implicit 
+in the data set for constructing 
+values of the corresponding type.
+`p`
+
+`p.  
+On the other hand, if units-annotations 
+are not requisite for `i.instantiation`/, 
+they may still be important for 
+`i.selection` queries, if 
+ranges in the corresponding data type 
+are part of query criteria which 
+would filter potential type-instances.  
+When (say) querying a bioimage database 
+for diameters of regions-of-interest, 
+it is necessary to be sure that 
+one is comparing regions by 
+the proper scale (e.g., centimeters,  
+or percentage of image-width) against 
+the query range. 
+`p`
+
+
+`p.
+In any case, the information provided by a 
+given graph-site can classified into 
+different facets, which we may call 
+`i.roles` (establishing a connection 
+to multi-relations as discussed above), 
+and these facets can become 
+relevant for different varieties of 
+queries.  The `i.type` of data 
+represented at a site, along with 
+its actual raw value, correspond to 
+two different roles %-- for initialization 
+queries (if we only want to ascertain 
+that initialization is possible in 
+some neighborhood, which is different 
+from `i.constructing` the type-instance) 
+the `i.type` is almost certainly relevant, 
+whereas raw values are not; but raw 
+values would come into play for selection-related 
+queries.
+`p`
+
+`p.
+Metadata such as units of measurement 
+could potentially be associated with 
+type-declarations, as a kind of further 
+contract annotating the type, and come 
+into play for questions about 
+whether instantiation is possible.  Conversely, 
+scale-declarations may not be directly 
+examined until raw data is actually 
+compared against some range.  But 
+in either case the data model 
+expresses the `i.sorts` of 
+queries where metadata characterizing 
+the site information's `i.role` becomes relevant.  
+As for scale-delimited values, similar 
+comments would apply to other 
+metadata properties associated with 
+data fields, such as valid ranges, 
+or expected distributions (quantifying 
+how much a fixed value for the field 
+is typical or atypical, to the 
+degree that this can be asserted of a 
+single field in isolation from others in 
+its enclosing type), 
+or such as similarity measures 
+(quantifying the degree to which differences 
+in value on some axis, or the lack thereof, 
+contribute to dissimilarity or similarity 
+between two type-instances).
+`p`
+
+`input<fig-delta>;
+`p.
+Insofar as each site contributes to some 
+`i.increase` in a data set's overall 
+information content, these `i.roles` 
+serve to define this `q.delta` effect 
+more granularly.  For this reason we 
+will refer to such roles more precisely 
+as `i.delta` roles, with the idea that 
+for each delta role there is a specific 
+mechanism through which some data or meta-data 
+adds information content: as a type 
+attribution, a raw value, a scale (or 
+range/distribution/distance-metric etc.) annotation, 
+and so forth.  Delta roles can then 
+combine with assertions of query `i.contexts` 
+where the role-specific information comes 
+into play (e.g., type-initialization vs. 
+instance-selection).
+`p`
+
+`p.
+We propose these 
+meta-data annotations being implemented as 
+explicit data-modeling features, rather 
+than left implicit in database schema.  
+These annotations could then be 
+directly exploited by query-evalution 
+virtual machines %-- they might be 
+built in to the virtual machine architecture 
+and operation-set to a degree that 
+would be infeasible without an 
+explicit accommodation for such metadata 
+in the data-modeling paradigm.  
+Figure~`ref<fig:delta>; outlines these 
+ideas through (what we'll call for 
+sake of discussion) a `q.localized` 
+Syntagmatic Graph, diagramming relations
+among sites in a hybrid property-hypergraph 
+via a Syntagmatic representation.
+Delta roles can also aid in traversal 
+implementations; for example, checking 
+treatments of scale-units (recall Chapter 6's
+discussion of tracing program flows relative 
+to scale-sensitive procedure inputs/outputs) 
+could proceed by following paths 
+determined by graph-sites annotated 
+with declarations that scale-unit 
+meta-data is in effect. 
+`p`
+
+`p.
+A formal elaboration of role-delta information would 
+overlap significantly with Conceptual Space 
+implementations, particularly as these are 
+applied to data-modeling (notably 
+`CSML;); as such, we incorporate `CSML; into 
+the query system considered here 
+for data-integration specifically as a component 
+of the mechanism for defining and using delta-roles.  
+We will explain this tactic for incorporating 
+`CSML; with reference to sample data-sets 
+published in this book's supplemental materials. 
+`p`
+
+`subsection.The Artificiality of Data Semantics`
+`p.
+One challenge facing any theory which attempts 
+to mix ideas from both (on the one hand) natural-language semantics 
+and (on the other) contexts such as data modeling 
+and/or programming languages is that semantics in 
+the former sense exists in cognitive and conceptual 
+surroundings which do exist in the latter sense.  
+Natural language is spoken by people, in 
+(typically) enactive, interpersonal, goal-directed 
+circumstances, where the ambient situation provides 
+frames of reference that prime 
+certain conceptual foregrounds and backgrounds.  
+Language is not suspended in a pure logical 
+space, but rather supplements each person's 
+prelinguistic comportment to the scenarios 
+wherein linguistic activity takes place.
+`p`
+
+`p.
+This is one sense (which we will not explore 
+further here, but would be worthy 
+of detailed study in a more philosophical 
+context) that linguistic meaning should 
+be conceived in `q.delta` terms, i.e., 
+in terms of information-increase: any 
+meaning expressed in language `i.adds` 
+content to the totality of conversants' cognitions 
+already believed, perceived, experienced, 
+or posited as an object of thought.  
+Many of the structures we might use to 
+characterize languages %-- syntagmatic 
+constructions involving thematic roles, 
+situational context, and speaker-relative 
+epistemics, for example %-- also apply  
+to cognitive attitudes which are equally 
+present in the absence of (at least explicit) 
+language (allowing for the possibility 
+that language-acquisition `i.in general` 
+restructures cognitive dispositions in 
+ways that leave an impression in how 
+people perceive the world around them, 
+so that language is always somehow virtually 
+present; we speak here only of `i.concrete` 
+linguistic content).  Any linguistic entity 
+or pattern need merely trigger 
+prelinguistic situation-comprehension faculties 
+to play its relevant constructional role.  
+`p`
+
+`p.
+None of this prelinguistic background is 
+especially relevant for the semantics of 
+digital data and computer code, except 
+for `AI; projects which try to bridge 
+the gap between `i.in silico` calculations 
+and human cognitions.  The issues of 
+symbol-grounding and construction semantics, 
+which we touched on at the beginning of this 
+chapter, are preconditions for a realistic 
+`AI; simulation of language competence, and 
+embodies lines of research connecting Conceptual 
+Space theory to computational models.  
+In this section, however, we are concerned 
+with more prosaic data and code modeling 
+scenarios.  Since in such contexts there 
+is no ambient prelinguistic consciousness 
+which can ground semantics in cognitive 
+(situational/perceptual) dispositions, 
+a minimal requirement for discussing 
+data/code semantics is what such semantics 
+`i.is`/.  Articulating what exactly 
+falls under the scope of `q.semantics` 
+in these artificially formal contexts 
+helps clarify the intuitions behind 
+particular authors' semantic models.  
+`p`
+
+`p.
+We have already defined the basic elements of 
+our specific construal of data/code semantics, 
+so at this point we need merely connect 
+them to this underlying topic.  
+Insofar as `i.data semantics` involves 
+the useful structuring, encoding, serialization, 
+and interface-design for data sets and data bases 
+%-- particularly data sets or database schema 
+that can be annotated with metadata clarifying 
+the semantic constraints respected in the 
+overall data-curation process %-- the core 
+elements of data semantics are embodied 
+in `i.instantiation queries` and `i.selection 
+queries` (here we will define `q.initialization` 
+queries as a follow-up to instantiation 
+queries, thus establishing the technical 
+distinction between these terms).  To 
+reiterate (see section 7.1 for our preliminary discussion): 
+instantiation queries are, then, concerned 
+with whether a data-type instance can be 
+initialized from a given site in a data set; 
+initialization queries are those 
+used to populate data fields necessary to 
+actually perform such instantiation; and 
+selection queries ascertain whether a 
+type-instance would meet given criteria 
+(were it to be instantiated).  Data 
+semantics should also recognize the 
+possibility of `q.fiat` instantiation, where 
+queries against type-instances can be 
+evaluated without actually performing 
+an instantiation-step if there 
+is some other way to pull the relevant 
+information from a data set/base.   
+`p`
+
+
+`p.
+Alongside data-semantics whose key phenomena 
+are `q.queries` of the forms just mentioned 
+%-- or algorithms/capabilities which 
+are functionally similar to such queries 
+%-- we would also emphasize `i.code semantics` 
+whose essential elements are mapping symbols 
+(or graph-nodes) to procedures 
+(procedure resolution), and 
+dynamically calling or examining procedures with 
+parameters populated from data-structure 
+(e.g., graph) sites (call this `i.procedure reflection`/).  
+In this context we will allow the term 
+`i.reflection` to include static as 
+well as dynamic analysis of procedure metadata, 
+such as finding pre- and post-conditions 
+or selecting which is the best procedure 
+to call from a group of plausible candidates.  
+Such reflective capabilities would certainly 
+apply to the process of resolving 
+runtime-reflection calls, but we will 
+more generally speak of `q.reflection` 
+as any process for acquiring and/or 
+incorporating procedural metadata at 
+one or more stages of software 
+engineering, including compilation 
+and runtime as well as pre-compilation 
+static analysis, requirements engineering, 
+design and testing, and so on.
+`p`
+
+`p.   
+In any case, considering both data and code, 
+the core elements of 
+data/code semantics together are `i.instantiation 
+queries`/, `i.initialization queries`/, 
+`i.selection queries`/, `i.procedure resolution`/, 
+and `i.procedure reflection`/.  We claim 
+that almost all `q.semantic` issues in 
+computational contexts (again excluding 
+`NLP;-inflected `AI;) can be classified 
+into one of these five concerns.  This 
+assertion, to the degree that it holds up, 
+can propagate to the design of 
+(code and data) annotation schemes and 
+query expression/evaluation systems.  
+For each element of an annotation or 
+query expression, we should be able to 
+identify which of the five core 
+code/data semantic concerns it targets.  
+Likewise, query evaluation systems could 
+incorporate this code/data semantic model 
+into their implementation architectures: 
+primitive query-engine operations can 
+be grouped according to which of 
+the five concerns `i.they` target.  
+We propose to employ this overall architecture 
+to formulate a query and serialization 
+language, as well as a query-engine 
+virtual machine, which would incorporate 
+precedent technologies such as 
+Conceptual Space Markup Language and 
+the Text-as-Graph Markup Language 
+(`TagML;) `cite<BleekerEtAl>;, `cite<BleekerAgree>;, 
+`cite<DekkerEtAl>;.  
+`p`
+
+`section.Conclusion: Toward a Scientific Data Semantics`
+`p.
+When Conceptual Space theory has been applied to technology 
+%-- stepping outide its philosophical/linguistic origins %-- 
+one of the central goals has been to develop a more useful 
+and realistic semantic model for data structures (more or 
+less what we here refer to as `q.data semantics`/).  This 
+is certainly evident in explicit comparisons against 
+the core technologies of the Semantic Web %-- Ontologies, 
+Resource Description Format (`RDF;), and so forth %-- 
+and the outright argument that `q.the Semantic Web is not 
+very semantic` `cite<[page 2]GardenforsWeb>;.  Here 
+`Gardenfors; implicitly critiques the `RDF; framework and 
+Ontologies in general (there is nothing in this 
+argumentation specific to science), although projects such as 
+`CSML; point to Conceptual Spaces being particularly 
+emphasized as semantic models for `i.scientific` data.  
+We too have focused in this direction, though we 
+`cobel<would contend that>; a 
+rigorous semantics for scientific data 
+could potentially be generalized to shared/networked 
+information in many domains, akin to a Semantic Web.  
+In this concluding scection, though, we intend to consolidate 
+our discussion focusing again on scientific data models.   
+`p`
+
+
+`p.
+It could be argued that the process of sharing scientific 
+data does not actually require a data `i.semantics`/.  
+Most scientific data is in a tabular, vector, or matrix 
+form which (taken out of context) is just a jumble 
+of numbers; it is only when plugged in to the 
+appropriate software, or evaluated in its 
+intended theoretical context, that these numbers 
+actually become part of `q.science.`  In this 
+case, one might argue, there is no particular 
+reason to express scientific contexts within 
+data sets themselves; data sets should simply 
+record the miniminum information needed to 
+send or reproduce data across 
+different research environments. 
+`p`
+
+
+`p.
+Contrary to that assessment, however, there 
+`i.have` been numerous efforts in the 
+research/academic community to codify 
+scientific data models (some of which we 
+listed in Section 2.2).  At least some 
+scientists, in short, have argued that 
+published scientific data should be organized and 
+annotated in a manner which documents 
+scientific assumptions and contexts, rather 
+than just serializing raw numbers.  To the 
+degree that researchers seek to formulate 
+`i.expressive` data sets along these lines, then issues of 
+`q.scientific data semantics` come to the fore.   
+Exploring semantic theories to support such 
+a data-semantics can draw in considerations 
+from both science and digital technology, 
+and even from linguistics and philosophy.
+`p`
+
+
+`p.
+With that said, there is only a limited amount of 
+information that can be provided via `q.static` 
+structures within which data is encoded.  A lot of 
+scientific information (like information 
+in general) is naturally expressed as `i.records`/, 
+tuples of individual fields with their own 
+names or labels (`b.PatientName` and so forth), 
+so at the very least field-names provide a 
+conceptual overview of data semantics %-- 
+indeed, this is the primary source of data-integration 
+architectures within broad-based biomedical 
+projects such as `OMOP; or `CDISC; (see Chapter 2).
+Controlled vocabularies attempt to render 
+semantics based (primarily) on field-names (or, 
+analogously, on column-names in the case of tabular data) 
+more rigorous by ensuring that multiple parties 
+use the same names or labels for conceptually similar 
+units of information.  Semantic Web Ontologies also 
+build off of field-names by stipulating common 
+axioms constraining information culled from different 
+sources which utilize restricted field-names 
+derived from Controlled Vocabularies %-- in this 
+case not only the textual `i.name` of the field, 
+but also certain structural contracts in 
+the data associated with the field (for instance, 
+that a given field, e.g.,  patients' `i.first` name, 
+is always paired with other fields, e.g., 
+`i.last` name) is aligned between disparate 
+data-providers.  
+`p`
+
+
+`p.
+Relatively `q.static` data models can also define and 
+distinguish one-to-one, one-to-many, many-to-one, and 
+many-to-many relationships (viz., different forms 
+of relation cardinality), which provides another 
+source of general conecptual overviews of data 
+structures.  For example, a patient presumably 
+has only one (full) name, but they may be 
+taking multiple medications.  Likewise, pharmaceuticals 
+may have only one chemical formula, but they may be 
+taken by many patients (in a clinical study, say). 
+`p`
+
+
+`p.
+Yet (as we argued above at the end of `S;3.1)
+one can achieve only a limited degree of 
+semantic precision via `q.static` 
+details about (or meta-models constraining) 
+data structures, such as field-names or 
+relation-cardinality.  This appears to be the gist of 
+Conceptual Space arguments against the Semantic 
+Web, and as such motivates proposals for more detailed 
+statistical annotations, addressing issues such as 
+units of measurement, valid ranges, the 
+fusion of `i.dimensions` into `i.domains`/, and 
+similar meta-modeling constructions.  
+Still, these are essentially static 
+forms of meta-data, even if they lend greater 
+theoretical precision than just `q.raw numbers.`
+`p`
+
+`p.
+Over and above static meta-data, we contend that a well-motivated 
+data semantics will be predominantly `q.procedural,` 
+by which we mean that the actual `q.semantics` of 
+scientific data %-- the empirical, theoretically-informed 
+meanings or interpretations one assigns to numeric 
+quantities or other information-values measured or 
+observed as part of a scientific investigation %-- depends 
+on computations where those values are analyzed.  
+Any static meta-data, from field-names to dimensional 
+annotations, can provide only a summarial precis 
+of research data's scientific meaning.  The full-fledged 
+scientific significance of a given data structure 
+depends on the theory and investigations where it 
+originates, and to the degree that such research 
+has a digital residue, it would lie in the 
+set of procedures (algorithms, calculations, and so forth) 
+that project a scientific model into the computational 
+domain.  In this sense it is unrealistic to 
+propose a `i.semantics` for scientific data `i.except` 
+in the context of procedure-collections (e.g., code 
+libraries) that manipulate such data.  
+`p`
+
+
+`p.
+This hypothesis has consequences from both theoretical 
+and practical perspectives.  Practically speaking, 
+one entailment that seems to follow %-- a conclusion 
+we would certainly advocate %-- is that code reuse 
+is an intrinsic part of data sharing.  It is now 
+common practice for scientists to deposit raw 
+research data in a public archive, and while 
+such transparency and data-availability are preferable 
+to the alternative (where data is not published at all) 
+scientists should be encouraged to develop their 
+data sets as `q.Research Objects` or similar 
+`qFAIR; resources where data and code are bundled 
+together.  This adds a burden to the publishing 
+process, which should not be underestimated %-- 
+preparing a reusable code base could easily become 
+the most time-consuming part of a research project.  
+But scientists can turn to reusable code as a 
+forum for demonstrating their theories and methods 
+in an interactive, data-driven fashion.  Moreover, 
+we will argue that data-set implementations 
+can facilitate scientific projects even prior to 
+the stage of open data sharing. 
+`p`
+
+`subsection.Research Data and Data Integration`
+`p.
+In this book we have employed the summarial figure of 
+a `q.Semiotic Saltire` to describe a typical 
+pattern in the `i.organization` of procedures within 
+a multi-faceted code base (e.g., integrated 
+software components such as `q.multi-aspect modules,` 
+returning to terminology from Chapter 4).
+To the degree that code accompanying scientific 
+data covers multiple software-engineering 
+concerns, it is likely that the resulting procedures 
+will end up grouped into aspects according to a 
+pattern similar to the Saltire, which in this 
+case can potentially serve as a rough guide to 
+identifying coding requirements.  (That is, we 
+intend the Saltire model to be partly normative 
+%-- this is how modules often `i.should` be organized 
+%-- but also partly observational, i.e., procedures 
+`i.tend` to group into such a pattern.)  When preparing the 
+code base for research data, concerns identified 
+in the Saltire tend to be foregrounded: 
+how should the published data appear in `GUI;s?  
+How should it be derialized and deserialized?  
+How should it be structured for database persistence?  
+`p`
+
+
+`p.
+While we `cobel<assume that>; such a `q.structuring` of requirements 
+applies to shared research data, we would give similar 
+analyses for context such as clinical research networks 
+or multi-site clinical trials.  During a trial's planning 
+stages, for example, investigators might benefit 
+from modeling the information generated during the 
+course of the trial as a `i.de facto` research data set 
+(of course, when trial results then become 
+published academically some of that 
+data will in fact `i.be` released as research findings).  Data-set 
+semantics applies more generally than 
+just in the context of research results curated as 
+open-access data sets %-- conceiving 
+clinical-trial data as a still-emerging `i.research` data set 
+can help structure the programming and 
+data-collection logistics governing how 
+the trial will digitally operate, and how (assuming a 
+multi-site project) information from different 
+institutions will be aggregated.    
+`p`
+
+
+`p.
+Insofar as research and/or clinical data are curated 
+according to the norms of featureful open-access 
+data sets (e.g., Research Objects), and if the 
+resulting code base accepts the basic premise 
+of multi-aspect design, then the resulting 
+information resources will have from the outset 
+a programming environment equipped with 
+a useful variety of software capabilities: custom 
+`GUI; classes, implemented protocols for 
+data (de)serializing/marshaling, and so forth.  
+Individual clinical trials, for example, can 
+be encapsulated in distinct `i.modules` which 
+could be injected into clinical applications.   
+All of this structure might then be leveraged 
+for scenarios such as machine-learning or 
+data-mining/integration.
+`p`
+
+`p.
+For example, consider 
+the task of unifying results from two 
+different multi-site clinical trials.  
+If each trial's data comes packaged 
+in self-contained modules spanning 
+multiple programming aspects, developers 
+would have a valuable body of 
+code already implemented for each 
+information-space, which is more convenient 
+than needing to write code 
+`i.do novo` when presented with research or 
+trial results as raw data.  As a concrete 
+example, suppose one stage of data-integration 
+requires the use of `GUI; components 
+for human users to provide feedback 
+about how two distinct data sets 
+should be merged.  If `GUI; classes are 
+provided as part of the original data 
+sets' modules, they would not have to 
+be engineered from scratch within 
+a data-integration context.  
+`p`
+
+
+`p.
+Aside from such practical maxims, however, this 
+book has also focussed on data semantics 
+from a natural-language perspective, particularly 
+that of Conceptual Spaces.  How can we draw 
+intuitions from natural language in the 
+context of a predominantly `i.procedural` semantics?  
+If the interpretive substance behind any 
+scientific data only emerges in the context of 
+procedures where that data is manipulated 
+and analyzed, it would seem difficult to 
+press into service any `q.static` meta-model 
+(whather based on Conceptual Spaces, on Web 
+Ontologies, or anything else) which would 
+be logically removed from procedures themselves.  
+The only real `q.semantics` applicable to a given 
+scientific data-space would need to be 
+assessed by looking at the specific 
+procedures implemented for that data and 
+how they exemplify the relevant scientific 
+model/theory, through algorithms and data constructors. 
+`p`
+
+
+`p.
+In short, our discussion leads to the problem 
+of formulating a `i.procedural` Conceptual Space 
+semantics, to the degree that we wish to 
+sustain the intuition of Conceptual Space theory 
+as a richer and more realistic semantics 
+alternative to (say) the canonical 
+Semantic Web.  We will therefore conclude 
+by sketching a few ideas in this context. 
+`p`
+
+
+`subsection.Toward a Procedural Conceptual-Space `makebox<Semantics>;`
+`p.
+The essential insight of `q.procedural` semantics, 
+at least in the context of scientific data, is that 
+meanings and interpretations of scientific 
+measurements/observations are dependent on the 
+specific scientific theories guiding research 
+where the data originates, and these are only computationally 
+manifested in any substantial way through procedures 
+(algorithms, analyses, visualizations, and so forth).  
+There is not a lot of semantic detail that can be 
+provided by overarching computing environments 
+`i.apart from` procedures implemented for each 
+specific domain.  A programming environment may 
+provide tools to `i.facilitate` implementations, 
+but in the absense of procedures actually composed in 
+concrete fashion (expressing theoretical axioms, calculations, 
+or algorithms via source code) we cannot attribute a 
+significant `i.semantics` to such programming environments.  
+The question then becomes apparently: granted that 
+the semantic weight of a data-model rests 
+predominantly on procedures formulated for an 
+associated code model, how can the programming
+environment and computational tools which enable 
+those procedures to be implemented at 
+least `i.reinforce` the semantic details 
+encapsulated via procedures themselves?   
+`p`
+
+
+
+`p.
+To examine this question, we'll point out 
+first of all that procedures tend to 
+cluster into interrelated groups.  Moreover, 
+this clustering effect is often correlated 
+with data structures insofar as they would 
+be represented within a data model.  Consider 
+the general case of multi-valued data fields 
+(i.e., one-to-many relationships), such as the 
+list of a patient's medications.  Multi-valued 
+collections require several different 
+procedures to be fully manipulated, at the 
+minimum those for `i.inserting` and for 
+`i.removing` values.  So (reprising `S;6.2.2)
+code managing a 
+patient's health records, for example, might 
+include a procedure which has the 
+effect of `i.adding` reference to a certain 
+medicine to the list which the patient 
+is currently taken, and a second procedure 
+for `i.removing` a medication from that list 
+These two procedures, of course, are logically 
+inter-related.  This is a simple example 
+of how meta-modeling paradigms often propagate 
+to `i.inter-procedural` relations, a 
+tendency we discussed in Chapter 6 in the
+context of using code models to `i.instantiate` 
+data models. 
+`p`
+
+
+`p.
+Chapter 6 also discussed data-modeling techniques
+such as scale/dimension annotations or Remote 
+Procedure Calls (i.e., modeling the preparatory 
+code needed to expose procedures, or 
+capabilities dependent on specific sequences of 
+procedures, as an external service %-- we proposed 
+the term `q.meta-procedure`/).  These likewise 
+furnish examples of how `i.networks` of procedures 
+concretize data-model paradigms.  For example, 
+validating scientific scales and units of measurements 
+may involve proparatory code which 
+esnures dimensional alignment as a precursor 
+to performing some specific calculation, 
+leading to functionality being split between 
+two contexts, a `q.preparatory` procedure 
+which performs a function we might refer 
+to as `q.gatekeeping` `cite<NathanielChristenCyberphysical>;, 
+and then the `q.primary` 
+procedure which enacts the requisite computations.  
+Here the logic governing the relation between the 
+`q.gatekeeping` and `q.primary` procedures 
+manifests data-modeling concerns (in this 
+case those of dimensional analysis and consistency), 
+analogous to the case of multi-valued 
+data fields being supported by both 
+`i.insertion` and `i.deletion` procedures. 
+`p`
+
+
+`p.
+Given these implicit logical connections between 
+procedures, programmers have the option of 
+`i.explicating` such connections via 
+code annotations or other interface-description 
+techniques.  Insofar as procedure-interrelationships 
+concretize and originate from data-modeling concerns, then notating 
+procedural connections likewise serves the 
+goal of transparently describing data 
+models operating in the context of the 
+current code base.  In short, tools for 
+constructing and identifying procedural 
+annotations, particularly insofar as these 
+allow procedure's clustering patterns to 
+be described and rationalized, serve as 
+one technlogy for elucidating data 
+semantics though code components/modules.  
+`p`
+
+
+`p.
+There are multiple criteria which could 
+be applied when modeling how procedures 
+within a given library or component are 
+interconnected.  One can trace 
+dynamic `i.execution flows` in the sense 
+of identifying, for a given run of a 
+program/application, which procedures are 
+called prior or subsuent to which 
+others.  We can also consider (more 
+generally) which procedures `i.might` be 
+called prior to others.  Of course, 
+one straightforward inter-procedural 
+relation is when one procedure 
+calls a second.  Alternatively, 
+an enclosing procedure might call 
+an antecedent and then subsequent procedure in sequence.  
+These cases are distinguished in terms of whether 
+the prior procedure returns before the later 
+one begins/resumes.  A sufficiently expressive 
+pointcut expression language (as we explored in `S;6.2)
+can identify locations in source-code where specific 
+kinds of inter-procedure relations are exercised 
+(one calling a second, one being called before a 
+second in an overarching procedure, and so forth). 
+`p`
+
+
+`p.
+In and of itself, such program-flow connections 
+do not necessarily have a specific `q.semantic` 
+interpretation %-- they may merely reflect 
+operational sequences as specific algorithms 
+or implementation patterns are encoded %-- but 
+at least on some occasions there is a 
+meaningful semantics behind inter-procedural 
+connections manifest at the program-sequence 
+level (an example would be `q.gatekeeping` checks 
+as mentioned earlier; another would be 
+deserializing input data structures a preparation 
+for handling a remote meta-procedure invocation).  
+Insofar as pointcut expressions can single 
+out code sites which `i.do` have such 
+semantically substantial rationales, 
+the use of pointcuts to construct rigorous 
+code models can provide a technique 
+for clarifying how data semantics are 
+manifest within a code base, establishing 
+the interactions between data and code 
+models which we discussed in Chapter 6.
+`p`
+
+
+
+`p.
+We might envision code libraries/modules as 
+`q.procedural` spaces, whose underlying 
+structures are constituted by 
+semantically meaningful inter-procedural 
+relations that can be annotated and 
+described.  A `i.procedural` space is, 
+of course, not the same thing as a 
+`q.Conceptual` space, but this chapter 
+has reviewed how Conceptual Space 
+semantics are often formalized by 
+considering the mutation in 
+information content as one moves 
+between sites of `q.transformations` 
+that may be seen as analogous to 
+procedures %-- procedures themselves 
+in the context of computer code, or 
+`q.morphisms` in Hypergraph Categories, 
+and verbs in natural languages.  In other 
+words, a Conceptual Space semantics often 
+emerges from networked procedure-spaces, 
+or representations structurally akin to 
+them.
+`p`
+
+`p.
+Our discussion in this chapter 
+has attempted to highlight one 
+potential avenue for deriving a rigorous 
+Conceptual Space semantics in a procedure-network 
+context (whether this is defined explicitly 
+or implicitly) through the lens of 
+information-content `q.amplification` and 
+`q.delta` paths/roles.  We `cobel<suggest that>; this is a 
+promising avenue for future research, even 
+if our analysis to this point only 
+presents the initial step to a 
+theory along such lines.  Probably 
+the trajectory of such a theory's 
+development cannot be driven by 
+abstract concerns along, but rather 
+in a feedback circle informed 
+by specific scientific data sets for 
+which data-semantics can be assessed 
+concretely, and through the implementation  
+of code-annotation systems where inter-procedural 
+connections can be notated and analyzed.  
+`p`
+
+
+`p.
+
+`p`
+
+
+
+

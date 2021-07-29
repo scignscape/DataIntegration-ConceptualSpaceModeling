@@ -1,0 +1,175 @@
+
+
+\begin{figure}[t!]
+
+
+\caption{Triangular Relationship Between Simulations, 
+Imaging, and Clinical/Pathology/Diagnostic Data}	
+
+
+\begin{center}
+
+\hspace*{-3em}\begin{tikzpicture}[tips=proper]
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{every node}=[font=\small]
+
+\colorlet{blbl}{blue!70!black}
+\colorlet{blblor}{blbl!70!orange}
+
+\colorlet{gror}{green!40!orange}
+
+
+%\node (dummy) at (0,0) {};
+
+\colorlet{blor}{black!80!orange}
+\colorlet{blbrw}{black!80!brown}
+
+
+\node (sim) at (0,-3) [draw=urlclr, draw opacity=.1, 
+line width=2mm, 
+align=right,
+ellipse,fill=blbrw!20,
+inner sep = 5, text width=1.6cm] 
+{Simulations (\q{in silico})};
+%{\scalebox{1}[2]{Simulations} \scalebox{1}[2]{(\q{in silico})}};
+
+
+\node (simgui) [above=5mm of 
+sim.north west, xshift=-6mm, align=right,text width=1.6cm] 
+{gui};
+
+\node (simser) [right=-2mm of 
+simgui.east, yshift=2mm, align=right,text width=1.6cm] 
+{seriali\-zation};
+
+\node (simdb) [below=21mm of 
+simgui.south, xshift=9mm, align=right,text width=1.6cm] 
+{database};
+
+\node (simproc) [right=5mm of 
+simdb.east, yshift=-2mm, align=right,text width=1.6cm] 
+{procedural model};
+
+
+\node (im)  [draw=urlclr, draw opacity=.1, 
+line width=2mm, 
+right=26mm of sim, draw, fill=blbrw!20,
+ellipse,align=left,inner sep = 5, text width=1.5cm] 
+{Imaging/\\Radiomics};
+%{\scalebox{1}[2]{Imaging/} \scalebox{1}[2]{Radiomics}};
+
+
+
+\node (imgui) [above=4pt of 
+im.north, xshift=-8mm, align=right,text width=1.6cm] 
+{gui};
+
+\node (imser) [right=5mm of 
+imgui.east, yshift=1mm, align=left,text width=1.6cm] 
+{seriali\-zation};
+
+\node (imdb) [below=16mm of 
+imgui.south, xshift=-8mm, align=right,text width=1.6cm] 
+{database};
+
+\node (improc) [right=1mm of 
+imdb.east, yshift=-5mm, align=right,text width=1.6cm] 
+{procedural model};
+
+
+
+\node (cl)  [draw=urlclr, draw opacity=.1, 
+line width=2mm, 
+above=16mm of sim, xshift=26mm, fill=blbrw!20,
+ellipse, draw, align=right, inner sep = 5] 
+{Clinical/Lab};
+
+\node (clgui) [above left=3mm of 
+cl.north west, align=right,text width=1.6cm] 
+{gui};
+
+\node (clser) [right=23mm of 
+clgui.east, align=right,text width=1.6cm] 
+{serialization};
+
+\node (cldb) [below=8mm of 
+clgui.south, xshift=-1mm, align=right,text width=1.6cm] 
+{database};
+
+\node (clproc) [right=32mm of 
+cldb.east, yshift=1mm, align=right,text width=1.6cm] 
+{procedural model};
+
+
+\begin{pgfonlayer}{background}
+%\begin{scope}[on background layer] 
+
+
+\draw (clgui) -- (clproc);
+\draw (cldb) -- (clser);
+
+\draw ([xshift=5mm]imgui.south) -- (improc);
+\draw (imdb) -- (imser);
+
+\draw ([xshift=5mm]simgui.south) -- (simproc);
+\draw (simdb) -- ([xshift=1mm]simser.south);
+
+
+\draw[blbl,draw opacity=.4, line width=3mm] (sim) -- (im) -- (cl) -- (sim);
+
+\begin{scope}{even odd rule}
+      \clip
+        (current bounding box.south west)
+        rectangle (current bounding box.north east)
+        let
+          \p{sim} := ($(sim.north) - (sim.center)$),
+          \p{im} := ($(im.north) - (im.center)$),
+          \p{cl} := ($(cl.north) - (cl.center)$)
+        in
+          (sim) circle[radius=\y{sim}]
+          (im) circle[radius=\y{im}]
+          (cl) ellipse[radius=\y{cl},xscale=4]
+      ;
+      \fill [top color=gror!40, bottom color=blbl, fill opacity=1] (sim.center) -- (im.center) -- (cl.center) -- cycle;
+
+      \fill [left color=red!80!orange, 
+right color=green,shading angle=30, 
+fill opacity=.3] (sim.center) -- (im.center) -- (cl.center) -- cycle;
+
+%      \fill [left color=blbl, 
+%right color=transparent,%shading angle=30, 
+%fill opacity=.3] (sim.center) -- (im.center) -- (cl.center) -- cycle;
+
+
+      \fill [left color=blue!78!yellow, 
+right color=cyan!70!yellow,shading angle=6, 
+fill opacity=.1] (sim.center) -- ([xshift=-3cm]im.center) -- 
+([xshift=-1.7cm,yshift=-2cm]cl.center) -- cycle;
+
+      \fill [right color=greeb!78!yellow, 
+left color=cyan!70!yellow,shading angle=6, 
+fill opacity=.1] (im.center) -- ([xshift=3cm]sim.center) -- 
+([xshift=1.4cm,yshift=-2cm]cl.center) -- cycle;
+
+    \end{scope}
+
+%\fill [] (sim.center) -- (im.center) -- (cl.center) -- cycle;
+
+%\end{scope} 
+\end{pgfonlayer}
+
+\end{tikzpicture}
+
+\end{center}
+
+
+\label{fig:triangle}
+\end{figure}
+
+
+
+
+

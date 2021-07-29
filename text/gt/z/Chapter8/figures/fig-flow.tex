@@ -1,0 +1,150 @@
+
+%\colorlet{footnotecolor}{red!40!black}
+
+
+\begin{figure}[t!]
+
+\caption{Entry Points for Hypothetical Image-Annotation Module}	
+
+\newcommand{\cf}[2]{\vspace{-#1}\cframedboxx{0mm}{1pt}{\raggedright\textbf{#2}}}
+
+\begin{center}
+
+\hspace*{-1em}\begin{tikzpicture}[tips=proper]
+
+\tikzstyle{every node}=[font={\fontsize{8pt}{9pt}\selectfont}]
+%\tikzset{
+%  font={\fontsize{10pt}{12}\selectfont}}
+
+\tikzset{
+    *|/.style={
+        to path={
+            (perpendicular cs: horizontal line through={(\tikztostart)},
+                                 vertical line through={(\tikztotarget)})
+            % is the same as (\tikztostart -| \tikztotarget)
+            % but just to be safe: http://tex.stackexchange.com/a/29781/16595
+            -- (\tikztotarget) \tikztonodes
+        }
+    }
+}
+
+
+\colorlet{blbl}{blue!70!black}
+\colorlet{blblor}{blbl!70!orange}
+
+\colorlet{gror}{green!40!orange}
+
+
+\node (dummy) at (0,0) {};
+
+\colorlet{blor}{black!80!orange}
+
+\node (o1) at (-2, 0) {};
+
+\node [anchor=west,bottom color=yellow!30!blue,top color=pink!70!green, 
+inner sep=1, shading angle=50, text width=2.8cm]
+  (load) at (0, 0) {\cf{8pt}{Load Ground Image}};
+
+\node [anchor=west,bottom color=blGreen!60!yellow,top color=pink!70!orange, 
+inner sep=1, shading angle=50, text width=4cm,
+right=5mm of load]
+  (retrieve) {\cf{8pt}{Retrieve Annotations for Ground Image}};
+
+
+
+
+\node [bottom color=yellow!30!blue,top color=pink!70!green, 
+inner sep=1, shading angle=50, text width=7.5cm,
+below=50mm of load.west, anchor=west]
+  (render)  {\cf{8pt}{Render Ground Image (overlay annotations)}};
+
+\draw [>=latex, 
+*|, ->, 
+%fill=fcBoxColor!60!black,fill opacity=1,
+draw=fcBoxColor!40!purple,draw opacity=.5,
+%draw=fcBoxColor!60!black,draw opacity=1,
+line width=7mm, -{Triangle[width=6mm,length=10pt]}, %-{Triangle[length=2mm]},
+shorten <= 1mm
+] (load.south) to ([xshift=12mm]render.north west);
+
+
+\draw [>=latex, 
+*|, ->, 
+%fill=fcBoxColor!60!black,fill opacity=1,
+%draw=fcBoxColor!40!purple,draw opacity=1,
+draw=fcBoxColor!60!black,draw opacity=.5,
+line width=6mm, -{Triangle[width=6mm,length=10pt]}, %-{Triangle[length=2mm]},
+shorten <= 1mm
+] (load.south) to ([xshift=12mm]render.north west);
+
+\draw [>=latex, 
+*|, ->, 
+%fill=fcBoxColor!60!black,fill opacity=1,
+draw=fcBoxColor!40!purple,draw opacity=.5,
+%draw=fcBoxColor!60!black,draw opacity=1,
+line width=7mm, -{Triangle[width=6mm,length=10pt]}, %-{Triangle[length=2mm]},
+shorten <= 1mm
+] (retrieve.south) to ([xshift=-12mm]render.north east);
+
+
+\draw [>=latex, 
+*|, ->, 
+%fill=fcBoxColor!60!black,fill opacity=1,
+%draw=fcBoxColor!40!purple,draw opacity=1,
+draw=fcBoxColor!60!black,draw opacity=.5,
+line width=6mm, -{Triangle[width=6mm,length=10pt]}, %-{Triangle[length=2mm]},
+shorten <= 1mm
+] (retrieve.south) to ([xshift=-12mm]render.north east);
+
+
+
+\draw [>=latex, ->, 
+draw=purple!40!orange,draw opacity=1,
+	fill opacity=1,line width=1mm
+] (o1.east) to node[above,xshift=-2mm] {new window} (load.west); 
+
+\node [bottom color=yellow!30!blue,top color=pink!70!green, 
+inner sep=1, shading angle=50, text width=7.4cm,
+below=12mm of load.west, anchor=west]
+  (vis)  {\cf{8pt}{Check for Ground-Image Presentation Data 
+(zoom, window size, annotation styles)}};
+
+\node [bottom color=yellow!30!blue,top color=pink!70!green, 
+inner sep=1, shading angle=50, text width=7.4cm,
+below=12mm of vis.west, anchor=west]
+  (rescale)  {\cf{8pt}{Rescale Window; Configure Scrollbars}};
+
+\node (o2) at (-2, 0 |- rescale) {};
+
+\draw [>=latex, ->, 
+draw=purple!40!orange,draw opacity=1,
+	fill opacity=1,line width=1mm
+] (o2.east) to node[above,xshift=-2mm] {new image} (rescale.west); 
+
+
+\node [bottom color=yellow!30!blue,top color=pink!70!green, 
+inner sep=1, shading angle=50, text width=3cm,
+below=12mm of rescale.west, anchor=west]
+  (meta)  {\cf{8pt}{Get Image Metadata}};
+
+
+%\node [bottom color=yellow!30!blue,top color=pink!70!green, 
+%inner sep=1, shading angle=50, text width=3cm,
+%below=12mm of rescale.west, anchor=west]
+%  (meta)  {\cf{8pt}{Get Image Metadata}};
+
+\node [anchor=west,bottom color=blGreen!60!yellow,top color=pink!70!orange, 
+inner sep=1, shading angle=50, text width=4cm,
+right=5mm of meta]
+  (calc) {\cf{8pt}{Calculate Annotation Geometry}};
+
+
+\end{tikzpicture}
+
+\end{center}
+
+
+\label{fig:flow}
+\end{figure}
+
+

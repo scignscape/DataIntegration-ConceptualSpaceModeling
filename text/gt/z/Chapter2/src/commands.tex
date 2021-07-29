@@ -1,0 +1,121 @@
+
+\usepackage[hang,flushmargin]{footmisc}
+
+\newcommand{\hoctitle}[1]{\noindent{}{\fontsize{14}{18}\selectfont\textbf{#1}
+
+}\vspace{1em}}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\raggedright\normalfont\fontsize{12}{16}\bfseries}{\thesection}{1.5em}{}
+
+\titleformat{\subsection}
+  {\raggedright\normalfont\fontsize{11}{12}\bfseries}{\thesubsection}{.5em}{}
+
+
+\let\OldPart\part
+
+\renewcommand{\part}[1]{\OldPart{#1}%
+%{\textcolor{darkRed}\hrule}
+\vspace{-.5em}}
+
+\titlespacing*{\section}
+{0pt}{5ex plus 1ex minus .1ex}{1.3ex plus .2ex}
+
+\titlespacing*{\subsection}
+{0pt}{4.5ex plus 1ex minus .1ex}{.7ex plus .2ex}
+
+\setlength{\columnsep}{9.5mm}
+
+\usepackage[letterpaper, left=.99in,right=.99in,top=.57in,bottom=.58in, 
+paperheight=12.5in,paperwidth=9.5in]{geometry}
+
+
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\patchcmd{\@part}{\par}{\quad}{}{}
+\patchcmd{\@part}{\huge}{\Large}{}{}
+\makeatother
+
+\renewcommand{\partname}{\hspace{-1em}Part}
+
+\renewcommand*\thepart{\Roman{part}:}
+
+\renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
+
+\usepackage[hyphens]{url}
+\newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
+{\scriptsize {\url{#1}}}}}}
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{color,framed}
+
+\usepackage{textcomp}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\usepackage[T1]{fontenc}
+
+
+\newcommand{\visavis}{vis-\`a-vis}
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{{\textsc{\textbf{#1}}}}}}}
+
+\usepackage{relsize}
+
+\makeatletter
+\newcommand{\oneptsmaller}[1]{%
+  \begingroup
+  \fontsize{\dimexpr\f@size pt-1pt}{\f@baselineskip}\selectfont
+  #1%
+  \endgroup
+}
+\makeatother
+
+\newcommand{\AcronymText}[1]{{\textscc{\oneptsmaller{#1}}}}
+
+\newcommand{\p}[1]{
+
+\vspace{.85em}#1}
+
+\input{colors}
+
+\hypersetup{
+	colorlinks=true,
+	citecolor=blCyan!40!green,
+	filecolor=magenta!30!logoBlue,
+	urlcolor=blue,
+    linkcolor=linkcolor!70!black,
+%    allcolors=blCyan!40!green
+}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\newcommand{\bhref}[1]{\href{#1}{\burl{#1}}}
+
+\raggedbottom{}

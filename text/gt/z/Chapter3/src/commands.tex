@@ -10,6 +10,10 @@
   {\csq@edquote\endgroup}
 \makeatother
 
+\hyphenation{DICOM}
+
+\newcommand{\cq}[1]{{\fontfamily{gar}\selectfont ``}#1{\fontfamily{gar}\selectfont ''}}
+
 
 \usepackage{relsize}
 
@@ -134,7 +138,15 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 %    allcolors=blCyan!40!green
 }
 
+
+\let\OldB\b
+\newcommand{\bb}[1]{\textbf{\oneptsmaller{#1}}}
+\renewcommand{\b}[1]{\makebox{\bb{#1}}}
+
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+\newcommand{\qb}[1]{\q{\b{#1}}}
+
 
 \newcommand{\Covid}{Covid-19}
 
@@ -144,11 +156,6 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 
 \newcommand{\colorq}[1]{{\color{blCyan!50!black}{\q{\small\textbf{#1}}}}}
-
-
-
-
-
 
 
 
@@ -166,30 +173,10 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \newcommand{\lLXCR}{\resizebox{!}{8.5pt}{\AcronymText{LXCR}}}
 \newcommand{\lsLXCR}{\resizebox{!}{9.5pt}{\AcronymText{LXCR}}}
 
-%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
-\newcommand{\lfMOSAIC}{\resizebox{!}{8pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
-
-\newcommand{\Mosaic}{\resizebox{!}{8pt}{\MOSAIC}}
-\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+\colorlet{drp}{brown!50!blue}
 
 \newcommand{\RnD}{{\AcronymText{R\&D}}}
 
-\newcommand{\DMS}{{\AcronymText{DMS}}}
-
-\newcommand{\sDMS}{\resizebox{!}{6pt}{\AcronymText{DMS}}}
-
-\newcommand{\AXFI}{\resizebox{!}{9pt}{\ATexttclr{AXF%
-\hspace{-2pt}{\fontfamily{qcr}\fontseries{b}\selectfont{}\large\textit{i}}%
-}}}
-
-\newcommand{\sAXFI}{{\ATexttclr{AXF%
-\hspace{-2pt}{\fontfamily{qcr}\fontseries{b}\selectfont{}\normalsize\textit{i}}%
-}}}
-
-
-\newcommand{\AXFt}{\resizebox{!}{8pt}{\ATexttclr{AXF}}\resizebox{!}{8pt}{%
-\hspace{1pt}{\fontfamily{lmdh}\fontseries{b}\selectfont{}\LARGE{\ATexttclr{t}}}%
-}}}
 
 \newcommand{\MIBBI}{{\AcronymText{MIBBI}}}
 
@@ -197,16 +184,14 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \newcommand{\ECL}{{\AcronymText{ECL}}}
 
 \newcommand{\SDK}{{\AcronymText{SDK}}}
-
+\newcommand{\MRI}{{\AcronymText{MRI}}}
 
 
 \newcommand{\ChaiScript}{{\AcronymText{ChaiScript}}}
 
 \newcommand{\TCP}{{\AcronymText{TCP}}}
 
-\newcommand{\lQt}{\resizebox{!}{8.5pt}{\AcronymText{Qt}}}
-\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
-\newcommand{\Qt}{{\AcronymText{Qt}}}
+\newcommand{\QtCpp}{{\AcronymText{Qt/C++}}}
 
 \newcommand{\QtSQL}{{\AcronymText{QtSQL}}}
 
@@ -245,7 +230,6 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 \newcommand{\GUI}{{\AcronymText{GUI}}}
 
-\newcommand{\Cpp}{{\AcronymText{C++}}}
 
 \newcommand{\TAGML}{{\AcronymText{TAGML}}}
 
@@ -254,7 +238,6 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \newcommand{\JATS}{{\AcronymText{JATS}}}
 
 \newcommand{\SRA}{{\AcronymText{SRA}}}
-\newcommand{\ThreeD}{{\AcronymText{3D}}}
 \newcommand{\PDB}{{\AcronymText{PDB}}}
 \newcommand{\MAP}{{\AcronymText{MAP}}}
 \newcommand{\EPS}{{\AcronymText{EPS}}}

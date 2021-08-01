@@ -1069,24 +1069,6 @@ the car is parked).  Similarly, if a microscopic image reveals
 three blood cells, the Regions of Interest are the cells themselves.}
 
 
-
-\begin{figure*}[p]%
- \centering
- \subfloat[original]{\includegraphics[width=7cm]{img.jpg}\label{fig:a}}\hspace*{3em}%
- \subfloat[inscribed circles (color inverted)]{\includegraphics[width=7cm]{i2a.jpg}\label{fig:b}}\\
- \subfloat[filtered contours (color inverted)]{\includegraphics[width=7cm]{i1a.jpg}\label{fig:c}}\hspace*{3em}%
- \subfloat[insribed circles (enlarged)]{\includegraphics[width=7cm, trim=
-    4cm 4cm 4cm 1cm, clip]{i2.jpg}\label{fig:d}}\\
- \subfloat[convex hull with bounding rectangles]{\includegraphics[width=7cm]{i3a.jpg}\label{fig:e}}\hspace*{3em}%
- \subfloat[interior-contour color average]{\includegraphics[width=7cm]{i4.jpg}\label{fig:f}}\\
- \caption{Visualizing Contour Feature-Vectors}%
- \label{fig:all}%
-(note that in (e) the colors are inverted, and the gap 
-between the convex hull and bounding rectangle is shaded to 
-visualize the angle of the rectangle to external image borders)
-\end{figure*}
-
-
 \p{In contrast to other discussions in this section, our 
 examination of image-annotation will not focus on specific 
 file formats so much as on how regions of interest may be 
@@ -1179,6 +1161,23 @@ image region; a principal goal of image-analysis is
 to isolate those contours which are likely to be 
 statistically significant (in the sense of bounding a region of 
 interest) as opposed to background \q{noise.}}
+
+\begin{figure*}[h!]%
+ \centering
+ \subfloat[original]{\includegraphics[width=7cm]{img.jpg}\label{fig:a}}\hspace*{3em}%
+ \subfloat[inscribed circles (color inverted)]{\includegraphics[width=7cm]{i2a.jpg}\label{fig:b}}\\
+ \subfloat[filtered contours (color inverted)]{\includegraphics[width=7cm]{i1a.jpg}\label{fig:c}}\hspace*{3em}%
+ \subfloat[insribed circles (enlarged)]{\includegraphics[width=7cm, trim=
+    4cm 4cm 4cm 1cm, clip]{i2.jpg}\label{fig:d}}\\
+ \subfloat[convex hull with bounding rectangles]{\includegraphics[width=7cm]{i3a.jpg}\label{fig:e}}\hspace*{3em}%
+ \subfloat[interior-contour color average]{\includegraphics[width=7cm]{i4.jpg}\label{fig:f}}\\
+ \caption{Visualizing Contour Feature-Vectors}%
+ \label{fig:all}%
+(note that in (e) the colors are inverted, and the gap 
+between the convex hull and bounding rectangle is shaded to 
+visualize the angle of the rectangle to external image borders)
+\end{figure*}
+
 
 \p{All of these metrics classify regions only on basic 
 mathematical levels; none of this quantitative 

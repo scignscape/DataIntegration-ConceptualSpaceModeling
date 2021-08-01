@@ -5,6 +5,13 @@
 
 }\vspace{1em}}
 
+\renewcommand{\:}{}
+\renewcommand{\;}{}
+\renewcommand{\+}{}
+\renewcommand{\<}{}
+\renewcommand{\>}{}
+
+
 \usepackage{titlesec}
 
 \titleformat{\section}
@@ -26,9 +33,9 @@
 \titlespacing*{\subsection}
 {0pt}{4.5ex plus 1ex minus .1ex}{.7ex plus .2ex}
 
-\setlength{\columnsep}{9.5mm}
+\setlength{\columnsep}{9mm}
 
-\usepackage[letterpaper, left=.99in,right=.99in,top=.57in,bottom=.58in, 
+\usepackage[letterpaper, left=.925in,right=.925in,top=.56in,bottom=.56in, 
 paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 
@@ -111,6 +118,17 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 }
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+\newcommand{\cq}[1]{{\fontfamily{gar}\selectfont ``}#1{\fontfamily{gar}\selectfont ''}}
+
+
+\let\OldB\b
+\newcommand{\bb}[1]{\textbf{\oneptsmaller{#1}}}
+\renewcommand{\b}[1]{\makebox{\bb{#1}}}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+\newcommand{\qb}[1]{\q{\b{#1}}}
 
 
 \usepackage{graphicx}

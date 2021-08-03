@@ -140,7 +140,7 @@ would probably agree with this assessment
 --- that in the best-case scenario 
 image-processing can yield predictive 
 analytics which would sort patient populations 
-into groups steered toward distict treatments 
+into groups steered toward distinct treatments 
 deemed most likely to be effective --- 
 there are technological and operational 
 challenges to making patient-centered 
@@ -189,7 +189,7 @@ methods and/or clinical interventions.
 From the perspective of standard 
 data models, initiatives to cross-reference 
 imaging and outcomes data include several 
-Semantic Web ontologies, such as the Semantic Dicom Ontology 
+Semantic Web ontologies, such as the Semantic \DICOM{} Ontology 
 (\SeDI{}) and the \ViSion{} \q{structured 
 reporting} system (both referenced earlier). 
 The purpose of these ontologies is to 
@@ -235,11 +235,12 @@ expanded in a decentralized, modular fashion.}
 \p{A representative example of 
 this new paradigm is \CaPTk{} (Cancer Imaging  
 Phenomics Toolkit), which provides 
-a central supplying a centralized User Interface and 
+a primary component supplying a centralized User Interface and 
 taking responsibility for acquiring and loading 
-radiographic images, paired with multiple \q{peer} 
+radiographic/microscopy images, paired with multiple \q{peer} 
 applications which can be launched from \CaPTk{}'s main window, 
-or alternatively used as standalone programs.  
+or alternatively used as standalone programs \cite[especially 
+section 4]{ChristosDavatzikos}.  
 In particular, \CaPTk{} provides an implementation 
 (apparently the only \Cpp{}-based implementation) 
 of the Common Workflow Language (\CWL{}), 
@@ -261,9 +262,10 @@ term \q{native,} \q{standalone} applications,
 yielding an extensible architecture through 
 which new image-analysis techniques can be 
 integrated into an underlying \PACS{} system
-(a detailed discussion of \CaPTk{} module implementional 
+(a detailed discussion of \CaPTk{} module 
+implementation 
 is outside the scope of this chapter, but 
-this book's suppelemental material include a 
+this book's supplemental materials include a 
 more technical overview of \CaPTk{}; for now 
 we just use \CaPTk{} as a case-study 
 in modular design for bioimaging). }
@@ -468,13 +470,13 @@ that the relevant procedure sets adhere
 to the relevant multi-procedural protocol.\footnote{Reviewing the source code and documentation 
 for \CaPTk{} confirms that multi-application 
 messaging along these lines is implicitly adopted 
-by \CaPTk{}; see for example 
+by \CaPTk{}; \i{see} for example 
 \bhref{https://www.med.upenn.edu/cbica/assets/user-content/images/captk/2018\_ISBI\_CaPTk .0404.Part2.pdf}, particularly 
 the material starting on the 30th slide of that presentation.}} 
 
 \p{While we have initially approached multi-application networking 
 from the bioimaging perspective, this topic is equally 
-applicable to multi-site trial archticture, the theme of next section.}
+applicable to multi-site trial architecture, the theme of next section.}
 
 
 

@@ -61,13 +61,13 @@ making text-mining operations more
 precise and reliable.}
 
 \p{As an example of the possibilities and challenges 
-of text and data mining scenarios we wilk 
+of text and data mining scenarios we will 
 consider \lCnineteen{}, a collection of Covid-19-related 
 research articles which was developed (starting 
 in Spring 2020) in conjunction with a White 
 House \q{call to action} to spur Covid-19 research.  
 This White House initiative was described as a 
-\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID}.\footnote{See \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}}  As raw data for this initiative, the US government helped  
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID}.\footnote{See \bhref{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset}.}  As raw data for this initiative, the US government helped  
 spearhead a consortium of industry and academic 
 institutions, headed by the Allen Institute for AI Research, 
 who curated a \q{machine-readable Coronavirus literature collection} 
@@ -103,18 +103,20 @@ health-care community, and the public at large
 in publishers choosing to release a substantial 
 quantity of Covid-19 related literature in 
 Open-Access fashion, \Cnineteen{} is not without 
-certain limitations, as acknoweldged by the curators themselves: 
+certain limitations, as acknowledged by the curators themselves: 
 
 \begin{displayquote}
-We have performed some data cleaning that is sufficient to fuel most text mining & NLP research efforts. But we do not intend to provide sufficient cleaning for this data to be usable for directly consuming (reading) papers about COVID-19 or coronaviruses. There will always be some amount of error, which will make CORD-19 more/less usable for certain applications than others.\footnote{\i{See} \bhref{https://github.com/allenai/cord19}}
+We have performed some data cleaning that is sufficient to fuel most text mining \& NLP research efforts. But we do not intend to provide sufficient cleaning for this data to be usable for directly consuming (reading) papers about COVID-19 or coronaviruses. There will always be some amount of error, which will make CORD-19 more/less usable for certain applications than others.  
+We leave it up to the user to make this determination ...\footnote{\i{See} \bhref{https://github.com/allenai/cord19}}
 \end{displayquote}
 
-Some problems stem from 
+\noindent{}Some problems stem from 
 how the articles are encoded into an ostensibly
 (\JSON{}-based) machine-readable format, while 
-others are unavoidable limitations of \NLP{} overall.  
-To be fair, the concerns we identify here reflect 
-an informal survery of \Cnineteen{}; they 
+others are unavoidable limitations of \NLP{} overall.}
+
+\p{To be clear, the concerns we identify here reflect 
+an informal survey of \Cnineteen{}; they 
 are not opinions provided by 
 researchers working directly with \Cnineteen{} or 
 analyses discussed in peer-reviewed literature.  
@@ -456,10 +458,10 @@ data sets accompanying articles within the corpus.  As a concrete example,
 a concept such as \q{expiratory flow} appears in \Cnineteen{} 
 both as a table column in research data and as a medical concept 
 discussed in research papers; a unified microcitation framework 
-should therefore map \textit{\color{drp}{expiratory flow}} as a keyphrase 
+should therefore map \textit{\color{drp!40!black}{expiratory flow}} as a keyphrase 
 to both textual locations and data set parameters.  
 Similarly, a concept such as 
-\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier 
+\textit{\color{drp!40!black}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier 
 in the context of transcription errors) 
 should be identified both as a phrase in 
 article texts and as a molecular component 
@@ -585,7 +587,9 @@ through components that can be shared
 in pure source-code fashion, 
 such as the WhiteDB database engine 
 \cite{EnarReilent} and the AngelScript 
-scripting language \cite{AS}.   
+scripting 
+language.\footnote{\i{See} 
+\bhref{http://www.angelcode.com/angelscript}.}   
 
 \item{}  A unified data-set collection should also provide 
 prototyping and remote-access tools to interface with 
@@ -595,7 +599,7 @@ these would include simulations of remote services, which
 would help scientists understand the design of 
 the remote archives and how to interface with them. 
 
-\item{}  Finally, a unified research portal chould  
+\item{}  Finally, a unified research portal could  
 influence the design of web portals where associated 
 texts are published (\i{see} \cite{HelenaCousijn}, 
 \cite{AlessiaBardi}, \cite{MarkusSuhr},
@@ -606,7 +610,7 @@ to download those files if desired.  Moreover,
 a microcitation framework could be made available 
 for textual links between publication 
 content and data sets --- for instance, a plot or 
-diagram illustrating statistical or equational distributions 
+diagram illustrating statistical or functional distributions 
 should link to the portion of the data set from which that 
 quantitative data is derived.
 \end{enumerate}}
@@ -656,7 +660,7 @@ level in the hierarchy).
 Each paragraph encoding contains an underlying string 
 vector (a stream of characters) and, separate and apart from 
 that, character \q{spans} which point to 
-references (such as Named Entites), citations, and 
+references (such as Named Entities), citations, and 
 equations.  This indicates that the \Cnineteen{} encoding 
 uses \q{standoff annotation,} where any content 
 modifying the interpretation assigned to portions of 

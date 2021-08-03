@@ -3,18 +3,18 @@
 
 `section.Prelude`
 `p.
-On May 11, 2021, Dr. Rochelle Walensky, Director of the 
+On May 11, 2021, Dr. Rochelle Walensky, director of the 
 US Centers for Disease Control (C.D.C.), provided testimony to 
 a hearing of the Senate `q.HELP` (Health, Education, 
 Labor and Pensions) Committee which proved, after the fact, 
 to be surprisingly controversial.  At issue was how   
 Dr. Walensky defended the C.D.C.'s guidance on 
 outdoor activities by indirectly citing a study which was a 
-statistical outlier, later to be challenged by 
+statistical outlier, with her testimony later challenged by 
 the very authors whose work she 
 had relied upon as a source of up-to-date information.  
 The senators criticizing Dr. Walensky 
-focused on the issue of SARS-CoV-2 outdoors 
+focused on the matter of SARS-CoV-2 outdoors 
 transmissibility, particularly in the context of when 
 it was safe to reopen schools and summer camps.  
 Outside of the committee itself, however, it was not 
@@ -23,7 +23,9 @@ but the fact that Dr. Walensky's testimony misconstrued
 the results of a recent publication, giving 
 improper weight to one of multiple studies 
 considered as part of a 
-`q.systematic review.`/`footnote.See `bhref<https://www.nytimes.com/2021/05/26/briefing/CDC-outdoor-covid-risks-guidelines.html>; for an overview`
+`q.systematic review.`/`footnote.
+`i.See` `bhref<https://www.nytimes.com/2021/05/26/briefing/CDC-outdoor-covid-risks-guidelines.html>; for an overview.
+`footnote`
 `p`
 
 
@@ -36,7 +38,7 @@ was an estimation of the percentage of Covid-19 cases
 that can be traced to outdoors rather than indoors 
 transmission.  This actual number is 
 likely to be below 1\%.`footnote.
-See the specific publication, 
+`i.See` the specific publication, 
 `q.Outdoor Transmission of SARS-CoV-2 and Other
 Respiratory Viruses: A Systematic Review,` for details 
 (`bhref.https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7798940`/).
@@ -62,12 +64,14 @@ significantly different from their actual findings.
 
 `p.
 Of all the points of contention surrounding Covid-19, this 
-specific controversy died down pretty quickly.  
-After one news cycle it remained as little more than 
+particular controversy stands as little more than 
 a footnote in the annals of US Government response to the 
-pandemic.  However, it presents a case-study which 
-raises interesting questions about how scientists 
-and policymakers should integrate and utilize 
+pandemic (although confusing statements about 
+outdoor transmissions continue to be cited as 
+a contributing factor in the public's mistrust of the C.D.C.).  
+However minor it may be, though, this episode  
+raises interesting questions about how scientists' 
+and policymakers' utilizization of 
 scientific research.  After all, we certainly believe 
 that policies (especially in contexts related to 
 medicine and health care) should be informed 
@@ -75,7 +79,7 @@ by empirical data.  Yet how should policymakers
 interpret research which actually produces 
 empirical data sets?  Insofar as many areas of 
 large-scale public concern (certainly Covid-19 is a 
-prime example) engender many different research 
+prime example) engender numerous different research 
 projects, often yielding inconsistent 
 results, how should such diverse data 
 be consolidated into a single model 
@@ -93,13 +97,14 @@ policies on empirical terms?
 Insofar as multiple research projects often yield 
 conflicting results, citing one specific 
 research work can give a misleading overview 
-of the relevant research field as a whole 
+of the relevant field as a whole 
 %-- even if that work was conducted professionally 
 and responsibly.  In other words, our criteria 
 for assessing the merits of scientific work 
-inevitably evolves based on the relation of a 
+inevitably shifts based on the relation of a 
 given research endeavor to others on similar 
-topics.  Scientists can do no more than 
+topics.  Individual scientists, of course, 
+can do no more than 
 conduct their own research according to disciplined 
 protocols, yielding results which are as 
 conclusive as possible.  In this sense    
@@ -109,7 +114,7 @@ responsibly and in accord with protocols
 designed to minimize randomness and error.  
 Findings which are `i.methodologically` sound, 
 however, may still be inaccurate.  
-Whenever multiple well-conducted research projects 
+Whenever multiple research projects 
 address similar themes, to the degree that their 
 findings can be contrasted, the totality of 
 results among multiple studies 
@@ -126,14 +131,14 @@ under the general rubric of a philosophy
 of science %-- research methods are 
 supposed to adhere to rigorous protocols 
 `i.so that` the corresponding work is 
-empirically definitive.  Empirical science 
+empirically persuasive.  Empirical science 
 is driven by the belief that we can arrive 
 at factually decisive results by conducting 
 research which is optimized to yield statistically 
 significant results.  It is therefore at least 
 philosophically uncomfortable when multiple 
 studies %-- all done correctly and professionally 
-%-- yield substantially divergent conclusions.  Unless 
+%-- yield substantially incommensurate conclusions.  Unless 
 specific details in trial design or sample 
 populations (whatever these may be in the 
 research context) are identified which could 
@@ -225,7 +230,8 @@ one could argue that more granular
 research integration and meta-analysis 
 should be promoted as a formal 
 mechanism within publishing platforms 
-and scientific technology.  Publishers 
+and scientific technology.  On this 
+theory, publishers 
 should curate the tools allowing 
 meta-analysis to be performed 
 (more rigorously than today) and 
@@ -241,7 +247,7 @@ research sources.
 In recent years, the scientific community 
 has indeed increasingly embraced open-access paradigms 
 such as FAIR (Findable, Accessible, Interoperable, 
-Reusable) and the Research Object Protocol, which 
+Reusable) and the Research Object protocol, which 
 we will cite more explicitly in Chapter 2 and 
 elsewhere.  These initiatives are intended to 
 make scientific data more transparent 
@@ -269,7 +275,7 @@ authors of the controversy-inspiring
 Systematic Review report having to exclude 
 many papers from their analysis to begin 
 with) it may be necessary to 
-rely on research which has some 
+rely on research which has certain 
 reciprocal methodological anomalies along 
 these lines, but perhaps there is 
 some formal mechanism to annotate 
@@ -283,7 +289,7 @@ environments into one integrated picture.
 `section.Data Integration, Hypergraphs, and Type Theory`
 `p.
 There is, of course, no magic wand 
-which we can wave over the worlds of 
+which anyone could wave over the worlds of 
 science and publishing to re-engineer 
 meta-analytic paradigms in a single 
 historical inflection-point.  Paradigm-shifts 
@@ -297,7 +303,7 @@ which could motivate them.  Indeed,
 in this book we are trying to take such an 
 evaluative perspective applied to the 
 subject of biomedical research data 
-and data-integration practices in both 
+and data-integration practices, in both 
 research and clinical settings.    
 `p`
 
@@ -419,14 +425,14 @@ requires depositing open-access data sets
 on popular hosting platforms such as 
 Dryad, Open Science Foundation, or GitHub 
 as a precondition for fieldwork grants.`footnote.
-See `bhref<https://gatesopenresearch.org/for-authors/data-guidelines>;
+`i.See` `bhref<https://gatesopenresearch.org/for-authors/data-guidelines>;.
 `footnote`
 Similarly, academic publishers strongly encourage authors 
 to submit data sets to open-access platforms 
 and to reference those platforms via `q.supplemental 
 materials` and/or `q.data availability` sections 
 of their articles.`footnote.
-See `bhref<https://www.elsevier.com/authors/tools-and-resources/research-data/data-guidelines>;, for example.
+`i.See` `bhref<https://www.elsevier.com/authors/tools-and-resources/research-data/data-guidelines>;, for example.
 `footnote`  In particular, the onus is on authors 
 to justify a `i.failure` to publicly share 
 research data, such that pairing 
@@ -556,8 +562,8 @@ potential integration with other studies
 (or with replication efforts seeking to 
 reproduce their own specific work).  Should
 data be modeled as relational tables, 
-as Semantic Web style graphs, as property 
-graphs, as `q.objects` backed by 
+Semantic Web style graphs, property 
+graphs, `q.objects` backed by 
 Object-Oriented computer code, or as 
 instances of domain-specific data formats?  
 All of these data-representations 
@@ -929,6 +935,416 @@ architectures via supplemental
 materials accompanying this book. 
 `p`
 
+`section.Covid, Philosophy, and Science`
+`p.
+A philosophical overview of the pandemic 
+would be incomplete if we did not acknowledge 
+how some facets of associated public-health policy, 
+such as mask or vaccination requirements, 
+have become politicized.  While Covid-19 
+serves as a catalyst and magnifier for some 
+of these issues, underlying questions 
+%-- about the reliability of scientific data, 
+the proper balance between public health 
+and individual rights, and so forth %-- 
+surely transcend any single disease.  
+We do not intend to engage in lengthy 
+analyses of this  (important but 
+expansive) terrain, but it is worth 
+pointing out several representative controversies 
+where technical issues related to 
+scientific data and publishing are 
+directly relevant.
+`p`
+
+
+`p.
+In the context of vaccinations, for example, 
+consider the noteworthy case of a 
+retracted article which (not quite appropriately) 
+became widely cited by so-called 
+`q.anti-vaxxers` %-- that is to say, 
+embroiled in the political machinations of 
+vaccine policy.  The contested article (published 
+on June 24, 2021, in the journal `i.Vaccines`/) 
+atttempted to quantify the correlation 
+between Covid-19 deaths prevented by 
+vaccination against deaths which `i.followed` 
+vaccination.  The 
+key detail appears to be conflicting interpretations 
+as to whether the authors claim that 
+vaccinations had `i.resulted in` 
+mortality or merely (acausally) `i.preceded` fatal outcomes 
+in some circumstances.
+`p`
+
+`p.
+After several editors' 
+resignations (some later returned to the journal),
+`i.Vaccines` retracted the article, prompting 
+in response a clarification from the authors which appeared 
+to walk back some of their claims.  According 
+to `i.Science Magazine`/, the authors 
+conceded that `q.Currently we only have association ... 
+we never said anything else.`/`footnote.
+`i.See` `bhref<https://www.sciencemag.org/news/2021/07/scientists-quit-journal-board-protesting-grossly-irresponsible-study-claiming-covid-19>;.
+`footnote`
+`p`
+
+`p.
+At issue is `i.first` estimating 
+the number of deaths `i.prevented by` vaccines (an 
+imperfect process, because one cannot precisely 
+quantify counter-factuals) and `i.second` distinguishing 
+deaths `i.caused by` vaccines as opposed to 
+fatal side-effects which could `i.potentially` be 
+adverse reactions to vaccination %-- but could have 
+many other explanations as well.  Even with that 
+caveat, the authors cited a very low count of 
+fatal incidents (roughly 4 per 100,000) but also 
+(via likely flawed methods) derived a small figure 
+for the hypothetical number of fatal Covid-19 cases 
+prevented by vaccines, on average.  Combining 
+both numbers led the authors to summarize that 
+2 lives are lost for every 3 saved by vaccination, 
+an almost surely inaccurate calculation which 
+was seized upon by anti-vaxxers, who circulated this 
+figure outside its proper context and 
+methodological nascence.
+`p`
+
+
+`p.
+Competent scientists quickly pointed out 
+the article's misleading use of adverse-effect 
+reports as well as their dubious derivation of 
+vaccines' efficacy (based on a single 
+Israeli study comparing vaccinated and unvaccinated 
+cohorts), but the controversy lived on precisely 
+because scientists questioned how the paper 
+survived peer review in its later-to-be-retracted 
+form to begin with.  Even if non-scientists with a political 
+agenda selectively exploited certain details 
+without due consideration for context, 
+peer review did confer an imprimateur 
+of merit on the original work which proved to be 
+premature, but only after providing some cover 
+for anti-vaccination claims. 
+`p`
+
+
+`p.
+A second controversy which presents thought-provoking 
+interpretive questions is the so-called 
+`q.lab leak` theory, according to which 
+SARS-CoV-2 escaped from a Wuhan research facility 
+rather than having a zoonotic origin.  
+The prependerance of scientific opinion 
+appears to be that theories of the virus 
+being manually engineered are `i.plausible`/, 
+but also that every epidemiological and 
+genomic factor cited as potential evidence 
+of non-zoonotic origins have alternative 
+(and more mundane) explanations.`footnote.
+`i.See`/, e.g., `bhref<https://www.nature.com/articles/d41586-021-01529-3>;.
+`footnote`  A notable incident 
+reflecting this dynamic involved Nobel laureate David Baltimore, 
+who was quoted characterizing certain  
+`RNA; details as `q.smoking gun` evidence that 
+SARS-CoV-2 was bioengineered.  One scientist 
+who led a team investigating 
+possible `q.genome-tampering,` Kristian 
+Andersen (of the Scripps Research institute), 
+refuted Baltimore's arguments by  
+pointing out that the `b.CCG` codon accounts for 
+about 3\% of the SARS-CoV-2 nucleotides encoding arginine 
+(an amino acid), which is the particular detail 
+most often claimed to arise only via human 
+manipulation (SARS-CoV-1 has an even higher 
+rate of this specific encoding, even though 
+little `q.bioweaponry` speculation accompanied that initial 
+SARS outbreak).  Baltimore in an email to 
+`i.Nature` then moderated his earlier comments, 
+claiming only that `q.there are other possibilities 
+and they need careful consideration, which is all 
+I meant to be saying.` 
+`p`
+
+
+`p.
+To some degree such give-and-take of claims and 
+interpretations is a natural (and healthy) 
+aspect of science, except that (most 
+scientists would probably agree) conducting this 
+exercise through public forums, in a politically 
+charged environment, ends up obscuring 
+the weight of scientific evidence.  Insofar as 
+those who wish to advance specific theories 
+or policies (opposing proof-of-vaccine mandates, 
+say, or trying to geopolitically leverage 
+claims that the Chinese government %--  
+whether out of malice or 
+incompetence %-- instigated the pandemic) can find backing for their 
+positions from peer-reviewed writing and/or 
+decorated experts, the possibility of 
+scientific evidence strongly indicating 
+certain interpretations over others becomes 
+diluted.
+`p`
+
+
+`p.
+At stake here is apparently, again, the contrast between 
+individual studies and the `q.preponderance of 
+evidence,` which in principle should 
+constrain the impact of any single investigation, 
+especially in areas where many research 
+projects overlap and where a particular 
+analysis contradicts the majority of 
+juxtaposable findings.  The general 
+maxim that multiple studies yielding 
+similar results carry proportionately 
+greater weight is straightforward, 
+but arguably it remains an 
+open question how to formalize this 
+intuition on a philosophical 
+or meta-scientific level.  Notions 
+such as the `q.weight of evidence` 
+aggregated across multiple studies, 
+or metrics of findings either 
+supporting or deviating from prior 
+research, have not been codified 
+at the meta-analytic scale with the 
+degree of entrenchment that 
+paradigms of `q.scientific method` are 
+accepted (philosophically as well as operationally) 
+for research projects singularly. 
+`p`
+
+`section.How Covid-19 May Accelerate Emerging Trends in Research Data-Curation`
+`p.
+It has been suggested that the Covid-19 pandemic 
+may have a lasting impact on many societies 
+partly by accelerating trends which were already 
+latent, such as allowing a greater proportion 
+of office-style work to be performed outside 
+the actual office.  In scientific terms, 
+it is hard to overestimate the significance 
+of rapid vaccine development: given that 
+most post-infection interventions have had 
+only limited success in serious cases, it was only 
+via mass vaccinations that fortunate 
+jurisdictions have been able (as of mid-2021) to 
+resume some semblance of normalcy.  Moreover, 
+companies were able to develop their vaccines 
+quickly because of considerable 
+research carried out, especially `visavis; 
+`RNA; vaccines, well before 2019.  The 
+lesson many scientists and policy-makers may 
+take away from this history is first that 
+an infrastructure should be put in place 
+for rapid vaccine testing, development, and 
+production %-- anticipating future 
+pandemics %-- and second that fundamental 
+science relevant to vaccines can pay dividends 
+in expected ways.  
+In the case of SARS-CoV-2, the science of 
+`mRNA; vaccines become consolidated just before 
+a disease would emerge for which that 
+science would prove invaluable.`footnote.
+`i.See` `bhref<https://www.statnews.com/2020/11/10/the-story-of-mrna-how-a-once-dismissed-idea-became-a-leading-technology-in-the-covid-vaccine-race>;.
+`footnote`
+`p`
+
+
+`p.
+One can speculate that the Covid-19 fallout will 
+also leave some residue in areas such as 
+scientific publishing, research data management, 
+and the interface between science and public 
+policy, for reasons already intimated.  We have cited 
+examples of civil administrators inciting 
+controversy even with 
+recommendations rooted in up-to-date science; of 
+peer-reviewed (and at least superficially 
+credible) research getting adopted by 
+anti-vaxxers with an agenda that is 
+`i.prima facie` fundamentally 
+anti-scientific; and of a Nobel laurate 
+essentially dialing back relatively 
+informal (but vaguely sensationalist) 
+comments that fed into the 
+spy-novelesque intrigue of germ warfare.   
+`p`
+
+
+`p.
+Trying to reach conclusions from such 
+disparate events may connote a fallacy 
+of some homogenous `q.publishing industry` 
+or `q.scientific community` or 
+`q.academic establishment,` all of which 
+are of course diverse and decentralized 
+social/commercial millieu %-- but 
+still some cautious observations may 
+be warranted.
+`p`
+
+`p.
+One plausible point of argument is that 
+the proliferation of scientific 
+work `i.along with` the emergence of 
+data-sharing and data-curation 
+paradigms `i.jointly` imply that the 
+meaning and notion of `q.peer review` 
+is noticeably evolving.  In this 
+context it is worth referencing 
+analyses such as those by Todd Carpenter  
+(Executive Director of the National 
+Information Standards Organization) 
+on the very nature of peer review 
+applied to `i.data` rather than 
+`i.documents`/.`footnote.
+`i.See` `bhref<https://scholarlykitchen.sspnet.org/2017/04/11/what-constitutes-peer-review-research-data>;.
+`footnote`  As this (and similar) studies 
+point out, the process for assessing published 
+data sets in the context of peer-reviewing  
+conventional scientific `i.literature` 
+is much less standardized than evaluating 
+publications themselves.
+`p`
+
+`p.
+In particular, the fact that 
+an author transparently presents research 
+data as supplemental materials to scientific 
+writings may check one box in a text's 
+favor, but reviewers might not 
+then comparatively examine the data sets themselves, 
+with an eye to measuring them  
+against disciplinary norms.  Some scientific 
+groups have accordingly proposed `q.quality standards` 
+based on factors such as ease of data/code reuse, 
+thoroughness of meta-data, adherance 
+to data-sharing protocols, and the 
+relevance of data to its associated articles.  
+Such standards may then  
+influence how scientific work is received 
+by government officials or the public 
+at large, because the scientific community 
+could indicate when publications have 
+been developed in the context of high-quality 
+(or, conversely, sub-par) data-curation, 
+adjoining that assessment to other factors 
+(such as peer review or journal reputation) 
+which individuals or policy-makers use 
+to construe scientists' merit in the 
+eyes of other scientists.
+`p`
+
+
+`p.
+Practically and logistically speaking, 
+moreover, we should recognize that 
+data-curation is time-consuming and, 
+in its most rigorous forms, embodies 
+disciplinary knowledge which stands 
+apart from natural sciences themselves.  
+To the degree that diligent data-curation 
+expectations serve as one criterion 
+of research merit, we can envision 
+some evolution in how research 
+teams and/or projects are set up, with proper 
+time and resources allotted to data-management 
+concerns alongside other priorities 
+(those implicated in data-acquisition 
+to begin with).
+`p`
+
+`p.
+One may, specifically, envision a gradual 
+conceptual shift away from reading 
+research papers as `q.static` documents, 
+insofar as data sets (and, where applicable, 
+research code) may cycle through mutliple 
+versions even after publications appear 
+in final form.  Version-control 
+systems and branch/clone technologies 
+can allow scientists to keep track of 
+how data and/or code associated with a 
+specific project is evolving (while 
+still maintaining the integrity of 
+data sets as citeable assets).  In 
+this context, scientists may increasingly 
+perceive conventional publications as 
+summaries rather than the substantial core 
+of their research work, and place equal weight 
+on Research Object style resources 
+that can evolve more flexibly and 
+over which they have greater editorial control.  
+Likewise, 
+interactive data-sets %-- which can embed 
+multi-media visualization capabilities 
+beyond the scope of ordinary print documents 
+%-- might become esteemed as pedagogical 
+tools helping researchers exposit their 
+methods and theories (we will revisit this point in Chapter 4). 
+`p`
+
+`p.
+Such a shift in priorities could potentially 
+complicate the notion and process of peer review, 
+since the `q.work` to be assessed becomes more 
+of a moving target %-- but at the same time 
+acknowledging the evolutionary nature 
+of research projects may help restore 
+public confidence in assessments of 
+scientific merit, because it would 
+signal the relevant industries' acknowledgement 
+that appraisals of scientific work 
+are necessarily provisional.  Cases such as 
+`i.Vaccines`/'s retracted article actually 
+reveal science appropriately correcting itself, 
+but such lingering controversies 
+suggest that non-scientists entertain a 
+conception that research can be crisply 
+sorted into bins of `q.merit` and 
+`q.demerit,` a simplification which has 
+no basis in science itself.    
+`p`
+
+`p.
+One may also anticipate the emergence of more 
+rigorous meta-models for scientific data %-- 
+employing constructions such as type theory 
+or Object Models 
+to classify the basic units of data sets 
+insofar as these comprise resources with their 
+own histories and quality-control standards.  For example, 
+`q.microcitations` are understood to link 
+natural-language texts with `i.parts` of 
+data sets, but this definition is inexact: 
+what is a `q.part` in this context (one 
+record, data-point, measurement, calculation, etc.)?  
+In order 
+to standardize data-curation assessments, 
+scientists need to define basic formulations 
+such as data sets' version-history 
+(e.g., what are the units of change as a 
+data set gets updated) and overlap/reuse 
+(e.g., what are the units of content 
+which could adjudicate priority claims, 
+plagiarism, impact factor, and so forth)?  
+We will explore type-theory in the 
+data curation context (mostly 
+in Part II below) partly because 
+these structural questions 
+seem poised to become increasingly important 
+for the relationship between data-curation 
+and the overarching scientific (and 
+publishing/dissemination) process.
+`p`
+
 
 `section.Navigating the Proliferation of Research Data`
 `p.
@@ -939,8 +1355,8 @@ is the large volume of (meritorious) work being
 produced.  It is better to have more good 
 science than less, to be sure, but the sheer 
 scale of research work presents a challenge 
-both to individual scientists (who need to 
-make their contributions known to the 
+both to individual scientists (who are charged with  
+making their contributions known to the 
 relevant communities that can leverage them) 
 and to technologies powering science as a 
 whole.  
@@ -952,23 +1368,20 @@ to read all scientific literature produced
 at any one point in time %-- or even 
 all literature confined to a specific 
 specialization, such as oncology, cardiac 
-care, or Covid-19 %-- scientists are 
-hoping for Artificial Intelligence powered 
-tools to find and interconnect 
-related research projects, and to filter 
-and organize corpora of research papers.  
-Allowing scientists to describe the kind 
-of publications which directly 
-relevant to their research would help 
+care, or Covid-19 %-- scientists envision 
+`AI; tools that could guide researchers 
+toward relevant papers and data sets.  
+More advanced search engines for 
+scientitic documents would help 
 investigators to cut through the 
 mass of literature and hone in on 
 specific studies which are precedents 
 or theoretical foundations for their 
-own work.  Next-generation 
-publication-search technologies, it is 
-hoped, will counter the problems caused 
-by document proliferation.  Scientists 
-can then have the best of both worlds: 
+own work.  In short, better 
+search tools would balance the 
+counteract the challenges posed 
+by how scientific work is rapidly expanding.  
+Scientists could then have the best of both worlds: 
 a vibrant scholarly community which 
 produces large quantities of 
 credible science (and increasingly 
@@ -983,9 +1396,12 @@ swamped by this very volume.
 
 
 `p.
-Truly accurate publication-search capabilities, 
-on the other hand, going beyond the effectiveness 
-of straightforward web searches, appears to 
+This is an encouraging idea, but there seems 
+to be little evidence that search tools 
+specifically designed for science perform 
+noticeably better than generic web searches.   
+Truly accurate publication-search 
+capabilities appear to 
 remain a project for the future.  A good 
 case-study in the current state and limitations 
 of publishing technology is offered by the 
@@ -996,7 +1412,7 @@ SARS-CoV-2 and (to the degree that they
 may benefit Covid-19 research) coronavirus 
 studies in general.  The CORD-19 compilation 
 provides machine-readable full-text versions 
-of over (as of mid-2021) 280,000 publications.  
+of over 280,000 publications (as of mid-2021).  
 We review the features and architecture of 
 CORD-19 in Chapter 3.  For right now we'll simply 
 point out that the data scientists who formulated  
@@ -1007,7 +1423,7 @@ searchable manner.  They even issued a
 `q.call to action` encouraging publishers 
 to develop `q.distribution formats [for] 
 scientific papers` which are less 
-machine-ambiguous than `PDF;, to 
+ambiguous than `PDF; (i.e., less opaque in text-encoding), to 
 share publication texts in `q.structured format[s] 
 like `JSON;, `XML;, or `HTML;,` and 
 to embrace consistent schemata for 
@@ -1016,17 +1432,16 @@ See Lucy Lu Wang, `i.et al.`/,
 `q.CORD-19: The COVID-19 Open Research Dataset` 
 (`bhref<https://arxiv.org/pdf/2004.10706.pdf>;), 
 page 8.
-`footnote`  If curating machine-readable 
-and rigorously-structured representations 
-of article text serves as a qualification  
+`footnote`  If the availability of 
+machine-readable text serves as a qualification  
 distinguishing which papers are included 
 in aggregative corpora %-- and also which 
 papers, once included, are more prominent 
-in search results based on their being 
+in search results due to their being 
 properly annotated (with demarcated 
 keyphrases, findable data links, and so forth) 
 %-- then publishers have an incentive to 
-adopt the paradigms which the Allen Institute 
+adopt the paradigms akin to those which the Allen Institute 
 is advocating in this context.
 `p`
 
@@ -1041,28 +1456,29 @@ terms against the raw text of a publication.
 There is, in general, no `q.raw text` within a 
 data set that can be scanned for keywords and 
 phrases.  A related problem is that multiple 
-data sets can be hard to aggregate into a 
-single analyzable whole, even if the data 
-uses similar methods applied to similar 
+data sets can be hard to aggregate together, 
+even if they use similar methods applied to similar 
 real-world problems.  Unless there is a 
 rigorous isomorphism between the statistical 
 parameters and data-types employed between
-two similar research projects, there is 
-no automatic process to map parameters 
-within one project onto another's so that 
-they may be subject to integrated statistical 
+two kindred research projects, there is 
+no automatic process to map one project's parameters 
+onto another's so that they may be analyzed 
+or visualized as a whole, 
+or subjected to integrated statistical 
 processing.  Even subtle difference in 
-parameter's variance, distributions, 
+parameters' variance, distributions, 
 ranges, and data-acquisition methods can 
-complicate multi-point data aggregation.
+complicate attempts at data aggregation spanning two or more 
+research projects.
 `p`
 
 
 `p.
 In light of these difficulties, scientists have 
-proposed numerous format for 
+proposed numerous formats for 
 describing published data sets, with the 
-hope that common representation would make 
+hope that common representations would make 
 data sets more searchable and interoperable.  
 One aspect of these standardization projects 
 is the notion of `q.microcitations,` or 
@@ -1073,13 +1489,13 @@ document.  The process of forming
 microcitation targets in the context of specific 
 data sets, however, depends on the 
 format through which the data is encoded.  
-Individual `XML; document nodes, `JSON; 
-object values, `SQL; table rows or columns, 
+Object values in `JSON;, `SQL; table rows or columns, 
+`XML; document nodes, 
 or record-tuples for formats such as 
 `b.numpy` or `CSV; may all be feasible 
 microcitation sites.  Given that 
-data sets may employ any of these representations 
-(or many others) it is hard to derive a 
+data sets might employ any of these representations 
+(or many others) it is not unproblematic to standardize a 
 general-purpose micro-citation format.   
 `p`
 
@@ -1108,8 +1524,8 @@ and data-modeling structures and design patterns
 that might realize these general goals will be 
 the subject of much of our analyses 
 in several later chapters, particularly 
-Chapter 5, 6, and 9, and (in the specific 
-context of bioimaging) Chapter 7 and 8 as well. 
+Chapter 5, 6, and 9.  This will also be a theme (in the 
+specific bioimaging context) of Chapters 7 and 8 as well. 
 `p`
 
 `p.
@@ -1146,7 +1562,8 @@ in several specific biomedical disciplines, yielding
 diagnostic, prognostic, and explanatory models that 
 cut across biophysical scales (molecular, cellular, 
 tissues, organs) and data-acquisition modalities 
-(proteomics, genomics, biopsies, image processing).  
+(proteomics, genomics, biopsies, image processing, lab assays %-- 
+such as for biologic sample analysis %-- and so forth).  
 Examining literature where these integrative 
 studies are described, it becomes clear that 
 scientists often construct the software ecosystem 
@@ -1163,8 +1580,7 @@ and trial-and-error approach often taken to
 integrating multi-disciplinary biomedical data 
 can act as an impediment to research replication 
 and the systematic evaluation of interdisciplinary 
-research findings.  This is one reason why it  
-may be necessary to engage in a detailed 
+research findings.  This is one reason for engaging in a detailed 
 review of data profiles, data modeling paradigms, 
 and data integration techniques, so as to 
 lay the foundation for a software ecosystem 
@@ -1194,8 +1610,9 @@ while it is obviously true that (given
 today's highly interconnected digital-health ecosystem) 
 many biomedical and clinical data spaces are utilized 
 by multiple (independent) software components, 
-there are intricate design challenges for engineering data sources 
-which allow autonomous components to leverage their 
+there are intricate design challenges which 
+confront the engineering of data sources 
+that can allow autonomous components to leverage their 
 data in consistent (but flexible) ways.  
 The impetus for digital health in recent years 
 has, one might say, been rooted in data mining 
@@ -1221,9 +1638,9 @@ literature.  The problem is that ---
 although many people believe government 
 policies should be grounded on scientific 
 evidence and should respect scientific 
-consensus whereever possible --- all too often 
+consensus wherever possible --- all too often 
 there simply `i.isn't` scientific consensus, 
-even in light of substantial scientific 
+even in light of substantial real-world 
 data.  Such lack of consensus should not 
 inhibit policymakers from basing 
 government decision on data-driven,  

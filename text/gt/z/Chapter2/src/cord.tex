@@ -6,67 +6,15 @@ on in this chapter is text and data mining,
 using analyses of large-scale document corpora 
 and/or biomedical data sets to discover connections 
 between research work which might be less evident 
-to individuals reading publications in isolation. 
-Text Mining and Natural Language Processing 
-(\NLP{}) is certainly one methodology 
-which has been explored for 
-personalized/precision medicine, on the 
-theory that automated searches across 
-biomedical publication archives  
-may detect diagnostically or prognostically 
-significant connections between 
-individual patients' profiles/symptoms 
-and prior studies which doctors 
-might not discover otherwise.  
-In general, text-mining has been developed 
-as one branch of data-mining and Machine Learning 
-in general applied to document corpora 
-under the aegis of precision-medicine 
-(\i{see} for instance \cite{BretonnelCohenHunter}, 
-\cite{AyushSinghal},  
-\cite{MichaelSimmons}).}
-
-\p{Biomedical text mining is also a good 
-case-study in data-integration workflows, 
-because typically the text-mining 
-process requires synthesizing multiple 
-\NLP{} workflows and reading data 
-from multiple input sources 
---- \cite{ObiLGriffith}, for example, 
-is a good precision-medicine context 
-example --- including sentence-parses, 
-datasets of biomedical nomenclature, 
-domain-specific knowledge bases 
-(for gene-sequences, cancer variants, 
-genomic-proteomic or genomic-antigen 
-assocations, and so forth), manual 
-text annotations, etc.}
-
-\p{Despite the perceived potential 
-of patient-centered text mining, 
-some scientists caution against 
-overestimating the power of 
-automated \NLP{} platforms 
-(\i{see} \cite{HolgerFrohlich}, for instance).  
-These critiques are not rejecting text-mining 
-in general, but rather observing limitations 
-in existing document-encoding formats, 
-which are derived from publishing technologies 
-whose primary targets are human readers rather 
-than machine-automated text processing.  More 
-systematic text representation and document 
-annotation could alleviate the need 
-for probabilistic \NLP{} reasoning engines, 
-making text-mining operations more 
-precise and reliable.}
-
-\p{As an example of the possibilities and challenges 
+to individuals reading publications in isolation.  
+As an example of the possibilities and challenges 
 of text and data mining scenarios we wilk 
-consider \lCnineteen{}, a collection of Covid-19-related 
-research articles which was developed (starting 
+consider \lCnineteen{} is a collection of research articles 
+about Covid-19 which was developed (starting 
 in Spring 2020) in conjunction with a White 
-House \q{call to action} to spur Covid-19 research.  
-This White House initiative was described as a 
+House \q{call to action} to spur Covid-19 research.}
+
+\p{This specific White House initiative was described as a 
 \q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID}.\footnote{See \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}}  As raw data for this initiative, the US government helped  
 spearhead a consortium of industry and academic 
 institutions, headed by the Allen Institute for AI Research, 
@@ -74,14 +22,13 @@ who curated a \q{machine-readable Coronavirus literature collection}
 which includes article metadata and (in most cases) 
 publication text  
 for over 280,000 coronavirus research papers (as of 
-mid-2021) \cite{CORD}, \cite{LucyLuWang}.  This
+mid-2021) \cite{LucyLuWang}.  This 
 corpus is paired with links to publisher portals 
 (including Springer Nature, 
 Wiley, Elsevier, the American Society for Microbiology, and the New England Journal of Medicine) providing full open access to \Covid{}-related 
 literature; these resources collectively constitute 
 \Cnineteen{} (the \q{Covid-19 Open Research Dataset}).}
 
-\subsection{Overview of CORD-19}
 \p{The \Cnineteen{} 
 collection was formulated with the explicit goal 
 of promoting both text mining and data mining solutions 
@@ -103,23 +50,16 @@ health-care community, and the public at large
 in publishers choosing to release a substantial 
 quantity of Covid-19 related literature in 
 Open-Access fashion, \Cnineteen{} is not without 
-certain limitations, as acknoweldged by the curators themselves: 
-
-\begin{displayquote}
-We have performed some data cleaning that is sufficient to fuel most text mining & NLP research efforts. But we do not intend to provide sufficient cleaning for this data to be usable for directly consuming (reading) papers about COVID-19 or coronaviruses. There will always be some amount of error, which will make CORD-19 more/less usable for certain applications than others.\footnote{\i{See} \bhref{https://github.com/allenai/cord19}}
-\end{displayquote}
-
-Some problems stem from 
-how the articles are encoded into an ostensibly
-(\JSON{}-based) machine-readable format, while 
-others are unavoidable limitations of \NLP{} overall.  
-To be fair, the concerns we identify here reflect 
-an informal survery of \Cnineteen{}; they 
-are not opinions provided by 
-researchers working directly with \Cnineteen{} or 
-analyses discussed in peer-reviewed literature.  
-With that caveat, however, 
-We assert that certain issues deserve mention: 
+certain limitations.  These largely stem from 
+how the articles are encoded into an ostensibly 
+(\JSON{}-based) machine-readable format.  To be 
+fair, the problems we identify here reflect the 
+current authors' own personal assessments of 
+the \Cnineteen{} corpus; they are not broad 
+criticisms which have been asserted by researchers 
+working directly with \Cnineteen{} or discussed in 
+peer-reviewed literature.  With that caveat, however, 
+we assert that certain issues deserve mention: 
 
 %\vspace{-2em}
 \begin{description}
@@ -174,13 +114,14 @@ newly added to publisher portals.
 \p{To clarify the final comment: the Allen Institute for AI, which 
 curated \Cnineteen{}, encourages publishers to contribute new 
 (or newly-available) articles to the corpus.  However, integration 
-with \Cnineteen{} (or, so it seems, and other 
-domain/topic-specific portal) is not developed as a formal step 
+with \Cnineteen{} is not developed as a formal step 
 in the publication workflow.  In particular, publishers 
 are not themselves generating machine-readable document infosets 
 that can be integrated with the \Cnineteen{} schema (which, 
 in turn, causes transcriptions errors and other problems 
 as just outlined).}
+
+
 
 \p{With respect to text mining, an immediate problem arises 
 in \Cnineteen{}'s archive-construction methodology: 
@@ -348,25 +289,39 @@ For instance, there is no coherent semantics for
 unifying Protein Data Bank files with sociodemographics 
 and epidemiology; files of the former type have specific scientific 
 uses and can only be understood by special-purpose software.  
-Nevertheless, a downloadable 
-\Covid{} archive can include source code for code 
-libraries reading special formats such as \PDF{} 
-or \FCS{} (as a case-study, this book's supplemental materials 
-provides a build-environment for tools working 
-with those file types, among others).}
+Nevertheless, a well-curated data-set collection can 
+make using such special-purpose data as convenient as 
+possible.  In the case of Protein Data Bank, a downloadable 
+\Covid{} archive can include source code for \IQmol{}, a 
+molecular-visualization application that supports 
+\PDB{} (among other file formats) and has few 
+external dependencies (so it is relatively easy to 
+build from source).}
 
-\p{Earlier we advocated for Object-Orient 
-models of \Covid{} variants will could be 
-integrated with both chemical/molecular 
+\p{Indeed, a curated \Covid{} archive 
+might include an enhanced version of software 
+such as that \IQmol{} prioritizes 
+\Covid{} research, with the goal of integrating biomolecular 
+and social-epidemiological data as much as possible.  
+For example, as \Covid{} potentially mutates in different 
+ways in different geographic areas, it will be important 
+to model the connections between \q{hard} scientific 
+\Covid{} information and sociodemographics.  
+As the pandemic evolves, genomic and biochemical information 
+may be linked to particular strains of virus, which 
+in turn are linked to sociodemographic profiles: certain 
+strains will be more prevalent in certain populations.  
+Consequently, models of \Covid{} variants will need to be 
+formulated and then integrated with both chemical/molecular 
 data and sociodemographic/epidemiological data.  Different 
-\Covid{} strains would then form a bridge linking these different 
+\Covid{} strains then form a bridge linking these different 
 sorts of information; researchers should be able to pass 
 back and forth from molecular or genomic visualizations of 
 \Covid{} to social-epidemiological charts and tables based 
 on viral strains.  Ideally, capabilities for this 
 sort of interdisciplinary data integration would be 
-provided by a \Covid{} archive as enhancements to applications
-that scientists would use to study the 
+provided by a \Covid{} archive as enhancements to applications, 
+such as \IQmol{}, that scientists would use to study the 
 published data.}
 
 \p{It is worth noting that a data-mining platform requires 
@@ -396,14 +351,14 @@ additional analysis on the data for it to be
 a full-fledged component of a 
 machine-readable information space.\footnote{%
 This does not mean that diagnostic images (or 
-other graphical data) should be excluded from 
-data sets; only that computational reuse of such 
+other graphical data) should not be placed in a 
+data set; only that computational reuse of such 
 data will usually involve certain numeric 
 processing, such as image segmentation.  
 Insofar as this subsequent analysis is performed, 
-the resulting data can  
-be added as a 
-supplement to the image data set itself.}} 
+the resulting data should wherever possible 
+be added to the underlying image data as a 
+supplement to the data set.}} 
 
 \p{Another concern in developing an integrated \Cnineteen{} 
 data collection is that, logistically speaking, 
@@ -481,47 +436,44 @@ instance, the
 computational techniques applicable to diagnosing 
 coronavirus infection are scientifically very different 
 from those used for genomic or epidemiological studies 
-of the disease; pathologists would not in general 
-use the same software as for genomics/bioinformatics, 
-or virology/epidemiology.  In short, even while 
-scientists start with a 
+of the disease; it is impractical to expect 
+pathologists to use the same software as bioinformaticians 
+studying the pathogen, or for either to use the same 
+software as virologists modeling the (potential or observed) 
+spread of the disease.  In short, even if 
+scientists from disparate disciplines start with a 
 common pool of raw data, they will need to 
 analyze this data through a diverse set of 
 supplemental computational tools, which will vary 
 not only across disciplines but also in terms of 
 the software and laboratory facilities available 
-to different researchers through their institutions.}  
+to different researchers through their institutions.  
+In this sense it is impossible to unify all 
+\Cnineteen{} data into a \textit{fully} self-contained 
+information space.}
 
-\p{Next chapter we will 
-argue that biomedical research corpora have 
-some similarities to \q{data lakes} and similar 
-large-scale, heterogeneous information systems 
-maintained by hospitals and other clinical 
-and/or research institutions.  These 
-dynamics arguably extend beyond research 
-\i{data} to include document archives such as 
-\Cnineteen{} as well.  Such archives 
-(with \Cnineteen{} as a case in point) would 
-be centralized in the sense of employing a 
-single curation, accession, and data-management 
-protocol, but would branch out into many 
-distinct research areas, corresponding to 
-data being consumed and studied through a wide 
-range of software products and ecosystems.  
-Common functionality for basic data-acquisition 
-capabilities would then need to be shared 
-among a spectrum of software components which 
-are otherwise variegated in terms of the 
-data formats and computational resources 
-they can provide or recognize.  Ideally, this 
-mixture of feature alignment and 
-diversification would be anticipated 
-in the design of document corpora and 
-corresponding protocols for accessing 
-data sets associated with included publications, 
-where applicable.}
+\p{Nevertheless, committing to \q{standalone} data publishing 
+remains a valuable goal even in a context where published 
+data sets will invariably migrate to different 
+digital ecosystems.  Although scientists may use 
+external digital tools \textit{when necessary} to 
+perform certain calculations, or when interfacing with 
+laboratory equipment, we strongly recommend that 
+the degree of variation across different domain-specific extensions to 
+\Cnineteen{} be greatly minimized.  
+Ideally, that is, the version of \Cnineteen{} 
+(along with its supporting technology) 
+found in a biomedical setting should be as 
+similar as possible to that found in a 
+biochemical context, or a health-policy 
+context.  In the absence of 
+any initiative to limit this drift, \Cnineteen{} 
+could easily devolve into a federation of 
+separate resources which have no interconnection 
+apart from their nominal focus on \Covid{}.}
 
-\p{The prior paragraphs have highlighted limitations of data 
+
+\p{This section has highlighted limitations of data 
 sets published in conjunction with coronavirus articles made 
 available as open-access resources on Springer Nature 
 (and, by extension, \Cnineteen{}).  
@@ -531,8 +483,8 @@ playing a role distinct from that of both
 authors and editors.\footnote{%
 The point here is not to critique the work of individual 
 authors; curating data sets according to exacting 
-scientific standards demands a vein of 
-expertise that typically lies outside researchers' 
+scientific standards demands a separate vein of 
+expertise which typically lies outside researchers' 
 disciplinary scope.  The point is rather that 
 publishers should recognize data curation as a 
 distinct process and skill-set complementary 
@@ -547,7 +499,7 @@ which point to the need for a more detailed extension
 of this protocol.  In particular, an enhanced protocol 
 should encompass: 
 
-\begin{enumerate}[leftmargin=3pt, itemsep=-1pt,topsep=8pt]
+\begin{enumerate}[leftmargin=3pt, itemsep=4pt,topsep=11pt]
 \item{} A canonical framework for archiving collections 
 of data sets, not only single data sets (and not only 
 groups of data sets published with a single research 
@@ -568,7 +520,7 @@ be implemented specifically to parse and merge the
 information present in single data sets within the 
 overall collection.  This implementation would 
 reciprocate the Research Object goal of unifying 
-code and data, but, again, at the level 
+code and data, but again would operate at the level 
 of an aggregate of research projects rather than a 
 single Research Object.
 
@@ -593,25 +545,25 @@ web-based information spaces that host data sets
 too large to be individually downloaded.  Ideally, 
 these would include simulations of remote services, which 
 would help scientists understand the design of 
-the remote archives and how to interface with them. 
+the remote archives and how to interface with them.
+These simulations could function analogously to 
+(for instance) 
+PurpleData, a prototyping tool for Google's BigData 
+developed by Verily (the Alphabet subsidiary developing 
+an online \Covid{} portal for remote diagnostics 
+and disseminating public information about the pandemic). 
 
-\item{}  Finally, a unified research portal chould  
-influence the design of web portals where associated 
-texts are published (\i{see} \cite{HelenaCousijn}, 
-\cite{AlessiaBardi}, \cite{MarkusSuhr},
-\cite{BarbaraMcGillivray}, for instance).   
-Ideally, it would be easy for readers to 
+\item{}  Finally, a unified research portal should  
+influence the design of the web portals where associated 
+texts are published.  It should be easy for readers to 
 identify which articles have supplemental data files and 
 to download those files if desired.  Moreover, 
-a microcitation framework could be made available 
-for textual links between publication 
+textual links should be established between publication 
 content and data sets --- for instance, a plot or 
 diagram illustrating statistical or equational distributions 
 should link to the portion of the data set from which that 
 quantitative data is derived.
 \end{enumerate}}
-
-\vspace{-9pt}
 
 \p{This discussion has used the \Covid{} crisis as a 
 lens through which to examine data-publishing limitations 
@@ -625,8 +577,6 @@ that the crisis will spur momentum toward a more
 sophisticated data-sharing paradigm --- perhaps a 
 generalization of the Research Object protocol 
 toward data-set collections.}
-
-
 
 \subsection{Reviewing the CORD-19 Document Model}
 

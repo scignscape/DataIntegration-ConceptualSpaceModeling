@@ -450,36 +450,74 @@ of graph systems, accommodated into a single hypergraph-based
 query framework.}
 
 \subsection{Representing Trial Data via Object Models}
-\p{As a concrete example of data-modeling principles proposed 
-earlier in this section, consider how the Object-Oriented models 
-for Covid Phylogeny could serve as a nexus for integrating SARS-CoV-2 phylogenetic 
+\p{As a concrete example of open-ended data-integration 
+concerns being anticipated as a central element of 
+trial design, consider how Object-Oriented models 
+for Covid Phylogeny (which we briefly considered 
+last chapter) could serve as a nexus for integrating SARS-CoV-2 phylogenetic 
 data across multiple studies and healthcare systems.  
 Such an Object Model may be extended in different 
 ways for different clinical trials examining a range 
-of Covid-19 treatments.  For a given antibody regimen, for instance, scientists need 
+of Covid-19 treatments.}
+
+\p{In the context of antibody regimens, 
+for instance, scientists need 
 to quantify how well the antibodies disable 
-Covid-19 spike proteins directly and/or how well the antibodies block 
+Covid-19 spike proteins directly and/or 
+how well the antibodies block 
 the virus's ability to attach to human cells.  These measurements 
-generate data which indicate how well a patient's 
-immune response to Covid-19 is boosted by the 
-administered antibodies, information which is usually 
-delivered in special-purpose formats such as \FCS{} or 
-fluorescence images.  A Covid-19 software ecosystem 
-would then need to ensure that such immune-response 
+generate data which gauge a patient's 
+immune response to Covid-19, 
+whether innate (\q{naive}) or boosted by the 
+administered antibodies.  Researchers 
+have mined such data from different angles, 
+including contrasting symptoms presented 
+with different levels of severity \cite{ZacharyMontague}, 
+\cite{YonggangZhou}, biochemically describing 
+the mechanisms of immune response so as 
+to augment or simulate that response via 
+monoclonal antibodies or similar antiviral 
+therapies \cite{PingpingWang}, \cite{YaoQingChen}, 
+identifying 
+factors explaining act-risk groups' 
+greater susceptibility to severe cases 
+\cite{LisaPaschold}, or comparisons of SARS-CoV-2 against 
+other coronaviruses \cite{TeresaAydillo} 
+(these citations are representative examples 
+of work conducted by many research groups; 
+they could be expanded with similar references 
+we included in Chapter 2 when discussing 
+immune repertoires, for example).   
+  %\cite{}, 
+  %\cite{PingpingWang}, 
+  %\cite{TeresaAydillo}, .
+A Covid-19 software ecosystem 
+should then ensure that such immune-response 
 data can be effectively parsed and integrated into Object Models 
 describing how SARS-CoV-2 is evolving around the 
-globe.  Such data
-integration modeling would allow researchers to reliably assess in each 
-individual patient their immune response to the particular acquired 
-SARS-CoV-2 strain/variant \visavis{} their personal immunological 
-profile, and to competently track both current and 
-emerging SARS-CoV-2 strains throughout the population.}
+globe, so researchers (as much as logistically feasible) 
+could track each patients' immune response in light of their particular acquired 
+SARS-CoV-2 strain/variant and their personal immunological 
+profile.  The relevant information for geospatial and 
+sociodemographically tagged studies would then include 
+patients' prior immuno-profiling and risk assessment, 
+immune response (naive or affected by treatment) and 
+clinical outcomes, as well as genetic 
+tests for the viral variant.  Cross-sectionally 
+mapping such data geographically and along 
+sociodemographic/socioeconomic contours could 
+provide a holistic picture of the pandemic 
+at a global scale.}  
+
+%, and to competently track both current and 
+%emerging SARS-CoV-2 strains throughout the population.}
 
 
-\p{These sorts of flexible Object Models can then facilitate trials designed 
-according to the novel protocol proposed by Shrestha \textit{et al.}, 
+\p{Object Models intended to facilitate such 
+globally-scoped data integration could then facilitate trials designed 
+according to the protocol proposed by Shrestha \textit{et al.}, 
 discussed above, where each trial would study a 
-preselected (non random) cohort of patients 
+preselected (non-random) cohort of patients 
 for whom both pre-treatment immunoprofiling data and post-treatment 
 outcomes data would be available, so as to compare multiple trials 
 against one another.  Object Models customized for each trial 

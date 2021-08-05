@@ -747,7 +747,7 @@ affected by any number of possible actions.  Perhaps
 some not-yet-formalized hybrid of (say) $\lambda$ and $\pi$ 
 calculi could appropriately model the semantics of `GUI; applications 
 in this sense.  A good foundation might be so-called `q.object` 
-Petri Nets (see `cite<RadekKoci>; or `cite<KohlerRolke>;, for example).
+Petri Nets (`i.see` `cite<RadekKoci>; or `cite<KohlerRolke>;, for example).
 `footnote`  The 
 user's actions are typically called `i.signals`/, and 
 the steps taken by the application to usefully respond 
@@ -1202,21 +1202,19 @@ and black the background), so as to represent an
 `p`
 
 `p.
-For sake of discussion, we will examine `AIM; in the 
-context of a data set obtained from The 
-Cancer Imaging Archive (`TCIA;), 
-which is sampled and partially-reproduced 
-as supplemental materials for this book.  
-This specific data set comprises a 
-collection of `XML; files which conform 
-to specifications for serializing 
-`AIM; data.  We also republish 
+At present we will initiate merely a brief overview 
+of `AIM; and image-annotation concerns, deferring 
+to subsequent chapters to continue our analysis 
+in greater depth.  This book's 
+supplemental materials will republish 
 code within the `AIM; `Cpp; library 
 (`AIMLib;) with minor changes for 
 modern compilers (the original code 
-was developed around 2013).  That code 
-includes parsers for consuming `AIM; 
-`XML; files.  More substantially, 
+was developed around 2013), including 
+parsers for consuming `AIM; 
+`XML; as well as demo files 
+obtained from The Cancer Imaging Archive (`TCIA;).  
+More substantially, 
 we provide a client library 
 to simplify the process of 
 loading annotations as runtime 
@@ -1282,16 +1280,19 @@ underlying `AIMLib; code; for example,
 we provide stronger typing for 
 geometric and presentation details 
 (colors and line-graphics specifications 
-are objects rather `Cpp; strings, for instance).  
-More details concerning the resulting code-model, which 
-provides a semantically richer interface packaging 
-`AIM; data, will be discussed in Chapters 7 and 8.
-For the time being, we will merely suggest that 
-`b.aim-client` concretely illustrates 
-certain themes we have claimed as data-integration 
-strategies over the course of this chapter, 
-such as employing runtime-reflection 
-capabilities as a device for data-modeling.  
+are objects rather than `Cpp; strings, for instance).
+`p`
+
+`p.
+In the following chapters we will analyze in greater detail 
+both `AIM; specifically and the data models 
+associated with image-annotations in general.  
+In particular, this topic provides concrete 
+examples of how data-modeling issues often 
+become manifest in terms of code-modeling 
+decisions (such as procedural pre- and post-conditions) 
+and logical relations amongst implemented procedures, 
+which has been a central theme of the current chapter.
 `p`
 
 

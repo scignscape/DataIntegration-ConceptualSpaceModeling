@@ -1,0 +1,27 @@
+
+`abstract,
+`noindent;In this chapter we continue 
+our discussion of `q.multi-aspect` 
+modular design initiated in Chapter 4.  Here we will outline 
+how this design pattern may specifically be applied to 
+modules dealing with image annotations, and we will 
+break down the suite of geometric, dimensional, and 
+image-metadata considerations that should be 
+addressed by image-annotation modules.  We 
+will also begin analyzing questions related 
+to how image-annotations related to the 
+morphology and geometry of image regions 
+(their area, convex hull, bounding rectangles, 
+overall color properties, and so forth) 
+can be integrated with notations for 
+more complex image feature-vectors associated 
+with radiomics (various kinds of texture analyses 
+and feature-extraction techniques).  Our goal 
+is to form an account of the representational 
+capabilities prerequisite of a general-purpose 
+bio-image annotation system which would 
+cover the broad range of image-based investigative 
+modalities in biomedical research and clinical/diagnostic 
+practice, from radiology and microscopy to 
+radiomics and feature-based predictive analytics.   
+`abstract`

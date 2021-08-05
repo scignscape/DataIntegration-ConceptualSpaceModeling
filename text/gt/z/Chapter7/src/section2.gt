@@ -4,7 +4,7 @@ The first step when formulating a general-purpose
 image-annotation data model is to consider 
 the underlying representation of image 
 `q.points` or `q.locations` in the first place.  
-As we will show later in the context of 
+As we will show next chapter in the context of 
 `AIM;, this is a more 
 intricate problem than it may appear at first glance.
 `p`
@@ -22,7 +22,7 @@ therefore needs to be defined in relation to the
 accompanying image (sometimes called the 
 `i.ground` image).  For example, any magnitude in 
 the annotation data needs to be evaluated relative 
-to the size and resolution of the image.  
+to the size and resolution of that image.  
 An intrinsic feature of any annotation-description 
 is therefore the `i.scale of resolution` at 
 which it applies to the ground image. 
@@ -45,7 +45,7 @@ either be an internal field or group of fields within
 the annotation data or else must be accessible through 
 the object representing or referring to the ground image 
 (here we will use the generic term `q.object` to mean 
-an integrated data structure, not necessarily 
+any integrated data structure, not necessarily 
 endowed with Object-Oriented designs).  All annotations 
 accordingly have an `i.intrinsic` scale which represents 
 the `i.internal` details of how magnitudes in the 
@@ -95,8 +95,8 @@ from the default ground-image scale.
 `p`
 
 `p.
-Similarly, when an annotation is subsequently viewed 
-by any user, the software will typically 
+Similarly, when an annotation is subsequently 
+viewed, the software will typically 
 support zoom operations, so the `i.state` 
 of the annotation currently visible may 
 be different than its `q.intrinsic` dimensions.  
@@ -104,15 +104,15 @@ It should be possible to bundle the
 annotation `i.together with the view state` 
 as a larger data structure associated 
 with any annotation `i.and also` to isolate 
-the annotation from any particular context 
-where it is viewed.  View-state details 
+the annotation from any particular view-context.  
+View-state details 
 (such as zoom factors) are not significant 
 to how the annotation is interpreted 
 or analyzed, and as such should not be 
 confused with `i.intrinsic` data for 
 purposes of data-sharing.  On the other 
 hand, in some contexts it `i.is` desired to 
-share view-state: consider a telepathology 
+share visible state: consider a telepathology 
 scenario where a doctor and a radiologist 
 discuss an image from two different 
 locations (in the sense of, say, two different 
@@ -192,15 +192,15 @@ instead as intrinsic to the annotations.
 `p.
 Assuming, then, that we have accounted for 
 ground-image details such as the image's 
-intrinsic dimensions, and identified which 
+intrinsic dimensions, and have identified which 
 annotation data is intrinsic and which is 
-presentational, the annotation itself will be 
-embodied via geometric entities 
+presentational, the annotation itself will 
+subsequently be embodied via geometric entities 
 (such as points, lines, and regions) 
 referring to locations and intervals 
 in the ground image.  Typically an annotation 
 is a geometric structure whose meaning is 
-depending on some separate interpretive 
+dependent on some separate interpretive 
 declaration %-- a point or line has 
 no significance other than its geometric 
 role in fixing the annotation's 
@@ -268,12 +268,12 @@ should be represented.  Image locations
 may be understood as integers in some 
 contexts and as floating-point values 
 in others.  Moreover, floating-point values 
-might have different degrees of precision 
+can have different levels of precision 
 in different contexts (including 
-`q.infinite-precision,` which allows 
-quasi-real numbers to extend across 
-as much computer memory as needed to 
-achieve arbitrary degrees of precision).
+`q.infinite-precision,` which lets 
+quasi-real numbers extend across 
+arbitrary amounts computer memory, for 
+any desired degree of precision).
 `p`
 
 `p.  
@@ -291,13 +291,12 @@ which we mean numbers intended to approximate
 the full real-valued number line, 
 do not necessarily need to be encoded 
 according to the familiar floating-point 
-standards.  There are alternative 
+standards.  There are variant 
 number systems, such as John Gustafson's 
 `q.posits,` which offer an alternative 
 that may be better-performing than 
 normal floats in some contexts `cite<JohnGustafson>;.  
-All told, then, there are a variety 
-of different number systems which 
+All told, then, there are multiple number systems which 
 could potentially supply magnitudes 
 for annotation geometry.
 `p`  
@@ -308,13 +307,16 @@ number-system flexibility is typified
 by libraries such as 
 `CGAL; (for computational geometry) 
 more than frameworks targeted more specifically 
-at annotations proper, including `AIM;, 
+at annotations proper.`footnote.
+Including `AIM;, 
 which only recognizes double-precision 
-floating-point magnitudes.  In `CGAL;, 
+floating-point magnitudes.
+`footnote`  In `CGAL;, 
 any assertion of magnitude is always dependent 
 on the specific number system used to 
 mathematically ground the geometric 
-system in the first place.  For example, 
+system in the first place `cite<[pages 14 
+and thereafter, roughly]AndreasFabri>;.  For example, 
 annotation points representing 
 image-locations by encoding distances 
 from the image's left and bottom sides 
@@ -327,25 +329,27 @@ system.  Therefore, another
 data point which is `i.intrinsic` 
 to annotations are specifications 
 of what kind of numbers the annotation 
-uses in the first place (integers, doubles, 
+uses in the first place (integers, `b.doubles`/, 
 single-precision floats, width/hight 
 percentages `visavis; the ground image, etc.) 
 `p`
 
 
 `p.
-As we also mentioned in the 
-context of `CGAL;,  
-polar or `q.heterogeneous` 
-coordinates (instead of familiar Cartesian 
-coordinates) are utilized in some 
-contexts.  Additional special-purpose 
-coordinate systems may come into 
+As seen in `CGAL;, 
+coordinate systems that are 
+more exotic than Cartesian 
+spaces (such as polars, 
+or `q.homogeneous`//projective 
+coordinates) can also be utilized in some 
+imaging/graphics 
+contexts.  Other special-purpose 
+coordinate systems may additionally come into 
 play for higher-dimensional media; 
-annotating `FourD; dynamic graphics, 
-for example, could potentially be 
+`FourD; annotations, 
+say, could potentially be 
 facilitated via Quaternions 
-(see `cite<EnriqueMartinezBerti>; 
+(`i.see` `cite<EnriqueMartinezBerti>;
 or `cite<YangLi>;, for example). 
 `p`
 
@@ -447,7 +451,7 @@ overviews/extensions for `SVG;).
 `p.
 To fully specify an image location, then, we need to 
 determine three different factors: the nature 
-of the raw magnitudes involves (e.g., integers 
+of the raw magnitudes involved (e.g., integers 
 or floating-point); the coordinate system 
 wherein points should be oriented (e.g., Cartesian 
 coordinates, with axes related to the center or 
@@ -466,7 +470,7 @@ the bottom-left or bottom-right, and so forth.
 In most cases, all of this foundational 
 data will be declared for groups 
 of annotations rather than individual 
-annotations.  Within the scope of a single 
+ones.  Within the scope of a single 
 annotation, we can take 
 for granted that a pair of numbers 
 (say) unambiguously designates a 
@@ -477,6 +481,7 @@ being shared alongside annotation-specific
 data in any data-sharing scenario.
 `p`
 
+`subsection.Procedural and Modeling Considerations`
 `p.
 Assuming we thereby have enough 
 infrastructure to rigorously 
@@ -487,7 +492,15 @@ interpretations.  Point-sets
 may be used to described curved objects 
 as well as straight line segments (and 
 collections thereof) but for now 
-consider just straight-line cases.
+consider just straight-line cases.  
+There are numerous options which have 
+to be resolved when anticipating 
+the design and implementation of 
+an image-annotation module 
+(we use this case-study as a 
+concrete illustration of 
+procedural/data-modeling overlap as 
+discussed last chapter).
 `p`
 
 `p. 
@@ -564,7 +577,7 @@ an implicit edge between their last and
 first points (again this requires that 
 ordering be fixed).  Another possibility 
 is to introduce a `q.pseudo-coordinate`  
-such as `b.TikZ`/'s `qb.cycle`/, which yields a 
+such as `b.TikZ`/'s `qb.cycle,` which yields a 
 point duplicating the first in a sequence 
 (how to accommodate those special coordinates, 
 needing contextual interpretation, in a point 
@@ -575,9 +588,8 @@ given point-set as spanning a closed
 path rather than open arc (this is 
 potentially more flexible because it 
 does not foreclose options in how to 
-deal with point ordering).  For 
-sake of argument, this last 
-approach is taken in the book's 
+deal with point ordering).  This last 
+approach is taken in this book's 
 demo code.  
 `p`
 
@@ -620,9 +632,7 @@ colinear points from the point-set.  On the
 other hand, it may be appropriate to 
 `i.flag` them as superfluous from a mathematical 
 point of view with respect to the 
-annotation's current state (again, see 
-our demo code for a concrete illustration of 
-a point-set data type adopting this approach).
+annotation's current state.
 `p`
 
 `p.  
@@ -679,8 +689,8 @@ points span a convex region?  These
 are examples of how data-modeling decisions 
 tend to translate to coding requirements, 
 the pattern of intersection between 
-data and code modeling which we 
-discussed in Chapter 6.
+data and code which we 
+discussed earlier.
 `p`
 
 `subsection.Annotations with Curved Geometries or 
@@ -688,14 +698,18 @@ Cross-References`
 `p.
 The last few paragraphs have focused on 
 annotation-shapes based on straight line 
-segments.  Of course, many annotation 
+segments.  Of course, many annotations 
 are better expressed via curved 
 paths, whether open or closed.  
 Some curves can be 
 specified via small point-sets; 
-e.g. ellipses may be defined 
+e.g., ellipses may be defined 
 by asserting their focal points and 
 one point on the curve itself.  
+Such representation tactics, 
+relying solely on point-sets 
+to construct shapes, are predominantly 
+employed by `AIM;, for example.
 In general, though, curve-definitions 
 require combining points with 
 scalar magnitudes representing 
@@ -718,7 +732,7 @@ one common strategy for defining ellipsoids
 (generalizing from `TwoD; ellipses to higher 
 dimensions) is via `q.covariance matrices,` 
 paired with designation of a single (center) point.  
-In that case the length are associated with 
+In that case the lengths are associated with 
 matrix row/column positions.  Length sets 
 might potentially be used for polylines as 
 well as curves: for a regular polygon 
@@ -754,13 +768,12 @@ intrinsic, then this would be another
 case where length-sets (e.g., arrow 
 length and width) would be needed 
 as part of the shape data.  Arrows 
-also illustrate the first point 
+also illustrate the condition 
 that some annotations may reference 
 `i.other` annotations, representing 
 additional data fields which are 
 not subsumed under point-sets or length-sets.
 `p`
-
 
 `p.
 Curves which are more complex than circles or ellipses 
@@ -782,12 +795,12 @@ convex hull, deformation measures (how much a shape's
 area deviates from the smallest circle 
 containing it), calculations as to whether a 
 line segment between two points would intersect 
-the curve, and so forth, would need to provided 
+the curve, and so forth, would need to be provisioned 
 via algorithms specific to the curve's genre.  
 In this situation the annotation framework might 
 specify the `i.kinds` of algorithms 
-which need to be available for arbitrary 
-curve-types but leave their implementation open-ended.  
+which have to be available for arbitrary 
+curve-types but leave their implementations open-ended.  
 `p`
 
 `p.
@@ -804,13 +817,14 @@ say, a circle grouping two or more other annotations);
 and, in some cases, designation of a special-curve 
 genre with support for adding special-purpose rendering algorithms 
 in a modular fashion.  As this overview suggests, there 
-are multiple data-structures which need to be 
+are multiple data-structures which must be 
 representable for general-purpose annotations 
 even when defining the underlying annotation 
-shape, setting aside issues such as text description 
-and image references. 
+shape, setting aside other information 
+(such as text description and image references) 
+typically placed and/or asserted alongside 
+annotation geometry. 
 `p`
-
 
 `section.Annotations and Image Features`
 `p.
@@ -848,7 +862,6 @@ and heterogeneous tumors are more dangerous
 and resistant to clinical therapies.
 `p`
 
-`input<fig-checkerboard>;
 `p. 
 Identifying these signals is a different 
 process than, for instance, segmenting a tumor 
@@ -872,7 +885,7 @@ mathematical image processing) by looking for
 point-neighborhoods which reflect the specific 
 qualities of vascular nodes where a tree-like 
 pattern splits from larger branches to smaller ones 
-(see e.g. `cite<CharalamposNDoukas>; and `cite<JosefEhling>;, or `cite<IoannisValavanis>;, 
+(`i.see` e.g. `cite<CharalamposNDoukas>; and `cite<JosefEhling>;, or `cite<IoannisValavanis>;,
 although the latter documents methods oriented more 
 towards morphology and edge-detection than in the 
 above overview).
@@ -906,7 +919,7 @@ mapping points to one or more magnitudes characterizing
 the textural pattern around each point, to the degree 
 that this pattern is approximated by the image data.  
 These texture-vectors can then take the place of 
-color vectors (i.e., coordinate triples such as 
+color vectors (i.e., triples such as 
 `HSV; values) for segmentation, edge-detection, and 
 similar image-analysis operations.  
 `p`
@@ -918,8 +931,7 @@ however, makes annotations more
 complex than regions or patches identified in terms 
 of color alone, because to be thorough the annotation 
 would not only have to identify the relevant 
-region (e.g. a region where a certain texture is 
-evident) but to describe the texture itself.  Unlike 
+region but to describe the texture itself.  Unlike 
 colors, which can be specified with only three 
 quantities, textures may involve angles, displacements, 
 gradients, and other mathematical parameters.
@@ -929,6 +941,8 @@ within an image-processing pipeline, where
 pixel-data associating pixels with `i.colors` 
 is replaced by data involving texture-definitions.
 `p`
+
+`input<fig-checkerboard>;
 
 `p.
 Image-analysis workflows may therefore 
@@ -956,7 +970,7 @@ colors within spaces like `HSV;, one cannot
 develop an exhaustive list of all sorts of 
 textures that might be analytically relevant 
 for image-processing; thus the details of 
-texture-data would need to be open-ended 
+texture data would need to be open-ended 
 for a general-purpose annotation model. 
 `p`
 
@@ -973,9 +987,13 @@ or `AI;-driven image processing without human
 intervention %-- yields partitions of images into 
 regions, or identification of semantically 
 important locations in an image, therefore generating 
-annotations computationally.  In short, annotation descriptions 
+annotations computationally.  In short, descriptions 
 should support both human-generated and computer-generated 
-annotations.  This becomes complicated, however, when 
+annotations.
+`p`
+
+`p.
+These descriptive mechanisms become more complicated, however, when 
 we consider the full range of computerized 
 image-analysis capabilities, such as texture-analysis 
 and similar feature-extraction techniques, which 
@@ -1032,7 +1050,7 @@ annotation data.
 
 `p.
 The complication 
-arises when `AI; mechanisms along these lines do 
+arises when `AI; workflows along these lines do 
 not themselves yield results that would normally 
 be considered annotations, but rather yield 
 the desired empirical results for which 
@@ -1098,14 +1116,14 @@ recognition does not need to rely on segmenting
 out regions (eyes, nose, lips), but rather can be 
 based on distances between individual points (such 
 as the inner corners of each eye).`footnote.
-See e.g. `cite<FengLu>;, `cite<GaryHuang>;, 
+`i.See`/, e.g., `cite<FengLu>;, `cite<GaryHuang>;,
 `cite<WeiLunChao>;, `cite<YueqiDuan>;, 
 or `cite<KalaiselviNithya>;, 
 `footnote`
 `p`
 
 `p.
-But in any 
+In any 
 case, depending on the analytic algorithm used, 
 it is often possible to identify some spatial/geometric 
 feature or object that can be visualized in 
@@ -1139,7 +1157,9 @@ subsequent to such a computation, for
 purposes of documentation and validation. 
 Annotations which are not `i.retrospective` 
 could be called `i.internal`/, as in, 
-internal to a given image-processing workflow.
+internal to a given image-processing workflow 
+(these are, note, our proposed terms; 
+they are not common meta-annotation vocabulary).
 `p`
 
 `p.
@@ -1147,13 +1167,13 @@ Related to the distinction between
 `i.internal` and `i.retrospective` 
 annotations, we can also recognizes a contrast 
 between `q.immersed` and `q.descriptive` 
-annotation (these are idiosyncratic terms 
+annotation (again these are idiosyncratic terms 
 but they seem appropriate for the contexts involves).  
 An example of an `i.immersed`  
 annotation might be an image segment, 
 where calculating the boundary of the segment 
 is intrinsic to a specific image-processing 
-objective, whereas an `i.descriptive` 
+objective, whereas a `i.descriptive` 
 annotation might be an arrow `i.pointing 
 toward` that segment.  Here the descriptive 
 annotation is introduced primarily for the 
@@ -1239,7 +1259,7 @@ of annotations can be notated in various ways.
 One option (adopted by the book's demo code)  
 introduces an `i.originator` object which provides information 
 about how annotations and/or annotation-groups 
-were created.  These objects' data fields can 
+were created.  Such objects' data fields can 
 then clarify the roles and mechanisms 
 driving their correlated annotations.
 `p`
@@ -1269,7 +1289,7 @@ composed in the Mathematical Markup Language
 detailed and machine-readable representation of 
 data structures that may be used generated by 
 computationally intensive feature-extraction methods.  
-This leaves open the question of how to properly 
+That further level of detail leaves open the question of how to properly 
 encode the broad range of calculations that 
 could potentially be applied within the 
 context of an annotation.
@@ -1287,6 +1307,9 @@ the degree that `i.image` details are
 taken as indicators or warrants for 
 image `i.biomarkers`/.  We will consider 
 this question in the next chapter.
+`p`
+
+`p.
 `p`
 
 

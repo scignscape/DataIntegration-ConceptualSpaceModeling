@@ -1,0 +1,688 @@
+
+`section.Multi-Aspect Modular Design in a 
+Heterogeneous Data Space`
+`p.
+In this section we explore the idea 
+of `q.multi-aspect` modular design, which 
+adds to the underlying principle of 
+modularity the notion of individual 
+modules having multi-faceting software-engineering 
+responsibilities, including (for example) 
+`GUI; rendering, data persistence/serialization, 
+and runtime reflection or remote procedure 
+capabilities, e.g., exposing a scripting interface 
+for modules' functionality.  The above example of a 
+bioimaging/annotation module interfacing 
+with modules in parallel domains (genomics, 
+histology) serves as a plausible illustration of 
+why multiple-aspect design can be 
+implementationally beneficial %-- in our 
+running example, an imaging module may at 
+some point in time present the user with 
+data which invites follow-up through 
+other modules, but it is outside the 
+scope of the initial (imaging) module 
+to know how such external data should 
+actually be presented.  An image 
+currently being viewed may link to 
+other data structures simply by virtue 
+of its biomedical representatum 
+%-- cardiac images to echocardiogram 
+readings or heart tissue biopsies, for 
+example; tumor images to genetic 
+tests for proclivities to a cancer 
+variety or tests for the patient's 
+anti-tumor immunological responses.  
+A bioimaging module may acquire information 
+to the effect that such links are available 
+(as part of the image metadata) but would 
+not know how to display a `GUI; 
+containing genetic, cytological, or histological 
+data, for example, which is why 
+the actual presentation of that 
+extra-modular data would be deferred 
+to the proper modules.  At that point, 
+then, those modules would be 
+presented with contextual information 
+(perhaps an identifier for the current 
+image series, which would likewise 
+indicate the relevant patient, to which 
+the current viewed image belongs) 
+and would have to identify the 
+relevant data within their own scope 
+which applies to that context   
+(the modules may need to pull the 
+relevant data from the data 
+`q.lake,` for example).
+Insofar as each module has multi-faceted and 
+mostly self-contained functionality, 
+one module could provide a concise 
+entry-point through which a 
+peer module would be able to derive a 
+more comprehensive package of 
+information to present to the 
+user.  Starting from a medical 
+image, say, the user could 
+potentially wish to see a detailed 
+overview of related cytological, 
+histological, or genomic data.  
+Insofar as such data is presented 
+via their own (`q.multi-aspect`/) 
+modules, each of those modules 
+could (from the entry-point 
+provided by basic data about 
+the current viewed image) reconstruct 
+a holistic data package and 
+present this through their 
+own `GUI; components, so the 
+user experience the overall progression 
+as switching between (or juxtaposing) image-based 
+views with views characteristic of a 
+separate domain (histopathology, and so forth).      
+`p`
+
+
+`p.
+The idea behind multi-aspect modular 
+design is to orchestrate flows of 
+user activity along these lines in a 
+relatively decentralized manner.  Modules 
+which are `q.multi-aspect` could independently 
+promote a holistic User Experience given a 
+concise entry point %-- e.g., an image 
+series and patient identifier leading to 
+presentation of genomic or histological 
+data in an integrated `GUI; component.  
+Modules which were narrower in 
+their range of engineering concerns 
+would require greater central control 
+to permit the `q.switch` in user 
+focus across domains.  If `GUI; 
+and database access capabilities 
+were separated between two different 
+modules, say, then transitioning from 
+an image-view to (for example) a 
+histopathology view would require a 
+central controller which `i.first` 
+loads the relevant histopathology 
+data and `i.then` passes this data to a 
+histopathology-`GUI; component.  
+Having the `GUI; and database-query 
+functionality merged into a 
+single histopathology module would 
+eliminate most requirements for  
+centralized control, allowing the imaging 
+and histopathology modules to 
+interact on their own.`footnote.
+Not to imply that central monitoring 
+would be fully ruled out, because 
+one may still intend certain cross-modular 
+interactions to be validated.  For 
+example, patient privacy concerns 
+might imply that a technician granted 
+access to one part of a patient's 
+data would not necessarily have authority 
+to view other parts.  The point however 
+is that central control is not 
+`i.implementationally` necessary; modules 
+are `i.able` to orchestrate 
+cross-modular functionality on their 
+own, even if programmers may want 
+to use central monitoring to 
+override potential traffic when appropriate. 
+`footnote` 
+`p`
+
+
+`subsection.The Overlap Between Research and Clinical Data`
+`p.
+We have thereby set forward a case for 
+modular design %-- where modules are 
+interoperable, but relatively 
+self-contained (in the `q.multi-aspect` 
+sense that they package features related 
+to `GUI; design, data persistence/serialization, and 
+so forth), and at the same time 
+prioritize minimizing external dependencies 
+and adapting to diverse computational 
+environments, rather than being usable 
+only in a select range of environments where 
+computational performance can be optimized.`footnote.  
+Publishers and hospitals, we would argue,  
+have a shared interest in curating 
+software-development tools and 
+partial code libraries that could be 
+leveraged to build modules in both 
+publishing/scientific data-hosting and 
+clinical data management contexts, 
+and in particular modules focused on 
+different biomedical subdisciplines 
+(radiomics/bioimaging, cellular systems, 
+cytology, histology, genomics, and so forth.
+`footnote` 
+Interrelated clusters of code libraries 
+linked to different sub-specialties are 
+provided by some software projects 
+(`b.BioConductor` is a good example), but 
+these components often do not span 
+multiple aspect and feature-sets with the 
+breadth that we propose via `q.multi-aspect` 
+design.
+`p`
+
+`p.
+As a rule, for example, `b.BioConductor` 
+packages do not provide built-in database 
+integration or `GUI; features (except those 
+inherited indirectly from the `R; environment 
+(which provides a `GUI; context for 
+evaluating `R; code in general but does 
+not natively provide tools for packages 
+to customize the `GUI; to their needs, without 
+a foreign-language bridge such as `Qt; bindings).  
+Reviewing prominent projects for 
+open-source biomedical components there 
+are libraries which emphasize analysis 
+(such as `b.BioConductor`/), `UI; 
+development (e.g. `b.OncoJS`/), data-set 
+preparation (as with the 
+Research Collaboratory for Structural Bioinformatics 
+Protein Data Bank), `API;s for genetic/proteogenomic 
+data access (`b.EPICO`/, `GDC;, etc.), simulations 
+(`b.PhysiCell`/, `b.Amber`/, `b.Chaste`/, 
+`b.MMBios`/), and so forth, but 
+the components within these projects 
+do not internally address the multiple 
+aspects of (in particular) `GUI;, 
+database access, and data serialization 
+all together.  
+`p`
+
+`p.
+Likewise, the three `APOLLO; networks %-- `GDC;, 
+`TCIA;, and `CPTAC; (the 
+Proteomics Data Portal) %-- all provide some tools to help 
+researchers submit and acquire data sets.  Most of these 
+tools, however, are exposed as web services rather than as 
+code libraries that could be bundled into scientific 
+applications.  For example, in the case 
+of `CPTAC;, the `UI; code is designed to provide data visualization 
+capabilities in conjunction with downloaded `CPTAC; data sets.  
+Specifically, downloads acquired through the 
+Proteomic Data Portal will include `HTML; files providing 
+interactive plots and other figures summarizing information 
+encoded in the rest of the data set.  If `CPTAC; support is 
+encapsulated in a module embedded in scientific/biomedical 
+applications, similar visualization files may be targeted 
+at the host application, allowing users to visualize the 
+`CPTAC; data summaries directly rather than opening a separate 
+web browser to examine the included `HTML; files.
+`p`
+
+`p.
+With respect to `CPTAC; and `TCIA;, both of these 
+networks require a multi-step data-acquisition process which could 
+be streamlined with the help of dedicated software components.  
+The `TCIA; `API; is split between two interfaces, and while one of these 
+interfaces may be accessed via a client library provided in Java and Python, 
+these tools have limited value for 
+standalone biomedical applications 
+(`i.see` `cite<KathiraveluSharma>;, for instance).  Similarly, the
+`UI; tools provided with `CPTAC; could be generalized to an 
+integrated proteogenomic toolkit combining the `CPTAC; and 
+`GDC; `UI; components.  The combined code base would then be 
+available as a suite of `GUI; classes suitable for embedding 
+in scientific/biomedical applications.
+`p`
+
+`p.
+In the context of `b.MMBioS`/, a `Cpp; `API; %-- 
+identified as a project-aim in conjunction with 
+curating `q.a database of molecules, rules, and models that can be used for comparative analysis of existing models and development of new models`/`footnote.`bhref.https://mmbios.pitt.edu/research/technology-research-and-development/network-modeling`/` %-- would permit `BioNetGen; `q.actions` to be called directly rather than through a command line, 
+though perhaps the `API; could be designed (as is a popular pattern in scientific applications) to support workflows that can be manifest either through command-line actions or directly in code sequences (as well as indirectly via remote procedure calls).  
+In addition to generating command-line invocations, the `b.BNGAction` 
+Perl Module (used to access `BioNetGen; functions for data management and analytics) does rather detailed preparatory checks in some cases, so equivalent functionality would have to be implemented as an `API; layer.  In other words, a `Cpp; `API; would presumably have several stages, with preliminary logic at one stage yielding data structures to a second `API; layer that communicates directly with underlying `Cpp; code: `Cpp; data structures would be generated in lieu of command-line 
+invocations.`footnote.
+Though at this step it would make sense to allow such data structures to be serialized into workflow descriptions, executed indirectly via command line or `RPC; and other deferred/distributed methods, etc., as well as being executed directly.
+`footnote`  There are numerous options for modeling distributed/asynchronous procedure requests (e.g. whether the response requires a separate parsing/value-extraction step, whether response callbacks carry state, and the specific reactive/function-object mechanisms are used to supply callback procedures); a rigorous `API; should allow each of these options to be employed when appropriate 
+%-- itemization of the various cases could be part 
+of (what we call) a `q.procedural-exposure` model %-- and should clearly define the protocols and requirements in each case.`footnote.
+It also appears that much of the data visualization associated with `b.BioNetGen` runs through a similar Perl/command-line pipeline as BNG Actions, so presumably the `API; could support visualization, perhaps expanding the range of visualization outputs (maybe full-fledged `Cpp; `GUI; components instead of text formats such as `GML;).
+`footnote`
+`p`
+
+`p.
+Finally, in the case of `GDC;, a property-graph 
+based data model integrates molecular, clinical, and 
+genomic data according to predefined data types and interconnections.  
+This model is instantiated within computations used by the `GDC; 
+to validate and harmonize submitted data sets prior to their 
+being made publicly available (data sets may be submitted 
+to `GDC; either through the `GDC; `API; or via 
+an online portal).  However, although the `GDC; data model is clearly documented on the `GDC; website, 
+the `GDC; does not provide software tools or code libraries to facilitate 
+the implementation of computer applications which would curate 
+data submitted to and/or acquired from `GDC; so that 
+researchers could perform their own validation steps in preparation 
+for the `GDC; analysis.`footnote.
+Although the official 
+`GDC; `API; client is a guide for programmers who wish to 
+generate requests against `GDC; endpoints, it cannot be 
+utilized directly to access `GDC; data unless applications 
+embed a Python interpreter.
+`footnote`  Similarly, the `GDC; User Interface 
+components %-- which are intended for software providing visualizers 
+for `GDC; data %-- are based on `JavaScript;, thereby requiring 
+a `JavaScript; 
+programming environment and/or an `HTML; rendering engine.  In short, the 
+`GDC; data model, `API; client, and `UI; toolkit are each 
+targeted at different programming environments, and the `GDC; 
+itself does not provide a unified framework which integrates 
+these areas of functionality into a common platform.  
+The `GDC;'s published code and web services document the requirements 
+for applications seeking to interface with `GDC; data submission, 
+validation, and acquisition protocols, but it is left to 
+third-party software to unify these capabilities into a single platform.
+`p`
+
+`p.
+In short, failure to promote software development 
+environments which facilitate the implementation 
+of relatively broad-featured and `q.multi-aspect` 
+modules contributes to either a paired-down 
+modular design, which (we contend) inhibits 
+data integration, or to the consolidation 
+of software ecosystems whose building blocks 
+are monolithic applications more than 
+inter-combinable modules, which contributes 
+to ecosystem fragmentation.
+`p`
+
+`p.
+There are six or seven facets of data management which come to the fore with database systems in the
+context of application integration, `API;s, scientific data curation, and publication/dataset management %-- parsers
+for special-purpose languages; domain-specific query evaluators; custom `GUI; components; interacting with
+analytic capabilities both in-process and out-of-process; metatype systems allowing software components to
+model scientific processes/phenomena; application integration via type-level serialization and persistence; and
+dataset/publication integration.  This set of concerns reappears in numerous scientific-computing contexts (one
+can identify similar patterns in bioimage processing, for instance), which suggests that they may serve as a general architectural 
+framework for developing scientific-computing `q.modules.`
+`p`
+
+`p. 
+Requirements such as `GUI; design, database interop, and serialization s
+reappear in different contexts in different ways %-- if we 
+consider research projects that involve some combination 
+of clinical/lab data, bioimaging, and simulations, 
+these concerns will be present in each of these areas 
+(we have tried to connote this visually by inserting 
+concerns diagrammed by a `q.saltire` as part of the 
+triangular outline in Figure~`ref<fig:triangle>;
+%-- this depiction will be clarified in Chapter 8).
+Because these different research areas tend to be 
+combined and integrated in different ways 
+%-- scientists' flexibility to piece together 
+different research projects and paradigms in 
+various combinations is potentially an important 
+source of new discoveries %-- one could 
+argue that embodying research data and protocols 
+in multi-featured (acting as relatively 
+self-contained mini-applications) but inter-combinable 
+modules is a better software-architectural 
+match to the contemporary scientific 
+landscape than either single monolithic 
+applications or narrower `q.single-aspect` code 
+libraries which need more centralized oversight to interoperate.  
+`p`
+
+
+
+
+`subsection.The Problem of Software Ecosystem Fragmentation`
+`p.
+It is often via an evolutionary and decentralized 
+process that software components, data formats, 
+and analytic methods get consolidated into 
+digital `q.ecosystems` with their own paradigms 
+and conventions.  Digital image-processing 
+is a good example; bioimaging (in particular) tends to gravitate 
+toward certain canonical image-acquisition 
+formats (e.g., `DICOM;), file types (e.g., `TIFF; or `PNG;) 
+and analytic libraries (`ITK;, `OpenCV;, etc.).  
+These components fit well-defined roles, allowing multi-component 
+workflows to arise organically even if they are 
+not formally proscribed, rehearsed, or crafted 
+`i.a priori`/.  That is to say, software 
+use-cases often embody `q.informal` workflows, which 
+amount to recurring patterns in how different components' 
+functionality are pieced together in order to 
+implement what is needed for research projects.  
+These intuitive patterns are structurally quite 
+similar to formal workflows, even they are 
+not standardized or officially notated as such.  
+Moreoever, software components tend to cluster 
+together based on their coexisting within 
+the scope of informal workflows along these lines.
+`p`
+
+`p.
+The converse can also be true: informal 
+usage-patterns might become entrenched into distinct 
+ecosystems even if there is some overlap 
+within their domains and methodology. 
+Perhaps `IHC; assays evince an example of this 
+phenomenon, being designed to 
+yield visually obvious diagnostic markers, 
+in contrast to sophisticated image-processing 
+methods that detect subtle signals in (say) 
+radiographic images.  Because the images generated 
+by laboratory assays such as `IHC; can be affected 
+by how technicians prepare the imaged tissue samples, 
+these assays are designed to yield signals which are 
+as `q.unsubtle` as possible; refining the laboratory 
+methods and equipment involves making the 
+experiment more accurate by amplifying the desired 
+observable effect, such as the pattern of staining 
+evident in certain parts of a tissue sample in 
+contrast to the background.  For these reasons, 
+detailed image-analysis is not an intrinsic 
+part of the (informal) workflow usually associated 
+with techniques such as `IHC;, in contrast to 
+scenarios such as radiographic scans where researchers 
+have limited control over how tissue images 
+are visualized `i.except through` automated 
+image processing.
+`p`
+
+`p.
+As a result, the software ecosystem centered on 
+assays such as `IHC; appears to be somewhat 
+isolated from contexts which rely more on intensive 
+bioimage processing.  We have not done a 
+rigorous analysis of usage-patterns (to the 
+degree that such an analysis would 
+even be feasible), so these comments should 
+be considered impressionistic and observational, 
+considering existing literature related 
+to entrenched protocols such as `IHC;.  Yet, as 
+some supporting evidence, attempts 
+such as `cite<LovchikEtAl>;
+to refine `IHC; quantification point to the 
+tendency of `IHC; to rely on image-viewing software 
+rather than image-processing libraries for deriving 
+summarial results.  More generally, software 
+ecosystems are more likely to become fragmented when 
+the principal components of those systems 
+are `i.applications`/, rather than (in particular) 
+code libraries, or also (say) plugins which 
+can extend applications' functionality.  
+Imaging applications such as `b.ImageJ` or `MaZda; provide 
+some image-processing capabilities (e.g. `q.lasso` tools 
+to grab region contours) and are popular in 
+some scientific contexts (including `IHC;, judging by 
+literature frequently mentioning `b.ImageJ` and 
+its peers in discussions of research protocols), 
+but workflows which rely on users manually interacting 
+with applications are less robust and extensible 
+than software ecosystems which can pass data to 
+specialized domain-specific code libraries.
+`p`
+
+`p.
+Commercial software products also predominate in many 
+workflows involving special data-acquisition devices, 
+such as biosensors.  Flow Cytometry, `MFP; probes, and 
+`SPR; equipment (just to mention technologies 
+identified in this chapter or Chapter 8) are powered by machines
+that provide their own software (which has to be 
+custom-implemented given the unique physical mechanisms 
+and configuration options of the machines involved).  
+Flow Cytometry is a good case-in-point: commercial 
+vendors of `FCM; instruments tend also to 
+provide software applications accessing the data 
+which their equipment generates.  While it would 
+be theoretically possible for researchers to export 
+`FCS; (Flow Cytometry Standard) files from the 
+instruments' software and write their own analytic 
+code, most scientists appear to be more comfortable 
+working within the confines of existing `FCM; 
+applications.  This situation is roughly analogous 
+to using image viewers or `DICOM; consoles for 
+image-evaluation, rather than hand-coded image-processing 
+algorithms.  By way of comparison, research projects 
+built around intensive image-processing are more likely to 
+feature a custom code base, with different components 
+sharing data via (at least potentially) automated pipelines.  
+`p`
+
+`p.
+We alluded several paragraphs ago to bioimage workflows organized 
+around widely-used libraries such as `b.DCMTK` (for managing 
+`DICOM; data) and `ITK; or `OpenCV; (for image processing).  
+These kinds of components are typically joined together 
+within an overarching code model; for example, a research 
+project may develop a code library which links against 
+both `b.DCMTK` and `OpenCV;, implementing procedures 
+which perform the steps need to carry data resulting from 
+`b.DCMTK` processing over to analytic code featuring 
+`OpenCV;.  Alternatively, `b.DCMTK` and `OpenCV; might form 
+the core of two separate modules which would interoperate via 
+a command-line interface, but in this case the individual 
+modules would still be designed with the understanding 
+that their respective functionalities need to be 
+synthesized into an overarching workflow.  Individual 
+components, that is to say, intrinsically 
+support functionality allowing them to be 
+used in a multi-modular context, such as initializing 
+their working environment via a Command-Line interface 
+and exporting data according to shared protocols.
+`p`
+
+`p.  
+In effect, each individual component supplies the 
+requisite capabilities allowing different 
+components to be pieced together, and moreover 
+with sufficient preparatory code these workflows 
+can fully or partially automated.  In these sorts of 
+contexts an important step in research design is to 
+develop a code base which supports automated 
+workflows along these lines; the research code 
+orchestrating the flow of data between workflow 
+components and the sequence wherein operations 
+exposed by each component are triggered.`footnote.
+It may be imprecise to describe such workflows as 
+`q.automated` because custom programming is 
+needed to implement the code which acts as a 
+framework for workflows to be executed 
+(we are not referring in this context to workflows 
+visually designed through a workflow-management application 
+rather than by programming them directly).  
+Once the overarching code is implemented, however, 
+each particular iteration of the workflow sequence 
+can typically be performed without human 
+intervention midstream.
+`footnote`
+`p`
+
+`p.
+Workflows achieved through custom programming as just 
+outlined can be `q.informal` in the sense that they are 
+not explicitly described (or conceived as `q.workflows` per 
+se), but instead simply follow common usage-patterns, 
+where various code libraries have evolved to play 
+specific roles (and to expose functionality 
+and data formats conducive to multi-component 
+interoperation).  Nevertheless, these 
+workflows acquire a certain rigor because 
+they are made possible by specific kinds of functionality 
+being provided within each component, notably 
+code for importing/exporting data according to 
+specific formats, and one or more `q.entry points` 
+(or what we will term in Chapter 6 `q.meta-procedures`/)
+which can be initialized with parameters specifying how 
+the components' specific contribution to the 
+large workflow should proceed.  These sorts of 
+workflows can be relatively flexible, with clearly 
+delimited prerequisites for how they 
+may expand in scope %-- either by existing components 
+recognizing a wider range of data formats, or exposing 
+new functionality, or via separate components 
+encapsulating extended functionality being designed 
+in a manner that permits their integration into 
+the existing workflow patterns.
+`p`
+
+`p.
+Fragmentation of 
+software ecosystems into isolated clusters of components 
+typically used together may still be a problem, but 
+at least there is a technical foundation for 
+considering the proper extent of workflows' scope 
+%-- one can identify the specific elements within each 
+component which support their interoperation.  These elements 
+are the specific sites in the components' code which would 
+be affected if researchers or programmers were to 
+adopt usage patterns that effectively widen the 
+scope of existing (maybe informal) workflows; one could 
+ask, for example, how difficult it would be to 
+implement support for new data formats (in terms 
+of parsers and runtime representations of new 
+kinds of data given components' existing parsing and 
+representational procedures).  Likewise one 
+could consider whether it is practical to implement 
+functionality needed to manage new kinds of 
+data (e.g. the structural or mathematical operations 
+endemic to new data profiles which depart to some degree 
+from those the components has previously targeted) 
+given components' existing architecture and capabilities.
+`p`
+
+
+`p.
+Issues of ecosystem fragmentation are more likely to become 
+entrenched in the context of informal worflows which are, 
+so to speak, `q.application-driven` in the sense that 
+major components are distinct `i.applications`/, 
+often provided by commercial vendors, rather than 
+(one could say) `q.code-driven` (where components are code libraries).  
+Insofar as informal workflows take the form of 
+common usage-patterns for distinct applications, the 
+logistics of sharing data and orchestrating the 
+proper sequence of operations tends to rely on 
+human users manually interacting with the applications.  
+Compared with code libraries %-- which are explicitly 
+designed to be integrated into larger programming
+environments %-- monolithic applications generally 
+have fewer features enabling functionality available 
+within the application to be exposed for 
+automated workflows.  Moreover, full-fledged scientific 
+applications tend to be difficult to extend, 
+even if they are open-source projects with no 
+commercial impediments to customization.`footnote.
+For example, complex applications are often difficult to 
+compile from source (as compared 
+to installing a prebuilt binary package) 
+which precludes extending the application by 
+modifying the source code directly %-- this 
+is especially true for software intended to be 
+run on relatively high-powered computers 
+found in research settings, which may have extensive 
+external dependencies that would be impractical 
+to reproduce on more pedestrian hardware.  
+These kinds of scenarios could stymie a graduate student, 
+let's say, trying to work on some specific extension 
+to the application code on a generic laptop computer.
+`footnote`
+`p`
+
+`p.
+In short, monolithic applications (compared with 
+more open-ended code libraries) tend to be 
+resistant to context-specific modifications which 
+could allow applications to participate in multiple 
+workflow-like environments.  One consequence of these 
+limitations is that informal workflows centered 
+on `i.applications` rather than on `i.code libraries` 
+tend to be more rigid, foreclosing the possibility 
+of workflows expanding in scope, which in turn 
+drives and reinforces (what we are calling) `q.fragmentation.` 
+`p`
+
+`p. 
+For a concrete example, we will note in Chapter 8 that
+Flow Cytometry gating and data visualization, 
+and also viewing data generated by image-processing pipelines 
+(such as identified Regions of Interest)  
+have many parallels with 
+image-annotation.  These overlaps suggest that a single suite 
+of `GUI; components could potentially be used to 
+cover both image-annotations and feature-visualization, 
+and moreover extended to other modes of data acquisition 
+such as Flow Cytometry when they engender image-like 
+presentations.  One benefit of unifying distinct concerns 
+along these lines is code-reuse.  As long as the domains 
+involved are not prohibitively divergent, 
+broadening the scope of existing `GUI; environments
+to accommodate a wider range of use-cases can be 
+more efficient than recreating entire `GUI; tools 
+`i.ab initio`/, even if wider-ranging code bases 
+could become more complex as they support special-purpose 
+data formats, use-cases and functionality. 
+`p`
+
+`p.
+While it is worthwhile to analyze such trade-offs between code reusability 
+and complexity, for now we simply note 
+that questions about the proper scope for code components tend to 
+dovetail with data-integration concerns.  Consider a scenario 
+where image-annotation, image-feature visualization, and 
+Flow Cytometry `GUI;s are confined to distinct code libraries.  
+One consequence of this separation is that the respective 
+components will likely employ somewhat different representations 
+for annotation (and gating) geometry, image dimensional 
+data, data set provenance, and similar artifacts which structurally 
+overlap across all three domains.  Consider the data generated
+when a user alters the geometry or visual style of an annotation or 
+Flow Cytometry 
+gate, or an image region segmented/demarcated via tunable processing 
+parameters.  The domains of image annotations, features, and 
+`FCM; are arguably similar enough that representations of 
+user actions along these lines will be strongly correlated, and 
+could be expressed via a common description language.  
+Standardizing the respective components' representation of 
+user actions would be beneficial in contexts where 
+data from two or three of these modalities are integrated, 
+so that projects could maintain a holistic record of 
+users' actions during the course of a research cycle. 
+`p`
+
+`p.
+Common representations of similar kinds of data are more likely 
+when the components that generate such data are 
+implemented as distinct pieces of an overarching 
+environment (e.g., distinct `GUI; components within a 
+larger `GUI; toolkit), or at least are 
+self-consciously designed to be interoperable.  
+Fragmentation of software ecosystems can have the 
+effect of obscuring possibilities for the 
+synchronization of data-representations along these 
+lines.  More to the point, the presence of multiple 
+data sources which evince similar data profiles, 
+but express information via structurally discordant 
+data models, impedes the process of data 
+integration because such mismatches end 
+up requiring extra `q.bridge` code.  
+Granted that standardization efforts try to 
+promote interoperability between components 
+engineered by different teams and companies %-- 
+as we will argue at the end of this chapter, 
+external interop initiatives can have only 
+limited success when they 
+get layered on a code base retroactively, rather 
+than emerging organically from components 
+adapting from the design phase onward to a 
+modular/interoperative environment.  
+`p`
+
+
+

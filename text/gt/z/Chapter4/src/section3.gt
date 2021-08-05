@@ -1,0 +1,1446 @@
+
+`section.Data-Integration via Multi-Aspect Modules`
+
+`p.
+A reasonable overview of oncology or cardiology 
+research %-- how clinical and diagnostic results 
+are obtained; how scientists explain the biological 
+mechanisms behind cancer or heart disease and extrapolate 
+disease signatures and prognostic indicators from those 
+explanations %-- suggests networks of interconnected 
+but narrowly focused research programs.  Methods and 
+terminology can vary substantially, depending on how 
+researchers target different scales %-- for example,  
+analyzing precancerous lesions or cardiac tissue versus 
+larger-frame analysis of heart movements or solid-tumor 
+morphology %-- and also whether the focus is on
+`i.in vitro` or `i.in silico` experimentation on 
+disease processes in controlled environments, or 
+evaluations of real patients (for diagnosis, prognosis, 
+or selecting among treatment options).   
+`p`
+
+`p.
+Similar dispersion may be found in the software 
+which threads through these research agendas; clusters 
+of similarly-focused research work tend to 
+converge on a particular set of software applications, 
+code libraries, or algorithmic conventions.  Here 
+we refer to this clustering-effect in terms of 
+`q.ecosystem fragmentation,` or the tendency of
+research communities to evolve distinctive 
+patterns of software use and computational paradigms, 
+which may have merit in that they encapsulate 
+`q.best practices` discerned over time, but can also 
+be somewhat inflexible and isolated.
+`p`
+
+`p.
+We argue here for a more accommodating methodology 
+which allows modules encapsulating numerous 
+distinct biomedical disciplines to be 
+connected and combined in flexible combinations.  
+We also advocate for modules which are 
+adaptive to different computing environments, 
+without being laden with complex dependencies 
+or locked in to exceptionally high-powered 
+technologies.  
+`p`
+
+`p.
+To be fair, many research/diagnostic methods in (say) 
+cardiology and immuno-oncology are quiet subtle, needing 
+on precise computational treatments to 
+derive biologically meaningful findings from 
+faint statistical patterns.  As such, 
+software which is adequate for these sensitive 
+computational tasks should be fine-tuned for 
+(metaphorically) amplifying faint signals.  
+Under these circumstances, one might 
+reasonably question whether `q.fragmentation` 
+is a bad thing; perhaps instead this 
+is the only way for researchers to consistently 
+use methods which yield reliable results.   
+`p`
+
+
+`p.
+More generally, one can question the extent to 
+which disparate research projects are truly 
+`q.integrated` in the substantive body of their 
+work mid-stream, as compared to the handful of 
+general principles, clinical indices, diagnostic 
+protocols, and other practical results which 
+hopefully come into focus as research progresses.  
+Obviously, an important research phase 
+is translational %-- distilling the science into a 
+relatively simple explanatory or evaluative 
+framework that can fit into existing clinical 
+knowledge and methodology.  This may take the 
+form of a few prognostic indicators, or a 
+probability distribution estimating the favorability 
+of different personalized treatment plans.  Such  
+data points or recommendations would then 
+enter the clinical record and could be a factor 
+in how physicians proceed, 
+with the overall lab or diagnostic process 
+serving as an integral but self-contained 
+interlude in the larger trajectory of patient 
+care.  Ultimately research is most relevant 
+when it yields protocols that slot in to 
+clinical practice in this manner, but the 
+profound details of the research %-- the 
+complex science behind single biomarkers 
+or indices %-- can be largely self-contained 
+within the research work or, to the 
+degree that it has practical applications, 
+to the work localized within a given lab or 
+diagnostic center, whereas mostly just summarial 
+findings become integrated into the 
+larger course of treatment.  
+`p`
+
+
+`p.
+If complex research data does not in and of itself tend 
+to flow into the clinical mainstream, and if a given 
+body of research has progressed to the point where 
+established protocols exist to yield relatively 
+simple diagnostic findings and recommendations which 
+are clinically relevant, then it is reasonable 
+to ask why any importance should be attached to the 
+insular or conventionalized nature of computational environments 
+which drive research.  It is true that many research projects 
+dip into multiple biomedical subfields at once, and therefore 
+make use of computational resources from distinct `q.ecosystems,`
+but these are often separated as different stages or facets 
+of the overall research.  Well-organized research papers 
+usually provide adequate detail describing methods and 
+instrumentation, including description of software protocols 
+(sometimes including published source code) applicable 
+to distinct phases of the research.  This means that 
+competent research work is transparent about its 
+methods at each stage, and claims about how 
+the various smaller parts of the research may 
+fit together, to create a larger scientific theory, 
+can be evaluated conceptually.
+`p`
+
+`p.
+Much biomedical 
+research is interdisciplinary %-- whether the 
+juxtaposition of different methods and perspectives 
+exists within a single paper or more within the 
+interplay between multiple research projects 
+which take the same problem from different angles 
+%-- but integrating diverse disciplinary perspectives 
+is often only possible by accepting certain 
+empirical or theoretical results localized 
+within one disciplinary area as a starting point 
+for further integration.  Establishing the 
+foundation of theories or data involves work narrowed to that specific 
+area of research; to the degree that scientists feel 
+confident about component results, the goal of 
+cross-disciplinary integration is one of unifying 
+models accepted as provisionally validated by 
+encapsulating their contributions into a few 
+most important details, poised to be conceptually 
+and operationally merged with contributions from 
+other directions.  Interdisciplinary collaboration 
+does not necessarily entail low-level 
+engagement of different scientists on the 
+evidential minutiae which need to be curated by 
+individual research programmes to the degree that 
+they can flow into larger multi-disciplinary paradigms. 
+`p`
+
+
+`p.
+Such an account of low-level details %-- `q.encapsulated` 
+by research programmes that become, in effect, subtheories 
+in a space of integrative scientific practice %-- 
+would seem to argue for low-level details being the 
+concern only of small groups of researchers 
+(or, upon translation to operational practice, to 
+technicians who have the isolated responsibility of 
+providing their own well-defined step in a clinical pipeline).  
+This is a plausible picture which might accurately 
+describe an ideal of clinical `q.division of labor,` but
+it is incomplete (we `cobel<claim>;) in several contexts, which we 
+will analyze to conclude this chapter.
+Specifically, we find this 
+an oversimplified account when considering, `i.first`/, 
+large-scale biomedical data management; and, 
+`i.second`/, the publication, 
+dissemination, and reproduction of research work.  
+We will elaborate on these claims over the next 
+several subsections.
+`p`
+
+`subsection.Research Dissemination and Incremental Replicability`
+`p.
+So, why can't we consider low-level research details as 
+fully encapsulated within narrowly delineated research 
+projects or clinical practice, which would 
+legitimize what we have called `q.ecosystem fragmentation`/?  
+Here we will address two issues.
+`p`
+
+
+`p.
+First, consider the question of reproducing research.  
+While the term `q.replication crisis` may be 
+exaggerated,  it is true that scientists 
+in numerous fields %-- especially medicine %-- 
+have increasingly prioritized structuring 
+research in ways that promote 
+replicability, and that this tendency is driven 
+by scientists' frustration at failures to 
+replicate prior research `cite<FelipeRomero>;, 
+`cite<StefanoCanali>;, 
+`cite<StephanGuttinger>;.  If not a `q.crisis` 
+(a term which might hyperbolically imply that 
+large swaths of medical knowledge could be 
+discredited) then such failures are surely 
+at least a `q.problem.`  Assuming that
+research work is done rigorously, that is 
+not necessarily a problem which researchers 
+can solve individually %-- the best an 
+individual scientist can do is pursue progress 
+with the most current theories and 
+research tools/equipment possible, 
+and if new science (e.g., new 
+data-acquisition equipment) disconfirms 
+earlier results, the overall trajectory 
+would still be one of science being continuously 
+refined.  What researchers `i.can` do 
+is structure their methodology to prioritize 
+transparency and reduce the difficulty 
+of recreating the research work as 
+much as possible.  
+`p`
+
+
+`p.
+While laudable in theory, replicability 
+can be complex in practice, since quality research 
+by definition will often involve cutting-edge 
+ideas and/or material %-- the physical accoutrements 
+of empirical research %-- such that duplicating 
+the scientific environment is impractical for 
+logistical (even if not conceptual) reasons.  
+As we stressed above, a lot of research %-- especially 
+in the context of bioimaging %-- has to tease 
+out subtle patterns from complex image and/or 
+statistical data, often depending on specialized 
+image-acquisition tools, and such methods 
+may depend on sophisticated investigative 
+equipment and/or powerful computer systems which 
+cannot readily be mass-produced.  In these situations 
+researchers can still promote replication by 
+transparently describing their techniques 
+and providing future scientists with guidelines 
+on how to reconstruct their work `i.in those 
+contexts where`  
+requisite hardware and/or software tools 
+are available, but actually 
+following through on such reproductions 
+may involve logistical and financial hurdles.  
+In that sense, even conscientious research 
+may be difficult to reproduce in practice.  
+Since researchers should not really be 
+discouraged from leveraging advanced 
+scientific tools (since these may be the 
+engines driving new discoveries) %-- however scarce 
+access may be to them among their peers 
+and their field's community writ large %-- 
+it would be counter-productive 
+to fret over obstacles to replication to 
+such an extent as to 
+obscure the value of original 
+research to begin with.  
+`p`
+
+
+`p.
+Nevertheless, science as a whole 
+can still take steps to minimize 
+impediments to replication.  The central dynamic 
+of replicability as a `i.problem` is that 
+sophisticated research may be hard to 
+recreate because only select groups 
+of scientists have access to the materials 
+which would enable such replication.  
+Here we can set aside other (in theory 
+more corrigible) source of replication 
+problems, such as poor research design 
+or execution `i.ab initio`/, or failure 
+to properly document methods and 
+assumptions.  As scientists become 
+more cognizant of replication issues, 
+it is reasonable to hope that these more 
+superficial hurdles could gradually dissipate 
+over time.`footnote.
+Research trends toward greater 
+quality and precision, and one manifestation 
+of such progress is better research 
+design (enforced by review boards and 
+funding sources, hopefully) and how scientific 
+writing clarifies methods, data 
+sources/availability, or formal protocol 
+descriptions (through projects such as `FAIRSharing;, 
+`q.Research Objects,` and
+`MIBBI;, or Minimum Information for Biological and 
+Biomedical Investigations), enforced 
+(hopefully) by publishers.
+`footnote`  The more 
+intractable problem is that breakthrough 
+research may be difficult to emulate 
+precisely because research novelty 
+often requires investigative modalities that 
+are not widely available, or on 
+innovative conceptual or mathematical frameworks 
+that will take time to be digested by the 
+larger community.
+`p`
+
+
+`p.
+Against this background, strategies for 
+mitigating replication issues should not 
+necessarily start with the goal 
+of reproducing entire research projects 
+`i.tout court`/.  However, replicability 
+is not an all-or-nothing proposition, 
+where scientists need to re-enact every 
+aspect of a research project in order 
+to certify a replication success.  Instead, 
+it is helpful to think of replicability 
+as `i.incremental`/; as a matter of degree.  
+We should be able to replicate parts of a 
+multi-faceted research agenda even if it 
+is difficult to redo every piece of the 
+original puzzle.  Moreover, prioritizing 
+replicability can also be seen to include 
+facilitating future researchers' ability 
+to identify what would be `i.involved` 
+in replication to varying levels of 
+detail or thoroughness.  The 
+depth and breadth of a replication endeavor 
+should be something that scientists 
+can fine-tune based on available 
+resources and equipment. 
+`p`
+
+
+`p.
+Consider a complex, multi-faceted research project 
+where logistical barriers (financial requirements, 
+equipment availability, and so forth) would 
+may it difficult to reconstruct the 
+project in its entirety.  Future scientists 
+can still approach replication in a couple 
+of different ways.  First, they can assess 
+the feasibility of reconstructing the whole 
+project, or at least substantial portions 
+thereof %-- separate and apart from 
+full-fledged replication there is the 
+question of planning and preparing for a 
+replication effort, or estimating what 
+would be required for such an effort to 
+take place.  Second, scientists can 
+decide to re-evaluate some portion of a 
+multi-faceted project.  They could attempt 
+to confirm the methodology or validate 
+the data involved in some parts of the 
+project, or to recreate all or part of 
+the project to a limited extent  
+(which may involve less comprehensive 
+data sets, less precise equipment, and so 
+forth, perhaps not equaling the standards 
+of the original project, but still 
+contributing some information to an 
+overall assessment of the initial 
+research work).
+`p`
+
+`p.
+These possibilities 
+raise several questions `i.which can be 
+anticipated by the original research 
+framework`/: even if this research 
+is carried out using relatively scarce 
+equipment and (e.g., computational) 
+resources, are there paths to reproduce 
+the work (albeit imperfectly) in a 
+less stringent environment?  Can some 
+component parts of the research be 
+re-evaluated and (hopefully) re-confirmed 
+even if redoing the whole project is impractical?  
+Enabling some level of `i.incremental` 
+replication can therefore be considered 
+an indicator of quality research 
+design from the outset.
+`p`
+
+
+`p.
+The idea of `q.incremental` replication has 
+several consequences from a software point of view.  
+Even if a research project uses very large data 
+sets (and this scale is intrinsic to the 
+investigation's merit) there may still be 
+value in approximating the research methods 
+in the context of `q.smaller` data.  
+Modestly-sized data sets could be employed, 
+for example, to  
+estimate or prototype strategies for 
+replicating the research as a whole.  
+Small data sets could also double-check 
+the accuracy or programming logic of 
+algorithms and/or implementations featured 
+in the original research.  Likewise, 
+scientists might at least examine the 
+feasiblity of reproducing prior 
+research on less advanced but more 
+widely available equipment.  Would 
+confirmation of the original work 
+(or, for that matter, contra-indicative 
+results) reinforce (or, respectively, challenge) 
+the original work, or is the original 
+methodology tightly bound to the 
+sophistication of its specific materiel?  
+`p`
+
+
+`p.
+These issues point to the domain of 
+replicability being more general than 
+just the full-scale reenactment 
+of prior research work.  The larger 
+scope of replication bleeds into 
+metatheoretic framing and pedagogical 
+dissemination of a research programme.  
+Consider scientists evaluating what 
+would be entailed in attempt a relatively 
+broad restaging of some complex research.  
+Should we characterize such pre-replication 
+study as a pedagogical happenstance (the 
+scientists trying to arrive at a detailed 
+familiarity with the prior work so as 
+to estimate the scope of a potential 
+replication) or as a conceptual 
+analysis of the original work?  
+The line between pedagogy and 
+meta-methodology may be hard to define 
+in practice.
+`p`
+
+
+`p.
+In short, the 
+community which might be involved in the full 
+scope of replication could be much larger 
+than just those who specifically 
+take on the role of actually carrying 
+out large-scale reproductions.  Aside 
+from explicit and relatively full-fledged 
+replication efforts we have to consider 
+planning `i.for` replication, assessing 
+how replication projects may be carried 
+out, replications of smaller parts 
+of multi-faceted work, and so forth.  
+Organizing a research programme so as 
+to facilitate subsequent follow-up, 
+then, is not only a matter of streamlining 
+the process of recreating the original 
+working environment in its totality.  
+It is also a matter of enabling 
+scientists to reproduce part of the 
+research setting, or to recreate the 
+environment in a partial or limited 
+manner, so as to `i.prepare` a 
+more comprehensive reenactment or 
+to replicate just one `i.part` of 
+the prior work. 
+`p`
+
+
+`p.
+Projected onto the specific domain of 
+software development, these concepts 
+imply that the software ecosystem 
+through which new research is 
+disseminated and assessed should be 
+considered more broadly than just 
+in terms of the logistics of full-scale 
+research re-enactments.  Replication 
+involves more than just software, 
+of course.  It may require the right 
+sort of equipment, procurement of 
+tissue or other biologic samples 
+(for `i.in vitro` or `i.in vivo` studies), 
+access to data for re-use (or functionally 
+analogous data), and so forth.  
+Nonetheless, software in particular 
+can serve as a case-study for `q.incremental` 
+replication.  The software ecosystem through 
+which research may be `i.incrementally` 
+reproduced or re-evaluated need not duplicate 
+the software through which the original work 
+was carried out (or even the computational 
+resources which would be needed to fully 
+recreate the original context).  
+`p`
+
+
+`p.
+Consider scientists investigating what 
+would be `i.required` for replication, 
+performing a kind of pre-replication 
+prototype of the original project.  
+They would not necessarily need to work 
+on data with the same scale, or computational 
+resources with the same power, as 
+necessary to rederive the original 
+findings.  The goal of such preliminary 
+replication is not to actually 
+recreate the original work, but rather 
+to prototype the environment within which 
+that work `i.could` be reproduced.  
+In addition, such `q.pre-replication` should
+be deemed an intrinsic aspect of replication 
+in general.  The consequence of this 
+idea for presentations of scientific 
+findings is that respecting replicability 
+involves more than transparently 
+reporting on methods and protocols 
+`i.for the benefit of` scientists 
+who might engaging in replication full-court.  
+Replicability also entails anticipating 
+the needs of scientists who may simulate 
+the original research environment in a simplified, 
+more modest, or prototyped fashion 
+`i.as preparation for` potential replication in 
+the more exacting sense. 
+`p`
+
+
+`p.
+The possibility of `q.incremental` replication is 
+one element which complicates, we believe, 
+the problems associated with (for example) 
+what we have called `q.ecosystem fragmentation.`
+The arguments for research communities narrowing 
+in on relatively isolated and `q.insular` clusters 
+of computational paradigms and software applications 
+tend to focus on the needs of reproducing research 
+with a level of detail and sophistication 
+commensurate with the original.  Indeed, 
+we concede that it is reasonable 
+for scientists to develop research programmes 
+which narrowly focus on certain specific 
+software and computational resources if 
+these are the only options for subsequent 
+researchers who want to build on or 
+re-examine the original work in an 
+environment on par with that original.  
+However, `i.incremental` replication 
+complicates this picture.  Full-fledged 
+replication does not come out of 
+thin air: it depends on scientists 
+intellectually mastering the original 
+work to a degree necessary to 
+play the part of the original researchers 
+in re-enacting their work; and on 
+some anticipation or prototyping of 
+the environment where the replication 
+will be carried out.    
+`p`
+
+
+`p.
+In short, researchers should assume that 
+`q.replication` does not just mean a small 
+handful of follow-up project structurally 
+analogous to the original work.  
+More broadly, replication also involves 
+partial, simplified, or prototype-like 
+simulations of the original research 
+environment and methods toward pedagogical 
+and preparatory ends.  Replicability 
+is facilitated by the relevant 
+research community grasping some of the 
+conceptual and operational details 
+of what full-fledged replication 
+would entail, even if many of those 
+researchers are not in fact in a 
+position to launch a replication project 
+of their own.  For this dissemination 
+to work most effectively, the 
+larger community which assesses research 
+should ideally have access to at least a 
+simulacrum of the original scientists' 
+research environment.
+`p`
+
+`p.
+Moreover, an ecosystem designed  
+for `q.pedagogical`  
+recreation of the original environment 
+can be more open-ended and less exacting 
+than the original environment itself, 
+because the purpose of such an incremental 
+ecosystem is to sharpen scientists' 
+understanding of research methods 
+as much as to produce new data.  
+A widely-accessible `q.incremental 
+replication` ecosystem could 
+be built around low-cost materials, 
+open-access (and not prohibitively large) 
+data sets, open-source code, and software 
+components which do not have intractable 
+dependency chains or hardware requirements 
+and which are not locked in to extra-ordinary 
+computing frameworks (e.g., some version 
+of the research protocol should be 
+enactable on ordinary desktop computers).  
+`p`
+
+
+`p.
+In short, support for incremental replication 
+along these lines changes the design requirements 
+for software components which are intended to be 
+part of a research ecosystem.  The goal of 
+software in this `q.incremental` context 
+is not to maximize computational performance, 
+or to achieve scientific breakthroughs by 
+leveraging raw computing power.  Instead, 
+software in the milieu of incremental 
+replicability serves the primary goal 
+of providing an accessible and educational 
+window onto the protocols and computational 
+patterns intrinsic to a given research 
+programme.  Such an ecosystem should 
+seek to disseminate an operational 
+and granular understanding of a particular 
+research project within the relevant 
+scientific community as a `i.precursor` 
+to more thorough reproduction efforts.  
+The software which a community uses to 
+initially conceptualize and model 
+original research need not be the 
+same software as that which powers 
+actual full-fledged replications, 
+but we should on principle consider 
+that broader community-scale understanding 
+to be a prerequisite for the planning 
+and prototyping of replication 
+efforts when they do get put into 
+practice %-- especially when the 
+original research involves 
+rarified methods or equipment that 
+takes effort to reincarnate in a new setting. 
+`p`
+
+
+`subsection.Heterogeneous Health Data and Curation`
+
+`p.
+The issue of `q.incremental replication` which we 
+just discussed points to how original 
+research is disseminated in a larger community 
+than just the set of scientists who 
+may in fact be in a position to reproduce 
+prior work with some level of completeness, 
+especially if that work involves materials 
+that are not accessible to many scientists.  
+Even if only a small subset of the relevant 
+scientific community is in position to 
+feasibly contemplate comprehensive 
+research-reproduction, the process of 
+preparing for such replication %-- and 
+for the replication effort itself to 
+pay due dividends in terms of the 
+larger community's appreciating its 
+results `visavis; the original work 
+%-- would seem to depend on the larger 
+community itself, overall, having some operational 
+and granular understanding of the original 
+work.  That goal in turn may best be achieved 
+by presenting the community with 
+concrete tools to reenact the 
+original work in a partial and approximative 
+manner, for pedagogical as well 
+as empirical reasons.  Software components 
+encapsulating research work, in these 
+kinds of context, may be 
+addressed to a larger group 
+of scientists than just those who 
+intend to reconstruct the 
+original research in a computational 
+environment on part with the original.   
+In the context of incremental replication, 
+software components serve goals related 
+to the conceptual and pedagogical 
+dissemination of the original research 
+frameworks and protocols. 
+`p`
+
+
+`p.
+Analogous roles might be 
+played by certain software components 
+in the context of multi-domain 
+bioinformatic/clinical data curation.  
+For sake of discussion, we will 
+consider biomedical data in the 
+context of relatively large-scale 
+and heterogeneous information-spaces 
+such as a data `q.lake,` where the
+goal is to deposit as much information 
+as is practically storable, without 
+constraining the data to fit predetermined 
+schema or representations.  Hospitals 
+and other medical institutions 
+have increasingly turned to some 
+form of data lake along these 
+lines, although we will speak here 
+in terms of generic paradigms rather 
+than specific technologies (we are 
+imaging hypothetical information 
+spaces which instantiate the conceptual 
+notion of data lakes or their peers).
+`p`
+
+`p.   
+Consider the trajectory of a patient's 
+care between hospital admittance and 
+discharge.  It is reasonable to assume 
+that the hospital will accumulate 
+a significant corpus of information about 
+that patient, from a mixture of real-time 
+data collected from devices monitoring 
+the patient's condition, to test results 
+and doctor's observations `visavis; the 
+patient's evolving condition.  Some of this 
+data will be registered on patients' 
+Electronic Health Records, but other 
+information may simple be discarded, or 
+might be siloed into different contexts.  
+For example, intermediate 
+data used to generate lab or diagnostic results 
+may be retained by the clinical entities 
+(inside or outside the hospital) which contribute 
+findings to the official health record, 
+but such more detailed data (presumably 
+more granular but also less summarial 
+and reusable) might not be 
+computationally accessible within the 
+hospital's digital ecosystem.
+`p`
+
+
+`p.
+This book has focused on bioimaging 
+as a source for case-studies 
+exemplifying issues related to biomedical 
+data in general, so, continuing that 
+device, consider the specific situation 
+of hospitals outsourcing diagnostic or 
+prognostic investigations to external 
+imaging centers.  Data communications between 
+the two entities (the hospital and the imaging 
+center) would presumably be governed 
+by standards such as `DICOM;, which should 
+clarify how relevant clinical data would be 
+presented to the imaging center 
+and how summarial results would be 
+sent back.  In addition to structured 
+diagnostic reports or treatment recommendations, 
+the information sent back to the hospital 
+might include some images, although 
+not necessarily the full image series 
+relevant to that specific patient and/or 
+study (potentially only the most 
+diagnostically pertinent images might be 
+shared) or the full data generated 
+during image-processing (for example, 
+the imaging results could include, 
+so as to filter out midstream calculations,   
+a more compact radiomic `q.signature` 
+quantitatively merging extracted  
+image-features which prior research 
+suggests are correlated with the 
+patient's specific medical condition).  
+A larger quantity of information may 
+be retained by the imaging center, 
+e.g., on a `DICOM; database.`footnote. 
+All `PACS; (Picture 
+Archiving and Communication System) 
+workstations are typically programmed 
+to maintain a database of images viewed 
+through the system, aggregated in conjunction 
+with patient and study metadata.
+`footnote`  There would 
+typically, however, be no automated network connection 
+which would allow the hospital receiving 
+the imaging results to access the center's 
+associated `PACS; archive, should more granular 
+imaging data be required on their end. 
+`p`
+
+
+`p.
+The data `q.lake` paradigm generally takes a 
+more liberal view of sharing and storing 
+data.  In this hypothetical 
+imaging context %-- again, we are speaking 
+in general/conceptual terms, not analyzing 
+specific implementations %-- we can envision 
+the relevant hospital and imaging center 
+adopting a more data-hungry protocol 
+wherein a relatively larger volume of 
+image assets and/or metadata is shared between 
+the two entities.`footnote.
+We write here in terms of `i.hospitals` 
+but similar comments would apply to smaller 
+medical institutions, such as `q.Urgent Care` 
+centers or even private doctors, assuming that 
+the relevant technology can be down-scaled 
+to the computer systems typical of smaller 
+offices and that we envision many private 
+systems interconnected into a sort of 
+`q.virtual` Data Lake. 
+`footnote`  The hospital 
+might maintain a system functionally analogous 
+to `PACS; which would retain multiple images 
+for each study (and therefore each patient) as 
+well as a reasonably thorough database 
+of radiomic and radiographic image-features 
+extracted from those images.`footnote.
+The details 
+of how such data would be communicated 
+alongside the images themselves would have 
+to be established by the protocol 
+connecting the hospital's and imaging 
+center's computer networks, presumably 
+based on image-annotations.
+`footnote`  The net result 
+is that within a hospital network 
+itself anyone with proper access 
+rights would be able to pull up 
+patient images, along with annotations and/or 
+image feature-vectors, in conjunction 
+with other branches of patient data 
+(clinical reports as well as 
+diagnostic results in other media, 
+such as blood or tissue samples or 
+genetic sequencing).  
+`p`
+
+
+
+`p.
+There are various scenarios where greater 
+breadth in retaining patient data may be 
+useful.  One would be revisiting earlier 
+findings in light of new information: imagine 
+a patient who returns to a hospital 
+some months or years after a prior 
+visit; doctors could find it 
+relevant to look at images taken during 
+that earlier stretch of care.  Or, 
+test results from non-imaging modalities 
+might cause doctors to reconsider how 
+the images are to be interpreted.  
+Similar re-evaluation can be 
+warranted if a patient does not respond 
+to intervention in ways which accord 
+with their prognostic cohort, as 
+established by an initial image-based 
+assessment.  Also, re-analyzing the 
+original images via different software 
+or different radiomic/radiological 
+methods might yield variant results.  
+The possibility of gleaning new results 
+from re-examining prior data should 
+not be foreclosed due to lack of data 
+availability.  Finally, there are 
+always possibilities of patient cases being 
+material for subsequent research; image 
+data (and other patient records) may be 
+analyzed in light of the eventual patient 
+outcomes.  Were a patient to be entered 
+into a clinical trial, image data may become 
+relevant insofar as such data is pooled 
+from the cohort of trial participants 
+for statistical analysis or data mining. 
+`p`
+
+
+`p.
+These comments for bioimaging would also 
+apply to other biomarkers/indicators, such as 
+those derived from blood or 
+tissue samples, genetic tests, functional 
+examinations (e.g. cardiac stress tests 
+or assessments of cognitive functioning), 
+or observational clinical data.  Assuming a 
+single software system is available to access 
+the full spectrum of data thereby curated, 
+that one system would accordingly 
+be an entry point to information 
+instantiating a broad range of data 
+profiles.  In such an environment 
+users of the associated software would 
+have opportunities to explore 
+the data sets along numerous paths 
+or directions %-- images of a patient's 
+heart, for example, might lead towards 
+results for patients' exercise tests,  
+blood work, clinical observations 
+(e.g. tracking hypertension levels over 
+time) and genetic data that might have 
+implications for heart disease.  Analogously, 
+Covid patients' lung scans could be linked 
+to SARS-CoV-2 antibody tests, assessments 
+of cognitive functioning, contact-tracing 
+data, and so forth.  In effect, the 
+software-design issues here are not only 
+those of storing and maintaining large 
+and heterogeneous information spaces, 
+but also structuring the interface 
+for accessing that data in a 
+flexible manner, giving users freedom 
+to traverse the space in multiple directions 
+and according to multiple criteria.  
+`p`
+
+
+`p.
+It would be difficult to implement such a system 
+effectively without a rigorous modular design, 
+because the range of data profiles would 
+exhibit significant heterogeneity.  Consider 
+the case of a `GUI; window showing cardiac 
+or tumor scans and annotations, which is then linked 
+to a separate window showing histopathology 
+results and a further window showing 
+genomic information.  The data structures 
+and computational protocols associated with 
+these three domains %-- radiomics, 
+genomic, and histopathology %-- are sufficiently 
+different that it would be difficult for a 
+single `GUI; `q.template` to effectively 
+handle all three cases.    
+Modular implementations would allow components to be 
+focused on specific areas: modules for image 
+and image-annotation rendering would be separate 
+than those presenting genomic data and from 
+those devoted to histopathology, for example.  
+Such modules might be implemented by different 
+teams, based on rigorous understanding of the 
+science underlying the forms of data they 
+emphasize, rather than trying to fit into a 
+predetermined mold (for data representation, 
+`GUI; layout, task organization, functional design, 
+and so forth).`footnote.
+This is not to imply that modularity is 
+necessarily embraced within `EMR; software 
+%-- for example, commercial clinical data management 
+vendors appear to develop software in a 
+more centralized manner, but such systems are also 
+often criticized by practitioners for 
+being inflexible and difficult to use.
+`footnote`
+`p`
+
+
+`p.
+Assume, then, that a hospital system employs a 
+`i.modular` form of `q.data lake` software 
+system where the common heterogeneous 
+data source is accessed by collections of 
+discrete modules, each optimized for specific 
+scientific areas: bioimaging, genomics, cytology, 
+histopathology, hematology, 
+neurocognitive informatics `cite<WlodzislawDuch>;, 
+epidemiology, and so forth.  One issue is then 
+protocols for interoperation between modules; 
+support for flexible usage-patterns implies that 
+users should be able to switch between (or 
+visually juxtapose) views provided by 
+different modules.  Continuing the above 
+example, cardiac or tumor images might be 
+linked to modules showing genetic data 
+and results on tissue sample-tests, respectively.  
+The imaging module would therefore 
+need to know first which other modules 
+are potentially linked to the current 
+patient data which the user is viewing, 
+and second how to describe this current 
+data so that those peer modules would 
+present information which is relevant 
+to that current context %-- for example, 
+histological analysis linked to the 
+tumor investigated by the current image 
+series.       
+`p`
+
+`subsection.Modularity and the Clinical/Research Overlap`
+
+`p.
+One goal in this chapter is to present 
+modular design as a solution to problems 
+arising from `q.software ecosystem 
+fragmentation,` the idea being that
+encapsulating functionality in 
+`i.modules` (which can be flexibly 
+combined and modified) as opposed to 
+relatively monolithic and isolated 
+`i.applications` would counter the 
+tendency of usage-patterns 
+consolidating into disconnected 
+paradigms.  Issues of research 
+replication add further considerations 
+insofar as clusters of entrenched 
+usage-patterns can hinder replicability, 
+even if the impetus toward quality research 
+is precisely the force which carves out 
+ecosystem boundaries in the first place.  
+That is to say, researchers may 
+repeat similar usage-patterns because 
+those are paradigms which are optimal 
+to their research work, and would 
+presumably be so for re-enactments 
+of that work in many cases.  In short, 
+`i.full-scale` replication would seem 
+often to entail future scientists 
+converging on the same computational 
+ecosystem (or at least a functionally 
+similar one) as that surrounding the 
+original work. 
+`p`
+
+
+`p.
+As we have argued, the problem with this  
+picture is failing to take 
+`i.incremental` replication into account.  
+Suppose we grant that for some research work 
+a comprehensive reproduction would 
+(to achieve the best results) use 
+the same or similar software as that 
+providing ambient capabilities for 
+the original.  We suggested earlier that, 
+such requirements notwithstanding, 
+full-scale replication may only be 
+feasible (and only maximally 
+useful to the relevant scientific 
+community) to the extent that 
+researchers have operational understanding 
+of what replication entails, perhaps 
+can perform some partial replication in 
+miniature or as a simulacrum of the 
+original, and insofar as prototypes 
+for the replication are discussed and 
+modeled as part of the research process.  
+In short, `q.incremental` replication 
+can serve as a precursor to 
+full-scale replication, as a tool for 
+building a deeper conceptual and logistical 
+understanding of the applicable 
+research protocols, and as a pedagogical 
+prompt helping the larger community understand 
+the research with greater depth.  Replication 
+reinforces the scientific parameters 
+of a research project %-- instead of a 
+one-off operation a project reproduced one 
+or more times becomes abstracted from 
+its precise institutional context, it 
+becomes a pattern that can be restaged 
+with some level of variation from place 
+to place.  But grasping research projects 
+as a `q.gestalt` in this sense is easier 
+if scientists in the larger research community 
+engage with the research work at 
+least to some degree in an active, experimental 
+fashion %-- not just reading an article 
+but carrying out their own mini-replications, 
+for example, or exploring the software which supports 
+that research gestalt. 
+`p`
+
+`p.
+Even if a certain narrowly-circumscribed software 
+ecosystem is necessary for holistic reconstruction 
+of a research project, then, this 
+is only one facet of replication %-- a further 
+dimension is the broader dissemination of 
+exploratory familiarity with the research 
+methods, a collective intuition of the 
+research challenges from an operational 
+point of view that serves as a precursor 
+to potential replication; and the 
+software appropriate for this pedagogical 
+and exploratory stage may be different 
+from that prerequisite for the technical 
+management of replications comparable 
+in scope to the original.  Against 
+this background, we would argue that 
+similar architectural models appertain 
+to information systems such as 
+clinical `q.data lakes.`  In the same
+way that the community of scientists 
+who may be engaged with a research 
+programme at some interactive/operational 
+level is broader than just those 
+with the resources to contemplate 
+holistic replications, likewise 
+a clinical data space spanned by 
+heterogeneous domain-specific modules 
+will be visited by specialists 
+in many areas, and modules should 
+anticipate being using by a 
+diverse array of practitioners, not 
+only those with technical skills 
+finely tuned to the module's core domain.
+`p`
+
+
+`p.
+In the case of radiomics, for example, 
+complex image-processing software and/or code-libraries 
+may be needed to extract feature-vectors with 
+sufficient parametric diversity to support 
+radiomic `q.signatures` and Machine Learning 
+algorithms endemic to contemporary 
+immuno-oncology or (say) cardiac genomics.  
+These tools, then, for understandable reasons, 
+tend to from a kind of `q.sub-ecosystem` 
+understood by experts well-versed in 
+the science and mathematics of statistical 
+image-processing.  Part of the role of 
+software serving these technical communities 
+is to permit effective data sharing and 
+communication: consider the case of an 
+image series being re-evaluated 
+by a different practitioner, or two 
+different image series (perhaps testing 
+disease/treatment progression) being compared.  
+The interplay between two different 
+practitioners or teams in these contexts 
+is analogous to the relation between 
+an original research group and the 
+consort which replicates their work 
+%-- these teams may converge on similar 
+software patterns because they 
+are simply guided by desire for 
+the most accurate results.  Carrying the 
+analogy over to an imaginary hospital context, 
+research-replication may be compared to 
+a hospital prescribing diagnostic 
+imaging and then sending the resulting 
+image-series to a second lab for 
+re-evaluation, and/or evaluating a 
+second study later in the course of 
+care (`q.replicating` the original 
+analysis, so to speak).  Because the 
+two practitioners/teams (or the same 
+practitioners at two different times) 
+are performing two different analyses, 
+there may not be actual data sharing 
+involved (a replication project does 
+not typically reuse the original 
+data, but rather generates a new 
+data set), but the teams may use 
+similar software in each case, software 
+which is functionally targeted toward 
+image-analysis in particular and 
+is disconnected from the hospital's
+own data space.
+`p`
+
+
+`p.
+Conversely, consider a modular data lake 
+where at least some radiomics-based 
+capabilities and information models are 
+integrated with the hospital's own 
+data management system.  In that case, 
+images and radiomic features would 
+be data aggregates accessible within the 
+total package of patient data, and may 
+potentially be consulted by specialists 
+in different medical areas.  Instead of radiomic 
+signatures being curated once in a 
+bioimaging laboratory and then only revisited, 
+if at all, by peer practitioners in a 
+a similar technical setting, the radiomic 
+features of a bioimaging module may 
+potentially be explored by a broader 
+community of users navigating through 
+the overall clinical information system.  
+This broader `q.community of users` is therefore 
+analogous to the community of researchers 
+who may be involved with `q.incremental 
+replication` of a research project, a 
+larger group than the scientists 
+who might engage in a replication study in detail.  
+Consider the case of interacting with a radiomics 
+modules and then switching to a histopathology 
+module accessing tissue data drawn from the 
+same cancer patient.  An analogous 
+transition in the publishing context might be 
+evaluating a data set used for studying 
+radiomic signatures for tumor 
+vascularization and then switching to 
+a module providing simulations 
+of blood vessel formation in the tumor 
+microenvironment `i.in silico`/.
+`p`
+
+
+
+`p.
+Whereas a radiomics `i.application` could serve the 
+needs of isolated laboratories sharing data 
+with referring hospitals in only limited, 
+predefined patterns, a radiomics `i.module` 
+would be designed for a broader use-base, 
+something that might be embedded in a 
+heterogeneous data-management system and 
+interoperate with other modules.  A radiomics 
+`i.module` therefore could not assume that 
+it resides in a computational environment 
+tailored to Computer Vision specifically; 
+ideally such modules would be adaptable 
+in the sense that more esoteric dependencies 
+are optional, e.g., that the code is not tied 
+to exceptionally recent compiler versions 
+or library prerequisites (even if swapping 
+in alternatives yields a degradation 
+in performance).  The purpose of a 
+radiomics module would not be 
+instantiate the most powerful radiomic 
+capabilities which science can offer 
+at the moment (as compared to bioimaging 
+software that may be deployed in a 
+diagnostic lab) but rather to expose 
+radiomic capabilities to a larger 
+community, insofar as radiomic 
+data is intrinsically interconnected 
+to information keyed to other 
+biomedical domains (which in turn 
+would occupy other modules).  Analogously, 
+too, this situation is comparable to 
+software enabling `q.incremental replication` 
+having different and (with respect to user base) 
+broader priorities than replication `i.tout court`/.
+`p`
+
+
+
+`p.
+The analogy between modules targeting a  
+`q.data lake` and modular design for 
+`q.incremental replication` has another 
+angle %-- if we consider `i.publishers` 
+as akin to `i.hospitals` (or other 
+institutions curating heterogeneous 
+clinical data).  In a decentralized sense 
+a publisher's digital platform is indeed
+roughly analogous to a data lake:  
+assets on such a platform include 
+publications themselves, of course, 
+but also bibliometric data such as influence 
+factor (e.g., references into and out a publication), 
+and, increasingly, digital resources 
+such as nultimedia content, data sets, and 
+computer code.  Taken in totality, 
+such assets collectively function as an 
+information space whose scope, diversity, 
+and architectural challenges are comparable 
+to biomedical records of a large 
+health-care system.  Data sets accompanying 
+publications would be analogous 
+in turn to domain-specific biomedical 
+records which a hospital (say) might 
+store alongside more generic clinical 
+data %-- e.g., image-processing 
+annotation and feature vectors reported 
+by an external diagnostic-imaging lab.
+`p`
+
+`p.   
+In some respects this is more 
+than just an analogy; after all, 
+the kinds of data which may be 
+included in a sufficiently broad-based 
+`EHR; system (radiomic, genomic, 
+histopathological, etc.) are 
+also curated by data-hosting 
+platforms and dataset-archives 
+associated with research publications.  
+Some of these are taken directly 
+from clinical/diagnostic practice 
+%-- consider projects such as the 
+Genomic Data Commons (`GDC;), 
+the Oncology Research Information Exchange Network 
+(`ORIEN;), Human Protein Resource Database 
+(`HPRD;), The Human Protein 
+Atlas`footnote.https://www.proteinatlas.org/about`/, BioGPS`footnote.http://biogps.org/dataset`/,
+The Cancer Imaging Archive (`TCIA;), the Clinical Proteomic 
+Tunor Analysis Consortium (`CPTAC;), the 
+International Human Epigenome Consortium 
+(`IHEC;)`footnote.https://epigenomesportal.ca/ihec/index.html`/, or the 
+`q.Applied Proteogenomics OrganizationaL 
+Learning and Outcomes` (`APOLLO;) network.`footnote.
+Not to mention biobanks, which curate not only 
+patient `i.data`/, but patients' actual tissue 
+samples (for research rather than 
+just therapeutic/diagnostic purposes) or cell lines.
+`footnote` 
+`p`
+
+
+`p.
+The term `q.data lake` is encountered more 
+often in the context of clinical records 
+than scientific publishing.  However, 
+scientific publishing platforms could generally 
+match the conceptual underpinnings of 
+`q.data lakes,` particularly if we include
+research data sets (in many cases 
+the organizations hosting scientific data 
+repositories are not the same as publishers 
+hosting collections of books and articles, 
+but there are some companies which 
+play both roles; and, conceptually 
+as well as looking toward the future, 
+we can envision the two technologies 
+merging, so that publishing platforms 
+of the next generation could well 
+feature publications, multimedia, 
+and data sets coexisting, in a 
+cross-referenced and integrated fashion).
+We can envision modular design playing a 
+role `visavis; publication portals 
+analogous to our proposals for 
+bioinformatic data `q.lakes.`
+In the biomedical contexts, modular design 
+is appropriate because a data lake will 
+contain information with diverse profiles, 
+some involving idiomatic data structures 
+with specialized algorithmic, persistence, 
+`GUI;, or user-interaction requirements.  
+The same could be said for data sets 
+associated with (and hosted via) a publishing platform.  
+Different modules could be used to 
+render data sets depending on their 
+underlying scientific field, just as 
+different modules would be selected to 
+display data packages in a clinical 
+system depend on the data's disciplinary 
+provenance (radiomics, histology, etc.).  
+`p`
+
+
+`p.
+More to the point, in relatively 
+open-ended contexts such as data lakes 
+or publishing portals, software 
+components providing such specialized 
+features will often be better designed 
+as `i.modules` than as `i.applications`/.  
+Whereas monolithic applications may have 
+the requisite power to work with 
+data to optimal degrees (e.g., 
+diagnostic labs re-evaluating findings 
+presented in a clinical data lake, 
+or scientific teams replicating 
+published research projects in detail), 
+many users would have less stringent requirements, 
+because modules can be interconnected 
+in a manner that invites users to navigate 
+between them.  Furthermore, modules need to 
+allow this free-form navigation; being 
+able to co-exist and interopate 
+with other modules in a dynamic 
+fashion can be more important, from 
+the perspective of modular design, than 
+achieving maximal computational performance.   
+`p`
+
+`p.
+We will argue in later chapters that these 
+ideas have interesting consequences for 
+such issues as data-sharing protocols 
+and information metamodels.  One rationale 
+for emphasizing common data `i.representations` 
+is that information must often be exchanged 
+between monolithic software components 
+engineered in relatively `q.closed` environments.  
+In that context the basic units of interoperability 
+are often common data models, and secondarily 
+common behavioral contracts for working 
+with shared data.
+`p`
+
+`p.
+Consider, however, a 
+more open-ended development ecosystem 
+where autonomous parties may contribute 
+functional pieces to large-scale 
+bioinformatics platforms in a modular fashion.  
+Such modules are not data `i.standards`/, but 
+rather fully-implemented components that 
+work on data directly %-- achieving 
+standardization through shared implementation, 
+rather than simply through normative 
+mandates %-- and can be inserted into 
+multiple applications.  The module in 
+one application responsible for some 
+specific information-domain would be 
+sharing data with `i.the same` module 
+in a different application, not just a 
+component which adheres to the 
+same behavioral constraints.  Simply 
+using the same code in two different 
+applications obviates the need to 
+document how disparate components 
+should be behaviorally aligned.`footnote.
+All code by definition is behaviorally 
+aligned with itself!
+`footnote`  And, insofar as an application 
+may not want to be forced to adopt 
+a single code base to provide some functionality, 
+at least alternative libraries could seek 
+alignment with their peers by emulating 
+those peers at a relatively low-level 
+code/procedural level.  Open-source code 
+allows for components to be synchronized 
+by studying each other's implementations, 
+rather than through oblique standard-definitions.     
+`p`
+
+`p.
+In short, if the basic mechanisms of behavioral 
+alignment are `i.code reuse` or, to similar 
+effect, `q.implementational alignment,`
+constructions such as data models and 
+meta-representations can be built around 
+concrete procedural models rather than abstract 
+logical summaries of desired behavior, 
+which has interesting consequences for 
+theories of information representation 
+(including ones mediated by Conceptual 
+Space paradigms).  We will return to 
+this discussion in Chapter 9.
+`p`
+
+`p.
+`p`
+

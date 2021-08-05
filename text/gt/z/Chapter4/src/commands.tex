@@ -4,10 +4,9 @@
 
 \setlength{\columnsep}{9mm}
 
-\usepackage[letterpaper, left=.925in,right=.925in,top=.56in,bottom=.56in, 
+\usepackage[letterpaper, left=.95in,right=.95in,top=.56in,bottom=.56in, 
 paperheight=12.5in,paperwidth=9.5in]{geometry}
 
-\newcommand{\cobel}[1]{#1}
 
 \usepackage{enumitem}
 
@@ -17,6 +16,9 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \newcommand{\mdash}{---}
 \newcommand{\q}[1]{{\fontfamily{phv}\selectfont ``}#1{\fontfamily{phv}\selectfont ''}} 
 \newcommand{\sq}[1]{{\fontfamily{phv}\selectfont `}#1{\fontfamily{phv}\selectfont '}} 
+
+
+
 
 \colorlet{codegr}{black!80!blue}
 
@@ -31,7 +33,11 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \else\begin{OldFootnoteSize}{\textsc{#1}}\end{OldFootnoteSize}\fi}}
 
 
+\newcommand{\cobel}[1]{#1}
+
+
 \newcommand{\sqbracket}[1]{[#1]}
+
 
 \newcommand{\GUI}{\AcronymText{GUI}}
 
@@ -148,6 +154,8 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 \newcommand{\MVD}{\AcronymText{MVD}}
 
+\newcommand{\EHR}{\AcronymText{EHR}}
+
 \newcommand{\QSP}{\AcronymText{QSP}}
 
 %\newcommand{\IHC}{\AcronymText{IHC}}
@@ -155,6 +163,10 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \newcommand{\ADC}{\AcronymText{ADC}}
 
 \newcommand{\RNA}{\AcronymText{RNA}}
+
+\newcommand{\MaZda}{\AcronymText{MaZda}}
+
+
 
 
 \newcommand{\FAIRSharing}{\AcronymText{FAIRSharing}}
@@ -174,13 +186,27 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 \newcommand{\twospace}{\b{2}-space}
 
+\newcommand{\sAIM}{\AcronymText{AIM}}
+\newcommand{\sCVAT}{\AcronymText{CVAT}}
+%\newcommand{\sXML}{\AcronymText{XML}}
+\newcommand{\sDICOMSR}{\AcronymText{DICOM-SR}}
+\newcommand{\sXML}{\AcronymText{XML}}
+\newcommand{\sPASCAL}{\AcronymText{PASCAL}}
+\newcommand{\sVOC}{\AcronymText{VOC}}
+\newcommand{\sCOCO}{\AcronymText{COCO}}
+\newcommand{\sJSON}{\AcronymText{JSON}}
+
+\newcommand{\sPDF}{\AcronymText{PDF}}
 
 \newcommand{\DICOMSR}{\AcronymText{DICOM-SR}}
 
 \newcommand{\IBSI}{\AcronymText{IBSI}}
 
-\newcommand{\AIMLib}{\b{AIMLib}}
-\newcommand{\cytoLib}{\b{cytoLib}}
+\newcommand{\HTML}{\AcronymText{HTML}}
+
+\newcommand{\BioNetGen}{\b{BioNetGen}}
+\newcommand{\JavaScript}{\b{JavaScript}}
+
 
 \newcommand{\Pandore}{\b{Pandore}}
 
@@ -190,15 +216,16 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 \newcommand{\qi}[1]{\q{\i{#1}}}
 
+\newcommand{\qidot}[1]{\q{\i{#1}.}}
+
 \usepackage{csquotes}
 
 \makeatletter
 %Take the original environment definition and change the leftmargin to 1cm
 \renewenvironment*{displayquote}
-  {\begingroup\setlength{\leftmargini}{11pt}\csq@getcargs{\csq@bdquote{}{}}}
+  {\begingroup\setlength{\leftmargini}{13pt}\csq@getcargs{\csq@bdquote{}{}}}
   {\csq@edquote\endgroup}
 \makeatother
-
 
 
 \usepackage[preserveurlmacro]{breakurl}
@@ -245,40 +272,13 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
   #1%
   \endgroup
 }
-
-%\newcommand{\twoptsmaller}[1]{%
-%{\fontsize{5}{9}\selectfont{}#1}}
-
-\newcommand{\twoptsmaller}[1]{%
-{\resizebox{!}{3.5pt}{#1}}}
-
-
 \makeatother
 
 \let\OldB\b
 \newcommand{\bb}[1]{\textbf{\oneptsmaller{#1}}}
-\newcommand{\bx}[1]{\textbf{\oneptsmaller{#1}}}
 \renewcommand{\b}[1]{\makebox{\bb{#1}}}
 
 \newcommand{\qb}[1]{\q{\b{#1}}}
-
-
-\newcommand{\sAcronymText}[1]{\twoptsmaller{\AcronymText{#1}}}
-
-\newcommand{\sAIM}{\sAcronymText{AIM}}
-\newcommand{\sCVAT}{\sAcronymText{CVAT}}
-
-\newcommand{\sDICOM}{\sAcronymText{DICOM}}
-
-\newcommand{\sDICOMSR}{\sAcronymText{DICOM-SR}}
-\newcommand{\sXML}{\sAcronymText{XML}}
-\newcommand{\sPASCAL}{\sAcronymText{PASCAL}}
-\newcommand{\sVOC}{\sAcronymText{VOC}}
-\newcommand{\sCOCO}{\sAcronymText{COCO}}
-\newcommand{\sJSON}{\sAcronymText{JSON}}
-
-\newcommand{\sPDF}{\sAcronymText{PDF}}
-
 
 
 \newcommand{\p}[1]{
@@ -349,5 +349,8 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{calc}
+
+\hyphenation{DICOM}
+
 
 

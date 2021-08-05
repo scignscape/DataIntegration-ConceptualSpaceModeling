@@ -194,7 +194,7 @@ that (in the language of process-calculi and
 Petri Nets) a procedure 
 can only be called when all `q.bindings` or 
 `q.markings` are 
-in place (see, e.g., `cite<LuisLopes>; or 
+in place (`i.see`/, e.g., `cite<LuisLopes>; or
 `cite<FeiLiu>;).  As such, a `q.Syntagmatic` computational 
 model can be defined in terms of computations 
 instantiating evolutionary processes whereby 
@@ -1010,7 +1010,7 @@ well as in Software Language Engineering in general
 expressions is not limited to aspect-oriented 
 paradigms exclusively, but also applies 
 to debugging, static analysis, and runtime-reflection 
-scenarios (see `cite<Cazzola>; and `cite<KloseOstermann>; 
+scenarios (`i.see` `cite<Cazzola>; and `cite<KloseOstermann>;
 for a good overview) %-- cuts across both 
 source-code-representation theories and 
 compiler/virtual-machine design.  It is obvious 

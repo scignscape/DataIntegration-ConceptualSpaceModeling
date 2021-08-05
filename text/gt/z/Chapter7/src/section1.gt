@@ -1,8 +1,7 @@
 `subsection.Comments on Procedural and Database Aspects`
 `p.
 For our purposes, we will define a `i.multi-aspect module` 
-(which we can just call `q.modules` when discussing only 
-this specific form of modularity) as a `i.code library` 
+(or just `q.module` in the present context) as a `i.code library` 
 that, in typical cases, includes procedures addressing 
 multiple `i.aspects` of software implementation.  In 
 particular, modules will have groups of procedures 
@@ -40,10 +39,15 @@ encoded indirectly.  If a module is implemented as a `Cpp; code
 library, for example, then it is straightforward to 
 implement procedures as externally accessible to other 
 `Cpp; modules, which can call the relevant procedure 
-as an ordinary `Cpp; function.  Choosing procedures to 
+as an ordinary `Cpp; function.
+`p`
+
+`p.
+Choosing procedures to 
 expose to sibling modules in the same language and environment 
 as the original module is indeed one dimension of 
-code modeling, but runtime reflection involves a different 
+code modeling, but runtime reflection more generally 
+involves a different 
 scenario, where the procedure requests originates from a source 
 which is `i.not` the same language as the original module, 
 or where for some reason the procedure cannot be called directly.  
@@ -98,78 +102,27 @@ proper.  Multi-application modules are not intended to be
 `p.
 In the area of data persistence, it would be impractical 
 for every module within an application to maintain its 
-own separate database.  We assume therefore that applications 
+own separate database.  
+We assume therefore that applications 
 are designed with data-persistence capabilities that are 
-independent of modules which are part of the application.  
-Nevertheless, the details of how data is encoded for the 
-purpose of data-persistence can be deferred to individual 
-modules in turn.  Each module, according to this 
-model, can then autonomously provide data structures 
-encoding how all the data managed by the module, 
-at a specific point in time, should be encoded.  
-The modules do not communicate with databases 
-directly, but they are responsible for providing 
-raw data which the database eventually receives.    
+external to and shared across most modules.  
+Instead of communicating with databases directly, modules 
+would then interface with some application-level 
+`q.kernel`/, which in turn would abstract 
+away low-level database interop details.  
+One benefit of this arrangement is 
+that said kernel can embrace data-representation 
+strategies which transcend particular 
+database architectures, translating such more 
+generic structures into specific database 
+contents on a case-by-case basis.  
+This is one motivation for our 
+model of `q.pre-persistent` representations, 
+discussed in Chapter 6.
 `p`
 
-
-
 `p.
-One goal of this setup is to delegate control of 
-how persistent data is structured to modules, while 
-abstracting low-level database details away from 
-individual modules' responsibility.  As a result, 
-modules should be designed around generic 
-database capabilities, rather than any specific database 
-model.  Taken to its logical conclusion, this idea 
-implies that modules need not commit to 
-any particular database `i.architecture`/, such as 
-`SQL; or different flavors of `NoSQL;.  This 
-degree of genericity is made possible by 
-practices such as `q.pre-persistent` representations, 
-discussed in Chapter 6.  According to
-that model, applications can set up a generic 
-data-representation format which is agnostic to 
-specific database architectures, and then receive 
-data from individual modules within that format.  
-The procedures responsible for communicating 
-with databases directly, then, would translate 
-the `q.pre-persistence` representations into 
-information organized according to the 
-rules of the specific database being targeted. 
-`p`
-
-
-`p.
-This discussion remains somewhat ephemeral without going 
-into further details about the nature of these `q.generic` 
-representations, which we touched on in Chapter 6
-(see for example Figure 4 in that chapter).
-At this point we will note only that generic 
-pre-persistence models can employ a diversity 
-of architectural strategies at the `i.representational` 
-level, whether or not they map directly onto 
-low-level database structures.  For example, 
-pre-persistence representations can employ 
-key-value `q.properties` annotated on multiple kinds 
-of sites within data structures, consistent with 
-property-graph models; or employ hypergraph aggregation 
-structures; or encode `SQL;-style tables with fixed 
-column layouts depending on record kinds (each record-kind 
-being akin to a table, but without implying that records 
-must be grouped together by kind into isolated tables 
-rather than potentially forming other sorts of collections).
-Such pre-persistence structures may project onto 
-concrete database features in some scenarios, but 
-there are strategies to encode structures endemic 
-to one database architecture within the terms of 
-alternative architectures, even if the results do 
-not have the same level as optimization.   
-`p`
-
-
-`p.
-In Chapter 6 we discussed virtual machines for query-evaluation,
+In Chapter 6 we also discussed virtual machines for query-evaluation,
 which are also applicable for working with pre-persistence 
 representations in a multi-aspect modular context.  
 Virtual Machines can be engineered to operate 
@@ -194,7 +147,7 @@ data formulated in earlier chapters.
 `subsection.Assessing the Proper Scope of an 
 Image-Annotation Module`
 `p.
-At the end of Chapter 4 we suggested limitations in
+In Chapter 4 we suggested limitations within
 (informal) `q.application-centric` workflows, where 
 usage-patterns involving specific popular applications
 tend to become entrenched and relatively inflexible.  
@@ -202,14 +155,14 @@ We argued that these usage-patterns demonstrate a
 kind of inertia which inhibits the emergence of 
 more flexible workflows where components can be 
 pieced together in a more open-ended fashion.  Workflows 
-are more flexible when their component parts are 
+are more flexible when their component parts tend to be 
 more narrowly focused, such as code libraries, rather 
 than monolithic applications.  This is (at least in part) 
 due to narrower components being explicitly designed 
 with the anticipation of interoperating with other 
 components in order to be useful, whereas standalone 
 applications are built to serve users' needs 
-on their own; interoperability with other components 
+on their own: interoperability with other components 
 may be desired capabilities provided through plugins, 
 extension, or `q.advanced` features, but they are less 
 crucial to the applications' usability in the first 
@@ -218,8 +171,7 @@ place.
 
 
 `p.
-Technical discussions of software workflows accordingly 
-tend to focus on components which are designed to 
+Software workflows accordingly focus on components which are designed to 
 be used as one element within a larger computing environment.  
 Similarly, modular design 
 emphasizes the virtues of software systems being 
@@ -228,8 +180,8 @@ workflow designs and modular software-development, then,
 are grounded in relatively streamlined components 
 targeted at specific areas of functionality.  However, 
 defining the scope of components' desired features 
-too restrictively leads to other sorts of complications, 
-which we will discuss in this chapter.  There is therefore 
+`i.too` restrictively also raises complications.  
+There is therefore 
 a tension between conceptualizing workflows and modular 
 design too narrowly or too broadly: components 
 which act like monolithic applications present the 
@@ -292,22 +244,21 @@ Image annotation and segmentation is an important
 analytic process in many scientific, technical, and 
 commercial fields.  Nonetheless, there are few standard 
 formats for describing and representing image annotations, and 
-those which do exist tend to be used in specific, relatively 
-narrow contexts.`footnote.Current formats include `sAIM;  
-(Annotation and Image Markup), `sCVAT; `sXML; (`sCVAT; is 
-the Computer Vision Annotation Tool), `sDICOMSR; (Digital 
-Imaging and Communications in Medicine Structured Reporting), 
-`sPASCAL; `sVOC; `sXML; (Pattern Analysis, Statistical Modeling and 
-Computational Learning Visual Object Classes), 
-and `sCOCO; `sJSON; (Common Objects in Context).`  This is 
+these tend to be domain-specific.`footnote.
+Such as `sAIM; for instance, or 
+`sDICOMSR; (`sDICOM; Structured Reporting), 
+`sCVAT; (Computer Vision Annotation Tool) (`sXML;), 
+`sCOCO; (Common Objects in Context)  (`sJSON;), 
+`sPASCAL; `sVOC; (Pattern Analysis, Statistical Modeling and 
+Computational Learning Visual Object Classes) (`sXML;).
+`footnote`  This is 
 not a new observation; Daniel L. Rubin `i.et al.`/, 
 in 2007, note that: |+|
 
 `displayquote,
 Images contain implicit knowledge about anatomy and abnormal structure that 
 is deduced by the viewer of the pixel data, but this knowledge is generally 
-not recorded in a structured manner nor directly linked to the image.  
-`sqbracket.Moreover,` the `i.terminology` and `i.syntax` 
+not recorded in a structured manner nor directly linked to the image[;] the `i.terminology` and `i.syntax` 
 for describing images and what they 
 contain varies, with no widely-adopted standards, resulting in limited interoperability.  The contents of medical images are most frequently 
 described and stored in free-text in an unstructured manner, limiting the 
@@ -338,22 +289,23 @@ radiomics, less so in other biomedical areas.
 One obstacle to formalizing image-annotation data is that 
 annotations have a kind of intermediate status, neither intrinsic 
 parts of an image nor merely visual cues supporting the presentation 
-of the image within image-viewing software.  Many applications 
-exist which allow markup or comments to be introduced with 
-respect to an image.  From the application's point of view, 
-these annotations are part of the application display, 
+of the image within image-viewing software.  
+Specifically, many applications allow markup or comments to be introduced with 
+respect to an image; from such applications' point of view, 
+annotations in this sense are part of the application display, 
 not part of the image %-- analogous to editing comments that 
 might be added to a text document by a word processor or 
 `PDF; viewer, which are records of user actions, not 
-intrinsic to the document itself.  Indeed, one 
-mechanism for recording image annotations in `DICOM; 
+intrinsic to the document itself.  In `DICOM; 
 (the `q.Digital Imaging and Communications in Medicine` 
-format) is via `q.presentation state.`  The presentation
-state includes all details about how the image currently 
-appears to `DICOM; workstation users, such as  
-Radiologists, which could include markings they have made 
-to indicate diagnostically significant image regions or 
-features.  Insofar as image-annotations are 
+format), for instance, `q.presentation state` 
+(one mechanism for recording image annotations) 
+includes all details about how the image currently 
+appears to `DICOM; workstation users (Radiologists, 
+etc.) which may include markings such as text-annotated 
+Distinguished 
+Regions (`i.see`/, e.g., `cite<EnginDikici>; or 
+`cite<MarcoEichelberg>;).  Insofar as image-annotations are 
 considered to be artifacts of image-viewing software, 
 rather than significant data structures in their 
 own right, there is less motivation for imaging applications 
@@ -374,17 +326,13 @@ describing and affixing data to image annotations.
 `p`
 
 `p.
-It is also important for image-annotation 
-models to be broadly applicable and multi-disciplinary.  
 While image analysis serves different goals in 
 different contexts (e.g., segmentation of microscope images 
 to detect cancer cells serves different ends than 
 segmentation of street-level 
 camera snapshots to study traffic patterns), 
 there is always a possibility of analytic techniques 
-developed in one subject area to be applicable for 
-other image-processing problems, even if the practical 
-outcomes desired of the analyses are very different.  
+developed in one subject area to be applicable elsewhere.  
 Furthermore, certain computational domains are 
 similar enough to image analysis to warrant inclusion 
 in a general-purpose image-annotation framework, 
@@ -398,18 +346,22 @@ images %-- by virtue of a semantic significance attributed
 to color and to geometric primitives as a way 
 of characterizing phenomena observed or modeled through 
 their data %-- even though such resources are 
-not acquired by ordinary `q.image-producing` devices.
+not acquired by ordinary `q.image-producing` devices.`footnote.
+`i.See` `cite<StykStyk>; for an interesting 
+discussion related to the `GIS; case.
+`footnote`
 `p`
 
 `p. 
-Most practical applications 
-do not attempt to define `q.images` as such, 
-and therefore to delineate the scope of image 
+Most applications skip defining `q.images` as such, 
+and therefore do not consciously delineate the scope of image 
 annotation overall.`footnote.
 The `q.Pantheon` project, characterized as a
 `q.platform dedicated to knowledge engineering for the 
 development of image processing 
-applications` (see `bhref.https://hal.archives-ouvertes.fr/hal-00260065/document`/), offers one of the few attempts in imaging literature to 
+applications` 
+(`i.see` `bhref.https://hal.archives-ouvertes.fr/hal-00260065/document`/), 
+offers one of the few attempts in imaging literature to
 rigorously define `q.imaging` and `q.image processing` in the 
 first place.  Pantheon (via its `Pandore; component) 
 also includes an image processing 
@@ -424,9 +376,9 @@ one where data is generated by an instrument which
 produces a digital artifact by absorbing light, 
 so that geometric and chromatic properties of the 
 image are wholly due to the functioning of 
-the acquisition device.  How broadly we 
-do defining imaging `i.per se` %-- which 
-remains an open question %-- affects 
+the acquisition device.  How broadly one 
+`i.should` define imaging `i.per se` (which 
+remains an open question) affects 
 the range of domains whose semantics could 
 reasonably be incorporated into annotation frameworks.  
 For example, if immunofluorescent 
@@ -436,7 +388,10 @@ properties of the `q.channel` axis, with
 notions of `q.decades` and a `q.log/linear` 
 distinction, become relevant to the annotation  
 vocabulary for representing spatial 
-dimensions and magnitudes.
+dimensions and magnitudes.`footnote.
+`i.See` `cite<[e.g., page 18]MeredithWeglarz>; 
+or `cite<[especially pages 14\i{ff}]WangHoffman>;, for example.
+`footnote`
 `p`
 
 `p.
@@ -444,8 +399,8 @@ After devoting the first part of this chapter
 to a relatively detailed examination of 
 image-annotation data, the remainder 
 of the chapter will turn attention to 
-other bioinformatic categories.  
-Here we will consider data-integration 
+other bioinformatic areas.  
+We will consider data-integration 
 strategies in the context of modeling 
 image-annotations (and image biomarkers) 
 alongside other varieties of biomedical information.

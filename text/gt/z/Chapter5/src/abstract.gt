@@ -1,0 +1,54 @@
+
+`abstract,
+`noindent;This chapter proposes the 
+development of a formal (or at least 
+semi-formal) type theory by 
+considering types as a classification 
+system for hypergraphs.  Specifically, 
+types are constructed as properties of 
+hypernodes and of nodes 
+contained within hypernodes (viz., 
+what we term `q.hyponodes`/); the 
+types ascribed to hyponodes determine 
+those of their enclosing hypernodes.  
+One consequence of this setup is a 
+framework for defining how much flexibility 
+we can allow to hyponodes type-ascriptions 
+while preserving a strong type system 
+at both hyponode and hypernode levels, 
+yielding a formulation we refer 
+to as `q.cocyclic` types.  We also 
+present an account of `q.non-constructive` 
+type theory which in essences formally 
+characterizes types by virtue of their 
+roles in procedure-call disambiguation 
+rather than isomorphisms between type-instances 
+and construction-sequences.  A defining 
+trait of non-constructive types is the 
+possibility of computing environment 
+being unable to determine the full set 
+of values instantiating a particular 
+type which may be computationally 
+represented (in a given context), or 
+similarly being unable to efficiently 
+determine which constructor or sequence 
+of constructor-calls would yield a 
+particular value.  In short, this 
+form of type-theory assumes a large 
+functional and conceptual gap between types 
+and their extensions (understood as 
+value-sets).  In addition, we consider 
+procedural sets through the lens of 
+certain higher-scale hypergraph constructions, 
+particularly (what we call) `q.channels,` 
+giving rise to a formulation of type 
+theory we dub `q.NC4` (non-constructive, 
+channelized, and cocyclic).  The motivation 
+for this type theory is to consider 
+types in a reasonably systematic 
+manner while also recognizing how 
+types in programming languages 
+model real-world concepts rather 
+than abstract mathematical entities.
+`abstract`
+

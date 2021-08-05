@@ -375,7 +375,8 @@ which are also apparent in construction
 patterns for the type in question 
 (e.g., a field which uniquely selects 
 a given type-instance in a query environment 
-where many such instances are present may well 
+where many such instances are present %-- one 
+might call such an environment `q.crowded` %-- may well 
 be a field whose value cannot be default-constructed, 
 so that some mechanism should be in place for 
 indicating that fully-constructed instances 
@@ -534,8 +535,7 @@ which converts a relation that would
 ordinarily be represented as a 
 `i.connection` between two objects 
 (an edge) and converts it to an 
-object in its own right (a node, 
-taking here `q.object` to mean 
+object in its own right (taking here `q.object` to mean 
 any compound data structure with 
 its own fields to be graph-represented).  
 The most semantically accurate 
@@ -632,7 +632,7 @@ triggering updates in one value
 may (as an implementational 
 requirement on the reactive engine) 
 cascade to updates on the other values 
-(see e.g. `cite<RamsonHirschfeld>; 
+(`i.see` e.g. `cite<RamsonHirschfeld>;
 or `cite<WolfgangJeltsch>;).`footnote.
 A `i.reactive expression` is a kind of 
 union between a single value 

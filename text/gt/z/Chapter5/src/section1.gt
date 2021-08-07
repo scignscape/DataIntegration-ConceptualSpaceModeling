@@ -98,7 +98,7 @@ Without undue loss of generality, we can assume that
 nonidentical hypernodes do not overlap (i.e., 
 no hyponode is covered by more than one hypernode).`footnote.
 This restriction %-- which we call `q.disjointness` %-- 
-can actually be weakened somewhat; see 
+can actually be weakened somewhat; `i.see`
 `cite<[p. ?]{MeHBTT}>; for details.
 `footnote`  Any given graph, then, seen as a static 
 data structure, will have some fixed list of 
@@ -305,7 +305,7 @@ will hold no value, which on this theory is a valid carrier-state.
 Recent work in mathematical linguistics 
 has developed a form of `q.Hypergraph Category 
 Theory` that can also be applied to programming 
-language type systems (see Coecke `i.et al.`  
+language type systems (`i.see` Coecke `i.et al.`
 `cite<InteractingConceptualSpaces>;, 
 an article we will return to several times in later chapters).
 Coecke `i.et al.`/'s motivation 
@@ -368,7 +368,7 @@ techniques generally described as `q.reactive,` as in
 `q.Functional Reactive Programming`/.  A concrete 
 example is the so-called `i.signal/slot` 
 mechanism used in `Cpp; within the `Qt; 
-libraries (see `cite<IvanCukic>;).  
+libraries (`i.see` `cite<IvanCukic>;).
 A head-empty `q.state` edge, on this analogy, 
 corresponds to a `i.signal` which triggers a 
 `q.slot` procedure; and a tail-empty 

@@ -52,7 +52,7 @@ terms, this implies directed, labeled graphs
 (the labels being lexemes/morphemes and parts of speech 
 on nodes, and inter-word relation kinds, as in Link 
 Grammar `cite<SleatorTamperley>;, `cite<HongEisner>;, 
-`cite<SleatorTamperley>;, on edges) with the property that 
+`cite<Schneider>;, on edges) with the property that 
 every directed edge belongs to a path leading 
 to a verb-node and verb-nodes are, in general, 
 `i.targets` (rather than `i.source-nodes`/) of 
@@ -79,7 +79,7 @@ The pivot which bridges these two different foci
 %-- we go from in some sense picturing or 
 learning about the occasion of someone 
 going to a store to learning about the fact 
-that this even was `i.witnessed` directly or 
+that this event was `i.witnessed` directly or 
 indirectly by the speaker %-- is the 
 conjunction `i.that`/, which we can 
 say points in two different directions: 
@@ -249,8 +249,8 @@ derives from the idea that evaluating nested
 expressions %-- or reading the value of symbols 
 which are input as single tokens %-- can be 
 modeled as adding `q.information content` 
-akin to vending-machine coins increasing 
-the total amount of money.  The idea 
+akin to a total sum of money rising with 
+each vending-machine coin.  The idea 
 of information content %-- and of ordering 
 systems' states in terms of 
 variant `i.amounts` of such content %-- introduces 

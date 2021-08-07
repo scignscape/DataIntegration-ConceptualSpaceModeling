@@ -68,7 +68,7 @@ and the structure needed to efficiently persist
 and then retrieve data, evinces a gap too 
 wide for object databases to serve as viable 
 replacements for `SQL; or for the most popular 
-`NoSQL; architectures `cite<[page 6\i{ff}]SikhaBagui>;.
+`NoSQL; architectures `cite<[pages 6\i{ff}]SikhaBagui>;.
 `p`
 
 `p.
@@ -286,7 +286,8 @@ an `i.abstract` persistence model which would recognize
 structures such as properties and hypernodes as generic 
 patterns which can be translated into the architecture-specific
 forms of different databases as a concrete instantiation 
-of a more general abstract model.
+of a more general abstract model 
+(see Figure~`ref<fig:prepersistence>;).
 `p`
 
 `p.
@@ -562,7 +563,6 @@ on the basis of that relation being
 known as a fact.  
 `p`
 
-`input<figure-tangle>;
 `p.
 In other words, a multi-relation 
 should supply traversal steps 
@@ -595,6 +595,8 @@ relations identifying `i.John`/'s
 and `i.Jane`/'s divorce-dates, 
 respectively. 
 `p`
+
+`input<figure-tangle>;
 
 `p.
 Semantically, then, multi-relations 
@@ -687,7 +689,7 @@ a collection of edges which are
 interdependent along these lines (in the sense that 
 node-value changes in the neighborhood 
 of one edge may propagate to others) 
-an `q.edge tangle.`  A multi-relation 
+an `q.edge tangle` (see Figure~`ref<fig:tangle>;).  A multi-relation 
 is then in effect a data structure 
 which merges the semantic and operational 
 roles of `i.edge tangles` and of `i.relation-reifying` 
@@ -695,7 +697,6 @@ objects (in effect, the
 multi-relation object simultaneously 
 reifies each edge in the edge-tangle).
 `p`
-
 
 `p.
 This chapter has concentrated 

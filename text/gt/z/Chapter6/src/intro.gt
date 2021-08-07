@@ -226,7 +226,10 @@ diagram structures derived from applying
 parsers to an input language): specifically, 
 one can examine graphs in both 
 contexts in terms of `i.directions` 
-of information increase.  
+of information increase.  We seek to 
+codify the informal picture that 
+graphs have paths along which a measure information content 
+(in some sense) elevates from site to site.
 `p`
 
 

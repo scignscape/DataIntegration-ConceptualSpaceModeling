@@ -536,7 +536,7 @@ aggregate, but there are cognitive reasons why language
 `i.diamond wedding expensive her ring` is malformed, even 
 though it has the same adjectives and noun base.  
 Exploration of these cognitive principles is outside the 
-scope of this chapter (see for instance Langacker's `i.Cognitive Grammar: 
+scope of this chapter (`i.see` for instance Langacker's `i.Cognitive Grammar:
 A Basic Introduction` `cite<[e.g., page 320, or in general 
 Chapters 10-11]LangackerIntro>; for details), 
 but we can observe here that most linguistic constructs 
@@ -583,7 +583,7 @@ there is for each verb a potential propositional content, or
 facticity, which when concretized produces some sort of 
 `q.complete idea.`/`footnote.Again, Chapter 11 of `i.Cognitive
 Grammar: A Basic Introduction` is a good reference for 
-this branch of Langacker's analysis; or see 
+this branch of Langacker's analysis; or `i.see`
 `cite<LangackerInteractive>;, 
 `cite<LangackerPresent>;, `cite<JohannesFlieger>;, 
 `cite<JensAllwood>;, `cite<MiriamTaverniers>;,
@@ -674,7 +674,7 @@ may convey in pictorial form the general idea of a
 semantics wherein meanings are grounded in the 
 information content they supply to a verb.  
 Tracing paths in graphs such as notated 
-in Figure~`ref<Chapter6-fig:sentence>; shows how word-pairs
+in (Chapter 6) Figure~`ref<Chapter6-fig:sentence>; shows how word-pairs
 (graph edges) lead toward verb-nodes, and 
 edges in general are labeled with role-indicators 
 (either subject/object or a declension-case) that 

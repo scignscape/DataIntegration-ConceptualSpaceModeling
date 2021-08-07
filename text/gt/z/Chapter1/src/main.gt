@@ -286,7 +286,8 @@ environments into one integrated picture.
 `p`
 
 
-`section.Data Integration, Hypergraphs, and Type Theory`
+`sectionbox.Data Integration, `hspace<-1pt>;Hypergraphs, 
+`hspace<-2pt>;and `hspace<-1pt>;Type Theory`
 `p.
 There is, of course, no magic wand 
 which anyone could wave over the worlds of 
@@ -309,10 +310,10 @@ research and clinical settings.
 
 
 `p.
-There is plenty of on-the-ground evidence indicating 
-that scientists are taking issues of transparent 
+Plenty of evidence suggests 
+that scientists are starting to take transparent 
 data sharing and research-replication seriously.  
-We will consider the notion of `q.replication crises` 
+We will consider the idea of `q.replication crises` 
 in greater detail in Chapter 4.  In a nutshell, though, 
 science has been rocked by a recurring failure of 
 reproducing research results in follow-up studies, 
@@ -396,9 +397,8 @@ vetted and refined by a large community
 of users and fellow developers.  
 Commercially licensed versions of open-source 
 projects therefore have a trust factor which 
-closed-source projects often lack, making 
-open-source code (at least in many 
-commercial domains) more competitive on the 
+closed-source projects frequently lack, making 
+open-source code often more competitive on the 
 open market.
 `p`
 
@@ -646,9 +646,9 @@ Supplemental materials for this book will be
 deposited on the Open Science Foundation, 
 Dataverse, and GitHub; for archive locations 
 please visit `bhref<https://github.com/scignscape/DataIntegration-ConceptualSpaceModeling>;.  These materials include 
-small bioimaging and clinical data sets which are encoded 
+sample data sets which are encoded 
 and annotated using techniques we discuss in Chapters 6-9.  
-These data sets are not intended for research purposes 
+Such data sets are not intended for research purposes 
 themselves, but rather to illustrate ideas 
 about how data sets may be structured, to the degree 
 that scientists really do prioritize expressive 
@@ -656,21 +656,20 @@ data models, microcitations (see below),
 integration with machine-readable text, and 
 other data-publishing features we mention in 
 this introduction and elsewhere in the book.  
-In addition, the repository contains machine-readable 
+The repository contains also machine-readable 
 text of the book's individual chapters, encoded 
 as separate documents using a special 
 text-representation system designed to facilitate 
-cross-references between publications and data sets.  
+cross-references between publications and data sets. 
+Finally, we include code libraries 
+targeted at the sample data sets, in keeping with design 
+patterns we will discuss in later chapters, which assume that 
+data sets will in general be published alongside code libraries 
+providing functionality to read and manipulate the associated 
+data, including parsers for the data's serialization format. 
 `p`
 
 `p.
-The book's supplemental materials also include code libraries 
-targeted at the (sample) data sets.  This is 
-in keeping with design 
-patterns we will discuss in later chapters, which assume that 
-data sets will in general be publishing alongside code libraries 
-providing functionality to read and manipulate the associated 
-data, including parsers for the data's serialization format.  
 By sharing code alongside data %-- optimized as necessary 
 for the specific information comprising a data set %-- 
 programmers can shift the burden of annotation 
@@ -695,16 +694,15 @@ in Chapters 5 and 6.
 `section.Philosophy and the Semantic Web`
 `p.
 Data-exchange formats might seem like a 
-pretty mundane scientific topic, part of the minutia of 
+mundane scientific topic, part of the minutia of 
 research practice which academics attend to as a 
 matter of professional competence, like 
 curating biobliographic references, but hardly 
 interesting outside its backstage role.  It is 
 curious therefore to consider that 
 the Semantic Web has a colorful philosophical 
-backstory and has had a relative center-stage 
-position in the theater of Artificial Intelligence 
-and debates over the `AI;s potentials and limits; 
+backstory and has had a relatively center-stage 
+position in debates over the `AI;s potentials and limits; 
 over whether human intelligence is mechanical 
 enough to be digitally simulated.  The 
 concept of Semantic Web `i.Ontologies` has become 
@@ -1428,7 +1426,7 @@ share publication texts in `q.structured format[s]
 like `JSON;, `XML;, or `HTML;,` and 
 to embrace consistent schemata for 
 article meta-data.`footnote.
-See Lucy Lu Wang, `i.et al.`/, 
+`i.See` Lucy Lu Wang, `i.et al.`/,
 `q.CORD-19: The COVID-19 Open Research Dataset` 
 (`bhref<https://arxiv.org/pdf/2004.10706.pdf>;), 
 page 8.
@@ -1622,7 +1620,14 @@ result, our biomedical software
 ecosystem arguably remains more fragmented and unsystematically 
 designed than would be warranted based on 
 how profoundly different biomedical subdisciplines 
-have been connected together in recent years.
+have been connected together in recent years.  
+A small step toward greater ecosystem-level 
+integration could be design of more powerful 
+and flexible query engines.  As such, most 
+of the new ideas presented in this book are 
+concentrated on query-evaluation virtual machine 
+technology informed by Conceptual Spaces, 
+hypergraphs, and other `NLP;-inspired semantic models.
 `p`
 
 
@@ -1659,18 +1664,19 @@ way to achieve this, we contend, is
 by formulating more sophisticated 
 presentations of research data, of 
 archives tracking multiple research projects, 
-and of software and algorithms that 
-could be used to integrate   
-disparate data sources (while also 
-modeling the anomalies and structural 
-anisomorphisms which can make 
-data integration inexact).  The 
-impetus for such granular and 
-non-oversimplifying (acknowledging 
-integration problems rather than papering 
-them over) methodologies might 
-come from software engineering, as 
-much as from scientific institutions themselves. 
+and of document-preparation in conjunction with 
+data curation.  
+Equally important are the software and algorithms
+used to integrate
+disparate data sources (while also
+modeling the anomalies and structural
+anisomorphisms that can make integrations inexact) %-- 
+ideally leveraging 
+innovative ideas in query-engineering and data models 
+that come to the fore
+with a sufficiently multi-disciplinary
+perspective, some of which we
+hope to have advanced here.
 `p`
 
 

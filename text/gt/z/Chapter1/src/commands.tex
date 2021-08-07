@@ -216,13 +216,8 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
   {\raggedright\normalfont\fontsize{10}{12}\bfseries}{\thesubsection}{.5em}{}
 
 
+\newcommand{\sectionbox}[1]{\section{\hspace*{-8pt}\makebox{#1}}}
 
-%\usepackage{sectsty}
-
-%\sectionfont{\fontsize{11}{15}\selectfont}
-
-%\sectionfont{\Large}
-%\subsectionfont{\large}
 
 \newcommand{\absolutelynopagebreakstart}{\par\nobreak\vfil\penalty0\vfilneg\vtop}
 \newcommand{\absolutelynopagebreakend}{\par\xdef\tpd{\the\prevdepth}\prevdepth=\tpd}

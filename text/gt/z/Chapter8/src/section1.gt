@@ -7,12 +7,12 @@ The previous chapter indicated many questions that should be
 answered by a comprehensive image-annotation framework.  
 This does not mean that frameworks should enforce some 
 choices at the expense of others, but they should at 
-east identify details where data models may diverge, 
+least identify details where data models may diverge, 
 and encourage specific models and implementations 
-to document their specific policies.  In other words, a 
+to document their individual policies.  In other words, a 
 framework does not need to be a definitive implementation; 
 it could also be a protocol identifying details which 
-individual implementations should take into consideration.
+particular implementations should take into consideration.
 `p`
 
 `subsection.Design Questions for Image-Annotation Modules`
@@ -31,7 +31,7 @@ values with different degrees of precision, non-standard
 quasi-reals) should be recognized?
 
 `item;  Should an annotation system allow multiple number systems 
-to co-exist, e.g. an integer scale for image points but a 
+to co-exist, e.g., an integer scale for image points but a 
 floating-point scale for ratios, angles, and other calculated 
 values which lie outside an integer pixel grid?
 
@@ -63,15 +63,15 @@ any such change be executed simply by updating the point-
 and/or length-set?  Likewise, should there be a mechanism for 
 representing the annotation-scale (whether or not it 
 mirrors the ground image) at different moments in time, 
-e.g., when the annotation was first created, and as it 
-is currently being viewed, or are these presentation 
+e.g., when the annotation was first created %-- as it 
+is currently being viewed %-- or are these presentation 
 data that need not be recorded in the annotation itself?
 
 `item;  What scale units should be recognized for 
 coordinate positions and intervals, such as the 
 nine possibilities standardized in `SVG; (centimeters, 
 inches, and so forth)?  Should annotation-sets 
-potentially mix two different such scales (e.g. 
+potentially mix two different such scales (e.g., 
 centimeters and percentages against image width/height)?  
 
 `item;  How should annotations' shape point-sets be ordered?  
@@ -84,7 +84,7 @@ points be handled?
 
 `item;  Should annotation shape be constructed solely 
 via a point-set or should other magnitudes 
-(what we earlier called a `q.length-set`/) be allowed 
+(what we last chapter called a `q.length-set`/) be allowed 
 as a way of describing the geometrical qualities of 
 the annotation shape?
 
@@ -161,7 +161,7 @@ activated as operations on typical
 annotations?  In the case of user-designed 
 curves, should implementations of 
 calculations matching a particular 
-purpose (e.g. area or perimeter) be required 
+purpose (e.g., area or perimeter) be required 
 as a `q.contract` for recognizing a 
 particular kind of curve as a valid shape-type?        
 
@@ -198,7 +198,7 @@ image-processing pipelines, or perhaps multiple
 similar `TwoD; slides from a `ThreeD; or `FourD; 
 resource) or as targeting 
 one image which is a transformed version of some 
-previous image (typically so as to facilitate 
+previous image (so as, typically, to facilitate 
 the derivation of annotations or the extraction 
 of features which the annotation calls attention 
 to, for instance when analysis is performed 
@@ -224,13 +224,14 @@ such as shape data?  For example,
 consider regions demarcated with a 
 black-and-white or (for fuzzy regions) 
 grayscale image overlaid on the 
-ground image which partitions the 
+ground image; thereby partitioning the 
 ground into an interior point-space 
 (black) and exterior (white).  
 The purpose of a derived image in this 
 case is to replace a geometric 
-annotation-shape with something more 
-granular.  How can annotations 
+annotation-shape with a more 
+granular and precise machinery to 
+isolate distinguished regions.  How can annotations 
 defer their shape data to images in this sense? 
 
 
@@ -311,7 +312,7 @@ involved).  But such an outline does not
 articulate the range of implementational 
 possibilities which are intrinsic to the 
 image-annotation domain (and summarized 
-in part by the above 20 questions).  
+in part by the above 20 or so questions).  
 Consider specifically, for example, 
 the notion of annotation `i.sets` 
 and annotation `i.environments`/.  
@@ -339,8 +340,6 @@ presumably be shared
 among all annotations generated 
 as such.
 `p`
-
-`input<fig-outline>;
 
 `p.
 It would then be memory 
@@ -435,8 +434,8 @@ be completely open-ended; it is the possibility
 of structural variations which allows there 
 to be different Ontologies.  But this 
 example illustrates how structural choices 
-are not isolated; the effects of specifically 
-local to one `q.part` of an Ontology can 
+are not isolated; the effects of choices 
+specifically local to one `q.part` of an Ontology can 
 propagate across the framework. 
 `p`
 
@@ -446,7 +445,7 @@ Assume, for example, that annotation `i.environments`/,
 roughly hierarchical relationship: one environment 
 produces many sets, and sets contain multiple 
 instances.  Low-level details would typically 
-then be inherited from higher in the hierarchy 
+then be inherited from higher-up in the hierarchy 
 downward.  If information is distributed across all 
 three levels, then it is only possible to use individual 
 `i.instances` by taking information from the 
@@ -460,7 +459,7 @@ to obtain an environment object as a
 context for using an annotation `i.set`/, and 
 needs to obtain an annotation-set object as a 
 context for using single annotations.  
-Assume now that annotations are obtained 
+Assume now that annotations are retrieved 
 from a database: the query interface to 
 that database would then have to be 
 organized so that objects correspond 
@@ -468,7 +467,7 @@ to this order of initialization and inter-dependency.
 How should a query which intrinsically returns 
 `i.one` annotation deal with the enclosing sets 
 and environments?  Should a query interface 
-start by retrieving an environment, using that 
+start by loading an environment, using that 
 as a parameter to further queries, so that 
 the handle to an environment object is 
 prerequisite for a single annotation?  Or should  
@@ -572,8 +571,9 @@ nonconvex, or self-intersecting, with different
 ordering-specifications depending on the subtype).  
 However, implementation-wise these various 
 options become concretized through groups 
-of `i.procedures`/: procedures to modify point-sets 
-by inserting a new point if it is required that 
+of `i.procedures`/: procedures governing 
+how point-sets are modify upon inserting a new point, 
+in cases where it is required that 
 point-sets remain ordered; to 
 compute the proper position for a point relative 
 to an existing set; to permute a point-set into a 
@@ -586,7 +586,8 @@ however that issue is addressed, any resolution
 depends on procedures such as identifying 
 when a given point is colinearly between two 
 outer points, and filtering intermediate 
-colinear points out of a point-set when needed.  
+colinear points out of a point-set when 
+that would be appropriate.  
 `p`
 
 
@@ -653,7 +654,7 @@ that particular implementations may need
 to provide bridge code which marshals 
 data into a common format for purpose of 
 networking and data sharing.  The degree 
-of extra code needed to get two distinct 
+of extra code demanded to get two distinct 
 software components to interoperate 
 tends to be proportionate to the 
 degree to which their low-level 
@@ -720,7 +721,7 @@ that strict separation of windows allows, particularly
 in the `GUI; context.  In the case of image-annotations, 
 it would be reasonable to factors details 
 of image `i.acquisition` outside the scope of the 
-annotation module, so that the latter module 
+annotation module, so that the latter  
 would not be responsible, for example, for 
 finding a specific image within an image-series or 
 archive, or giving users a chance to load a new 
@@ -730,10 +731,12 @@ woven with handlers for user actions involving
 searching for and loading images themselves 
 (to be discussed further later this section).
 
+`input<fig-outline>;
+
 `item ->> Serialization ;;  We discussed some issues 
 related to serializing image-annotation data in the 
 context of `AIM; (the Annotation and Image Markup project) 
-in Chapter 4.  As we then intimated in Chapter 6,
+in Chapter 6.  As we then intimated in Chapter 7,
 image-annotation data models could potentially be broadened 
 in scope and made significantly more flexible than 
 `AIM; itself, which would require extending `AIM;'s 
@@ -756,6 +759,8 @@ in exactly the same form as they were
 (within the original application) constructed 
 and superimposed on the ground image.
 
+`pseudopar;
+
 `pseudoIndent; The best way to achieve the proper 
 alignment between sending and receiving 
 components is to use the same code base on 
@@ -773,6 +778,8 @@ use the same code library as the specific locale
 for procedures directly responsible for constructing 
 and/or parsing the serialized formats.  
 
+`pseudopar;
+
 `pseudoIndent; Of course, one rationale for curating a standardized 
 serialization format is to free applications from 
 depending on one specific code library.  As a result, 
@@ -780,7 +787,7 @@ the module's serialization format should be designed to
 facilitate alternative libraries which could parse the 
 same data.  This is one reason why serialization 
 formats often stress standard models, such as an `XML; 
-Document Type Declaration (`DTD;) which can serve as a 
+Document Type Declaration (`DTD;), which can serve as a 
 reference-point for developing multiple different 
 code libraries that share a common serialization 
 format.  In general, confirming that a document 
@@ -794,9 +801,9 @@ conform to the standard).  For these reasons, formats
 kinds of preliminary checks can be simplified by 
 (say) `DTD;'s; however, `XML; (and other popular 
 formats, such as JavaScript Object Notation) can also 
-be limiting in some respects.  Modules can certainly 
+be limiting in some respects.  Modules could certainly 
 turn to more flexible and expressive data formats 
-instead.  It is recommended however to provide 
+instead.  It is resonable however in those cases to provide 
 code for document `i.validation` which is 
 less complete than (and preliminary to) full 
 parsing/deserialization.  In this manner alternative 
@@ -804,6 +811,8 @@ libraries designed for other programming environments
 (e.g., other programming languages) can mimic the 
 validation code, separately from emulating (to whatever 
 degree is appropriate) the actual parsers. 
+
+`pseudopar;
 
 `pseudoIndent; These comments apply 
 to serialization aspects in general.  For the 
@@ -820,7 +829,7 @@ complex, because the core serialization for
 annotation proper may or may not have numerous 
 residual structures encoding extra details.  
 Techniques for managing variegated `q.shape constraints` 
-in this specific context (see section 7.3) are 
+in this specific context (see \S{}6.4) are
 represented, albeit not with full rigor, in the demo 
 code accompanying this book.  
 
@@ -840,7 +849,7 @@ could certainly be represented in a queryable
 fashion.  The simplest scenario would be 
 encoding descriptions as ordinary textual data, 
 but there is also a rather extensive literature 
-on technologies such as `q.Semantic `DICOM;` 
+on technologies such as `q.Semantic `DICOM;` `cite<JohanVanSoest>;, 
 which associate annotations with diagnostic  
 codes (including treatment plans) and/or controlled vocabularies (e.g., 
 RadLex, the `q.Radiology Lexicon`/).  Such 
@@ -848,6 +857,8 @@ codifications are intended to make it possible to
 search large-scale databases of annotated 
 biomedical images via diagnostic, treatment, 
 or biomarker terminologies.
+
+`pseudopar;
 
 `pseudoIndent; Annotation characteristics 
 such as `i.calculations` lie somewhere 
@@ -862,8 +873,8 @@ annotations.  A canonical example, used on
 the starting page of the `b.SeDI` project 
 (`bhref<https://semantic-dicom.com/starting-page/>;) 
 is `q.Display all patients with a bronchial carcinoma 
-bigger than 50 cm$^3$` (see also `cite<JohanVanSoest>;,  
-`cite<ATraverso>;, `cite<Vining>;).  Calculations 
+bigger than 50 cm$^3$` (`i.see also`/, e.g., `cite<MollerMukherjee>;,
+`cite<ATraverso>;, `cite<Vining>;, `cite<PetrosKalendralis>;).  Calculations 
 depend on fine-grained geometric details, so making 
 this kind of quantitative data available for 
 `i.queries`/, where a query engine has to 
@@ -880,6 +891,8 @@ findings warranted `i.through` annotations alongside
 annotations themselves.  In this broader guises we 
 will return to this issue later in the chapter.
 
+`pseudopar;
+
 `item ->> Procedural Exposure ;;   In keeping 
 with our discussion in Chapter 6, a good
 starting-point for considering which procedures 
@@ -892,7 +905,6 @@ this point we can look at some concrete examples
 in the image-annotation domain.
 `description`
 `p`
-
 
 `p.
 As we reviewed above, one concern for a 
@@ -910,8 +922,12 @@ subtypes to be implemented with specifics
 such as (say) `b.double`//millimeter.  The demo 
 presents a third option, namely encoding a variety 
 of dimension/numeric configurations within individual 
-data types, which we will reference here for sake of 
-discussion.  The basic idea is to use flags and/or 
+data types, which we will reference momentarily for sake of 
+discussion.
+`p`
+
+`p.
+The basic idea here is to use flags and/or 
 enumerations to differentiate number/scale possibilities 
 when these are ambiguous.  For example, the demo code 
 uses quasi-real types (which can be `b.typedef`/'d 
@@ -937,7 +953,7 @@ also a code marking which measurement scale to apply to it`
 but also provides procedures to convert each value to a 
 different choice of units, and to synchronize two 
 different values when it would be unreasonable to have a 
-mixture of disparate units (e.g. for arithmetic operations 
+mixture of disparate units (e.g., for arithmetic operations 
 and for composing coordinate pairs; one operand or element of the 
 pair is recalculated in terms of the other's unit scale).
 `p`
@@ -950,7 +966,7 @@ fact that image `i.annotations` might be separated from
 management of `i.images` themselves.  Annotations and 
 ground images obviously have to be displayed together, but 
 other software-engineering aspects between the two 
-facets (images vs. annotations) do not necessarily 
+facets (images versus annotations) do not necessarily 
 coincide; serialization and data persistence for 
 annotations can be separated from the corresponding 
 operations for ground-images, apart from the 
@@ -989,7 +1005,8 @@ object encapsulating a ground image (or perhaps a
 binary package with the raw image data) but 
 would otherwise work in isolation to display 
 the image and then render annotations with reference 
-to it.  Most image-management operations, however, 
+to it.  Most image-management operations, on 
+the other hand, 
 would be delegated to separate modules responsible 
 for images themselves, as will be outlined in the 
 next few paragraphs.

@@ -46,7 +46,7 @@ load to replace the ground image currently viewed.
 
 `p.
 With that said, however, it would certainly be 
-plausible that responsive `GUI; would allow users to 
+plausible that responsive `GUI;s would allow users to 
 indicate the desire to load and/or search for a 
 new image via actions performed on the 
 `GUI; objects managed by the annotation module.  
@@ -57,11 +57,11 @@ of its menu items, the option to look for a new
 image to load in lieu of the one currently 
 being rendered (along with its annotations).  
 The module would in that case, presumably, 
-indicated via a signal-emission or procedure-call 
+indicate via a signal-emission or procedure-call 
 that the user intends to search for a new 
 image, and delegate to other modules or 
 components the process of showing 
-dialog boxes or other tools responding to that request.
+dialog boxes or similar tools responding to that request.
 `p`
 
 `p.
@@ -88,8 +88,6 @@ can be useful for building a procedural
 model relating to the module's `q.procedural 
 exposure` concerns.   
 `p`
-
-`input<fig-flow>;
 
 `p.
 Figure~`ref<fig:flow>; sketches out a few of the 
@@ -118,7 +116,6 @@ the image with another viewed within the former
 image's windowing context. 
 `p`
 
-
 `p.
 In general, it is worthwhile to tag every point where a 
 module may receive data from an external source; 
@@ -130,8 +127,8 @@ a join-point; see Chapter 6) where both of
 these conditions are met.  Rigorous procedural 
 models should accordingly identify such 
 entry points, and the code should be designed 
-to facilitate this process.  One way to accomplish 
-this is to provide one specific procedure for 
+to facilitate this process.  One way to 
+do so is providing specific procedures for 
 each entry point (i.e., each site in a logical 
 model of what the module should accomplish 
 which would serve as an entry point).  The entry-point 
@@ -147,6 +144,7 @@ candidates for being exposed to scripting, testing,
 and remote-invocation engines.  
 `p`
 
+`input<fig-flow>;
 
 `p.
 Many systems exist to diagram procedures in a module 
@@ -154,7 +152,16 @@ Many systems exist to diagram procedures in a module
 body of interrelated code) and the logic of how 
 data passes between them, as well as how groups 
 of procedures follow in sequence to perform a 
-specific task.  Analyzing these sorts of 
+specific task.`footnote.
+As examples %-- without implying that these 
+formal systems align completely with our 
+summaries here %-- consider Petri Net 
+techniques mentioned in Chapter 6, or, 
+say, `cite<NeerajKumar>;, `cite<SilviusRus>;, 
+`cite<ChrisCummins>;, `cite<AndrewStone>;, 
+`cite<AnimeshNandi>;, `cite<JensKrinke>;, `cite<YuleiSui>;, 
+`cite<RolandLeissa>;, etc. 
+`footnote`  Analyzing these sorts of 
 diagrams (their vocabularies and the attributes 
 they may identify per procedure) is outside the 
 scope of this chapter, but suffice it to 
@@ -176,7 +183,6 @@ they provide an overview for developers
 trying to become familiar with the 
 module's implementation.   
 `p`
-
 
 `p.
 Image Annotations have only limited use in isolation; 
@@ -228,12 +234,19 @@ one category corresponding to likely cancer
 cells, typically on the basis of one or 
 two derived parameters, such as measurements 
 of nuclear enlargement and deformity 
-(relative to healthy cells).  Similarly, 
+(relative to healthy cells).`footnote.
+See \S{}4.2.2 earlier in the book for references.
+`footnote`  Similarly, 
 the density of blood vessels within 
 tumor microenvironments can be estimated via 
 `q.fractal dimensions,` which measure the
 cumulative length of blood-vessel structures 
-connecting tumors to surrounding tissues.  
+connecting tumors to surrounding tissues.`footnote.
+`i.See`/, e.g., `cite<ClareCYu>;, `cite<JoseGuedesdaSilvaJunior>;, 
+`cite<NinaKristineReitan>;,
+`cite<YinyinYuan>;, as well as `cite<[page 4]MarieLaureBoizeau>; 
+and `cite<[page 6]MatveySprindzuk>; cited last chapter.
+`footnote`  
 In general, we want image biomarkers to 
 yield statistical measures from images 
 which correspond to bioinformatic 
@@ -247,7 +260,10 @@ diminished blood supply to damaged
 heart tissue?  How 
 extensively has SARS-CoV-2 infection 
 compromised lung functioning (visible 
-due to `q.ground-glass opacity`/)?
+due to `q.ground-glass opacity`/)?`footnote.
+`i.See` `cite<StephenMachnick>;, `cite<MonjoySaha>;, 
+`cite<HeshuiShi>;, etc.
+`footnote`
 `p`
 
 `p.
@@ -272,7 +288,7 @@ comparatively simple measurements of the degree and
 intensity of sample staining.  Immunohistochemistry 
 (`IHC;) and `IHS; are one of several antibody protocols; 
 Flow Cytometry, for example, provides an 
-alternative (see, say, `cite<WangHoffman>; or 
+alternative (`i.see`/, say, `cite<WangHoffman>; or
 `cite<ODonnellEtAl>;).  In this context immunostaining is based on 
 immunofluorescence antibodies rather 
 than visible staining, resulting in cells containing 
@@ -371,7 +387,8 @@ sample and (if desired) modify the sample at
 specific points, e.g. by introducing new material, 
 while also picturing a local region of the sample 
 around it current target point via an inverted 
-microscope `cite<DavidJuncker>;, `cite<KentaShinha>;, etc.
+microscope `cite<DavidJuncker>;, `cite<KentaShinha>;, 
+`cite<AyoolaBrimmo>;, `cite<HarryFelton>;, etc.
 Although `MFP; devices capture image-data 
 via integrated microscopes, they may also 
 be equipped with sensors that read signals in other 
@@ -490,7 +507,7 @@ file.
 `p.
 Because of the relative consistency among different 
 image-processing and image-viewing applications %-- 
-If we remain within the `q.classical` imaging scope %-- it is 
+if we stay within the `q.classical` imaging scope %-- it is 
 possible to investigate image-analysis pipelines as 
 generic workflows abstracted from 
 the specific software tools with which the workflows would 
@@ -595,7 +612,10 @@ where `AIM;-compliant data
 read and parsed, yielding  
 instances of `AIM; classes that 
 can be examined at runtime 
-(e.g., through a debugger).  
+(e.g., through a debugger).
+`p`
+
+`p.
 This book's republished data 
 set is bundled with code in 
 the form of a `Qt; project 
@@ -635,7 +655,7 @@ in practice an image may have only one,
 so the `q.collection` is actually a holder 
 for one `i.single` annotation-instance 
 (this is the case for all the files 
-in our sample data set).  Most of the 
+in the sample data set).  Most of the 
 important structure, then, lies with 
 this `b.ImageAnnotation` class.  
 Each Image Annotation is a holder 
@@ -742,8 +762,11 @@ that are computationally useful in different
 contexts for designating spatial points, regions, 
 and magnitudes, would need to recognize a 
 wider range of coordinate systems and numeric 
-types than exemplified by `AIM;.  This case 
-illustrates the kinds of situations where 
+types than exemplified by `AIM;.
+`p`
+
+`p.
+This case illustrates the kinds of situations where 
 data-mismatch problems can arise: exporting data 
 back-and-forth between `AIMLib; and other 
 software components might require bridge code 
@@ -795,7 +818,17 @@ their own `b.enum` types mapping
 indices to roles, so that code using these 
 types can refer to the indices via 
 descripive names (e.g., `b.CenterPoint`/) 
-rather than an index number.
+rather than an index number.`footnote.
+Shape-designations which rely only on 
+point-declarations to construct the 
+relevant geometry do not need an 
+extra notion of `q.length sets` 
+as we discussed last chapter; and 
+indexing point-sets by roles alleviates 
+the need for a separate role key-value 
+mapping, although these choices arguably 
+limit annotations' flexibility to some extent. 
+`footnote`
 `p`
 
 
@@ -976,8 +1009,8 @@ visual/presentation environments, and clinical context
 `q.bridge` code may be needed to marshal data 
 between `AIMLib; and applications 
 using `AIM; as an image-annotation standard.  
-Each situation where bridge-code is needed 
-along these lines presents a context 
+Each situation along these lines, 
+for which implementing bridge-code is unavoidable, presents a context 
 where data-integration may require special-purpose 
 programming, rather than following seamlessly 
 from the co-ordination of inter-related 
@@ -1071,7 +1104,7 @@ annotations within its overall scope.
 
 `p.
 Nevertheless, it is certainly possible that `i.applications` 
-using `AIM; would also need to manage 
+using `AIM; would also need to recognize 
 cytometric and/or image-biomarker data.  For 
 example, consider software to manage patients' 
 clinical records which attempts to provide 
@@ -1102,9 +1135,12 @@ questions.  Certainly applications could support
 distinct data domains via separate 
 modules: a clinical or data-set visualization 
 program could incorporate `AIM; for annotations, 
-tools such as `ITK; for image-processing, and 
-libraries such as `cytoLib; for cytometry.  
-They would therefore have the capabilities 
+`ITK; for image-processing, and 
+libraries such as `cytoLib; or `b.immunoClust` (both part of 
+`b.bioconductor` `cite<RobertCGentleman>;, 
+`cite<Bommarito>;, `cite<TillSorensen>;, 
+`cite<AaronTLLun>;, `cite<ThomasDSherman>;) for cytometry.  
+They would therefore have capabilities 
 to read and manipulate data structures in each 
 of these domains, but only in isolation from 
 one another.
@@ -1219,7 +1255,7 @@ priorities of standards' simplicity and code-reuse.
 Multi-aspect modules are by design relatively 
 self-contained and multi-featured, but distinct 
 modules can share code which is applicable 
-across their respective domains, so the 
+across their respective domains.  As such, the 
 combination of modular autonomy and 
 code-reuse provides an infrastructure for 
 optimizing domain-specific code where 

@@ -41,9 +41,11 @@
 
 \node (o1) at (-2, 0) {};
 
+
 \node [anchor=west,bottom color=yellow!30!blue,top color=pink!70!green, 
 inner sep=1, shading angle=50, text width=2.8cm]
   (load) at (0, 0) {\cf{8pt}{Load Ground Image}};
+
 
 \node [anchor=west,bottom color=blGreen!60!yellow,top color=pink!70!orange, 
 inner sep=1, shading angle=50, text width=4cm,
@@ -54,7 +56,7 @@ right=5mm of load]
 
 
 \node [bottom color=yellow!30!blue,top color=pink!70!green, 
-inner sep=1, shading angle=50, text width=7.5cm,
+inner sep=1, shading angle=50, text width=7.45cm,
 below=50mm of load.west, anchor=west]
   (render)  {\cf{8pt}{Render Ground Image (overlay annotations)}};
 
@@ -123,7 +125,7 @@ draw=purple!40!orange,draw opacity=1,
 
 
 \node [bottom color=yellow!30!blue,top color=pink!70!green, 
-inner sep=1, shading angle=50, text width=3cm,
+inner sep=1, shading angle=50, text width=2.8cm,
 below=12mm of rescale.west, anchor=west]
   (meta)  {\cf{8pt}{Get Image Metadata}};
 
@@ -135,7 +137,7 @@ below=12mm of rescale.west, anchor=west]
 
 \node [anchor=west,bottom color=blGreen!60!yellow,top color=pink!70!orange, 
 inner sep=1, shading angle=50, text width=4cm,
-right=5mm of meta]
+right=5.6mm of meta]
   (calc) {\cf{8pt}{Calculate Annotation Geometry}};
 
 

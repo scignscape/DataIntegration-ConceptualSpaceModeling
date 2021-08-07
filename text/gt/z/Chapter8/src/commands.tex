@@ -4,15 +4,21 @@
 
 \setlength{\columnsep}{9mm}
 
-\usepackage[letterpaper, left=.95in,right=.95in,top=.65in,bottom=.65in, 
+\usepackage[letterpaper, left=.925in,right=.925in,top=.56in,bottom=.56in, 
 paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 \newcommand{\cobel}[1]{#1}
+
+\raggedbottom{}
+
+
+
 
 \usepackage{enumitem}
 
 \setlist[description]{leftmargin=6pt}
 
+\setlist[enumerate]{leftmargin=5pt}
 
 \newcommand{\mdash}{---}
 \newcommand{\q}[1]{{\fontfamily{phv}\selectfont ``}#1{\fontfamily{phv}\selectfont ''}} 
@@ -161,9 +167,11 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \newcommand{\MIBBI}{\AcronymText{MIBBI}}
 
 
+\newcommand{\pseudopar}{} %\vspace*{-10pt}}
+
 \newcommand{\pseudoIndent}{
 
-\vspace{10pt}\hspace*{12pt}}
+\vspace{2pt}\hspace*{8pt}}
 
 
 \newcommand{\FCM}{\AcronymText{FCM}}
@@ -234,7 +242,9 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 			{\scriptsize \textls*[-70]{\url{#1}}}}}}
 
 
-\newcommand{\bibtitle}[1]{{\small \textit{#1}}}
+\newcommand{\bibtitle}[1]{{%\small 
+\textit{#1}}}
+
 \newcommand{\intitle}[1]{{\hspace{3pt}\textls*[-80]{\texttt{\textit{#1}}}}\hspace{-1pt}}
 
 \newcommand{\hoctitle}[1]{{\raggedright\noindent{}{\fontsize{14}{18}\selectfont\textbf{#1}

@@ -8,7 +8,7 @@ we will describe as `q.multi-aspect modular` design.
 Modular design in general attempts to realize larger-scale projects 
 by subdividing them into relatively autonomous 
 smaller parts.  
-We propose the term `q.multi-aspect module` to 
+We propose the term `q.multi-aspect modules` to 
 describe software components 
 which are not monolithic 
 applications %-- they are intended to be mixed with 

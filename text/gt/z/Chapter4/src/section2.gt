@@ -23,8 +23,12 @@ data which invites follow-up through
 other modules, but it is outside the 
 scope of the initial (imaging) module 
 to know how such external data should 
-actually be presented.  An image 
-currently being viewed may link to 
+actually be presented.
+`p`
+
+`p.
+An image 
+currently being viewed could link to 
 other data structures simply by virtue 
 of its biomedical representatum 
 %-- cardiac images to echocardiogram 
@@ -33,7 +37,8 @@ example; tumor images to genetic
 tests for proclivities to a cancer 
 variety or tests for the patient's 
 anti-tumor immunological responses.  
-A bioimaging module may acquire information 
+A bioimaging module, e.g., might acquire 
+notifications  
 to the effect that such links are available 
 (as part of the image metadata) but would 
 not know how to display a `GUI; 
@@ -45,15 +50,18 @@ to the proper modules.  At that point,
 then, those modules would be 
 presented with contextual information 
 (perhaps an identifier for the current 
-image series, which would likewise 
-indicate the relevant patient, to which 
-the current viewed image belongs) 
+image series, i.e., the on-view image's 
+container, which would likewise 
+indicate the relevant patient) 
 and would have to identify the 
 relevant data within their own scope 
-which applies to that context   
-(the modules may need to pull the 
-relevant data from the data 
+applicable to that context   
+(they may need to pull  
+relevant info from a data 
 `q.lake,` for example).
+`p`
+
+`p.
 Insofar as each module has multi-faceted and 
 mostly self-contained functionality, 
 one module could provide a concise 
@@ -67,15 +75,15 @@ potentially wish to see a detailed
 overview of related cytological, 
 histological, or genomic data.  
 Insofar as such data is presented 
-via their own (`q.multi-aspect`/) 
-modules, each of those modules 
-could (from the entry-point 
-provided by basic data about 
-the current viewed image) reconstruct 
+via their own  
+modules, each of these  
+may (from the entry-point 
+provided  
+the current viewed image's metadata) reconstruct 
 a holistic data package and 
-present this through their 
-own `GUI; components, so the 
-user experience the overall progression 
+present this via their 
+own `GUI; components, so that 
+users would experience the overall progression 
 as switching between (or juxtaposing) image-based 
 views with views characteristic of a 
 separate domain (histopathology, and so forth).      
@@ -181,9 +189,8 @@ not natively provide tools for packages
 to customize the `GUI; to their needs, without 
 a foreign-language bridge such as `Qt; bindings).  
 Reviewing prominent projects for 
-open-source biomedical components there 
-are libraries which emphasize analysis 
-(such as `b.BioConductor`/), `UI; 
+open-source biomedical components, there 
+are libraries which emphasize analytics, `UI; 
 development (e.g. `b.OncoJS`/), data-set 
 preparation (as with the 
 Research Collaboratory for Structural Bioinformatics 
@@ -199,7 +206,8 @@ all together.
 `p`
 
 `p.
-Likewise, the three `APOLLO; networks %-- `GDC;, 
+Likewise, the three `APOLLO; (`q.Applied Proteogenomics OrganizationaL 
+Learning and Outcomes`/) networks %-- `GDC;, 
 `TCIA;, and `CPTAC; (the 
 Proteomics Data Portal) %-- all provide some tools to help 
 researchers submit and acquire data sets.  Most of these 
@@ -310,7 +318,8 @@ framework for developing scientific-computing `q.modules.`
 `p`
 
 `p. 
-Requirements such as `GUI; design, database interop, and serialization s
+Requirements such as `GUI; design, serialization, 
+and database interop 
 reappear in different contexts in different ways %-- if we 
 consider research projects that involve some combination 
 of clinical/lab data, bioimaging, and simulations, 
@@ -357,7 +366,7 @@ use-cases often embody `q.informal` workflows, which
 amount to recurring patterns in how different components' 
 functionality are pieced together in order to 
 implement what is needed for research projects.  
-These intuitive patterns are structurally quite 
+Such intuitive patterns are structurally quite 
 similar to formal workflows, even they are 
 not standardized or officially notated as such.  
 Moreoever, software components tend to cluster 
@@ -384,7 +393,7 @@ methods and equipment involves making the
 experiment more accurate by amplifying the desired 
 observable effect, such as the pattern of staining 
 evident in certain parts of a tissue sample in 
-contrast to the background.  For these reasons, 
+contrast to the background.  For those sorts of reasons, 
 detailed image-analysis is not an intrinsic 
 part of the (informal) workflow usually associated 
 with techniques such as `IHC;, in contrast to 
@@ -457,15 +466,15 @@ sharing data via (at least potentially) automated pipelines.
 
 `p.
 We alluded several paragraphs ago to bioimage workflows organized 
-around widely-used libraries such as `b.DCMTK` (for managing 
+around widely-used libraries such as `DCMTK; (for managing 
 `DICOM; data) and `ITK; or `OpenCV; (for image processing).  
 These kinds of components are typically joined together 
 within an overarching code model; for example, a research 
 project may develop a code library which links against 
-both `b.DCMTK` and `OpenCV;, implementing procedures 
+both `DCMTK; and `OpenCV;, implementing procedures 
 which perform the steps need to carry data resulting from 
-`b.DCMTK` processing over to analytic code featuring 
-`OpenCV;.  Alternatively, `b.DCMTK` and `OpenCV; might form 
+`DCMTK; processing over to analytic code featuring 
+`OpenCV;.  Alternatively, `DCMTK; and `OpenCV; might form 
 the core of two separate modules which would interoperate via 
 a command-line interface, but in this case the individual 
 modules would still be designed with the understanding 
@@ -521,7 +530,7 @@ specific formats, and one or more `q.entry points`
 (or what we will term in Chapter 6 `q.meta-procedures`/)
 which can be initialized with parameters specifying how 
 the components' specific contribution to the 
-large workflow should proceed.  These sorts of 
+larger workflow should proceed.  These sorts of 
 workflows can be relatively flexible, with clearly 
 delimited prerequisites for how they 
 may expand in scope %-- either by existing components 
@@ -538,7 +547,7 @@ software ecosystems into isolated clusters of components
 typically used together may still be a problem, but 
 at least there is a technical foundation for 
 considering the proper extent of workflows' scope 
-%-- one can identify the specific elements within each 
+%-- one can identify the particular elements within each 
 component which support their interoperation.  These elements 
 are the specific sites in the components' code which would 
 be affected if researchers or programmers were to 

@@ -7,9 +7,10 @@
 
 \renewcommand{\:}{}
 \renewcommand{\;}{}
-\renewcommand{\+}{}
-\renewcommand{\<}{}
 \renewcommand{\>}{}
+
+\newcommand{\+}{}
+\newcommand{\<}{}
 
 
 \usepackage{titlesec}
@@ -117,16 +118,16 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 %    allcolors=blCyan!40!green
 }
 
-\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont{}``}#1%
+{\fontfamily{qcr}\selectfont{}''}} 
 
-\newcommand{\cq}[1]{{\fontfamily{gar}\selectfont ``}#1{\fontfamily{gar}\selectfont ''}}
+\newcommand{\cq}[1]{{\fontfamily{gar}\selectfont{}``}#1%
+{\fontfamily{gar}\selectfont{}''}}
 
 
 \let\OldB\b
 \newcommand{\bb}[1]{\textbf{\oneptsmaller{#1}}}
 \renewcommand{\b}[1]{\makebox{\bb{#1}}}
-
-\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
 \newcommand{\qb}[1]{\q{\b{#1}}}
 

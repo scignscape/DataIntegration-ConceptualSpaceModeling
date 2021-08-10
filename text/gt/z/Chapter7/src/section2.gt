@@ -293,9 +293,10 @@ do not necessarily need to be encoded
 according to the familiar floating-point 
 standards.  There are variant 
 number systems, such as John Gustafson's 
-`q.posits,` which offer an alternative 
-that may be better-performing than 
-normal floats in some contexts `cite<JohnGustafson>;.  
+`q.posits,` which offer alternatives 
+that can perform better than 
+normal floats in some contexts `cite<JohnGustafson>;,
+`cite<BesselingRenstrom>;.
 All told, then, there are multiple number systems which 
 could potentially supply magnitudes 
 for annotation geometry.

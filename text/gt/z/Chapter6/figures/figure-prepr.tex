@@ -48,7 +48,7 @@ fill=logoPurple!90!logoRed,
 fit=(qsv1) 
  (qsv2) (osv1)] {};
 
-\node (qsv1) at [right = 1mm of ref,
+\node (qsv1) [right = 1mm of ref,
 draw,minimum width=11mm,
 minimum height=5mm,fill=white] {value ...};
 \node (qsv2) [right=2mm of qsv1.east,draw,minimum width=11mm,minimum height=5mm,fill=white] {value ...};
@@ -126,12 +126,17 @@ shorten <= 1pt, shorten >= 1mm,]
 
 \draw [line width=2pt, blbl!60, ->, >=stealth,
 shorten <= 4mm, shorten >= 1mm,
-bend right=30,looseness=.3,in looseness=.7,
-out=-4, 
-] 
-([yshift=-3pt]qy.north) to 
+bend right=30,looseness=.2,in looseness=.9,
+out=-4] 
+([yshift=-11pt,xshift=12pt]qy.north) to 
 ([xshift=-10pt,yshift=-1pt]qsv2.south);
 
+\node (qyover) [below right=5mm and 4mm of 
+svs.south west,fill=white,
+circle,draw opacity=0,yscale=.4,
+label=center:queryable,
+ inner sep=5pt,
+minimum size=23pt]{\phantom{queryable}};
 
 \node (opaque) [below left=5mm and 4mm of 
 svs.south east,
@@ -253,7 +258,7 @@ fill=logoPeach]{foreign\\keys};
 
 
 \node (expl) at (2.5,0) [draw=black!20, 
-fill=blor!20,anchor=north west,
+fill=black!20,anchor=north west,
 rounded corners = 12pt,inner sep=5pt,
 align=left,text width=5.5cm]
 {\textbf{\small{Queryable data 

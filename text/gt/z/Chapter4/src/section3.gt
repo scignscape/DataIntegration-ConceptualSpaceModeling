@@ -49,7 +49,7 @@ technologies.
 
 `p.
 To be fair, many research/diagnostic methods in (say) 
-cardiology and immuno-oncology are quiet subtle, needing 
+cardiology and immuno-oncology are quiet subtle, relying 
 on precise computational treatments to 
 derive biologically meaningful findings from 
 faint statistical patterns.  As such, 
@@ -86,7 +86,7 @@ in how physicians proceed,
 with the overall lab or diagnostic process 
 serving as an integral but self-contained 
 interlude in the larger trajectory of patient 
-care.  Ultimately research is most relevant 
+care.  Ultimately, research is most relevant 
 when it yields protocols that slot in to 
 clinical practice in this manner, but the 
 profound details of the research %-- the 
@@ -203,9 +203,9 @@ replicate prior research `cite<FelipeRomero>;,
 large swaths of medical knowledge could be 
 discredited) then such failures are surely 
 at least a `q.problem.`  Assuming that
-research work is done rigorously, that is 
+research work is done rigorously, this is 
 not necessarily a problem which researchers 
-can solve individually %-- the best an 
+can solve individually %-- the best any 
 individual scientist can do is pursue progress 
 with the most current theories and 
 research tools/equipment possible, 
@@ -248,7 +248,8 @@ following through on such reproductions
 may involve logistical and financial hurdles.  
 In that sense, even conscientious research 
 may be difficult to reproduce in practice.  
-Since researchers should not really be 
+Since 
+researchers should `i.not`/, in truth, be 
 discouraged from leveraging advanced 
 scientific tools (since these may be the 
 engines driving new discoveries) %-- however scarce 
@@ -306,9 +307,9 @@ larger community.
 
 
 `p.
-Against this background, strategies for 
-mitigating replication issues should not 
-necessarily start with the goal 
+Against this background, optimal strategies for 
+mitigating replication issues would not 
+necessarily start from the goal 
 of reproducing entire research projects 
 `i.tout court`/.  However, replicability 
 is not an all-or-nothing proposition, 
@@ -317,7 +318,7 @@ aspect of a research project in order
 to certify a replication success.  Instead, 
 it is helpful to think of replicability 
 as `i.incremental`/; as a matter of degree.  
-We should be able to replicate parts of a 
+We should be able to reproduce parts of a 
 multi-faceted research agenda even if it 
 is difficult to redo every piece of the 
 original puzzle.  Moreover, prioritizing 
@@ -395,13 +396,13 @@ in the context of `q.smaller` data.
 Modestly-sized data sets could be employed, 
 for example, to  
 estimate or prototype strategies for 
-replicating the research as a whole.  
+reproducing the research as a whole.  
 Small data sets could also double-check 
 the accuracy or programming logic of 
 algorithms and/or implementations featured 
 in the original research.  Likewise, 
 scientists might at least examine the 
-feasiblity of reproducing prior 
+feasiblity of reconstructing prior 
 research on less advanced but more 
 widely available equipment.  Would 
 confirmation of the original work 
@@ -471,19 +472,20 @@ Projected onto the specific domain of
 software development, these concepts 
 imply that the software ecosystem 
 through which new research is 
-disseminated and assessed should be 
-considered more broadly than just 
+disseminated and assessed would, 
+in concord with broad-based replication paradigms, be 
+considered more widely than just 
 in terms of the logistics of full-scale 
 research re-enactments.  Replication 
 involves more than just software, 
-of course.  It may require the right 
-sort of equipment, procurement of 
+of course.  It may require the correct 
+genre of equipment, procurement of 
 tissue or other biologic samples 
 (for `i.in vitro` or `i.in vivo` studies), 
 access to data for re-use (or functionally 
-analogous data), and so forth.  
-Nonetheless, software in particular 
-can serve as a case-study for `q.incremental` 
+analogous data), and so on.  
+Nonetheless, software in particular is well poised to  
+serve as a case-study for (what we have termed) `q.incremental` 
 replication.  The software ecosystem through 
 which research may be `i.incrementally` 
 reproduced or re-evaluated need not duplicate 
@@ -492,7 +494,6 @@ was carried out (or even the computational
 resources which would be needed to fully 
 recreate the original context).  
 `p`
-
 
 `p.
 Consider scientists investigating what 
@@ -680,9 +681,9 @@ addressed to a larger group
 of scientists than just those who 
 intend to reconstruct the 
 original research in a computational 
-environment on part with the original.   
+environment on par with the original.   
 In the context of incremental replication, 
-software components serve goals related 
+software components also or primarily serve goals related 
 to the conceptual and pedagogical 
 dissemination of the original research 
 frameworks and protocols. 
@@ -746,7 +747,7 @@ hospital's digital ecosystem.
 This book has focused on bioimaging 
 as a source for case-studies 
 exemplifying issues related to biomedical 
-data in general, so, continuing that 
+data in general, so, continuing that (expository) 
 device, consider the specific situation 
 of hospitals outsourcing diagnostic or 
 prognostic investigations to external 
@@ -815,7 +816,7 @@ systems interconnected into a sort of
 `q.virtual` Data Lake. 
 `footnote`  The hospital 
 might maintain a system functionally analogous 
-to `PACS; which would retain multiple images 
+to `PACS; which could retain multiple images 
 for each study (and therefore each patient) as 
 well as a reasonably thorough database 
 of radiomic and radiographic image-features 
@@ -839,8 +840,6 @@ diagnostic results in other media,
 such as blood or tissue samples or 
 genetic sequencing).  
 `p`
-
-
 
 `p.
 There are various scenarios where greater 
@@ -879,13 +878,12 @@ from the cohort of trial participants
 for statistical analysis or data mining. 
 `p`
 
-
 `p.
 These comments for bioimaging would also 
 apply to other biomarkers/indicators, such as 
 those derived from blood or 
 tissue samples, genetic tests, functional 
-examinations (e.g. cardiac stress tests 
+examinations (e.g., cardiac stress tests 
 or assessments of cognitive functioning), 
 or observational clinical data.  Assuming a 
 single software system is available to access 
@@ -901,10 +899,10 @@ or directions %-- images of a patient's
 heart, for example, might lead towards 
 results for patients' exercise tests,  
 blood work, clinical observations 
-(e.g. tracking hypertension levels over 
+(e.g., tracking hypertension levels over 
 time) and genetic data that might have 
 implications for heart disease.  Analogously, 
-Covid patients' lung scans could be linked 
+Covid-19 patients' lung scans could be linked 
 to SARS-CoV-2 antibody tests, assessments 
 of cognitive functioning, contact-tracing 
 data, and so forth.  In effect, the 
@@ -1039,12 +1037,12 @@ such requirements notwithstanding,
 full-scale replication may only be 
 feasible (and only maximally 
 useful to the relevant scientific 
-community) to the extent that 
+community) to the extent in which 
 researchers have operational understanding 
-of what replication entails, perhaps 
-can perform some partial replication in 
+of what replication entails;  
+can maybe perform some partial replication in 
 miniature or as a simulacrum of the 
-original, and insofar as prototypes 
+original; and insofar as prototypes 
 for the replication are discussed and 
 modeled as part of the research process.  
 In short, `q.incremental` replication 
@@ -1057,7 +1055,7 @@ prompt helping the larger community understand
 the research with greater depth.  Replication 
 reinforces the scientific parameters 
 of a research project %-- instead of a 
-one-off operation a project reproduced one 
+one-off operation, a project reproduced one 
 or more times becomes abstracted from 
 its precise institutional context, it 
 becomes a pattern that can be restaged 
@@ -1086,7 +1084,7 @@ point of view that serves as a precursor
 to potential replication; and the 
 software appropriate for this pedagogical 
 and exploratory stage may be different 
-from that prerequisite for the technical 
+from what is prerequisite for the technical 
 management of replications comparable 
 in scope to the original.  Against 
 this background, we would argue that 
@@ -1140,7 +1138,7 @@ software patterns because they
 are simply guided by desire for 
 the most accurate results.  Carrying the 
 analogy over to an imaginary hospital context, 
-research-replication may be compared to 
+research-replication might be compared to 
 a hospital prescribing diagnostic 
 imaging and then sending the resulting 
 image-series to a second lab for 
@@ -1179,7 +1177,7 @@ signatures being curated once in a
 bioimaging laboratory and then only revisited, 
 if at all, by peer practitioners in a 
 a similar technical setting, the radiomic 
-features of a bioimaging module may 
+features of a bioimaging module could  
 potentially be explored by a broader 
 community of users navigating through 
 the overall clinical information system.  
@@ -1224,7 +1222,7 @@ or library prerequisites (even if swapping
 in alternatives yields a degradation 
 in performance).  The purpose of a 
 radiomics module would not be 
-instantiate the most powerful radiomic 
+instantiating the most powerful radiomic 
 capabilities which science can offer 
 at the moment (as compared to bioimaging 
 software that may be deployed in a 
@@ -1296,8 +1294,8 @@ The Cancer Imaging Archive (`TCIA;), the Clinical Proteomic
 Tunor Analysis Consortium (`CPTAC;), the 
 International Human Epigenome Consortium 
 (`IHEC;)`footnote.https://epigenomesportal.ca/ihec/index.html`/, or the 
-`q.Applied Proteogenomics OrganizationaL 
-Learning and Outcomes` (`APOLLO;) network.`footnote.
+`APOLLO; network, 
+the `GDC;, `TCIA;, and `CPTAC;, which we considered earlier.`footnote.
 Not to mention biobanks, which curate not only 
 patient `i.data`/, but patients' actual tissue 
 samples (for research rather than 

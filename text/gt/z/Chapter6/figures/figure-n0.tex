@@ -170,11 +170,11 @@ fill opacity=.8, text=black]
 \colorlet{cyb}{cyan!70!blue}
 
 \draw [line width=1pt, 
-draw opacity=.6, blpr!60!black, --, 
+draw opacity=.6, blpr!60!black, ->, 
 shorten <= 1mm, shorten >= 1mm] (r) -- (l) 
 node [near start, xshift=-20pt, yshift=-13pt,
 fill=redbr!70, %text depth=-1ex,
-fill opacity=.5, text=black] 
+fill opacity=.5,  text opacity=1, text=black] 
 {escape edge}; 
 
 
@@ -182,8 +182,8 @@ fill opacity=.5, text=black]
 shorten <= 3mm, shorten >= .5mm] (r) -- (l) 
 node [midway, xshift=-39pt, yshift=2pt,
 fill=cyb!30, %text depth=-1ex,
-fill opacity=.7, text=black, align=center] 
-{carrier\\handoff\\(see Chapter 6)}; 
+fill opacity=.7, text=black, text opacity=1, align=center] 
+{carrier\\handoff\\(see Chapter 5)}; 
 
 
 
@@ -192,7 +192,7 @@ fill opacity=.7, text=black, align=center]
 align=center, draw=yellow!40!orange, diamond, 
 inner sep=-3
 ]
-{\raisebox{1.2em}{\pbox{2cm}{\centering$m$\\neighborhood}}}
+{\raisebox{1.2em}{\pbox{2cm}{\centering{}$m$\\neighborhood}}}
 ;
 
 
@@ -200,7 +200,7 @@ inner sep=-3
 align=center, draw=yellow!40!orange, diamond,
 inner sep=-5
 ]
-{\raisebox{2em}{\pbox{2cm}{\centering$f$\\neighborhood}}}
+{\raisebox{2em}{\pbox{2cm}{\centering{}$f$\\neighborhood}}};
 
 
 \end{tikzpicture}

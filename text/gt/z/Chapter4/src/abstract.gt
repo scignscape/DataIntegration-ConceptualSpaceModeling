@@ -3,9 +3,9 @@
 `noindent;This chapter introduces 
 themes related to modular software 
 design, bioimage processing, 
-via Computer Vision, and image-annotation, 
+Computer Vision, and image-annotation, 
 that we will return to in subsequent 
-chapters.  Our goal in this chapter 
+chapters.  Our goal here 
 is to conduct a fairly broad-ranging 
 survey of image-processing and radiomics 
 technologies in contexts such as 
@@ -20,7 +20,7 @@ prognostic models (such as tumor growth)
 and outline how cellular or tumor-scale 
 simulations can be double-checked 
 via cross-reference against image and 
-clinical data.  In general, we consider 
+clinical data.  In general, we explore 
 the digital logistics of integrating 
 bioimage, simulations, and clinical data, 
 examining software-development practices 

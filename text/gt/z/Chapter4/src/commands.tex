@@ -53,6 +53,8 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 
 \newcommand{\TumorML}{\AcronymText{TumorML}}
 
+\newcommand{\DCMTK}{\AcronymText{DCMTK}}
+
 \newcommand{\SBML}{\AcronymText{SBML}}
 \newcommand{\BNGL}{\AcronymText{BNGL}}
 \newcommand{\BioPAX}{\AcronymText{BioPAX}}
@@ -250,7 +252,7 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 			{\scriptsize \textls*[-70]{\url{#1}}}}}}
 
 
-\newcommand{\bibtitle}[1]{{\small \textit{#1}}}
+\newcommand{\bibtitle}[1]{{\fontsize{8}{9}\selectfont\textit{#1}}}
 \newcommand{\intitle}[1]{{\hspace{3pt}\textls*[-80]{\texttt{\textit{#1}}}}\hspace{-1pt}}
 
 \newcommand{\hoctitle}[1]{{\raggedright\noindent{}{\fontsize{14}{18}\selectfont\textbf{#1}
@@ -294,11 +296,9 @@ paperheight=12.5in,paperwidth=9.5in]{geometry}
 \usepackage{setspace}
 
 
-\usepackage{xr}
-\externaldocument[chasm-]{../../chasm/out/chasm}
-
-\usepackage{xcite}
-\externalcitedocument[chasm-]{../../chasm/out/chasm}
+% not needed now ...
+%\usepackage{xr}
+%\usepackage{xcite}
 
 
 

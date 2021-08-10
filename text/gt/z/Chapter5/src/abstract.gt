@@ -13,7 +13,7 @@ types ascribed to hyponodes determine
 those of their enclosing hypernodes.  
 One consequence of this setup is a 
 framework for defining how much flexibility 
-we can allow to hyponodes type-ascriptions 
+we can allow to hyponodes' type-ascriptions 
 while preserving a strong type system 
 at both hyponode and hypernode levels, 
 yielding a formulation we refer 

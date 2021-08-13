@@ -6,7 +6,7 @@
 On May 11, 2021, Dr. Rochelle Walensky, director of the 
 US Centers for Disease Control (C.D.C.), provided testimony to 
 a hearing of the Senate `q.HELP` (Health, Education, 
-Labor and Pensions) Committee, 
+Labor and Pensions) Committee 
 on the subject of Covid and outdoor activities which proved after the fact 
 to be surprisingly controversial.  At issue was how   
 Dr. Walensky defended the C.D.C.'s guidance on 
@@ -21,7 +21,7 @@ it was `q.safe` to reopen schools and summer camps.
 Outside of the committee itself, however, commentators 
 attacked the C.D.C not only for 
 confusing guidelines, but also for how the C.D.C. director 
-(so it was claimed) misleadingly citing  
+(so it was claimed) misleadingly cited  
 the results of a recent scientific paper %-- 
 even though (on closer examination) transcripts reveal 
 that her comments were in line with the paper's  
@@ -38,7 +38,7 @@ Systematic Review.`footnote.
 `footnote`
 Hours after her testimony, one of the Systematic Review's authors 
 used twitter 
-to dispute the C.D.C. directors' interpretation 
+to dispute the C.D.C. director's interpretation 
 of their results.  The specific issue in contention 
 was an estimation of the percentage of Covid-19 cases 
 that can be traced to outdoor rather than indoor 
@@ -51,19 +51,22 @@ Respiratory Viruses: A Systematic Review,` for details
 `footnote`  Dr. Walensky, however, cited the Systematic Review 
 paper as claiming a transmission rate of `i.less than 10\%`/, 
 a maximum bound derived from the statistical 
-extremum amongst all the reviewed articles (instead of a 
-distributive average, a calculation not attempted in the paper).
+extremum amongst all the articles reviewed 
+therein instead of a distributive average, 
+a calculation not attempted in the 
+literature review paper.
 `p`
 
 `p.
-It is worth noting that the Systematic Review's very 
-first sentence itself reports the same 10\% 
-upper bound, focusing readers' attention on 
-that specific number, however much the 
-study's text later paints a more 
-granular statistical picture.  In an interview 
+It is worth noting that in the Systematic Review's very 
+first sentence the authors report 
+the same 10\% upper bound, 
+focusing readers' attention on that specific number, however 
+much the study's text later paints a more granular 
+statistical picture.  In an interview 
 with the New York Times, the author who criticized 
-Dr. Walensky's testimony nonetheless argued that she and her co-authors 
+Dr. Walensky's testimony nonetheless 
+argued that she and her co-authors 
 `q.were very clear we were not making a summary number` 
 with the 10\% upper bound, and that their paper 
 was technically a Systematic Review and not (as 
@@ -410,7 +413,7 @@ are explicitly enforced by publishers
 or funding sources.  The Bill and Melinda 
 Gates foundation, for example, in their 
 `q.guidelines for authors` (published as 
-one specification with the 
+one specification within the 
 FAIRSharing Initiative) essentially 
 requires depositing open-access data sets 
 on popular hosting platforms such as 

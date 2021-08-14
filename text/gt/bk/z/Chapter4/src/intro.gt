@@ -1,0 +1,42 @@
+`hoctitle.Chapter 4: Modular Design, Image Biomarkers, and Radiomics`
+
+`section.Introduction`
+`p.
+In this chapter, and again in Chapter 8, we will consider image-annotations
+as a case-study in the methodology 
+we will describe as `q.multi-aspect modular` design.  
+Modular design in general attempts to realize larger-scale projects 
+by subdividing them into relatively autonomous 
+smaller parts.  
+We propose the term `q.multi-aspect modules` to 
+describe software components 
+which are not monolithic 
+applications %-- they are intended to be mixed with 
+other modules to create full applications %-- 
+but which offer integrated functionality 
+in a self-contained fashion.  For example, 
+each module would autonomously implement 
+`GUI; classes, database access, data serialization, 
+and scripting/runtime-reflection features.
+`p`
+
+`p. 
+Image-annotations furnish a good example of 
+how concerns related to `GUI;s, serialization, 
+data persistence, and procedural models are 
+inter-connected.  Bioimage annotations are also a 
+useful starting-point 
+from which to consider how multi-aspect design might 
+be adopted for other branches of bioinformatics and 
+biomedical software engineering, because bioimaging data 
+is, intrinsically, conceptually linked to other kinds of 
+clinical/diagnostic information.   We assume, then, that 
+hypothetical image-annotation modules are deployed in conjunction 
+with different bioinformatic modules as part of an overarching 
+clinical, diagnostic, or research application.  
+For example, operations associated with those other 
+modules could potentially be requested from within 
+`GUI; objects managed by the annotation module.    
+`p`
+
+

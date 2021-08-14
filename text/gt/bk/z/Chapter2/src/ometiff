@@ -1,0 +1,15 @@
+\p{Another dimension of cancer immunological profiling 
+is the \q{Tumor Microenvironment,} 
+which concerns the interplay between a tumor 
+and surrounding cells, such as blood/lymph vessels. 
+This environment is sometimes surveyed using high-powered contemporary 
+bioimaging techniques, such as \q{Confocal Microscopy} --- a kind of layered 
+imaging that acquires \TwoD{} scans at different depths, creating a 
+\ThreeD{}-like model.  Image analysis is necessary to derive oncological findings from these images, looking not only for \q{Distinguished Regions} but also for linear paths and patterns (e.g., connective tissues or blood vessels).  As a result, Confocal Microscopy data involves both raw images and image-annotations that summarize image-analysis/Computer Vision results.  \lDICOM{} and \OMETIFF{} are examples of common bioimaging 
+formats.\footnote{Robust image-annotation formats are not particularly 
+well standardized (at least to a degree comparable to \sFCS{} or \sFASTQ{}), though some annotations can be expressed via 
+formats such as \sDICOM{} Presentations, \sCOCO{} 
+(Common Objects in Context), \sVOC{} (Visual Object Classes), 
+or Annotation and Image Markup (the latter will be emphasized 
+in later chapters).}}
+

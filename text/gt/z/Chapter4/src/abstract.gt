@@ -22,7 +22,7 @@ simulations can be double-checked
 via cross-reference against image and 
 clinical data.  In general, we explore 
 the digital logistics of integrating 
-bioimage, simulations, and clinical data, 
+bioimages, simulations, and clinical data, 
 examining software-development practices 
 in fields such as Systems Biology 
 which often unify these distinct 

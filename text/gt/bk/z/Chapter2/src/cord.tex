@@ -1,0 +1,848 @@
+
+\section{Text and Data Mining via CORD-19}
+
+\p{The third methodological area we will concentrate 
+on in this chapter is text and data mining, 
+using analyses of large-scale document corpora 
+and/or biomedical data sets to discover connections 
+between research work which might be less evident 
+to individuals reading publications in isolation.  
+As an example of the possibilities and challenges 
+of text and data mining scenarios we wilk 
+consider \lCnineteen{} is a collection of research articles 
+about Covid-19 which was developed (starting 
+in Spring 2020) in conjunction with a White 
+House \q{call to action} to spur Covid-19 research.}
+
+\p{This specific White House initiative was described as a 
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID}.\footnote{\i{See} \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}}  As raw data for this initiative, the US government helped
+spearhead a consortium of industry and academic 
+institutions, headed by the Allen Institute for AI Research, 
+who curated a \q{machine-readable Coronavirus literature collection} 
+which includes article metadata and (in most cases) 
+publication text  
+for over 280,000 coronavirus research papers (as of 
+mid-2021) \cite{LucyLuWang}.  This 
+corpus is paired with links to publisher portals 
+(including Springer Nature, 
+Wiley, Elsevier, the American Society for Microbiology, and the New England Journal of Medicine) providing full open access to \Covid{}-related 
+literature; these resources collectively constitute 
+\Cnineteen{} (the \q{Covid-19 Open Research Dataset}).}
+
+\p{The \Cnineteen{} 
+collection was formulated with the explicit goal 
+of promoting both text mining and data mining solutions 
+to advance coronavirus research.  This means that 
+\Cnineteen{} is intended to be used both as a document 
+archive for text mining and as a repository for 
+finding and obtaining coronavirus data for subsequent 
+research.  The White House announcement directly requests 
+institutions to develop \textit{additional} technologies 
+which would help scientists and jurisdictions to 
+take advantage of \Cnineteen{} as it was initially 
+published.  In short, \Cnineteen{} was released with the 
+explicit anticipation that industry and academia would 
+augment the underlying data by layering on additional 
+software.}
+
+\p{Despite the obvious benefit to researchers, the 
+health-care community, and the public at large 
+in publishers choosing to release a substantial 
+quantity of Covid-19 related literature in 
+Open-Access fashion, \Cnineteen{} is not without 
+certain limitations.  These largely stem from 
+how the articles are encoded into an ostensibly 
+(\JSON{}-based) machine-readable format.  To be 
+fair, the problems we identify here reflect the 
+current authors' own personal assessments of 
+the \Cnineteen{} corpus; they are not broad 
+criticisms which have been asserted by researchers 
+working directly with \Cnineteen{} or discussed in 
+peer-reviewed literature.  With that caveat, however, 
+we assert that certain issues deserve mention: 
+
+%\vspace{-2em}
+\begin{description}
+	
+\item[Transription Errors]  
+Transcription errors can cause the machine-readable 
+text archive to misrepresent the structure 
+and content of documents, hindering text-mining 
+technology that targets the archive.  In \Cnineteen{}, 
+for instance, there are cases of scientific notation and terminology 
+being improperly encoded.  As a concrete example, \colorq{2{\textquotesingle}-C-ethynyl} is encoded in \Cnineteen{} as \colorq{2 0 -C-ethynyl}, 
+which could stymie text searches 
+against the \Cnineteen{} corpus (see \cite{Eyer} for 
+the human-readable publication where this error is 
+observed; the corresponding index in the corpus is 9555f44156bc5f2c6ac191dda2fb651501a7bd7b.json).
+
+\item[Poorly Indexed Research Data]  Although 
+\Cnineteen{} provides a structured representation 
+of a large collection of research 
+\textit{papers}, there is no easy-to-use tool 
+for finding research \textit{data} 
+through \Cnineteen{}.
+
+\item[Poorly Integrated Research Data]  The 
+research data which \textit{can} be 
+accessed through \Cnineteen{} evinces 
+a wide variety of technical fields 
+and formats, with distinct software 
+requirements; as a result, it is a 
+difficult task to merge and integrate 
+different data sets related to 
+\Covid{}.  At present, \Cnineteen{} 
+does not include any software tools 
+or computer code that would facilitate 
+data integration.   
+
+\item[Disconnect Between Text Data and Publisher Portals]  
+Although most of the \Cnineteen{} manuscripts represent 
+peer-reviewed literature which can be accessed through 
+document portals (for instance, the 
+National Center for Biotechnology Information website), 
+the \Cnineteen{} archival schema does not represent 
+these links (except indirectly via Document Object 
+Identifiers).  As such, there is no easy way for 
+researchers to find and read publications which have been 
+flagged by text-mining algorithms as being potentially 
+of interest to them.  Furthermore, there is no direct 
+mechanism to enlarge the \Cnineteen{} corpus with papers 
+newly added to publisher portals.
+\end{description}}
+
+\p{To clarify the final comment: the Allen Institute for AI, which 
+curated \Cnineteen{}, encourages publishers to contribute new 
+(or newly-available) articles to the corpus.  However, integration 
+with \Cnineteen{} is not developed as a formal step 
+in the publication workflow.  In particular, publishers 
+are not themselves generating machine-readable document infosets 
+that can be integrated with the \Cnineteen{} schema (which, 
+in turn, causes transcriptions errors and other problems 
+as just outlined).}
+
+
+
+\p{With respect to text mining, an immediate problem arises 
+in \Cnineteen{}'s archive-construction methodology: 
+especially, how the text was parsed from \PDF{} files.  
+This is a process 
+which almost inevitably causes imprecise or inaccurate text representation, which can degrading the quality of 
+the archive unless manual or automated corrections are made.  In particular, the \Cnineteen{} library evinces  
+transcription errors, as mentioned above (especially in relation to 
+technical or scientific phrases and terminology); 
+scientific notation in particular may be improperly 
+encoded.  Moreover, there is no 
+semantic marking identifying that (say) the \colorq{2 0 -C-ethynyl} 
+text segment has a specific technical meaning.  These 
+errors or limitations arise in part from unavoidable 
+anomalies which occur when reading texts from \PDF{} files 
+rather than from machine-readable, structured 
+formats such as \XML{}.}
+ 
+\p{It is also worth observing that the \JSON{} format used 
+for encoding \Cnineteen{} manuscripts presents some 
+logistical challenges for any operations related to 
+text-mining or to cross-referencing publications and 
+data sets.  In particular, \Cnineteen{} makes 
+partial use of \q{standoff annotation}; specifically, 
+document features such as citations and references are 
+notated through character offsets into the paragraph where 
+they appear.  As a result, accurately reading these document 
+elements requires synthesizing data points parsed from several 
+distinct objects in the \JSON{} code, which is only feasible given 
+a client library built to interface with the \Cnineteen{} files 
+in accord with their specific schema.  Such a client 
+library would implement convenience procedures to handle 
+recurring tasks, such as obtaining the full bibliographic 
+reference affixed to a given location in a manuscript.}
+
+\p{With respect to \textit{data} mining in the \Cnineteen{} 
+context, the limitations in the currently available raw 
+\Cnineteen{} data are even more pronounced than in the 
+context of text mining.  In particular, 
+neither the article 
+metadata nor the full open-access document collections have 
+any mechanism for actually obtaining data published 
+alongside research papers, or even identifying which papers 
+have accompanying data in the first place.  The Springer 
+Nature collection which was originally one component within \Cnineteen{} illustrates the limitations of this relatively unstructured 
+data-publishing approach (this following analysis will 
+focus on Springer Nature, but the problems identified 
+are no less pronounced on the other \Cnineteen{} portals 
+--- 
+if anything, because Springer Nature 
+allows readers to browse articles in \HTML{} within the 
+web portal directly, one can ascertain whether research data 
+exists for an article without downloading and reading 
+it; with other \Cnineteen{} resources it is actually 
+harder to locate supplemental data when available).  
+Initially, the Springer Nature portal 
+encompassed 43 articles, 
+of which 15 were accompanied by research data that 
+could be separately downloaded (this number does 
+not include papers that document research 
+findings only indirectly, via tables or graphics 
+printed inline with the text).  Collectively 
+these articles referenced over 30 distinct data 
+sets (some papers were linked to multiple 
+data sets), forming a data collection which could 
+be a valuable resource for \Covid{} research --- 
+not only through the raw data made available 
+but as a kernel around which new coronavirus data 
+could accumulate.  However, there is currently no 
+mechanism to make this overall collection available 
+as a single resource.\footnote{As \Cnineteen{} has 
+evolved, the publisher-specific sections therein 
+appear to be merged into portals such as 
+Springer Nature directly, so our above comments 
+based on isolating Springer Nature articles are 
+probably more applicable to the original 
+archive design than the current technology.  However, 
+insofar as the current portal simply defers to 
+publisher-specific search features, we would argue that 
+accessing Covid-19 data sets through \Cnineteen{} 
+is if anything more difficult than before.}}
+
+\p{This problem demonstrates, among other things, 
+how document-metadata formats such as 
+the Research Object protocol are limited in applying 
+only to \textit{single} articles.  As a result, there is no 
+commensurate protocol for publishing \textit{groups} 
+of articles which are tied to groups of data sets unified 
+into an integral whole.  Open-access \Covid{} papers also 
+reveal limitations of exiting online document portals, 
+especially with respect to how publications are 
+linked to data sets.  In particular, there is no clear indication that a 
+given paper is associated with downloadable data; usually 
+readers ascertain this information only by reading or 
+scrolling down to a \q{supplemental materials} or 
+\q{data availability} addendum near the end of the article.  
+Moreover, because the Springer Nature portal (and similar 
+publisher resources) aggregates 
+papers from multiple sources, there is no consistent 
+pattern for locating data sets; each journal or 
+publisher has their own mechanism for alerting readers 
+to the existence of open-access data and citing where 
+they could be downloaded.}
+
+\subsection{Data Integration within CORD-19}
+\p{Aside from the issues which are likely to hinder text and data mining 
+across \Cnineteen{}, the 
+collective group of \Covid{} data sets also illustrates 
+the limitations of information spaces pieced 
+together from disconnected raw data files with little 
+additional curation.  The files included in this 
+group of data sets encompass a wide array of file types 
+and formats, including \FASTA{} (which stands for Fast-All, 
+a genomics format), \SRA{} (Sequence Read Archive, for 
+\DNA{} sequencing), \PDB{} (Protein Data Bank,  
+representing the \ThreeD{} geometry of protein 
+molecules), \MAP{} (Electron Microscopy Map), \EPS{} 
+(Embedded Postscript), and \CSV{} (comma-separated values).  
+There are also tables represented in Microsoft Word 
+or Excel formats.  Although these various formats are 
+reasonable for storing raw data, not all of them 
+are actually machine-readable; in particular, 
+the \EPS{}, Word, and Excel files need manual processing 
+in order to use the information they provide in a 
+computational manner.  A properly curated data collection 
+would need to unify disparate sources 
+into a common machine-readable representation (such as \XML{}).}
+
+\p{Going further, productive data curation should also 
+aspire to \textit{semantic} integration, unifying disparate 
+sources into a common data model.  For example, multiple 
+spreadsheets among the Springer Nature \Covid{} data sets 
+hold sociodemographic and epidemiological information relevant 
+to modeling the spread of the disease.  These different 
+sources could certainly be integrated into a canonical 
+social-epidemiology-based representational paradigm which 
+recognizes the disparate data points which might be 
+relevant for tracking the spread of \Covid{} (with the 
+potential to unify data from many countries and 
+jurisdictions).}
+
+\p{This is not only an issue of data
+\textit{representation} (viz., how data is physically 
+laid out), but also of data types and computer code.  
+According to the Research Object protocol, 
+data sets should include a code base 
+which provides convenient computational access to the 
+published data.  In the case of \Covid{}, this entails 
+creating a sociodemographic and epidemiological code 
+library optimized for \Covid{} information, which would 
+be the primary access point for researchers seeking to 
+use the data which has been published in conjunction with 
+the 43 manuscripts examined here that were aggregated 
+on Springer Nature, along with any other coronavirus 
+research which comes online.  Similar comments 
+apply not only to tabular data represented in spreadsheet 
+or \CSV{} form, but to more complex molecular or 
+microscopy data that needs specialized scientific software 
+to be properly visualized.}
+
+\p{Considering the overall space of \Covid{} data, it is 
+unavoidable that some files require special applications 
+and cannot be directly merged with the overall collection.  
+For instance, there is no coherent semantics for 
+unifying Protein Data Bank files with sociodemographics 
+and epidemiology; files of the former type have specific scientific 
+uses and can only be understood by special-purpose software.  
+Nevertheless, a well-curated data-set collection can 
+make using such special-purpose data as convenient as 
+possible.  In the case of Protein Data Bank, a downloadable 
+\Covid{} archive can include source code for \IQmol{}, a 
+molecular-visualization application that supports 
+\PDB{} (among other file formats) and has few 
+external dependencies (so it is relatively easy to 
+build from source).}
+
+\p{Indeed, a curated \Covid{} archive 
+might include an enhanced version of software 
+such as that \IQmol{} prioritizes 
+\Covid{} research, with the goal of integrating biomolecular 
+and social-epidemiological data as much as possible.  
+For example, as \Covid{} potentially mutates in different 
+ways in different geographic areas, it will be important 
+to model the connections between \q{hard} scientific 
+\Covid{} information and sociodemographics.  
+As the pandemic evolves, genomic and biochemical information 
+may be linked to particular strains of virus, which 
+in turn are linked to sociodemographic profiles: certain 
+strains will be more prevalent in certain populations.  
+Consequently, models of \Covid{} variants will need to be 
+formulated and then integrated with both chemical/molecular 
+data and sociodemographic/epidemiological data.  Different 
+\Covid{} strains then form a bridge linking these different 
+sorts of information; researchers should be able to pass 
+back and forth from molecular or genomic visualizations of 
+\Covid{} to social-epidemiological charts and tables based 
+on viral strains.  Ideally, capabilities for this 
+sort of interdisciplinary data integration would be 
+provided by a \Covid{} archive as enhancements to applications, 
+such as \IQmol{}, that scientists would use to study the 
+published data.}
+
+\p{It is worth noting that a data-mining platform requires 
+\textit{machine-readable} open-access research data, 
+which is a more stringent requirement than simply publishing 
+data alongside which can be understood by domain-specific 
+software.  For example, radiological imaging can be a source 
+of \Covid{} data insofar as patterns of lung 
+scarring, such as \q{ground-glass opacity}, is a leading 
+indicator of the disease.  Consequently, diagnostic 
+images of \Covid{} patients are a relevant kind of 
+content for inclusion in a \Covid{} data set 
+(see \cite{Shi} as a case-study).  However, 
+diagnostic images are not in themselves 
+\q{machine readable.}  When medical imaging is 
+used in a quantitative context (e.g., applying 
+Machine Learning for diagnostic pathology), 
+it is necessary to perform Image Analysis to convert the raw data 
+(viz., in this case, radiological graphics) into 
+quantitative aggregates (for instance by using image 
+segmentation to demarcate geometric boundaries and 
+then defining diagnostically relevant features, such 
+as opacity, as a scalar field over the segments).  
+In short, even after research data is openly published 
+by article authors, it may be necessary to perform 
+additional analysis on the data for it to be 
+a full-fledged component of a 
+machine-readable information space.\footnote{%
+This does not mean that diagnostic images (or 
+other graphical data) should not be placed in a 
+data set; only that computational reuse of such 
+data will usually involve certain numeric 
+processing, such as image segmentation.  
+Insofar as this subsequent analysis is performed, 
+the resulting data should wherever possible 
+be added to the underlying image data as a 
+supplement to the data set.}} 
+
+\p{Another concern in developing an integrated \Cnineteen{} 
+data collection is that, logistically speaking, 
+not all \Covid{} data is practical 
+to reuse as a downloadable package.  This is especially 
+true for genomics; several of the aforementioned 
+43 coronavirus papers included data published via 
+online data banks capable of hosting data sets that 
+are too large for an ordinary computer.  In these 
+situations scientists formulate queries or 
+analytic scripts that are sent remotely to the online 
+repositories, so that researchers access the actual 
+published data only indirectly.  Nevertheless, access to 
+these data sets can still be curated as part of 
+a \Covid{} package; in particular, computer code 
+can be provided which automates the process of 
+networking with remote genomics archives through the 
+accession numbers and file-formats which those archives 
+recognize.}
+
+\p{As a final point on the topic of integrating 
+disparate \Cnineteen{} research data, note that 
+an overarching framework for indexing \Covid{} data 
+sets would also facilitate the process of cross-referencing 
+article text and research data.  In particular, 
+the annotation system employed for 
+\Cnineteen{} could profitably be enhanced 
+by a system of \textit{microcitations} that apply 
+to portions of manuscripts \textit{as well as} data sets.  
+In the publishing context, a microcitation is defined as a 
+reference to a partially isolated fragment of a larger 
+document, such as a table or figure illustration, or a 
+sentence or paragraph defining a technical term, 
+or (in mathematics) the statement/proof of a definition, axiom, 
+or theorem.  In data publishing, \q{data citations} are 
+unique references to data sets in their entirety or to 
+smaller parts of data sets.  A data microcitation is then a 
+fine-grained reference into a data set: for example, 
+\q{the precise data records actually used in a study} (as 
+defined by the Federation of Earth Science Information Partners; 
+see \cite{ESIP}), 
+one column in a spreadsheet, or one statistical parameter in a 
+quantitative analysis.}
+
+\p{Ideally, the text-mining and 
+data-mining notions of microcitation should be combined into a unified 
+framework.  In particular, text-based searches against 
+the \Cnineteen{} corpus should also try to find matches in the 
+data sets accompanying articles within the corpus.  As a concrete example, 
+a concept such as \q{expiratory flow} appears in \Cnineteen{} 
+both as a table column in research data and as a medical concept 
+discussed in research papers; a unified microcitation framework 
+should therefore map \textit{\color{drp}{expiratory flow}} as a keyphrase 
+to both textual locations and data set parameters.  
+Similarly, a concept such as 
+\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier 
+in the context of transcription errors) 
+should be identified both as a phrase in 
+article texts and as a molecular component 
+present within compounds whose scientific 
+properties are investigated through \Cnineteen{} 
+research data, so that a search for this 
+concept can trigger both publication and 
+data-set matches. 
+Implementing this kind of unified search mechanism requires that data 
+sets be \textit{annotated} with techniques similar to 
+those used for marking up Natural Language techniques.}
+
+
+\p{Considering the inter-disciplinary nature of \Covid{} research, 
+it is unavoidable that different scientists will need 
+different sorts of specialized software to analyze the 
+kinds of information relevant to their research.  For 
+instance, the 
+computational techniques applicable to diagnosing 
+coronavirus infection are scientifically very different 
+from those used for genomic or epidemiological studies 
+of the disease; it is impractical to expect 
+pathologists to use the same software as bioinformaticians 
+studying the pathogen, or for either to use the same 
+software as virologists modeling the (potential or observed) 
+spread of the disease.  In short, even if 
+scientists from disparate disciplines start with a 
+common pool of raw data, they will need to 
+analyze this data through a diverse set of 
+supplemental computational tools, which will vary 
+not only across disciplines but also in terms of 
+the software and laboratory facilities available 
+to different researchers through their institutions.  
+In this sense it is impossible to unify all 
+\Cnineteen{} data into a \textit{fully} self-contained 
+information space.}
+
+\p{Nevertheless, committing to \q{standalone} data publishing 
+remains a valuable goal even in a context where published 
+data sets will invariably migrate to different 
+digital ecosystems.  Although scientists may use 
+external digital tools \textit{when necessary} to 
+perform certain calculations, or when interfacing with 
+laboratory equipment, we strongly recommend that 
+the degree of variation across different domain-specific extensions to 
+\Cnineteen{} be greatly minimized.  
+Ideally, that is, the version of \Cnineteen{} 
+(along with its supporting technology) 
+found in a biomedical setting should be as 
+similar as possible to that found in a 
+biochemical context, or a health-policy 
+context.  In the absence of 
+any initiative to limit this drift, \Cnineteen{} 
+could easily devolve into a federation of 
+separate resources which have no interconnection 
+apart from their nominal focus on \Covid{}.}
+
+
+\p{This section has highlighted limitations of data 
+sets published in conjunction with coronavirus articles made 
+available as open-access resources on Springer Nature 
+(and, by extension, \Cnineteen{}).  
+The central point here is to argue for a distinct data-curation 
+stage in the publication process, with data curators 
+playing a role distinct from that of both 
+authors and editors.\footnote{%
+The point here is not to critique the work of individual 
+authors; curating data sets according to exacting 
+scientific standards demands a separate vein of 
+expertise which typically lies outside researchers' 
+disciplinary scope.  The point is rather that 
+publishers should recognize data curation as a 
+distinct process and skill-set complementary 
+to both writing and editing research works.}  
+Moreover, the discussion has hopefully highlighted problems 
+with current data-sharing paradigms, even those such 
+as the Research Object and \FAIR{} initiatives which are 
+explicitly devoted to improving how open-access data sets are 
+published.  \Cnineteen{} exposes several 
+lacunae in the Research Object protocol, for example, 
+which point to the need for a more detailed extension 
+of this protocol.  In particular, an enhanced protocol 
+should encompass: 
+
+\begin{enumerate}[leftmargin=3pt, itemsep=4pt,topsep=11pt]
+\item{} A canonical framework for archiving collections 
+of data sets, not only single data sets (and not only 
+groups of data sets published with a single research 
+paper).  For example, all data sets published alongside 
+the 43 Springer Nature articles could be unified into a 
+single collection.
+
+\item{} A code base accompanying data-set collections 
+designed to help research unify the information provided.  
+Curating the overall collection would involve pooling 
+disparate data into common representation, and 
+implementing computer code which deserializes and processes 
+the unified data accordingly.  For instance, \CSV{}, 
+\EPS{}, and Microsoft Word/Excel tables could be migrated 
+to \XML{}, \JSON{}, or 
+a more complex common format.  Customized computer code could then 
+be implemented specifically to parse and merge the 
+information present in single data sets within the 
+overall collection.  This implementation would 
+reciprocate the Research Object goal of unifying 
+code and data, but again would operate at the level 
+of an aggregate of research projects rather than a 
+single Research Object.
+
+\item{}  A unified data-set collection should 
+be self-contained as much as possible, and should be 
+built around a foundation where advanced computing 
+capabilities are available in a transparent, 
+standalone fashion, without requiring tools 
+outside the collection itself.  One way to 
+achieve this is by gravitating 
+toward components that can provide 
+features such as scripting and data persistence 
+through components that can be shared 
+in pure source-code fashion, 
+such as the WhiteDB database engine 
+\cite{EnarReilent} and the AngelScript 
+scripting language \cite{AS}.   
+
+\item{}  A unified data-set collection should also provide 
+prototyping and remote-access tools to interface with 
+web-based information spaces that host data sets 
+too large to be individually downloaded.  Ideally, 
+these would include simulations of remote services, which 
+would help scientists understand the design of 
+the remote archives and how to interface with them.
+These simulations could function analogously to 
+(for instance) 
+PurpleData, a prototyping tool for Google's BigData 
+developed by Verily (the Alphabet subsidiary developing 
+an online \Covid{} portal for remote diagnostics 
+and disseminating public information about the pandemic). 
+
+\item{}  Finally, a unified research portal should  
+influence the design of the web portals where associated 
+texts are published.  It should be easy for readers to 
+identify which articles have supplemental data files and 
+to download those files if desired.  Moreover, 
+textual links should be established between publication 
+content and data sets --- for instance, a plot or 
+diagram illustrating statistical or equational distributions 
+should link to the portion of the data set from which that 
+quantitative data is derived.
+\end{enumerate}}
+
+\p{This discussion has used the \Covid{} crisis as a 
+lens through which to examine data-publishing limitations 
+in general.  Such limitations are not specific to coronavirus in particular.  
+However, the nearly unprecedented urgency of this epidemic 
+reveals how both the scientific and publishing industries are still struggling 
+to develop technologies and practices which keep pace 
+with the intersecting needs of systematic research 
+and public policy.  An optimistic projection is 
+that the crisis will spur momentum toward a more 
+sophisticated data-sharing paradigm --- perhaps a 
+generalization of the Research Object protocol 
+toward data-set collections.}
+
+\subsection{Reviewing the CORD-19 Document Model}
+
+\p{In order to discuss the possibilities 
+and limitations of \Cnineteen{} (and potentially 
+other document corpora with a similar design) it 
+is worth examining how \Cnineteen{} encodes textual 
+data in greater detail.  This discussion has ramifications 
+outside of \Cnineteen{} itself, 
+insofar as \Cnineteen{} hopefully points to 
+gaps in current publishing technologies.  These gaps need to be 
+addressed if publishers are to curate open-access corpora 
+which truly leverage the digital and interactive 
+technology available to us with modern software.}
+
+\p{The basis of \Cnineteen{}'s infrastructure 
+is a \JSON{} scheme which describes the 
+document hierarchy of research articles encoded 
+within the corpus.  Apart from metadata 
+(consisting of basic details such as document title and authors' 
+names) and bibliographic entries, all document 
+content according to this schema is divided into paragraphs 
+(implicitly the documents are divided into sections 
+as well, but sections are notated as properties 
+of the paragraphs they contain, not as a separate 
+level in the hierarchy).   
+Each paragraph encoding contains an underlying string 
+vector (a stream of characters) and, separate and apart from 
+that, character \q{spans} which point to 
+references (such as Named Entites), citations, and 
+equations.  This indicates that the \Cnineteen{} encoding 
+uses \q{standoff annotation,} where any content 
+modifying the interpretation assigned to portions of 
+the main text is notated with a series of data 
+structures described apart from the main text itself.}
+
+\p{Standoff text-encoding systems may be contrasted with \XML{} 
+or \HTML{}, where \q{tags} are mixed with character 
+data.  For example, consider a span of text which 
+quotes from another document: in \HTML{}, the 
+special status of the quoted text may be 
+marked by surrounding the text with \textbf{<quote>} 
+start and end tags.  Syntactically, this markup system 
+has the effect that tags and text are seen side-by-side: any 
+content governed by the \textbf{<quote>} (i.e., the text of 
+the quote itself) is printed immediately after the 
+begin-tag, and the quotation ends when the last character 
+is followed by an end-tag (i.e., \textbf{</quote>}).}
+
+\p{Apart from such syntactic details, the distinction 
+between tag-based markup and standoff annotation 
+determines the \q{semantics} of the document, insofar 
+as tags form a document hierarchy.  Continuing the 
+\textbf{<quote>} example, the text-span inside the 
+quote tags is represented as a \textit{child element} 
+of the quote, whereas the quote itself may be a child 
+element of a larger-scale entity (such as a paragraph).  
+In effect, the paragraph \textit{contains} a quote, 
+and the quote \textit{contains} a string of characters.  
+Such nested levels of containment provide the structure 
+through which hierarchical documents (formats 
+such as \XML{} and \HTML{}) are interpreted.}
+
+\p{To see the contrast with \textit{standoff} annotation, 
+if one were to describe a document using a standoff annotation 
+system, the notation that a particular 
+span of characters belongs to a quotation would 
+not be marked-up amidst the characters themselves.  
+Instead, the quotation-designation would use numeric indices to 
+declare that the character at a certain position in the 
+main text begins a quotation, and some later character 
+in the text ends that quotation.  When serializing 
+documents with standoff annotation, all the characters 
+in a document are typically represented as one 
+character-stream, and any notation describing markup applied 
+to spans within that character stream is asserted afterward, 
+using indexes into the stream to demarcate element boundaries.}
+
+\p{The \JSON{} schema used for \Cnineteen{} is not 
+entirely standoff, because there is a document hierarchy 
+(for example, a publication's abstract is modeled as a sibling 
+element to the main body text, so abstracts and the main text represent 
+an intermediate hierarchical level, contained within the overall 
+document and containing individual paragraphs).  However, 
+\Cnineteen{} uses in effect a standoff-annotation system 
+for each paragraph, so there is no hierarchical level 
+smaller than paragraphs themselves, except implicitly; after the 
+text (viz., the character stream) there are subsequent notations
+of spans within the paragraph (each span description is considered 
+a child of the paragraph itself, as is the paragraph text).}
+
+\p{This arrangement has consequences for text mining algorithms, which 
+may be strengths or weaknesses in different contexts.  
+One consequence is that the raw text is all grouped together 
+in one place --- algorithms do not have to tie together child 
+nodes of disparate \XML{} elements to derive a beginning-to-end 
+sequence of the text belonging to any paragraph.  Instead, it 
+is simply necessary to read all data in the 
+\q{text} field of the relevant \q{paragraph} 
+object.  The character-sequence in this text may 
+contain words and sentences, but potentially other 
+strings of symbols (such as chemical formulae) 
+which are not explicitly marked.  This may or may not 
+be desirable.  It could potentially complicate 
+\NLP{} tasks, because the language-processing 
+components will be fed not only sequences of English 
+words but also, sometimes interspersed among ordinary 
+words, technical symbol-sequences such as 
+\colorq{2{\textquotesingle}-C-ethynyl} (an 
+example used earlier in this chapter).  
+Standoff annotations may or may not be 
+effective in marking the boundaries of such 
+extra-lexical sequences; certainly we 
+cannot rely on Named Entity detectors to 
+properly identify and demarcate the boundaries 
+of all uses of technical terminology or special 
+symbols (again, the limitations of automated 
+annotation are discussed earlier in this chapter).}
+
+\p{In discussing standoff annotation it is also 
+worth considering how the text of \Cnineteen{} 
+publications was obtained.  According to 
+\Cnineteen{} documentation, most full-text 
+transcriptions in the corpus were obtained from 
+\PDF{} files, via a pipeline using \TEI{} (Text 
+Encoding Initiative) \XML{} as an intermediate 
+representation.  Necessarily, then the 
+encoded text is only an approximate representation of 
+the original:  
+
+\begin{displayquote}
+To provide accessible and canonical structured full text, 
+we parse content from PDFs and associated paper documents.
+The full text is presented in a JSON schema designed 
+to preserve most relevant paper structures 
+such as paragraph breaks, section headers, and 
+inline references and citations. ... We recognize that 
+converting between PDF or XML to JSON is lossy.
+However, the benefits of a standard structured format, 
+and the ability to reuse and share annotations
+made on top of that format have been critical to the
+success of CORD-19. ... 
+Though we have made the structured full text
+of many scientific papers available to researchers
+through CORD-19, a number of challenges prevent 
+easy application of NLP and text mining techniques 
+to these papers.  First, the primary distribution 
+format of scientific papers --- PDF --- is not
+amenable to text processing. The PDF file format
+is designed to share electronic documents rendered
+faithfully for reading and printing, not for 
+automated analysis of document content.  Paper content
+(text, images, bibliography) and metadata extracted
+from PDF are imperfect and require significant
+cleaning before they can be used for analysis.
+Second, there is a clear need for more scientific
+content to be made easily accessible to researchers.
+Though many publishers have generously made
+COVID-19 papers available during this time, there
+are still bottlenecks to information access. ... 
+Lastly, there is no standard format for 
+representing paper metadata.  Existing schemas like 
+... JATS[,] Crossref [or] Dublin Core have
+been adopted as representations for paper metadata.
+However, there are issues with these standards; they
+can be too coarse-grained to capture all necessary
+paper metadata elements, or lack a strict schema. 
+... Without solutions to the above problems, NLP
+on COVID-19 research and scientific research in
+general will remain difficult. \cite[page 6]{LucyLuWang}
+\end{displayquote}
+
+As an example of these \NLP{} issues, 
+consider the challenge of demarcating all 
+named entities, particularly technical 
+character-sequences (such as chemical 
+formulae) which are not ordinary lexemes.  
+Whether or not authors explicitly mark up 
+such sequences (they may well do so in that 
+formulae or equations are often typeset 
+differently than normal text) this markup is 
+not preserved in \PDF{} versions of articles.  
+As the authors of the last-cited article point 
+out, many (roughly 38\%) of papers in \Cnineteen{} 
+are also available in the \JATS{} (Journal Article Tag Suite) 
+format, which is a more precise text encoding 
+than \PDF{}.  However, even in this context \JATS{} 
+does not compel authors to explicitly notate 
+textual entities such as special terms or 
+character-sequences --- in fact \JATS{} 
+does not truly have an obvious structure or 
+set of alternative structures for identifying
+what would normally be considered annotation-worthy  
+text spans or named entities; the closest correlates 
+are probably the generic \textbf{<kwd>} (keyword) and 
+\textbf{<abbrev>} (abbreviation) tags as well 
+as discipline-specific options such as 
+\textbf{<chem-struct>} (for chemical structures) 
+and \textbf{<disp-formula>} (for mathematical expressions).  
+In short, building a corpus such as \Cnineteen{} for 
+rigorous text-mining is made more difficult because 
+authors and publishers do not publish texts in 
+formats which are optimized for text mining in the 
+first place; the acknowledged limitations of 
+\Cnineteen{} reflect problems of industry 
+practice, not programming lacunae that could 
+be alleviated with more sophisticated \NLP{} algorithms.}
+
+\p{Having acknowledged these limitations, a discussion of 
+document corpora could then reasonably pivot from 
+the empirical goal of curating useful text archives from 
+currently published text to examining how more 
+sophisticated corpora may be published in the future.  
+It is reasonable, for example, to propose 
+that full-text publications be released 
+\textit{both} in reader-friendly \PDF{} form 
+\textit{and} in machine-readable forms such as 
+\JATS{}.  This is not just an abstract proposal; 
+indeed, the text of this very book has been prepared 
+using a novel document-generation system 
+which creates both machine-readable structured text 
+and \PDF{} output, moreover with cross-referencing 
+between them; notably, the positions of discursively 
+important textual markers, such as sentence boundaries, 
+are mapped to \PDF{} screen coordinates (the code library 
+for the book includes document-generation code as well as 
+the data set of coordinate positions generated 
+as part of the book's publication workflow).  
+In particular, it is reasonable for authors 
+and editors to manually introduce textual 
+annotations for content such as named entities, 
+keywords, important technical terms, and other 
+content which should be targeted by \NLP{} engines 
+separate and apart from ordinary lexemes with 
+their conventional natural-language semantics.  
+Typically such specialized terms/lexemes would 
+be marked up in any case because they may require 
+distinct fonts or styling than their surroundings.  
+It is also reasonable to manually define sentence 
+boundaries via simple rules (e.g. two following spaces 
+mark the end of a sentence; a single space, such as 
+that following an abbreviation, indicates situations 
+where a character such as a period, which could potentially mark the 
+end of a sentence, is actually playing a different discursive role).}
+
+\p{By following simple rules of document content-entry and 
+lexicography, certain \NLP{} tasks, such as sentence-boundary 
+and Named Entity recognition, can be optimized --- eliminating 
+the need for probabilistic algorithms and relying instead 
+on much less sophisticated, but more accurate, markup-parsing 
+logic.  If sentence boundaries and Named Entities are 
+explicitly annotated in machine-readable text encodings, then 
+extracting these features is not really an issue of 
+\q{Natural Language Processing} as such.  
+On the other hand, \AI{}-driven analysis of document corpora 
+would still require \NLP{} for other aspects of 
+parsing documents; it is unreasonable to expect authors, 
+for instance, to manually notate sentence parse-graphs.  
+This then suggests the question of where the boundary 
+lies between discursive structures which might reasonably 
+be left to authors or editors to manually notate (e.g. 
+sentence boundaries) and those which in practice could 
+only be obtained via \NLP{} (such as part-of-speech 
+tags).  Related to this question is how best to 
+model \NLP{} structures, such as the trees or graphs 
+representing the syntax of natural-language sentences.  
+We will consider this question in subsequent chapters 
+in the context of Conceptual Space Theory.}
+

@@ -1,0 +1,297 @@
+\begin{figure}[t]
+
+\caption{Query-Aware Prepersistent Representation}	
+
+\begin{center}
+\begin{tikzpicture}
+
+\colorlet{blbl}{blue!70!black}
+
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\colorlet{blgr}{blue!36!logoGreen}
+
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+
+\node (dummy) at (0,0) {};
+
+\node (llcorner) at (0,0) {};
+\node (urcorner) at (6,5) {};
+
+%\node  at (4,4.5) [draw,color=logoRed!90!%logoPurple,inner sep=1] 
+%{\colorbox{logoPurple!90!logoRed}{CH Structure}};
+
+\node (ref) at (3,2) {};
+
+\node (h) [above left=1mm and 4mm of ref,
+circle,draw=black,yscale=.4,
+label=center:hypernode,
+ inner sep=5pt,
+minimum size=23pt]{\phantom{hypernode}};
+
+
+\node (qsv1) [right = 1mm of ref,draw,minimum width=11mm,
+minimum height=5mm,fill=white] {value ...};
+\node (qsv2) [right=2mm of qsv1.east,draw,minimum width=11mm,minimum height=5mm,fill=white] {value ...};
+\node (osv1) [right=2mm of qsv2.east,draw,minimum width=11mm,minimum height=5mm,fill=logoBlue!39] {value ...};
+
+\node (svs) [draw,densely dashed,
+fill=logoPurple!90!logoRed,
+fit=(qsv1) 
+ (qsv2) (osv1)] {};
+
+\node (qsv1) [right = 1mm of ref,
+draw,minimum width=11mm,
+minimum height=5mm,fill=white] {value ...};
+\node (qsv2) [right=2mm of qsv1.east,draw,minimum width=11mm,minimum height=5mm,fill=white] {value ...};
+\node (osv1) [right=2mm of qsv2.east,draw,minimum width=11mm,minimum height=5mm,fill=logoBlue!39] {value ...};
+
+
+\node (svs11) [above right=4mm of qsv1.north,
+draw,minimum width=4mm,
+minimum height=3mm,fill=white] {};
+\node (svs12) [right=1mm of svs11.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+\node (svs13) [right=1mm of svs12.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+
+
+\node (svs1) [fill=logoBlue!30!cyan,inner sep=3pt,
+draw,densely dashed,
+fit=(svs11) (svs12) (svs13)] {};
+
+\node (svs11) [above right=4mm of qsv1.north,
+draw,minimum width=4mm,
+minimum height=3mm,fill=white] {};
+\node (svs12) [right=1mm of svs11.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+\node (svs13) [right=1mm of svs12.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+
+
+
+
+\node (svs21) [right=16mm of svs12,
+draw,minimum width=4mm,
+minimum height=3mm,fill=white] {};
+\node (svs22) [right=1mm of svs21.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+\node (svs23) [right=1mm of svs22.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+
+
+\node (svs2) [fill=logoBlue!30!cyan,inner sep=3pt,
+draw,densely dashed,
+fit=(svs21) 
+ (svs22) (svs23)] {};
+
+\node (svs21) [right=16mm of svs12,
+draw,minimum width=4mm,
+minimum height=3mm,fill=white] {};
+\node (svs22) [right=1mm of svs21.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+\node (svs23) [right=1mm of svs22.east,draw,minimum width=4mm,minimum height=3mm,fill=white] {};
+
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 3mm, shorten >= 1mm] (h.south) -- (svs.west) 
+node [midway, fill=brown!60, fill opacity=.8, text=black, 
+xshift=-26pt, yshift=-7pt,
+rotate=3] {values ...}; 
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 4mm, shorten >= 2mm,bend left=40,] 
+([xshift=16pt,yshift=-1pt]h.north) to (svs21.west);
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 4mm, shorten >= 2mm] 
+([xshift=16pt,yshift=-1pt]h.north) -- (svs11.west) 
+node [midway, fill=brown!60, fill opacity=.8, 
+rotate=-8,
+text=black, 
+xshift=-47pt, yshift=6pt] {collections ...}; 
+
+
+\node (qy) [below right=5mm and 4mm of 
+svs.south west,
+circle,draw=black,yscale=.4,
+label=center:queryable,
+ inner sep=5pt,
+minimum size=23pt]{\phantom{queryable}};
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1pt, shorten >= 1mm,] 
+(qy.north) to (qsv1.south);
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 4mm, shorten >= 1mm,
+bend right=30,looseness=.2,in looseness=.9,
+out=-4] 
+([yshift=-11pt,xshift=12pt]qy.north) to 
+([xshift=-10pt,yshift=-1pt]qsv2.south);
+
+\node (qyover) [below right=5mm and 4mm of 
+svs.south west,fill=white,
+circle,draw opacity=0,yscale=.4,
+label=center:queryable,
+ inner sep=5pt,
+minimum size=23pt]{\phantom{queryable}};
+
+\node (opaque) [below left=5mm and 4mm of 
+svs.south east,
+circle,draw=black,yscale=.34,
+label=center:opaque,
+ inner sep=5pt,
+minimum size=23pt]{\phantom{opaque}};
+
+\draw [line width=2pt, blbl!60, ->, >=stealth,
+shorten <= 1pt, shorten >= 1mm] 
+(opaque.north) to (osv1.south);
+
+
+\node (prop) [regular polygon, regular polygon 
+sides=6, yscale=.4,fill=logoGreen,
+inner sep=4pt,rotate=90,
+label=center:{\colorbox{white}{key:value}}] at (3,4.5) 
+{\phantom{key:value}};
+
+
+\node [regular polygon, regular polygon 
+sides=6, yscale=.4,fill=logoGreen,
+inner sep=9pt,rotate=90,
+label=center:{\colorbox{white}{...}}] at (5.5,4.5) 
+{\phantom{...}};
+
+\node [regular polygon, regular polygon 
+sides=6, yscale=.4,fill=logoGreen,
+inner sep=9pt,rotate=90,
+label=center:{\colorbox{white}{...}}] at (7,4.5) 
+{\phantom{...}};
+
+
+\coordinate [left=2mm of h.west] (hhh) ;
+
+\coordinate [above=2mm of hhh] (h0) ;
+\coordinate [left=12mm of h0] (h1) ;
+\coordinate [above=21mm of h1] (h2) ;
+\coordinate [right=22mm of h2] (h3) ;
+
+\draw 
+[line width=2pt, blbl!60] (h0) -- (h1);
+
+\draw 
+[line width=2pt, blbl!60] (h1) -- (h2)
+node 
+[midway, fill=brown!60, fill opacity=.8, 
+text=black,yshift=6mm,xshift=9mm] {Properties}
+;
+
+
+\draw [line width=2pt, blbl!60, ->, >=stealth] 
+(h2) to (h3);
+
+
+\coordinate [below=2mm of hhh] (sh0) ;
+\coordinate [left=12mm of sh0] (sh1) ;
+\coordinate [below=21.5mm of sh1] (sh2) ;
+\coordinate [right=14mm of sh2] (sh3) ;
+
+\draw 
+[line width=2pt, blbl!60] (sh0) -- (sh1);
+
+\draw [line width=2pt, blbl!60, ->, >=stealth] 
+(sh2) to (sh3);
+
+\draw 
+[line width=2pt, blbl!60] (sh1) -- (sh2)
+node 
+[midway, fill=brown!60, fill opacity=.8, 
+text=black,yshift=-8.5mm,xshift=5mm] {Edges}
+;
+
+
+\node (hn) at (1.24,.7) [circle,
+draw=logoRed!90!black, inner sep=0pt,
+minimum size=23pt,align=center]{hyper-\\[-2pt]node};
+
+\node (hn1) at (1.13,-.5) 
+[circle,draw=logoRed!90!black, inner sep=0pt,
+minimum size=23pt,align=center]{hyper-\\[-2pt]node};
+
+
+\node (fhn) at (0.,-2.97) [circle,
+draw=blgr!90!black, inner sep=0pt,
+minimum size=23pt,align=center]{hyper-\\[-2pt]node};
+\node (fhnd) [above=0mm of fhn, 
+diamond,fill=blgr!60!black, line width=4pt, 
+draw=blgr!90!black, 
+inner sep=0pt,
+draw opacity=.5,
+minimum size=23pt,align=center]
+{\textcolor{white}{\textbf{\textit{id}}}};
+
+
+
+\node (fhn1) at (0.08,-5.7) 
+[circle,draw=blgr!90!black, inner sep=0pt,
+minimum size=23pt,align=center]{hyper-\\[-2pt]node};
+\node (fhn1d) [above=0mm of fhn1, 
+diamond,fill=blgr!60!black, line width=4pt, 
+draw=blgr!90!black, 
+inner sep=0pt,
+draw opacity=.5,
+minimum size=23pt,align=center]
+{\textcolor{white}{\textbf{\textit{id}}}};
+
+\sethlcolor{white}
+
+
+
+\draw [line width=1pt, double, logoRed!60!magenta, ->, 
+>=latex,shorten <= 2mm, shorten >= 4mm] 
+(svs.south west) to 
+([yshift=9mm,xshift=3mm]fhn1)
+node[midway,xshift=17mm,yshift=-19mm,
+text=black,fill opacity=.9,align=center,
+fill=logoPeach]{foreign\\keys};
+
+
+\node (expl) at (2.5,0) [draw=black!20, 
+fill=black!20,anchor=north west,
+rounded corners = 12pt,inner sep=5pt,
+align=left,text width=5.5cm]
+{\textbf{\small{Queryable data 
+(with which an object may be 
+re-located) associated with a complex object 
+and its pre-persistent representation 
+can be linked to the object in multiple 
+ways, including as \colorbox{white}{\textcolor{logoGreen}{properties}}, 
+\colorbox{white}{\textcolor{logoPurple!90!logoRed}{nodes}} inside 
+a hypernodes, \colorbox{white}{\textcolor{logoRed!90!black}{hypernodes}} 
+connected to the object-node, 
+\colorbox{white}{\textcolor{blgr!90!black}{foreign 
+keys}} whose values indirectly designate 
+object nodes, and 
+\colorbox{white}{\textcolor{logoBlue!30!cyan}{multi-valued}} 
+collections fields where each value is 
+independently queryable.}}};
+
+
+\node (qoro) [below right=27mm and 9mm of 
+fnh1.south east,text=logoPeach!40!black,
+fill=white,regular polygon,
+regular polygon sides=9,fill opacity=.1,
+text opacity=1,
+align=center,
+ inner sep=5pt,
+text width=1.4cm]
+{\hspace*{-19pt}\textbf{\scriptsize{\colorbox{white}{queryable}\\\hspace*{2pt}or\\[-3pt]\hspace*{-10pt}opaque}}};
+
+\end{tikzpicture}
+\end{center}
+
+
+\label{fig:prepersistence}
+\end{figure}
+

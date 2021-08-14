@@ -1,0 +1,141 @@
+\begin{figure}[t]
+
+\caption{Multi-Relations and Edge-Tangles}	
+
+\begin{center}
+\begin{tikzpicture}
+
+\colorlet{blbl}{blue!70!black}
+
+\node (dummy) at (0,0) {};
+
+\colorlet{blor}{black!80!orange}
+
+\node (expl) at (0,1.5) [draw=black!20, 
+fill=blor!20,
+rounded corners = 12pt,inner sep=5pt,
+align=left,text width=7.5cm]
+{\textbf{\small{\q{Divorce} represents 
+both a data structure 
+(indicated by hooked arrows 
+representing fields) and an 
+edge-tangle (represented 
+by red arcs representing 
+cross-dependent edges).}}};
+
+\node (married) at (0,0) [draw,minimum width=11mm,minimum height=5mm] {Married 2015};
+
+\node (divorce) at (0,-2.35) [draw,minimum, 
+regular polygon,regular polygon sides=8,
+label=center:Divorce,
+xscale=2] 
+{\phantom{Divorce}};
+
+\node (divorced) at (0,-4.5) [draw,minimum width=11mm,minimum height=5mm] {Divorced 2020};
+
+\node (John) at (-3,-5) [draw,minimum width=11mm,minimum height=5mm] {John};
+
+\node (Jane) at (3,-5) [draw,minimum width=11mm,minimum height=5mm] {Jane};
+
+
+\draw [line width=2pt, yellow!60!black, ->, >=stealth,
+shorten <= 1mm, densely dashed, bend left=30, shorten >= 1mm] (John) to (married.west); 
+
+\draw [line width=2pt, yellow!60!black, ->, >=stealth,
+shorten <= 1mm, densely dashed, bend right=30,, shorten >= 1mm] (Jane) to (married.east); 
+
+\draw [line width=2pt, yellow!60!black, ->, >=stealth,
+shorten <= 1mm, densely dashed, bend left=30, shorten >= 1mm] (John.north east) to (divorced.west); 
+
+\draw [line width=2pt, yellow!60!black, ->, >=stealth,
+shorten <= 1mm, densely dashed, bend right=30,, shorten >= 1mm] (Jane.north west) to (divorced.east); 
+
+\draw [line width=2pt, draw=blbl!60, <->, 
+shorten <= 1mm, shorten >= 1mm,dashed] (John) -- (Jane)
+node [midway, xshift=1pt, yshift=-7pt, 
+fill=brown!60, fill opacity=.8, text=black] {Divorced};
+
+
+\draw [line width=2pt, draw=magenta!60!black, 
+<-, >=stealth,
+shorten <= 1mm, shorten >= 5.5mm] 
+(John) -- ([xshift=4mm]divorce.south west);
+
+\draw [line width=2pt, draw=magenta!60!black, 
+->, >= open circle,
+shorten <= 1mm, shorten >= 3mm] 
+(John) -- ([xshift=4mm]divorce.south west);
+
+
+
+\draw [line width=2pt, draw=magenta!60!black, 
+<-, >=stealth,
+shorten <= 1mm, shorten >= 5.5mm] 
+(Jane) -- ([xshift=-4mm]divorce.south east);
+
+\draw [line width=2pt, draw=magenta!60!black, 
+->, >= open circle,
+shorten <= 1mm, shorten >= 3mm] 
+(Jane) -- ([xshift=-4mm]divorce.south east);
+
+
+
+\draw [line width=2pt, draw=magenta!60!black, 
+->, >=stealth, 
+shorten <= 3mm, shorten >= 1mm] 
+(divorce) -- (divorced);
+
+\draw [line width=2pt, draw=magenta!60!black, 
+<-, >=open triangle 90 reversed, 
+shorten <= 1mm, shorten >= 1mm] 
+(divorce) -- (divorced);
+
+
+\draw [line width=2pt, draw=magenta!60!black, 
+->, >=stealth, 
+shorten <= 3mm, shorten >= 1mm] 
+(divorce) -- (married);
+
+\draw [line width=2pt, draw=magenta!60!black, 
+<-, >=open triangle 90 reversed,
+shorten <= 1mm, shorten >= 1mm] 
+(divorce) -- (married);
+
+
+\colorlet{redbr}{red!60!brown}
+
+\draw [line width=1pt, draw=redbr!60, <->, 
+draw opacity=.6, double, >=Triangle,
+shorten <= 5mm, shorten >= 5mm, 
+bend left = 80] (John) to (Jane);
+
+\draw [line width=1pt, draw=redbr!60, ->, 
+draw opacity=.6, double, -{Triangle},
+shorten <= 1mm, shorten >= 1.5mm, 
+bend right = 17] ([xshift=-2mm]John.north) to 
+([xshift=7mm]married.south west);
+
+\draw [line width=1pt, draw=redbr!60, ->, 
+draw opacity=.6, double, -{Triangle},
+shorten <= 1mm, shorten >= 1.5mm, 
+bend left = 17] ([xshift=2mm]Jane.north) to 
+([xshift=-7mm]married.south east);
+
+
+\draw  [xscale=.5,
+draw=redbr!60, ->, 
+draw opacity=.6, double, -{Triangle},
+] ([yshift=2pt,xshift=3pt]John.north west) arc (180:10:30mm);
+
+\draw  [xscale=.5,
+draw=redbr!60, ->, %shorten >= 8mm,
+draw opacity=.6, double, -{Triangle},
+] ([yshift=2pt,xshift=-3pt]Jane.north east) arc (-10:180:30mm);
+
+\end{tikzpicture}
+\end{center}
+
+\vspace*{-1.5em}
+\label{fig:tangle}
+\end{figure}
+

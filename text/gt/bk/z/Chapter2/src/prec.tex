@@ -1,0 +1,545 @@
+
+\section{Personalized Medicine in the Context of Covid-19}
+\p{Within just a few months after Covid-19 became a global pandemic, 
+doctors and researchers were developing and experimenting with a 
+diverse range of treatments and remedies against SARS-CoV-2.  
+The treatments which were in some sense 
+tested or adopted include Monoclonal Antibodies, 
+remdesivir, dexamethasone and other steroids, anti-inflamatory drugs
+(such as tocilizumab and sarilumab), 
+convalescent plasma, baricitinib (a rheumatoid arthritis 
+drug for which Covid-19 is an off-label use), and 
+anti-malarial drugs (specifically chloroquine and 
+hydroxychloroquine).\footnote{\i{See} \bhref{https://www.mayoclinic.org/diseases-conditions/coronavirus/expert-answers/coronavirus-drugs/faq-20485627}.}
+These treatments, that is to say, were either approved (albeit 
+provisionally or \q{for emergency use}) by the United States \FDA{} and other 
+government agencies, pending clinical trials, 
+or reported anecdotally to be helpful in combating Covid-19.  In either 
+case they were relatively widely adopted in clinical settings.  
+More rigorous attempts to validate claims of any treatments' 
+effectiveness, however, have proven inconclusive (at least 
+as of mid-2021) --- certainly 
+no pharmaceutical or clinical intervention has demonstrated success 
+rates comparable to the first wave of vaccines that were approved 
+toward the end of 2020.  In short, every well-studied Covid-19 intervention 
+(other than vaccination) appears to be successful in some patients and 
+not others.  These mixed results generate questions of their 
+own --- what are the biologic mechanisms that 
+cause different treatments to play out differently 
+in distinct patient populations?}
+
+\p{Of course, it is possible that associations between 
+treatments and outcomes --- at least in the SARS-CoV-2 context 
+--- is driven mostly by random chance, or that treatments 
+are correlated to, rather than causative of, outcomes.  
+The Covid-19 mortality rate among hospitalized patients 
+appears on average to be less than 25\% (even though  
+over four million people worldwide have died from 
+the pandemic, as of summer 2021).  Accordingly, many people 
+even with serious cases of Covid-19 will recover just 
+via statistical distribution.  While it 
+is possible that treatments received in 
+hospitals account for some of the recovery rate ---  
+the mortality rate amongst hospitalized patients has diminished 
+over time, which implies that hospitals have become more 
+skilled in caring for Covid-19 patients and that treatment 
+plans have become more refined --- many 
+patients hospitalized for the disease might well have recovered 
+anyhow (even without additional pharmaceutical or clinical 
+interventions).  
+Given this interpretive uncertainty, it has been difficult 
+for researchers to definitively show that particular 
+treatments do in fact improve recipients' chances of 
+recovering from Covid-19.  Nevertheless, both observational evidence and 
+clinical trials suggest that a number of Covid-19 treatments 
+do have some positive benefits, even if not for all patients.}
+
+\p{This situation then leads to the question of why 
+particular treatments benefit some patients more than 
+others.  Such considerations are of scientific interest, 
+of course --- clarifying how drugs or other interventions 
+interact with the SARS-CoV-2 virus enhances our knowledge 
+about its infectious mechanisms and the progression of 
+Covid-19 --- but more immediately it is of clinical 
+interest, because doctors need guidelines on 
+when to administer which treatment(s) to which individual 
+patients.  Since no Covid-19 remedy (apart from vaccination) clearly 
+outperforms others under most circumstances, scientists have 
+attempted to study Covid-19 treatments with the goal of 
+giving doctors more detailed information to work 
+with when making these sorts of clinical decisions.  The overarching 
+project of a significant subset of Covid-19 research, 
+in short, has been to establish criteria allowing doctors 
+to predict which treatments are most likely to succeed 
+for individual patients, given details of their 
+immunological profile and prior medical history.}
+
+\p{In this sense the goals of Covid-19 research overlap with 
+methodologies that have been established in the context 
+of other research areas --- notably cancer and AIDS --- 
+under the general rubric of \q{Precision Medicine.}  
+As a field of research, Precision Medicine is focused on 
+the correlation between patient-specific biomedical details 
+and the likelihood that particular interventions will have 
+positive effects for particular patients.  In contrast to 
+conventional clinical trials, which consider patient-specific details 
+only at a rather coarse level --- merely observing obvious 
+data-points such as age, gender, and ethnicity --- precision-medicine 
+research attempts to curate a much more detailed picture of 
+patients' medical and sociodemographic profiles, either as 
+part of formal trials or as observational details in a clinical 
+setting.  Ideally, Precision Medicine is motivated by the 
+goal of analyzing patient-profile-to-outcomes correlations 
+not only retroactively (detecting statistical patterns in 
+prior outcomes) but also prognostically.  In effect, once a 
+particular sort of treatment has been identified as 
+especially favorable for patients with certain characteristics, 
+it is reasonable to project that future patients with similar 
+characteristics should be given similar treatments.  
+This intuitive and obvious point, however, masks empirical 
+and practical difficulties --- in particular, it is not 
+obvious how to quantify the notion that current patients 
+are \q{similar} to prior ones.  Indeed, one of the 
+provisional results of precision-medicine research thus far 
+has been to highlight how statistically significant points of 
+resemblance between patient profiles do not necessarily line 
+up with how we \textit{intuitively} group patients together by 
+visible factors such as age, race, or gender.}
+
+\p{In sum, Precision Medicine has been guided by the thesis that 
+compiling detailed patient-centered information can advance 
+clinical medicine by identifying which treatment options 
+are more likely to succeed for individual patients.  In the 
+context of Covid-19, both the diversity of legitimate 
+clinical interventions and the failure of any one 
+treatment to show unambiguous success for a broad spectrum of 
+patients point to the potential usefulness of patient-centered 
+approaches.  If doctors have detailed information about 
+Covid-19 patients' immunological profiles and 
+clinical history they can --- at least in theory --- make 
+informed decisions about which treatment options have a 
+higher probability of success.  Such predictions would 
+not be a matter of guesswork; instead, statistical analysis 
+of Covid-19 cases in the past, preferably backed by 
+Machine Learning, would detect correlations between 
+patient data and recommended treatments.  In effect, the 
+spectrum of possible Covid-19 interventions (antibodies, 
+steroids, convalescent plasma, and so forth) serves as a 
+natural classifier, grouping patients into clusters based 
+on pre-treatment profiles indicating that one or another 
+Covid-19 intervention has, with some probability, a good 
+chance of helping the patient.  Researchers have therefore 
+been seeking empirical clues for how to classify patients 
+into categories based on recommended treatment plans.}
+
+\p{We will examine in this chapter how the 
+goals of Precision Medicine have spurred scientists to propose 
+more sophisticated data-integration 
+and data management tools in the context of clinical trials 
+and biomedical laboratory investigations.  Aside from 
+opening new avenues for empirical research, the \textit{goals} 
+of Precision Medicine have spurred new ways of 
+thinking about the computational ecosystem which supports 
+biomedical research and clinical practice. 
+}
+
+\subsection{Precision Medicine as a Catalyst for Biomedical Data Sharing}
+
+\p{Precision medicine is based on the scientific realization that the effectiveness of a certain clinical intervention --- for instance, 
+immunotherapy as a cancer treatment --- is dependent on factors that 
+vary significantly between and among patients.  In the case of immunotherapy for cancer, assessing 
+the likelihood of favorable outcomes requires genetic, serological, and oncological tests which need to be 
+administered prior to the commencement of treatment.  
+Therefore, analysis of precision-medicine outcomes requires detailed 
+immunoprofiling --- building immunological profiles of each patient before 
+(and perhaps during/after) the immunotherapy regimen --- alongside 
+an evaluation of how well the patient responds 
+to the treatment, with the best outcome being 
+cancer remission or non-progression.}
+
+\p{The contemporary emergence of Precision  
+Medicine is driven, in part, by advances in diagnostic 
+equipment which enable immunological profiles to be 
+much more fine-grained than in previous decades.  This 
+level of patient-profiling detail enables granular three-way analysis 
+involving (1) patients' immunology; (2) treatment 
+regimens; and (3) clinical outcomes.  This three-way approach 
+has the goal of 
+identifying signals in immunological profiles that indicate 
+which therapeutic interventions are most likely to engender 
+favorable outcomes.  As with any statistical analysis, 
+predictive accuracy increases in proportion to the amount 
+of data available.  As such, further refinement of 
+precision medicine  
+depends in part on data aggregation: pooling a number of 
+observational studies where patients' immunological profiles 
+are described, in detail, alongside reports on treatment plans 
+and patient outcomes.}
+
+\p{Within the scientific research community, organizations such as the 
+Society for Immunotherapy of Cancer (\SITC{}) and 
+the Parker Institute for Cancer Immunotherapy (\PICI{}) 
+have developed 
+programs and tools to share immunotherapy research 
+data, which join older (but less cutting-edge) 
+projects, such as Cancer Commons or the \RSNA{} 
+(Radiological Society of North America) Image Share program.  
+In the Covid-19 population we are similarly 
+presented with multidimensional patient data.  
+Such information traverses 
+molecular testing to identify the virus's genetic material 
+or the unique markers of the pathogen itself; antigen testing 
+(albeit less accurate) to identify specific proteins found on 
+the outer surface of the virus; mapping the genomes of SARS-CoV-2 
+to learn how it mutates; analyzing blood samples for the presence/absence 
+of antibodies in response to a prior SARS-CoV-2 infection; using 
+high-dimensional flow cytometry to perform taxonomic breakdown of 
+patients into distinct immunotypes related to disease severity and 
+clinical parameters; profiling patients' immunological state prior 
+to the start of treatment and quantifying patients' immunological 
+response once treatment has begun; calculating plasma viscosity (\PV{}) 
+for detection of unusually high levels of fibrinogen --- 
+leading to atypical blood clots (that are refractory to 
+standard anticoagulant therapy); monitoring 
+cognitive, neurological, or cardiovascular  
+symptoms in \q{long haulers}; and so forth.}
+
+\p{One area where data-integration is significant for Covid-19 research 
+is that of protein biomechanics.  For instance,
+\cite{QiongqiongAngelaZhou} identifies  
+64 different proteins which are therapeutically 
+relevant to Covid-19.  Each of these proteins can be connected to molecular data, 
+bioassay information and, in many cases, to clinical 
+trials that test therapies where the specific protein acts as a 
+target for inhibiting SARS-CoV-2.  
+In combination, aggregating all of this information yields a
+heterogeneous (but interconnected) 
+data space, characterized 
+by data derived from multiple scientific disciplines and multiple 
+laboratory methods.}
+
+
+%\section{Overcoming Impediments to Data-Sharing Initiatives in Precision Medicine}
+%\subsection{Data-Sharing Solutions for Immunoprofiling/Immunotherapy and Covid-19}
+
+\p{Because biomedical diagnostic and investigative 
+laboratories need to use highly specialized software, 
+raw laboratory data is often excluded from data-sharing initiatives.  
+Instead, the information which is shared between 
+hospitals or research centers tends to be a simplified 
+overview --- adhering to standards curated by 
+groups such as  
+\OMOP{} (Observational Medical Outcomes Partnership) 
+Common Data Model or \CDISC{} (Clinical Data Interchange Standards Consortium) 
+--- skews more toward succinct summaries of diagnoses, treatments, and/or 
+outcomes.  Limitations in sharing more granular 
+diagnostic or prognostic data have been identified as obstacles diminishing 
+the value of data-sharing initiatives.  As one example, in a 
+paper discussing research  
+into the sequencing of immunoglobulin repertoires (Ig-seq), 
+\cite{SimonFriedensohn} comments: 
+
+\vspace*{.5em}
+\begin{displayquote}
+A major challenge when performing Ig-seq is the production
+of accurate and high-quality datasets [because] the conversion of
+mRNA ... into antibody sequencing libraries relies on a number of 
+reagents and amplification steps ... which potentially introduce errors
+and bias [that] could alter quantitation of critical 
+repertoire features. ... One way to address
+this is by implementing synthetic control standards, 
+for which the sequence and abundance is known prior to sequencing, thus
+providing a means to assess quality and accuracy.
+\end{displayquote}
+The underlying 
+problem in this context is how different laboratories may use 
+different techniques and protocols to achieve similar diagnostic/investigative 
+goals (\i{see also} \cite{LauraLopezSantibanezJacome}, 
+\cite{MarksDeane}, \cite{MartijnMVanDuijn}, \cite{YanlingWu}, 
+etc.).  Consequently, when data is merged from multiple hospitals, it is likely that 
+the raw data derives from different labs, which can lead to situations where  
+protocol variations across each site can introduce errors
+and bias that contaminate the aggregate data-sharing results.  
+(We should note that Ig-seq and related \q{repertoire sequencing} 
+is quite relevant to coronavirus immunology because 
+these techniques help quantify patients' immune response 
+to infection, which is consequential both for 
+explaining the differences between mild and severe 
+cases and observing the effectiveness of interventions 
+such as vaccinations or antibody treatments; 
+\i{see} \cite{KatjaFink}, \cite{AnastasiaAMinervina}, 
+\cite{ChristophSchultheiss}, \cite{NataliaTFreund}, \cite{JacobDGalson}, 
+\cite{AleksandraMWalczak}, \cite{CheMaiChang}, 
+ \cite{SupriyaRavichandran}, \cite{RishiRGoel}, 
+etc.)}
+
+\p{In the context of Covid-19, Shrestha \textit{et al.} 
+\cite{GentleSunderShrestha} argue 
+for \q{precision-guided studies} to be prioritized \q{[r]ather 
+than conducting trials using the conventional trial designs and 
+poor patient selection} (page 1).  To accomplish this, the authors 
+recommend \q{large multicenter trials} which incorporate 
+\q{predictive enrichment strategies ... to 
+identify and thus target specific phenotypes [patient-profile 
+characteristics], potentially raising the possibility of positive 
+trial outcomes.}  The underlying problem identified by Shrestha \textit{et al.} 
+is acquiring sufficiently large trial cohorts 
+in contexts where trials are to be targeted at 
+fine-grained patient populations with specific pre-treatment 
+immunological profiles.  This problem can be 
+ameliorated by merging prospective patients from 
+multiple institutions, such that concurrent trials spanning 
+multiple health-care settings can be launched as part 
+of a comprehensive approach to comparing treatment options.  
+Such large multicenter trials  
+can produce \q{large cohorts of patients in a shorter 
+time period} while also steering patients toward 
+more favorable treatment courses.}
+
+\p{In short, Shrestha \textit{et al.} 
+explicitly challenge the conventional wisdom which 
+assigns \q{gold standard} status only to \textit{randomized} 
+trials, arguing that the benefits of larger trial sizes 
+and quicker trial initiations outweigh whatever 
+statistical value is compromised by earmarking 
+patients into trials based on educated guesses as 
+to favorable outcomes (which is warranted by 
+patient-care ethics in any case).  The authors also  
+argue for a \q{robust data 
+infrastructure} which would combine the efforts of clinicians, researchers, 
+and data scientists.  In effect, aggressive data-curation would 
+substitute for double-blind trial design as a means 
+of ensuring the scientific value of trial outcomes.}
+
+\subsection{Software Alignment for Covid Phylogeny Studies}% across Multiple Populations}
+\p{The study of SARS-CoV-2 mutations is another area  
+where software alignment can prove to be important.   
+Analyses in 2020 suggested that variations in the 
+viral strain causing Covid-19 symptoms may be partly 
+responsible for divergent immunological responses to 
+the virus across the patient 
+population \cite{OsmanShabir}.  If one 
+patient 
+responds 
+either less favorably or more favorably than the average patient-response 
+to a 
+given treatment, clinicians need to assess whether this 
+difference can be explained solely by the patient's 
+prior immunological profile or whether the patient has 
+been exposed to a genetically divergent viral strain.
+In 2021, of course, predictions about SARS-CoV-2 mutations 
+came to pass, with at least four variants appearing to be 
+sufficiently dangerous (by virtue of their infectiousness 
+and/or lessened effectiveness of treatments or vaccines) 
+to undo progress which has been made against Covid-19 
+in many parts of the world.}
+
+\p{Comprehensive models of Covid-19 variants require a 
+combination of genetic, proteomic, anatomic, and 
+epidemiological information, because mutations can 
+only take hold if they modify the virus's morphology 
+and/or infectiousness in ways that are conducive to 
+that strain replicating.  The \b{delta} strain, 
+for example, which (as of mid-2021) has been the 
+most wide-spread mutation \cite{LizSzabo}, 
+carries a genetic variation (designated 
+as \q{\b{D614G}}) 
+which results in a denser 
+array of spike proteins, thereby reinforcing 
+the biomechanic pathway which the virus uses 
+to infect the host's respiratory system 
+\cite{BetteKorber}, \cite{AnwarMohammad}, 
+\cite{UtsavPandey}, \cite{LizhouZhang}, 
+\cite{DonaldJBenton}, \cite{ErikVolz}, 
+\cite{ShiZhao}, etc.}
+
+\p{Modeling SARS-CoV-2 evolution across the globe is a 
+massive project.  There have been over 200 million Covid-19 cases 
+worldwide (as of mid-2021), in virtually every nation on earth, so a 
+complete phylogenetic picture of SARS-CoV-2 in 
+humans would need to pool data from many different 
+healthcare systems.  Yet, even technically 
+detailed analysis of the phylogeny of SARS-CoV-2, such as that 
+conducted by Dearlove \textit{et al.} (as 
+reported at the end of 2020) 
+only considered 27,977 patients (about 0.1\% of 
+global cases), with almost half from the 
+United Kingdom \cite{BethanyDearlove}.  
+Hence, achieving something resembling a holistic picture of 
+SARS-CoV-2 mutations and how they might affect clinical 
+treatments, would require many parallel studies analogous 
+to that of Dearlove \textit{et al.}.}
+
+\p{This then raises questions of study alignment: calculating 
+viral phylogeny requires making technical decisions about how genetic 
+sequences should be acquired and analyzed, decisions which 
+may vary among research teamss.  
+For example, Dearlove \textit{et al.} describe several computational 
+steps which they had performed 
+both to normalize each SARS-CoV-2 genome sequence in their 
+data set for cross-comparison and to run predictive 
+simulations (used to estimate whether divergence between 
+sequence-pairs are the result of localized, random mutations or, 
+conversely, an indication that SARS-CoV-2 is evolving into 
+further distinct strains).    
+Clustering SARS-CoV-2 genomes into variants --- that 
+is, identifying which mutations are random and which 
+appear to be propagating to subsequent viral generations 
+--- involves making computational and biological 
+assumptions, such as how to statistically 
+marshal genomic data so as to quantify the prevalence of a 
+mutation, and how to estimate whether a particular mutation confers 
+an adaptive benefit to the viral agent (e.g., an 
+ability to elude antibodies targeting structural proteins).}
+
+\p{Given that modeling viral phylogeny requires 
+certain computational assumptions and biological 
+guesswork, data from multiple studies can only be 
+reliably integrated if there is some degree of 
+alignment across their methodology.  As such, 
+research teams should document their protocols 
+in a manner that permits assessment as to whether 
+protocol differences might compromise the 
+resulting data.  One way to achieve this is to 
+model the protocol itself as a data type in a 
+general-purpose programming 
+language (such as \Cpp{}, for sake of argument).  For each study, such as 
+Dearlove \textit{et al.} cited above, there would then 
+be a \Cpp{} object encapsulating details of 
+the researchers' protocols and computational workflows.  
+Protocol-alignment would in this context 
+be one part of a common framework to quantify the 
+epidemiological significance of SARS-CoV-2 mutations.}
+
+\p{In short, a holistic 
+global picture of SARS-CoV-2 must represent 
+SARS-CoV-2 mutations which have been deemed 
+phylogenically and/or clinically significant (i.e., having 
+potential either to influence the overall evolution of 
+Covid-19 and/or to have some bearing on clinical treatments), 
+and must \textit{also} represent divergent SARS-CoV-2 strains 
+carrying those mutations.   
+These data-points 
+are then be the basis of further details such as: 
+when did a given strain and/or mutation first appear?  Is 
+the strain/mutation geographically localized?  What is the 
+proportion of different strains/mutations in a geographic 
+area?  Is there evidence that different strains/mutations 
+affect a patient's immunological response to Covid-19 and/or 
+the effectiveness of vaccines, antibody regimens, steroids, 
+or other clinical interventions?  How can genetic mutations within 
+the SARS-CoV-2 virus be correlated with structures in the spike 
+proteins encoded by the viral genes?  This last question points 
+to the importance of integrating genomic data with \ThreeD{} molecular 
+models (\textit{see} \cite{WingerCaspari}, \cite{SandipanChakraborty}, 
+\cite{IvanMercurio}, \cite{AliFAlsulami}, \cite{SumanPokhrel}, 
+\cite{VictorPadillaSanchez}, \cite{FedaaAli}, for example).  
+Whereas data structures modeling the viral genome 
+are composed of nucleotides --- and, at a higher scale, Open Read 
+Frames (\ORF{}s) --- data structures describing the biophysics of 
+glycoproteins involve protein architecture and chemical 
+bonds \cite{LiangweiDuan}, \cite{AnshumaliMittal}, 
+\cite{XiuyuanOu}, \cite{GiwanSeo}, \cite{HanhTNguyen}, 
+etc.  Analyzing how 
+\makebox{SARS-CoV-2} genes 
+affect the production of glycoproteins, therefore, requires 
+annotating and cross-referencing nucleotide/\ORF{} data structures 
+with \ThreeD{} molecular models encoded in formats 
+such as \MOL{} or Protein Data Bank (\PDB{}) 
+\cite{YasunoriWatanabe}, \cite{YongfeiCai}, \cite{AlexandraCWalls}, 
+\cite{GennadyMVerkhivker}, \cite{CheolminKim}, etc.}
+
+\p{Object-Oriented models for genomic phylogeny analysis 
+have been presented in \cite{JoshuaBSinger} 
+(Java) and \cite{GuanghongZuo} (\Cpp{}), although 
+these do not provide object models to extend 
+from genetic information toward clinical, proteomic, 
+or imaging data.  We are not aware of Object-Oriented models 
+proposed as representational devices 
+for Covid Phylogeny in this more holistic and 
+interdisciplinary, but this form of 
+software design would be consistent with code 
+developed in contexts such as oncology, for 
+example the computational simulation of 
+tumor growth, which we will discuss in Chapter 4.  
+Covid-Phylogeny Object Models 
+could serve as a nexus for merging temporal and 
+geographical data concerning the epidemiology of \makebox{SARS-CoV-2} 
+mutations with genomic data demonstrating  
+which mutations are significant, as well as clinical 
+data tracking correlations between mutations and treatment outcomes.  
+Supporting multi-trial data integration would, therefore, 
+also introduce new requirements for clinical trial software, 
+which we discuss further next chapter.}
+
+\subsection{Personalized Medicine and Immuno-Profiling}
+\p{While some of the data related to immunological profiles 
+may be sociodemographic or part of a patient's medical history (fitting 
+nicely within conventional Clinical Research 
+Network models), contemporary 
+immunoprofiling is powered by 
+highly specialized diagnostic equipment and methods --- 
+which require special-purpose file formats and software.  
+For instance, one dimension of immunological profiling is \q{immune repertoire};
+the more robust a person's repertoire, the wider variety of antibodies they can produce to fight off pathogens.  Immune repertoire is often measured by studying genetic diversity in B-cells; in recent years, 
+this has been done using \q{Next Generation Sequencing} (\NGS{}), which produces files in formats 
+such as \FASTQ{}.  Another dimension of immunological profiling is quantifying the proportions of different sorts of blood cells in a patient's blood sample, which is typically done via Flow Cytometry or Mass Cytometry, yielding \FCS{} (Flow Cytometry Standard) files.  The immunological evaluations which are the goal of these methods are sometimes called Cell-Type Classification or \q{Automated Cell-type Discovery and Classification} 
+(\ACDC{}).}
+
+\p{As outlined in the below table (Figure~\ref{fig:tabl}), immunological profiles draw on a diversity of data formats and lab/data-acquisition modalities (this table is not intended to be a complete list of criteria or file formats, but rather to indicate the range of diagnostic technologies and data formats which are relevant to immunoprofiling).  This table hopefully indicates how immuno-oncology data sharing 
+is inherently more complex when compared to data-sharing 
+initiatives which focus primarily on 
+clinical outcomes --- such as  
+\OMOP{}, \CDISC{}, or the Patient-Centered Outcomes Research Network 
+(\PCORnet{}).}
+
+\input{table}
+
+\p{Formats such as the  \OMOP{} Common Data Model (\CDM{}), the \PCORnet{} \CDM{}, 
+or the \CDISC{} specifications promote data sharing primarily through 
+\SQL{}-style tables, where 
+data analysis and extraction can be achieved via conventional 
+\SQL{} queries.  The situation is very different, however, when 
+the data that must be exchanged derives from specialized hardware 
+and software, which demands special-purpose file formats, parsers, 
+and query engines.  This problem-space is accentuated 
+when preparing multi-site sharing that can span dozens of 
+hospitals, research centers, and/or laboratories.  
+Problems of cross-institutional data integration 
+will be analyzed further next chapter.}
+
+\p{Prior to that discussion, the following section 
+will examine in detail the file formats and data structures 
+which were briefly mentioned thus far in this chapter.  
+Our goal in this discussion is to document the 
+kinds of data which are endemic to different branches 
+of biomedical research.  A separate analysis --- one 
+which to some extent depends on first describing the data 
+formats involved --- concerns how to fuse multiple 
+data formats into a common overarching format, such as a 
+\q{Common Data Model of Everything.}  One recurring 
+theme we will encounter in the subsequent discussion is the 
+goal of merging certain data profiles into others 
+(e.g., \FCS{} into \DICOM{}), or else adopting 
+common interchange formats (such as \XML{}) in lieu of 
+domain-specific binary formats which demand 
+special-purpose parsers.  We will examine both the strengths 
+and weaknesses of proposals for adopting common formats 
+rather than idiosyncratic \q{legacy} formats that 
+are tied to particular laboratory methodologies for 
+historical reasons.  However, our main purpose in the 
+current discussion is to establish basic facts about 
+data formats in current use.  Later chapters will 
+analyze problems connected to the integration of these 
+formats into common data models.} 
+
+\p{Note also that the following inventory of biomedical 
+data formats is by no means exclusive.  In particular, we 
+have largely neglected antigen tests, biochemical assays, 
+and many other lab techniques which rely on chemical 
+reactions to obtain lab/diagnostic findings.  Our discussion 
+here is oriented more toward methodologies which require 
+relatively complex intermediate computational processing 
+to arrive at clinically useful findings.}
+
+

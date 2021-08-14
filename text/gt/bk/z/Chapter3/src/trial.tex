@@ -1,0 +1,534 @@
+
+\section{Precision Medicine in Trial Design}
+\p{\noindent{}Converting basic research to 
+clinical practice directly benefiting patients
+--- sometimes called \i{translational informatics},
+a \q{research cycle, which involves the translation of knowledge
+and evidence [to] provision of evidence-based care
+in the clinical or public health settings}   
+\cite[page 2]{PhilipROPayne} --- is sometimes 
+represented as a two-stage process which 
+first involves translating research to 
+clinical trials, and then formulating 
+point-of-care practices on the basis of trial 
+results (\i{ibid.}).  Data-sharing 
+initiatives need to pay particular attention to 
+the logistics of translational informatics in 
+contexts where granular patient-specific information is important, 
+such as immunoprofiling.  Questions which should be addressed include 
+(1) where data is to be hosted; (2) how participating 
+institutions should submit data to a central repository; 
+(3) how participating institutions and/or outside investigators 
+should access previously-deposited data; (4) how to 
+ensure anonymization of patient-specific records; (5) how to ensure 
+that different labs used by different hospitals are utilizing 
+compatible protocols, so that results from multiple labs/hospitals 
+can be seamlessly merged in a shared data commons; 
+(6) how to ensure proper alignment between software employed 
+at different institutions; and (7) how to incorporate data 
+curated within the context of a multi-institutional data-sharing initiative 
+into scientific papers documenting 
+research findings.  Each of these areas of concern 
+are technically demanding because of the complex and 
+heterogeneous nature of immunological profiles.}
+
+\p{As a case-study in clinical-trial software 
+engineering, consider again the proposals 
+in Shrestha \textit{et al.} \cite{GentleSunderShrestha} 
+which we reviewed last chapter.  As these authors 
+recommend, Covid-19 trials should be designed to focus on 
+specific patient groups which are more likely to benefit from the interventions 
+that form the basis of the relevant clinical trials.  Moreover, 
+toward the goal of applying precision medicine to Covid-19 clinical practice, 
+it should be possible to construct a quantifying domain of patient-profile signals
+(antecedent to trial commencement) 
+to quantify the statistical probability that a given treatment will have a 
+favorable patient outcome in relation to all the prior data in a patient's 
+profile.  Since researchers assume that 
+certain factors in a patient's profile 
+will be statistically correlated with favorable outcomes in conjunction 
+with specific treatment plans, part of the trial's purpose 
+is to determine which parts of the patient profile 
+are, in fact, statistically relevant.}
+
+\p{In practical terms, then, setting up Covid-19 trials would involve 
+defining patient-selection criteria and implementing systems to 
+screen for patients who may be good candidates for different trials.  
+This would require two steps: (1) constructing a format where trial criteria 
+can be rigorously notated; and (2) implementing software at 
+participating sites to search for trial candidates.  
+This software would need to access, represent, and analyze 
+patient-specific trial-eligibility factors that covering a 
+broad spectrum of data types (sociodemographics,  
+medical history, lab/image results, etc.).  
+Proposing an automated recruitment 
+engine for cancer trials, \cite{SaytaSSahoo} argued (in 2014) that
+
+\begin{displayquote}
+Many ... tools have been developed for accessing
+the institutional data warehouse to screen patients for clinical 
+trials or for creating an alert system for physicians ... 
+However, ... existing systems have limited access to the complete patient information, such as the latest laboratory test results, and are not integrated with the clinical systems used in routine patient care.  Further, existing tools have limited support for structured entry of trial information, interactive user interfaces (UIs) that allow clinicians to review the matching results and re-execute the matching process with updates to patient records.  [Although] there has been extensive research in creating formal, computable representation of eligibility trial specifications that can be used together with electronic representation of patient data in EHR systems [an] important challenge for computational representation of trial information is
+the lack of suitable interfaces for entering eligibility criteria. (page 2)
+\end{displayquote}  
+\noindent{}Ten years earlier, \cite{JohnSMcIlwain} advocated 
+for trial models \q{focused on interoperability, using modern object-oriented techniques} (page 3):  
+\begin{displayquote}
+Object-oriented software ... is
+more reliable because fewer software code changes are required as one's needs evolve; and, therefore, more 
+changes can be made without effectively changing the core structure of the 
+application ... The difference between object-oriented software and traditional software is substantial. (page 6)
+\end{displayquote} 
+\noindent{}However, he concludes, \q{Very few CTMS products are object-oriented.}  
+Both \cite{SaytaSSahoo} and \cite{JohnSMcIlwain}, we should 
+note, are not neutral observers, but writing to highlight 
+features of software their own teams designed.  Whatever 
+the merits of their systems, these design principles have not 
+apparently been incorporated into mainstream \CTMS{} 
+in intervening years.}
+
+\p{Given the sheer scale of the SARS-CoV-2 pandemic, 
+there are likely to be many candidates for almost any Covid-19 
+trial.  However, methods for recruiting patients would 
+need to be aligned across multiple institutions, at 
+least in the case of multi-site trials.  For example, in the 
+context of antigen tests (measuring virus antibody levels) 
+the US Centers for Disease Control recommends 
+or has authorized a large list of 
+assays performed by many different companies, using 
+many different biochemical 
+methods.\footnote{\textit{See}, for example, 
+\bhref{https://www.fda.gov/medical-devices/coronavirus-disease-2019-covid-19-emergency-use-authorizations-medical-devices/vitro-diagnostics-euas\#individual-antigen}.}
+Because the data format resulting from immunoassays depends 
+on the specific biochemical mechanism which (within each 
+assay) yields quantitative data, a broad spectrum of 
+antigen tests requires a diverse array of data formats 
+which need to be integrated.  As such, whenever 
+Covid-19 immunoassays are considered 
+as factors in immunological profiles for mapping 
+patients to appropriate Covid-19 clinical trials, querying for good 
+trial candidates means querying across a 
+wide spectrum of structurally different data types that 
+correspond to this broad array of antigen tests --- specifically 
+to the mechanisms through which laboratory instruments generate 
+quantifiable data and to the computational procedures which process 
+such data.  Here is an example of why specialized trial software 
+can be warranted: the heterogeneity of trial data, 
+may call for 
+integrative procedures implemented directly 
+in programming languages such as \Cpp{} 
+(rather than query languages such as \SQL{}).  
+The complexity of trial criteria was a motive 
+for the software-based \CTMS{} systems we cited 
+earlier; Covid-19 serves as a trenchant case-study 
+supporting recommendations along those lines 
+(\i{see also}, say, \cite{LiMinLiu}, 
+\cite{CrengutaBogdan}, \cite{MichaelSouillard}, 
+\cite{CanhamOhmann}, 
+\cite[especially pages 20-29]{KrisVerlaenen}).}
+
+
+\subsection{Customizing Clinical Trial Management Software}
+\p{Once trials embrace heterogeneous data models
+(which require special-purpose software for accessing 
+some of the trial data),  Clinical Trial Management Systems 
+(\CTMS{}) requirements become 
+more complex.  In these situations, \CTMS{}s may need 
+to model and in some cases replicate complex computational 
+workflows, such as those employed by Dearlove \textit{et al.} 
+for calculating SARS-CoV-2 genomic sequences from patients' blood samples.  
+The \CTMS{} software may also need to interoperate 
+with domain-specific applications, as in bioimaging and 
+image analyses, signal processing (e.g., for \EKG{} analysis), 
+Flow Cytometry, biochemical assays, genomic analysis, 
+epidemiological modeling and so forth.  If possible, such 
+applications should be configured or extended to work 
+with the clinical trial software.  For instance, if a \DICOM{} 
+(Digital Imaging and Communications in Medicine) client 
+is used to study an image derived from a specific trial 
+--- e.g., a radiological scan of a Covid-19 patient's lungs 
+--- the \DICOM{} software could be provided with a plugin 
+that would show trial information in a separate window, 
+which could then be juxtaposed with the main-image 
+view.    
+In this context, software alignment means that 
+all institutions participating in a trial could use 
+the \textit{same} plugins, so that the trial's central 
+\CTMS{} system could interoperate with special-purpose 
+software in a consistent manner.  This would also 
+aid in establishing, as part of the trial design, 
+protocols for depositing special-purpose data assets  
+(such as \FCS{} or \DICOM{} files) alongside 
+clinical data and \eCRF{}s.}
+
+\p{A further benefit of \CTMS{} customization is that 
+custom software adds flexibility for trial design.  
+By definition, trials allow researchers to test 
+biomedical hypothesis in a controlled manner.  
+Trials are, therefore, defined around the premise that 
+observational information resulting from the trial 
+is empirically significant, revealing something new 
+about what the trial was designed to investigate.  
+For instance, a Covid-19 trial might assess how 
+well patients with varying prior immunological 
+profiles respond to monoclonal antibody (\mAb{}) treatments.  
+The relevant observations in this case derive from 
+the subsequent course of the disease for each 
+patient, as well as potential adverse reactions, but there are  
+inherent complicating factors: were patients receiving other 
+treatments as well?  For patients who recover, how do 
+we know that the antibodies expedited that recovery? 
+How quickly was the recovery?  And, did patients continue 
+to suffer from Covid-related symptoms even when they 
+were no longer infectious?  Situational details specific to the trial ---  
+such as each patient's \mAb{} dosage level, 
+prior Covid-19 risk factors, or viral-load change 
+over time --- also belong in the trial's unique 
+data models.  Moreover, a comprehensive investigation could well incorporate both 
+information about the patient's unique immunological profiles and the 
+nature of the SARS-CoV-2 variant/strain found in the patient.}
+
+\p{In addition, customizing trial-management software 
+has the added potential benefit of greater 
+flexibility for incorporating personalized/patient-centered 
+data into the overall trial results.  Since patients'  
+reactions to interventions are difficult to anticipate in 
+full specificity ahead of time (especially when subjective 
+experience is taken into account) allowing data 
+models to evolve during the course of a trial 
+can help trial designs respect the experiential 
+dimensions intrinsic to patient-centered 
+paradigms of care.}
+
+\subsubsection{Toward Fine-Grained Sociodemographic Models}
+\p{Patient-centric data could likewise include sociodemographic information 
+about the patient, supplemented by epidemiological 
+metrics, such as contact tracing.  Designers need to identify, 
+for example, what dimensions of patients' immunological 
+and sociodemographic profiles are likely to be 
+consequential when analyzing treatment outcomes 
+(indeed, biomedical research has been criticized 
+in recent years for bias
+toward certain populations, e.g., white, middle-class non-seniors).  
+This results in
+uncertainties as to how well trial results carry over to populations at large --- 
+that is, populations characterized by a heterogeneous mix of demographic factors. 
+Researchers can mitigate these concerns by demonstrating 
+sociodemographic diversity among trial participants. 
+Those goals, along with more precise predictive 
+analytics, could be advanced by adopting 
+more detailed sociodemographic reporting 
+standards \cite{AaronMOrkin}, \cite{MarittKirst}, 
+\cite{ShelbyMeyer}, etc.}
+
+\p{Demonstrating sociodemographic 
+diversity, however, 
+calls for transparency about how sociodemographic 
+details are represented.  The process of grouping 
+patients into ethnic/racial and/or socioeconomic 
+strata can be equivocal at times.  For example, if a trial 
+participant is a graduate student at the University of 
+Chicago, should their socioeconomic status be assessed 
+on the basis of their own income or that of their parents?  
+If their zip code places them on 
+the South Side of Chicago, a region with both a prestigious 
+campus and pockets of extreme poverty, should they be 
+demographically classified alongside residents 
+of that neighborhood?  What about a varsity linebacker 
+who appears to be in excellent health before a Covid-19 infection?  
+Should his status as an athlete be taken to indicate 
+being extremely fit prior to the disease, or might 
+his background as a football player intimate a potential history of 
+brain trauma which may compound his neurological damage due to 
+Covid-19?}
+
+\p{In short, sociodemographic data can
+be notoriously imprecise. It is well-known that patients of lower socioeconomic status have higher Covid-19 infection rates and mortality rates than 
+patients of higher socioeconomic status,
+but this disparity may
+be explained by several causal factors: more infectious workplaces, inferior post-infection treatment, poorer state of health before the onset of Covid, and so forth.  
+Teasing apart these factors demands fine-grained
+analysis of the individual patient's 
+pre-Covid history; sociodemographic generalizations can exclude
+important details. For example, for purposes of analysis, in the case of a graduate student with
+middle-class parents but no health insurance of their own, how should we quantify their degree
+of access to health care? How well does geographic location serve as a proxy for socioeconomic
+status?}
+
+\p{The case of a middle-class student living in a well-off near-campus corner of an otherwise
+impoverished neighborhood suggests that geospatial metrics (such as zip code or congressional
+district) are imperfect proxies for wealth; but other factors --- such as air/water pollution or the
+risk of being the victim of a crime --- may be statistically correlated among geographically proximate
+residents even if they have otherwise divergent sociological profiles.
+These examples illustrate that the value of sociodemographic data is proportionate to the level
+of statistical detail with which the data may be analyzed.  Instead of a broad and vague designation, such as \q{low income,} one may want 
+to derive more detailed subclasses, incorporating
+information about patients' employment, access to health care, physical fitness, and so forth. Two
+patients with similar income levels, for instance, may have different 
+levels of access to health care 
+(depending
+on factors such as whether the patients have employer-based insurance or geographic proximity
+to healthcare facilities) or different levels of exposure to 
+Covid-19 in the workplace, depending on the nature of their job.
+Even if a trial does not quantify 
+granular sociodemographic assessments --- such as patients' 
+workplace conditions and access to health care, which might 
+serve as a more accurate  
+estimation of how socioeconomic status causally affects 
+disease outcomes --- subsequent researchers may determine 
+ways to analyze or add on to data generated by a trial (e.g., 
+through follow-up studies of enrolled patients), 
+so as to make such sociodemographic 
+granularity part of the quantifiable framework.}
+
+\subsubsection{Measuring Cognitive and Neurological Effects}  
+\p{Similar interpretive issues of interpretation also apply to post-treatment 
+observations.  How should researchers decide which observations 
+qualify as clinically significant 
+consequences of Covid-19?  
+We have seen that as the pandemic has unfolded, 
+a fair number of cases have been cited in the professional literature 
+describing Covid-19 patients who suffer certain
+cognitive/neurological effects, such as muscular fatigue or weakness, 
+mental confusion or poor concentration (sometimes referred to as \q{brain fog}), 
+or symptoms of Guillain–Barr\'{e} syndrome spectrum. 
+Almost certainly, some 
+of these symptoms may be the product of cognitive/neurological effects due 
+to SARS-CoV-2.  
+At the same time, Covid-19 patients --- 
+even those who fight off the infection 
+successfully or who test positive but remain asymptomatic
+--- may find their lives so disrupted by the pandemic 
+that this may (indirectly) cause cognitive and neurological problems.
+For instance, prolonged inactivity 
+(for a typically active person), which commonly occurs as the result of  
+a quarantine, may contribute to poor concentration and other 
+diminished forms of mental acuity \cite[say]{SoniaDifrancesco}.  
+Given the fact that most 
+people's lives during the pandemic are not \q{normal,} 
+it may be difficult to establish 
+which symptoms experienced by a patient are actually biological effects of
+the disease itself or, alternatively, 
+indirect consequences of  
+lifestyle restrictions.  
+This sort of ambiguity also applies to potential adverse 
+side-effects of Covid-19 treatment.  
+Rigorous design practice suggests, for instance, 
+that parameters should be established framing the post-treatment 
+and post-recovery window of time where patients' symptoms might be noted as 
+potential effects of the disease or of the administered therapies 
+themselves.  How long after
+a treatment is administered should a patient's 
+symptoms be considered potential side-effects of
+the therapy itself or, alternatively, the result of 
+nagging uncertainties and a 
+disrupted lifestyle imposed by the pandemic?}
+
+\p{The fact that these questions have no predetermined answers indicates 
+that trial designs need to anticipate a shifting clinical and 
+information landscape ad the trial evolves.  
+For example, because SARS-CoV-2 was initially believed to  
+affect lung functioning primarily, the risk of long-term 
+cognitive/neurological damage was not widely anticipated when 
+considering treatment over the course of Covid-19 infection.  
+Consequently, because tests of a cognitive/neurological/physiological/radiographic 
+(except for basic lung scans, with respect to radiology) 
+had not been a common facet of early Covid-19 trials/observational 
+studies, there were no 
+corresponding data structures included in those studies for capturing this full spectrum of neuropsychological and neurological data.}
+
+\p{Systematically tracking Covid-19's 
+cognitive/neurological deficits entails neurological, laboratory, neuropsychological and radiographic tests to understand the full extent of their cognitive and neurological impairments. For example, the use of
+\MRI{}s when considering Covid-related ischemic  
+stroke \cite{RossWPaterson}, \cite{FifiMocco}, 
+the use of electrophysiological tests, cerebrospinal 
+fluid tests (\CSF{}), or the \MRC{} 
+(Medical Research Council) Scale for muscle-strength test when considering 
+Covid-related 
+Guillain-Barr\'{e} symptoms \cite{SamirAbuRumeileh}, 
+or the use of neuropsychological tests, such as Trail Making Test 
+(\TMT{}), Sign Coding Test (\SCT{}), 
+Continuous Performance Test (\CPT{}), and Digital Span Test 
+(\DST{}) --- which measure a patient's executive abilities (letter and number recognition mental flexibility, visual scanning, and motor function) and sustained and selective attention, along with other cognitive and neurological functioning --- when considering 
+cognitive/neuropsychological impairments after a serious bout with 
+Covid-19 \cite{HetongZhou}.}
+
+\p{These cognitive, neurological, physiological, laboratory, 
+and radiographic data 
+structures thereby become 
+an integral part of the information relevant to trial evaluation, 
+because they document symptoms 
+which are presumptively attributable to Covid-19.  
+However, in practice, prior to clinicians having been alerted to 
+the fact that Covid-19 
+may cause lingering cognitive/neuro\-logical damage, %physiological or neurological data 
+Covid-19 trials were not designed to 
+incorporate neurological or cognitive 
+data in a systematic manner.  This scenario points to how 
+trial data models can benefit from 
+a built-in capacity to be redesigned while the 
+trial is ongoing, so as to accommodate new and emerging 
+information.  On this basis it is reasonable to 
+adopt for clinical trials malleable information models such as 
+graph databases and/or Object-Oriented software 
+components.}
+
+\subsubsection{Aggregating Trial Data via Graph Models}
+\p{A useful data-integration case-study is the University of Pennsylvania's Carnival project (which achieves 
+data integration by adopting property-graph databases, illustrating 
+the flexibility of graph models in a way that we can 
+also apply to trial design).  Carnival synthesizes heterogeneous biomedical data  
+by translating information from disparate sources into a common 
+property-graph representation and then querying this 
+data with the Gremlin Virtual Machine.  Gremlin is a 
+\q{step-based} virtual machine where \q{steps} between 
+potential focus elements in a property graph play the role 
+of primitive processing instructions; querying and traversing 
+property graphs involves executing a series of Gremlin 
+steps.
+%\footnote{The theoretical foundations of step-based Virtual Machines 
+%are presented in Marko Rodriguez, 
+%``Stream Ring Theory,'' February 14, 2019 (\bhref{https://zenodo.org/record/2565243#.X3vzqS4pDeQ}).} 
+Most Gremlin implementations are based on the Java programming language and 
+the Java Virtual Machine 
+(\JVM{}), so that queries 
+themselves are written in a \JVM{} language (Groovy, in the 
+case of Carnival).  The challenge 
+for any database engine which employs a relatively complex data-representation 
+strategy --- such as a hypergraph, property-graph, tuple-store (a 
+collection of records with varying numbers of fields) or a multi-dimensional 
+(possibly sparse) array --- is to efficiently map 
+the high-level data structures manipulated within the database itself 
+to the lower-level memory units which are stored to disk.  Lower-level 
+data structures are typically modeled via simpler database constructions 
+such as key-value stores, memory cells, or relational tables, 
+so there must be a translation pipeline between high-level 
+structures (properties, hypernodes, hyperedges, and so forth) and low-level   
+points (record cells, shared memory address, elements in key-value pairs, etc.)}
+
+\p{Consider how patient profiles usually notate the 
+medications each patient is taking --- any patient (a node) could in principle be 
+connected to any medication (another node); some patients 
+may be taking \textit{no} medications, others may take just \textit{one}, and some may  
+take \textit{two or more}.  Also, connections between patients and medications 
+can be the basis of further details that emerge over time 
+(and are registered in the graph) inasmuch as medications are prescribed 
+to patients by a specific doctor at a specific time, in a specific 
+dosage, in response to specific diagnostic tests, and so forth.  
+In short, information can \q{fan out} from the patient-to-medication 
+connection in a relatively free-form manner.  In general, then, as a 
+subset of overall patient profiles, information about 
+medication evinces the structural features which are, in many 
+contexts, optimally represented via free-form labeled graphs.    
+Meanwhile, patient profiles may also 
+consider medical history, which can be modeled as a graph with detailed 
+logical and temporal inter-node connections.  According to this 
+representational strategy, each patient's history is a series of 
+events and observations which are temporally ordered --- it is 
+possible to query or traverse the graph in a manner which takes 
+before/after relations 
+into account --- and where there are also logical or causal connections 
+defined between nodes.  For instance, an edge might assert that 
+a given medication was prescribed to a patient (an event) \textit{because of} 
+the results of a given lab test (an observation).  In these examples, different sorts of clinical data --- sociodemographic, 
+pharmacological, medical-history --- are modeled according to different 
+sorts of graph structures (hypernodes, nonschematic labeled edges, temporalized 
+graphs, and so forth).}
+
+\p{Insofar as different formations within data-structures 
+tend to be conveyed via different graph-database constructions, 
+the partition of graph-database technology itself 
+into competing (partially incompatible) systems 
+(distinct architectures, query languages, query-evaluation 
+strategies, and so on) can also be a hindrance 
+to data-integration, even after adopting flexible 
+graph-database technologies.  This is one motivation 
+for the hybrid graph models we discuss in later 
+chapters, which attempt to recognize numerous 
+structuring elements endemic to different flavors 
+of graph systems, accommodated into a single hypergraph-based 
+query framework.}
+
+\subsection{Representing Trial Data via Object Models}
+\p{As a concrete example of open-ended data-integration 
+concerns being anticipated as a central element of 
+trial design, consider how Object-Oriented models 
+for Covid Phylogeny (which we briefly considered 
+last chapter) could serve as a nexus for integrating SARS-CoV-2 phylogenetic 
+data across multiple studies and healthcare systems.  
+Such an Object Model may be extended in different 
+ways for different clinical trials examining a range 
+of Covid-19 treatments.}
+
+\p{In the context of antibody regimens, 
+for instance, scientists need 
+to quantify how well the antibodies disable 
+Covid-19 spike proteins directly and/or 
+how well the antibodies block 
+the virus's ability to attach to human cells.  These measurements 
+generate data which gauge a patient's 
+immune response to Covid-19, 
+whether innate (\q{naive}) or boosted by the 
+administered antibodies.  Researchers 
+have mined such data from different angles, 
+including contrasting symptoms presented 
+with different levels of severity \cite{ZacharyMontague}, 
+\cite{YonggangZhou}, biochemically describing 
+the mechanisms of immune response so as 
+to augment or simulate that response via 
+monoclonal antibodies or similar antiviral 
+therapies \cite{PingpingWang}, \cite{YaoQingChen}, 
+identifying 
+factors explaining act-risk groups' 
+greater susceptibility to severe cases 
+\cite{LisaPaschold}, or comparisons of SARS-CoV-2 against 
+other coronaviruses \cite{TeresaAydillo} 
+(these citations are representative examples 
+of work conducted by many research groups; 
+they could be expanded with similar references 
+we included in Chapter 2 when discussing 
+immune repertoires, for example).   
+  %\cite{}, 
+  %\cite{PingpingWang}, 
+  %\cite{TeresaAydillo}, .
+A Covid-19 software ecosystem 
+should then ensure that such immune-response 
+data can be effectively parsed and integrated into Object Models 
+describing how SARS-CoV-2 is evolving around the 
+globe, so researchers (as much as logistically feasible) 
+could track each patients' immune response in light of their particular acquired 
+SARS-CoV-2 strain/variant and their personal immunological 
+profile.  The relevant information for geospatial and 
+sociodemographically tagged studies would then include 
+patients' prior immuno-profiling and risk assessment, 
+immune response (naive or affected by treatment) and 
+clinical outcomes, as well as genetic 
+tests for the viral variant.  Cross-sectionally 
+mapping such data geographically and along 
+sociodemographic/socioeconomic contours could 
+provide a holistic picture of the pandemic 
+at a global scale.}  
+
+%, and to competently track both current and 
+%emerging SARS-CoV-2 strains throughout the population.}
+
+
+\p{Object Models intended to facilitate such 
+globally-scoped data integration could then facilitate trials designed 
+according to the protocol proposed by Shrestha \textit{et al.}, 
+discussed above, where each trial would study a 
+preselected (non-random) cohort of patients 
+for whom both pre-treatment immunoprofiling data and post-treatment 
+outcomes data would be available, so as to compare multiple trials 
+against one another.  Object Models customized for each trial 
+would generate a data framework through which 
+the causal relations between patient profiles and treatment 
+outcomes would be investigated.  Customized trial software 
+would, accordingly, provide a Reference Implementation demonstrating 
+each trial-specific Object Model.  If adopted for multiple trials conducted 
+across multiple clinics/hospitals, trials' 
+data models may help doctors better understand which 
+aspects of patient profiles are particularly 
+significant when matching Covid-19 patients to the most 
+salutary treatment.}  
+

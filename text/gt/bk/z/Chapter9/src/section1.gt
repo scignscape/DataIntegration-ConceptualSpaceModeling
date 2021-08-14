@@ -1,0 +1,862 @@
+`section.Verb-Centric Grammars and Information-Delta Paths`
+
+`p.
+Our Syntagmatic Graph approach assumes a specific 
+reading of Coecke `i.et al.`/'s syntax-semantic 
+interface theory, albeit (we `cobel<would argue>;) one which 
+seems well-motivated by their specific text 
+(and moreover is sufficiently general as to 
+be applicable in a variety of contexts): 
+paths in Syntagmatic Graphs (or analogous 
+syntax-representing structure/spaces) 
+map to `q.semantic` paths `i.characterized 
+by an increase in information content`/.  
+Each step along a Syntagmatic path 
+is mirrored by a correlative step 
+%-- whose nature is fixed by the underlying 
+syntactic neighborhood (this is precisely 
+the dynamics of grammatical principles; 
+a language's syntactic system should 
+carry enough determinateness that 
+syntagmatic steps, e.g. between word-pairs, 
+impute semantic modifications in a 
+well-determined way) %-- a 
+semantic `q.space` culminating in 
+a sentence's overall meaning (which is the 
+end-point of a semantic path, corresponding 
+to a sentence's root verb as the end-point 
+of a syntactic path).`footnote.
+Here we continue the analysis developed 
+in the first section of Chapter 6; we
+defer to that chapter for definitions 
+of nonstandard terms. 
+`footnote`
+`p`
+
+`p.
+Semantic paths 
+should follow syntagmatic paths fairly 
+predictably %-- that is, for a given 
+syntagmatic step, there should not be a 
+multitude of noticeably different semantic 
+steps which are all possible correlates 
+of the syntagmatic step according 
+to the language's syntax-semantics interface 
+(semantic steps which are underdetermined 
+would result in large-scale sentence-level 
+ambiguity).  On the other hand, 
+`q.points` and `q.steps` in semantic space 
+should not be pictured in too crisp a manner; 
+the full meaning of a sentence only emerges 
+in its entirety, and there may be degrees 
+of detail which remain unresolved while the 
+sentence is unfolding (for instance, postcedent 
+anaphoric resolution, as in `i.they` to 
+`i.England` in `i.although they were playing in 
+London, England lost the 2020 final`/).  
+Syntagmatic steps should `q.compel` paths 
+in semantic space, but not too rigidly; 
+this interplay between syntax and semantics 
+creates a dynamic environment where syntactic 
+norms (and lexical specificity) evolve 
+toward the proper balance of rigor and 
+flexibility.  Or at least, this is a plausible 
+working model of the syntax/semantics interface.  
+`p`
+
+`p.
+Assuming some form of this hypothesis 
+is in effect, we can picture `q.paths in 
+semantic space` as the `i.image`/, under 
+certain (not-fully crisp) mappings between 
+syntactic and semantic systems, of 
+syntagmatic paths.  In our proposed 
+Syntagmatic Graph model, syntagmatic paths 
+are characterized by the structural 
+tendencies of the underlying graph 
+(in particular they are constrained 
+to lead toward verbs/procedure-nodes 
+except via specific `q.hinge` nodes or edges), 
+and semantic paths via the general 
+stipulation that movement along 
+the path corresponds with amplification of 
+information content.  The overall syntax-semantics 
+interface then ensures (and evolves to 
+satisfy the need for) these two 
+path-tendencies to operate in parallel.  
+Syntagmatic steps toward verbs/procedures 
+should correlate with amplificatory 
+steps in a semantic space permeated by a 
+measure of information content, and vice-versa.  
+`p`
+
+
+`p.
+This picture, while intuitively compelling (we `cobel<suggest>;), 
+leaves quite open-ended any specification of 
+what the parameters of `q.semantic space` actually are.  
+Coecke `i.et al.` address (what appears to be) an 
+analogous issue by examining the interpenetration 
+of Conceptual Spaces.  It is helpful (even if just as 
+a mental figure) to picture `q.semantic space` as a 
+space with points and regions, and Conceptual Space 
+theory legitimates such a picture, because 
+according to this theory many concepts can indeed 
+be given geometric form, in terms of 
+domains and dimensions which possess at least some 
+quantitative characteristics (e.g., the optical 
+mathematics of colors, or the mereotopological 
+interpretations of spatial terms such as 
+`i.near`/, `i.over`/, `i.across`/, `i.around`/, 
+`i.inside`/, `i.alongside`/, etc.).  Coecke 
+`i.et al.` try to generalize this picture by 
+arguing that (albeit extended to more abstract 
+forms of quantifiability, e.g., the 
+similarity of an object to a prototype) all 
+concepts can be expressed, via suitable 
+choices of dimension, in `i.some` geometric 
+terms, so we have a basis for modeling 
+concept-combinations in general as unions 
+and intersections between quantifiable spaces.  
+Such generalized spaces therefore provide 
+us with territory on which to define 
+the general notion of `q.semantic paths` 
+which (even if different terms are 
+used) are the central facets 
+of analyses explaining how syntactic 
+form engenders semantic meaning.  
+Once we have a rigorous model 
+of semantic space, we can develop a 
+theory of semantic paths mirroring 
+(what we are calling) Syntagmatic 
+paths.
+`p`
+
+`p.
+Since we have argued that paths follow 
+`i.directions of increase` in 
+`i.information content`/, we will 
+use the generic term `q.information 
+delta` to designate the degree 
+and qualitative facets of such 
+amplification %-- `i.why` does 
+information elevate along a path 
+and `i.how much`/.  Clarifying 
+information delta along 
+`q.paradigmatic paths,` or paths
+in `i.semantic` space, we claim, 
+furnishes a starting point for 
+explaining how `i.syntagmatic 
+paths` engender (in the sense 
+of mostly-unambiguously determining) 
+semantic constructions.  This 
+dynamic can be observed in both 
+natural and programming languages. 
+We will devote the majority of 
+discussion to the latter case, 
+but we will motivate our 
+analysis with a brief review 
+of the natural-language case.  
+This provides us an opportunity 
+to summarize a natural-language 
+theory for Syntagmatic Graphs 
+that was alluded to (but postponed) 
+in Chapter 6.
+`p`
+
+
+`p.
+Conventional Conceptual Space theory usually 
+talks about `q.regions` more than `q.paths.`
+For example, the `q.blend` of two concepts 
+represents the intersection of regions 
+where the two concepts share similar 
+dimensions (e.g. `i.dark red` or `i.shiny red` 
+represent combinations of color and/or optical 
+properties, which generally share dimensions and 
+therefore yield mixtures that reduce the scope 
+of applicability; `i.dark red` is more specific 
+than either `i.red` alone or `i.dark` alone) 
+as well as the union of dimensions which 
+are not shared (e.g., `i.red square` defines a 
+concept whose dimensional boundaries include 
+both spatial-configuration and color-optical 
+domains).  Implicitly, Coecke `i.el. al.`/'s 
+insight is that anywhere we have enough 
+space-like structure (or, say, topos-like 
+structure, since in their context we 
+are working in a Categorial framework) to 
+define `i.regions` (as in the `Gardenfors; 
+`q.concepts are convex regions`/) 
+then we also have enough structure to 
+consider `i.paths`/, and whereas concepts 
+are `i.regions` in that `q.space,`
+paths are `i.meanings` in the space, derived 
+from language-like artifacts (structures with 
+a grammar), in the sense that the 
+meaning of a whole corresponds with a path end-point, 
+and the meanings of parts correspond to 
+path segments.        
+`p`
+
+
+`p.
+A general notion of `q.Semantic Space` accordingly 
+has to serve several theoretical goals: accounts 
+of semantic `i.regions` should buttress theories 
+of concepts, while `i.paths` should be 
+analytically associated with `q.meanings` 
+`i.under the assumption` of a syntax-semantic 
+interface where syntactic rules govern 
+how syntagmatic steps compel semantic steps.  
+Tying these two ideas together, 
+paths in semantic space tend to 
+integrate multiple concepts (correlative 
+to syntagmatic paths visiting tokens 
+which encode those concepts), 
+so `i.red square` iconifies a step defined 
+via syntax (adjective modifying noun), a 
+step in some semantic space (arriving at 
+the idea of a red square, which can
+then be plugged in to more general semantic 
+context), and a blend of two concepts 
+(the merged idea carries concepts of 
+both `i.redness` and `i.squareness` into 
+the contexts where it is used).  
+Conceptual Space theory has tended to 
+gravitate toward blending 
+scenarios where concept-juxtapositions 
+`i.narrow the scope` of each concept: 
+`i.dark red` is narrower than `i.red` 
+alone because `q.dark` filters our some 
+red shades.  Likewise `i.red square` 
+is also a kind of narrowing %-- even 
+though `i.red` and `i.square` do not 
+restrict one another within common 
+dimensions (although their dimensions 
+are not entirely separate, since 
+both involve a minimal sense of 
+spatial `i.location` even if not spatial `i.region`/)
+%-- because `i.red square` 
+can only be predicated of something 
+with both spatial configuration and 
+optical properties (not `i.red light`/, 
+say).  It may be intuitively natural 
+to highlight such `q.narrowing` effects 
+of concept-combinations due to the 
+overarching theoretical program 
+wherein semantic paths converge to 
+precise meanings: if each successive 
+step combines two concepts, 
+then paths which are chains 
+of such steps evice greater 
+conceptual precision.  On that 
+intuition, the examples of 
+Conceptual Spaces generating 
+narrowing effects from concept-juxtapositions 
+would seem like especially important 
+case-studies for the general project 
+of using Conceptual Spaces to define 
+`q.semantic` space in general. 
+`p`
+
+
+`p.
+This chapter will argue, however, that 
+concept-blend analyses are of only 
+limited value for either natural or 
+formal languages, and will instead 
+focus on issues such as `i.conceptual roles` 
+and `i.dimensional analysis`/, which 
+will integrate the data-modeling 
+applications of Conceptual Space theory 
+with the linguistics-oriented themes 
+of the last few paragraphs.  
+In particular, we will 
+continue the discussion of 
+role-indexed multi-part relations 
+initiated toward the end of Chapter 6.
+`p`
+
+
+`p.
+We should be careful not to take analogies between natural 
+and programming languages too far %-- many correspondences 
+between the two forms of languages are valid but superficial, 
+so they do not particularly engender new ideas or technical 
+foundations either for natural linguistics or for 
+programming language design or implementation that would 
+actual advance those disciplines.  Nonetheless, even 
+fairly superficial or vaguely-specified correlations between 
+theories (or models, perspectives on, and so forth) 
+formal and natural languages can be useful `q.intuition primes` 
+suggesting new lines of research which could plausibly 
+yield more rigorous results than the underspecified initial 
+intuitions might intimate.  For example, the semantics adopted by 
+Quantum `NLP; %-- at least as pursued by the Oxford Quantum Group 
+%-- arguably bears only a superficial resemblance to 
+Conceptual Space theory as formulated by `Gardenfors; and subsequent 
+linguists, who were working primarily in a cognitive linguistic 
+and largely humanities/philosophical context, at least once 
+we consider the kinds of semantics that may actually be modeled 
+according to Quantum Logic, i.e., that would currently run on 
+the Oxford group's quantum computing environments.  However, 
+investigating the philosophical resonance between Conceptual 
+Spaces and the form of semantics endemic to Quantum `NLP; 
+helps illustrate %-- at least if we consider work such as 
+Coecke `i.et al.` to be persuasive overviews of the relevant
+technical issues %-- that conventional formal-language 
+`q.semantics` (leaving aside questions of `q.natural` semantics 
+aligned with human pragmatics and conceptualizations) has its 
+own theoretical limitations.
+`p`
+
+`p.
+This chapter will consider one specific model or perspective which 
+cuts across both formal and natural languages, although with the 
+above provisos in effect %-- we should be wary of plausible but 
+largely vacuous correlations that might be identified between these 
+two genre of languages, and consider any perspectival arguments 
+or technical models to have merit only if they appear to 
+lead in practically useful directions for either natural 
+linguistics or Software Language Engineering and related fields.  
+We need to try to find ideas of theoretical substance from the 
+larger space of basically trivial summarial notions which are 
+largely self-evident when considering language in general 
+(both formal and natural) and syntax/semantics.  
+`p`
+
+
+`p.
+It is obvious, and as such not especially useful to incorporate into a 
+rigorous theory, to note the general point that grammar governs 
+which words are linked with which other words and that word-pairs 
+have semantic interpretations wherein the pair has a conceptual detail, 
+modification, or specificity which is lacking for either word in 
+isolation.  For instance, `i.beautiful diamond`/, `i.antique diamond`/, 
+`i.fake diamond`/, `i.expensive diamond`/, `i.her diamond`/, 
+`i.some diamond`/, and `i.the diamond` all ground, modify, and/or 
+qualify the generic concept `q.diamond` in some fashion.  
+This is an example of how word-pairs `q.compose meanings.`
+`p`
+
+`p. 
+Understanding a sentence %-- at least according to a wide range 
+of linguistic schools of thought, which tend to leverage this 
+intuition in different ways %-- is in large part a question of 
+identifying which words to pair with which other words 
+so as to compose meanings `q.the right way`/: a sentence 
+is a `q.composition` built up from word-pairs which are themselves 
+compositions fusing two `q.meanings.`  The crux of sentence structure 
+is identifying which words are directly connected to other 
+words to form the building-block `q.compositions` which are 
+fused together in the larger sentence %-- e.g., in `i.the brilliant 
+diamond on her sister's expensive diamond wedding ring` note that 
+`i.brilliant` is composed with `i.diamond`/, as is `i.the`/; 
+`i.expensive` is composed with `i.ring`/, as is `i.wedding` and 
+the second `i.diamond`/; and `i.her` is composed with `i.sister`/.  
+In natural language, words can pair up according to 
+rules which are not evident in the surface language; for instance, 
+it is not the case that an adjective always immediately precedes a 
+noun (in the above sentence `i.expensive` modifies `i.ring` although 
+there are two other words between them; and the possessive 
+links `i.sister` to `i.ring` even though the two words are far apart).  
+The fact that meaning-composition may involve words which are 
+superficially distant, and where there may not be explicit 
+markers (such as morphological cues) pointing to correct 
+word-pairings, suggests that syntactic rules serve the 
+specific purpose of establishing which word-pairs are 
+compositionally relevant for any given sentence.`footnote.
+Moreover, because word-distance is not a definitive 
+criterion for the validity or non-validity of 
+sentence-parses in word-pair sets, there is a vast 
+collection of possible parses which are 
+plausible based solely on type-reduction 
+criteria (or whatever combinatory or phrase-structural 
+constraint play roles akin to type-reduction in a 
+pregroup-compatible grammar).  This is one reason 
+why Quantum methods may be feasible and yield 
+superior performance to classical computations: 
+the initial goal of `NLP; is to derive a parse-graph 
+which maximizes `q.coherence` amongst many parses 
+which are at least `i.somewhat` coherent.  
+We can, potentially, define coherence 
+in terms of word-pairing by saying that a 
+given (potential) word-pair has greater coherence 
+if the information content yielded by the 
+pair has greater increase on that of each 
+word in isolation than alternative potential pairs. 
+`footnote`
+`p`
+
+`p.
+This picture has theoretical ramifications that might 
+not be obvious if we only consider the obvious 
+point that meaning is compositional: that the meaning of a 
+sentence is somehow a product of its component parts.  
+The more specific argument is that compositionality 
+has a certain internal structure, and that we can 
+model composition in terms of `i.sequences of word-pairs`/, 
+where the role of grammar is first to identify which 
+word-pairs are in effect, and second to `q.rank` the 
+pairs as logically prior or posterior.  An open question 
+is how to model the `q.space` which emerges if we see 
+the ordering of word-pairs as forming a `q.path`/; one 
+criterion of this space should be that paths culminate 
+in something like `i.propositions` (or `q.complete ideas`/), 
+and also that there is some ambient notion of `q.information content,`
+such that paths progress `i.in the direction of greater information 
+content` on their way to the `q.sentence` terminus.  A further 
+implication is that sentences have `i.more` information 
+content (however this is modeled) than their component parts. 
+`p`
+
+
+`p.
+This principle is obliquely raised by Coecke `i.et al.` in 
+the goal of developing a linguistic type system such that 
+`q.type reductions in the grammar category [map] onto algorithms for
+composing meanings.`  Insofar as the `i.purpose` of grammar, or 
+at least one of its most essential roles, is to govern 
+how addressees decompose a sentence into word-pairs (which semantically 
+`q.compose meanings`/), natural language grammar presumably evolves 
+under pressures to play this role effectively.  Parts of Speech, 
+for example, can be differentiated in terms of their corresponding 
+roles in word-pair formations; adjectives always modify nouns, 
+for instance, whereas nouns get attached to verbs as subjects and/or 
+objects.
+`p`
+
+`p.
+Languages therefore tend to separate different parts of 
+speech through lexical convention (most words' primary 
+meanings are associated with one part of speech in particular) 
+and/or morphological markings (such as modifications which 
+transform lexemes between parts of speech) %-- in English, 
+for example, the `i.-ly` suffix converts adjectives to adverbs 
+(`i.quick` becomes `i.quickly`/).  Subtler morphological 
+cues are evinced in case-markings or declensions, 
+which register a noun as subject or object, say 
+(nominative or accusative case, for languages which, more so than 
+English, feature substantial declension markings) or as connected 
+to a verb in some other manner governed by a language's case system: 
+locative, instrumentive, dative, benefactive, and so forth.    
+This general principle of parts-of-speech corresponds, in 
+`NLP; and computational linguistics, to the idea that 
+lexemes have `i.types`/, and that rules governing when 
+words can be paired up can be modeled via formal type 
+systems (hence the idea of `q.type reductions`/).  
+In short, what we as language users experience as the 
+natural synergy between corresponding parts of speech which 
+engender a semantically meaningful pairing (like `i.expensive ring`/) 
+corresponds formally to a type-reduction rule whereby the 
+collision between two types yields a third type. 
+`p`
+
+
+`p.
+This type-reduction phenomenon exists on the scale of individual 
+word-pairs, but a central theory of formal linguistics is that 
+type-reductions can be chained iteratively, which captures 
+the semantic notion that meaning-compositions build up 
+to a `q.complete idea.`  For instance, after
+composing `i.diamond` and `i.ring` we can add a further 
+composition (e.g., `i.expensive`/), or a grounding 
+(`i.the diamond ring`/) or possessive (`i.her diamond ring`/), 
+or supply a verb for which the present meaning supplies a 
+subject (`i.her diamond ring was an anniversary present`/).  
+The `i.pattern` of meaning-composition is governed by 
+grammar, which provides the essential detail of clarifying 
+the proper `i.order` of composition %-- which in turn can subtly 
+(or radically) alter a sentence's overall meaning: `i.her anniversary 
+present was a diamond ring` connotes something somewhat 
+different, especially in context, than the inverted sentence 
+(`i.her diamond ring was an anniversary 
+present`/); 
+still more noticeably, `i.she divorced him` is different than 
+`i.he divorced her`/, `i.she gave him that ring` different from 
+`i.he gave her that ring`/, and so forth.  If considered 
+on the basis of their lexical 
+senses alone %-- i.e., if we did not have 
+syntactic rules as a further source of `q.information` about 
+speaker intentions %-- words in a typical sentence can be paired up in 
+many different ways.  Syntactic rules therefore need to be sufficiently 
+rigorous that most sentences are decomposable into constituent 
+meaning-compositions (i.e., word-pairs) without undue ambiguity, 
+because they are a key source for clarifying which words are 
+intended to be connected (excluding only word-pairs which make 
+no conceptual sense leaves too many options still available).  
+For this to work, syntax has to be fairly rigorous 
+and rule-bound %-- arguably implying that it may be summarized via a 
+formal machinery, such as computational-linguistic type 
+systems.`footnote.
+This is probably a compelling but not self-evident thesis, 
+because there is a possibility that our syntactic instincts 
+allow grammar to play these roles in a manner which 
+is rigorous in the context of cognitive processing but 
+difficult to formalize in more mechanical environments, 
+such as `NLP; systems. 
+`footnote`
+`p`
+
+`p.
+Coecke's `i.et al.`/'s theory therefore leverages the 
+well-established idea that meaning is compositional, and 
+that this compositionality can be structurally divided into 
+individual word-pairs, where syntactic rules govern 
+which word-pairs are semantically in effect for a given 
+sentence.  Their use of Category Theory to define 
+notions such as `q.pregroup grammars` largely plays the 
+role of formalizing conditions on how words `q.pair up`/: 
+constraints which may be expressed through mathematical 
+formalisms (such as Category Theory) act as filters 
+%-- or, more precisely, somehow model cognitive activities 
+that act as filters %-- which select `i.some` word-pairs 
+as in effect for a given sentence, screening out others 
+that are lexically plausible but semantically inaccurate 
+in context (e.g., in `i.expensive diamond ring` it is, 
+explicitly, the `i.ring` which is described as expensive, 
+not necessarily implying that there is a single 
+expensive diamond on that ring).
+`p`
+
+`p.
+In addition, as well as `i.filtering` word-pairs, grammatic rules or conventions 
+also `i.order` pairings so that composition-of-compositions 
+proceeds correctly.  It is a foundational 
+principle of cognitive linguistics that the pattern according 
+to which sentence-meanings are built up to a `q.complete idea` 
+has cognitive significance, even though the contrast between 
+different `q.compositional paths` is not always logically 
+apparent.  For example, `i.her expensive diamond wedding ring` 
+is presumably expensive `i.and` hers `i.and` made of diamonds, 
+so the adjectives string together into a logical 
+aggregate, but there are cognitive reasons why language 
+(or English, at least) seems to compel a fixed order: 
+`i.diamond wedding expensive her ring` is malformed, even 
+though it has the same adjectives and noun base.  
+Exploration of these cognitive principles is outside the 
+scope of this chapter (`i.see` for instance Langacker's `i.Cognitive Grammar:
+A Basic Introduction` `cite<[e.g., page 320, or in general 
+Chapters 10-11]LangackerIntro>; for details), 
+but we can observe here that most linguistic constructs 
+demand a fixed word-order, where rearranging the sequence 
+changes the meaning.
+`p`
+
+`p.
+Moreover, the order in which words 
+are enunciated propagates to an order among word `i.pairs`/, 
+and therefore among the `i.compositions` which word-pairs 
+designate.  In this sense, the role of grammar is not 
+only to specify which words pair with which, but also 
+to induce a logical ordering amongst all the word-pairs.  
+This appears to be the motivation for Coecke `i.et al.` 
+turning to Conceptual Space theory: the logical ordering 
+among word-pairs is a reflection of how meanings compose 
+and, as such, accumulate through a sentence, leading to a 
+complete idea.  The `i.order` in which this composition 
+happens suggests that the emergence of a holistic 
+meaning occurs in stages, so that we can trace a `q.path` 
+through a kind of conceptual space, where our conceptualization 
+gets more complete and concrete as we cognitive the sentence 
+in its entirety.  Coecke `i.et al.` use Conceptual Spaces 
+to model the `q.path` which captures how information 
+accumulates, how there is an accretion of conceptual detail, 
+which follows the composition of individual word-pairs into 
+a whole sentence.    
+`p`
+
+
+`p.
+This chapter will make the further assumption, in the spirit of 
+Cognitive Grammar, that syntagmatic principles can be 
+examined with an emphasis on the `i.epistemics` of 
+the speaker %-- i.e., whomever formulates a linguistic 
+artifact %-- and in particular that sentences' meanings 
+are organized focally around `i.verbs`/.  Once again, 
+the cognitive rationales for these assumptions are 
+outside the scope of this chapter, but we follow linguists 
+such as Ronald Langacker and note that (as cognitive artifact) any 
+verb `q.profiles` an event, state, or process, and correspondingly 
+there is for each verb a potential propositional content, or 
+facticity, which when concretized produces some sort of 
+`q.complete idea.`/`footnote.Again, Chapter 11 of `i.Cognitive
+Grammar: A Basic Introduction` is a good reference for 
+this branch of Langacker's analysis; or `i.see`
+`cite<LangackerInteractive>;, 
+`cite<LangackerPresent>;, `cite<JohannesFlieger>;, 
+`cite<JensAllwood>;, `cite<MiriamTaverniers>;,
+`cite<TFlorianJaeger>;, etc.`  For instance, with the generic concept 
+of `i.moving` there are concrete events wherein something 
+specific moves (and so a specific time and place, or two places, 
+an origin and destination) %-- the cognitive acts which 
+`i.profile` the given event thereby encompass a specificity 
+which can be expressed in propositional terms.  If I see a car 
+moving, say, I see evidence of the fact that the car has moved.  
+Verbs are, as such, intimately linked to propositions 
+in the sense that the concretization of a verb corresponds 
+to the concretization of propositions %-- note that we 
+could not say the same thing about other parts 
+of speech, such as nouns.  The phrase `i.my neighbor's 
+black dogs`/, for instance, concretizes the idea `i.dogs`/, 
+but does not yield a complete/specified proposition.
+`p`
+
+
+`p.
+Earlier we intimated that the progression of sentences toward 
+complete meanings is a matter of `q.accumulating information,`
+or `q.accretion of detail`/; from this cognitive-linguistic 
+perspective we can more precisely suggest that 
+such accretion of detail is governed in particular by the 
+tendency of sentences to converge on concrete propositions, 
+and moreover for this convergent process to be guided 
+specifically by the concretization of verbs.  In short, the 
+`q.paths` of sentences through a `q.space` of increasing 
+information-content can be modeled more rigorously 
+as progressions toward `i.verb` details: the accretion 
+of information-content is first and foremost a matter 
+of filling in details associated with verbs.  At a minimum 
+we pair verbs with a subject, and often a direct object 
+(and sometimes also an indirect objects); we can then 
+add further details, sometimes cued via declensions or related 
+case-markings, specifying data such as `i.when`/, `i.where`/, 
+`i.why`/, `i.for whom`/, `i.toward where`/, and so forth, 
+the verb's event (or process or state) happened or is happening.  
+In short, `q.paths` in meaning space (however this should be 
+modeled) lead to verbs %-- word-pairs which do not involve 
+verbs, such as article-noun, are intermediary segments of 
+the path, and ultimately derive their meaning from how 
+the relevant noun connects to a verb, as subject or object 
+(or some more peripheral case-detail, such as location).  
+`p`
+
+
+
+`p.
+This general picture captures (at least as a theoretical 
+hypothesis) the overall cognitive dynamics of 
+language-understanding, where we can visualize 
+the cognitive processes governing sentence-interpretation 
+as an accretion of detail organized around verbs, 
+and the different sorts of relations verbs bear to 
+nouns, which in turn `q.slot in` to expected 
+roles `visavis; the corresponding verb.  A ditransitive 
+verb, for instance, presents the `q.expectation` of a 
+subject-noun, object-noun, and indirect object; whichever 
+nouns play those roles therefore fit `q.slots` 
+that we perceive as needing specification once we 
+identify the relevant verb as ditransitive.  These 
+nouns are then linked to the verb in networks 
+defined by such expectations, and by the distinct 
+roles played by (e.g.) subject and object `visavis; 
+a verb %-- these network dynamics fan out from 
+the central verb to other linguistic elements; 
+for instance an adjective modifies a noun, forming 
+one step in the `q.path` leading to a sentences' `q.complete 
+idea`/; but if the sentence is well-formed this adjective-noun 
+path will ultimately connect to a verb through a `i.slot` 
+such as subject or direct- (or indirect-) object.
+`p`
+
+`p. 
+In order to give a sense of these dynamics 
+with a concrete example, recall 
+Chapter 6's Figure~`ref<Chapter6-fig:sentence>;
+showing a hypothetical parse-graph of a hypothetical 
+sentence elaborating on `q.went to the store` 
+(there is no special value attached to the precise 
+layout and terms of this graph in the current context, 
+so we won't discuss it in detail).  This diagram 
+may convey in pictorial form the general idea of a 
+`q.verb-centric` grammar and the concomitant 
+semantics wherein meanings are grounded in the 
+information content they supply to a verb.  
+Tracing paths in graphs such as notated 
+in (Chapter 6) Figure~`ref<Chapter6-fig:sentence>; shows how word-pairs
+(graph edges) lead toward verb-nodes, and 
+edges in general are labeled with role-indicators 
+(either subject/object or a declension-case) that 
+summarize the kind of detail supplied by the 
+relevant noun (or noun-phrase) to the 
+target verb. 
+`p`
+
+`p.
+Such a perspective on natural language makes specific claims about 
+the structural principles which need to be modeled by 
+representations of linguistic form, e.g. descriptions 
+of the parse-trees or parse-graphs of sentences.  In particular, 
+we have the proposal that the basic building blocks of 
+parse-structures are word-pairs; that word-pairs can be chained 
+together, and moreover have an overall logical order which 
+retraces a `q.composition of meanings` at the semantic level; 
+that this ordering is centered on verbs, so that 
+the `q.chains` among word-pairs (and by extension the 
+words themselves) lead to verbs; that the `q.links` 
+slotted in to verb represent different roles (subject and 
+object, most notably, but also details provided by 
+different cases according to declension markings, where 
+these are morphological features of the relevant 
+natural language); and that the accretion of detail 
+progresses to something like a determinate propositional 
+content.  Such a model can in essence be summarized, or 
+formalized, via parse-graphs, where the features just 
+outlined represent criteria on graphs insofar as 
+they model sentences on this paradigm.  For instance, 
+such graphs have the feature that their edges can be 
+logically ordered, which in turn would induce orderings 
+between the nodes spanned by an edge (given two edges 
+incident to the same vertex, one edge is prior to the 
+other in the ordering; as such, the non-shared vertex 
+in the prior edge can be ordered prior to the shared 
+vertex, whereas the non-shared vertex in the posterior 
+edge can be ordered as posterior to the shared vertex).  
+Moreover, following these induced edge-ordering 
+yields paths across the graphs, and the idea of 
+semantics as `q.verb-centric` corresponds to the 
+restriction that all such paths lead to verb-nodes.  
+`p`
+
+
+`subsection.The Emergent Syntax/Semantics Interface`
+`p.
+It might seem that such a theory is still at the vague/underspecified 
+stage without stating more explicitly what `q.information content` 
+is.  That could be, but such a perspective has a further dimension 
+which may not be immediately obvious; in particular, we 
+are starting to analyze the dynamics which govern `i.why` grammar comes into 
+effect, or emerges in its explicit form in natural language. 
+Our framing identifies the evolutionary pressures which 
+appear to guide the syntax of language as conventions 
+change over time.  In other words, this is a theory not 
+only of the explicit rules we can identify in language grammars 
+but also of the dynamic principles governing the manifestation 
+of grammar as such %-- specifically that grammar has the 
+role of filtering and ordering word-pairs so as to map 
+sentences onto a kind of `q.space` endowed with a notion 
+of information content, where meaning-composition corresponds 
+(or `q.maps`/) to paths in this space that lead to 
+`q.complete ideas` (e.g., propositions).  Coecke `i.et al.` 
+capture these mappings in Category Theoretic terms: `q.functors` 
+map paths in a space defined by formal `i.grammars` onto 
+paths in a space defined (to some approximation) by 
+Conceptual Space theory, with the idea that the former `q.syntactic` 
+paths somehow guide us (or mathematically model the cognitive 
+processes which guide us) to grasp or follow the corresponding 
+`q.semantic` paths in `q.Conceptual` space. 
+`p`
+
+
+
+`p.
+Apart from the cognitive and/or computational 
+merits of this theory, it also 
+can potentially lead to new perspectives on the dynamics underlying 
+grammar as such, as just intimated.  One way to examine this is 
+to consider the contrast between `i.syntax`/, or the explicit 
+(and to some degree statically analyzable) grammatic rules of a 
+language, with (as it may be called) the `i.syntagmatics`/, or 
+`i.patterns of lateral organization` observable in language.  
+The term `i.syntagmatics` is more associated with philosophical 
+linguistics than computational `NLP;, but in general it 
+tends to connote an emphasis less on the explicit syntax of 
+language than on the principles guiding the emergence of 
+grammar: the syntagmatic `q.pole` of language is the order 
+which we perceive in how word-sequences follow a consequential 
+progression, so that word-order is neither random nor (in general) 
+freely modified; the sequencing of words conveys meaning no less 
+than the words themselves.  The principles governing this 
+ordering are a kind of dynamic arena where specific syntactic 
+rules can be defined, so we address the more `q.syntagmatic` 
+aspects of language if we investigate the overall dynamics of 
+syntax, as opposed to specific syntactic rules/conventions.  
+Or at least, in Chapter 6 we adopted this kind of usage,
+and refer to `i.syntagmatics` as the dynamic principles 
+explaining the cognitive and structural principles guiding 
+the emergence of syntactic rules (where `i.syntax` as 
+such is less abstractly focused on concrete grammars). 
+`p`
+
+
+`p.
+Our hypothesis, to summarize, is that syntagnamic 
+dynamics are driven by  the interplay of syntax and semantics 
+`visavis; information content: syntactic 
+rules emerge under pressures to engender semantic constructions 
+which embody amplifications of information 
+content in well-structured ways; there is a 
+clear sense of how each part of a construction 
+elevates the information-content as a whole.  
+In the context of Conceptual Spaces, we would 
+argue that the quantitative dimensions 
+which are internally invoked by particular 
+concepts' cognitive `q.footprints` 
+are indeed part of such information 
+content %-- they help articulate 
+how each concept add its own detail 
+to a situational whole %-- but that 
+conceptual combinations embodied by 
+multi-part constructions should not be 
+modeled (in the usual case) simply 
+by juxtaposing (whether via 
+union or intersection) dimensions 
+internal to every concept spanned 
+by the governing construction.  Instead, qualitative 
+dimensions combine with situational 
+roles in potentially complex 
+ways.`footnote.
+We could also say `i.thematic relations` 
+as one way to characterize situational 
+roles, adopting terms from Case Grammar 
+and related fields, although outside 
+that specific context the generic 
+term `i.thematic relation` can take 
+on many information relations, so 
+it may be suboptimal for analyses outside 
+of those targeted directly at case grammar, 
+inflectional syntax, and so forth.
+`footnote`   
+`p`
+
+`p.
+This model, we would argue, represents a 
+semantic paradigm general enough to 
+apply both to natural language and 
+formal languages (as well as data semantics).  
+Formal semantics in these contexts 
+needs to consider the internal dimensions 
+of particular `q.concepts` (or whatever 
+notion plays an analogous role, such 
+as types, or Ontology classes) 
+as well as role-inflected aggregations 
+where multiple concepts are integrated 
+(be this in procedures, multi-part relations, 
+pre-persistent object representations, 
+type-to-visual-object mappings, and other 
+formal metastructures %-- recall 
+our `q.Semiotic Saltire` outline).  
+While the terms of such a model 
+are not endemic to Conceptual Spaces, 
+that theory does serve as a rich 
+starting-point for intuitively 
+driving such a role-oriented picture, 
+because Conceptual Spaces provide a 
+good case-study in how roles as well 
+as intra-conceptual dimensions and 
+details (which present different 
+concept-blending options in constructional 
+contexts) determine `q.paths` engendered 
+by syntagmatic constructions.
+`p`
+
+`p.
+The remainder of this chapter will elaborate on the 
+framework just referenced through 
+various hypergraph-oriented representations 
+of code and/or data structures, including 
+multi-relations, grounded serialization, 
+and type-persistence models.
+`p`
+

@@ -1,0 +1,1866 @@
+
+`section.Image Biomarkers (and Others) for Cardiac and Oncology 
+Diagnostics`
+`p.
+From one perspective, there is nothing special about 
+image-annotations 
+such that `GUI; objects within that domain would 
+be a distinguished starting point for 
+bioinformatic operations in general %-- in principle any 
+window in a biomedical 
+application could potentially be the starting-point 
+for user actions that lead to capabilities realized 
+across two or more modules.  
+On the other hand, bioimaging is an important 
+case-study for medical `i.software` because 
+in this context the entire data-acquisition chain 
+occurs `qidot.in silico`  Unlike tests
+based on lab equipment, for example (e.g., 
+colorimetric assays) or clinical evaluations 
+which rely on practitioners' subjective 
+judgments, every step in the image-analysis 
+process is performed via computer code that 
+itself can be evaluated, and all data 
+generated during diagnostic/predictive 
+processes can (at least in 
+principle) be preserved (whereas in a typical 
+blood workup, say, samples are discarded 
+once the experiment is concluded).  Moreover, 
+analyses can be exactly repeated by running the 
+same computer code against the same images.
+`p`
+
+`p.
+It is also true that because image analyses 
+are already in digital form, there is no 
+extra data-entry step needed, nor 
+ambiguities arising from imposing numerical 
+measures on subjective evaluations  
+(cf. the Medical Research Council scale for 
+muscle-strength we mentioned in Chapter 3).
+Applying Computer Vision algorithms 
+can yield large quantities of numeric 
+data from image-analysis, and while 
+not all feature-signatures will have 
+obvious biomedical interpretations, 
+the sheer volume of raw data can be beneficial 
+for Machine Learning, which will sometimes 
+discern statistical correlations that impugn 
+diagnostic or prognostic value to mathematical 
+radiomic entities which may be too subtle for the 
+naked eye.  The value of such `i.a priori` 
+quantification is advanced further, too, 
+by conventions which codify imaging results, 
+such as `b.RadLex` (for radiology) `cite<YiHong>;, 
+`cite<MejinoJr>; 
+or, more recently, `IBSI;, the Image Biomarker
+Standardization Initiative (centered on radiomics) 
+`cite<AlexZwanenburgRef>;, `cite<AlexZwanenburg>;, `cite<SaeedAshrafinia>;,
+`cite<AkifumiHagiwara>;, `cite<RezaForghani>;.
+`p`
+
+`p.
+These are among the factors that drive the 
+search for reliable image biomarkers, 
+envisioned as essential component in biomedical 
+research/treatment ecosystems.  Other analogous factors 
+include how image-based diagnostics 
+can be quicker and cheaper than lab-based 
+alternatives.  More broadly, imaging 
+technlogies preserve a 
+more holistic data space than (say) biopsies, 
+which by definition excise biologic material 
+from its `i.in vivo` context.  Images preserve a 
+record of spatial relationships (or spatio-temporal 
+relationships, if we consider `FourD; media such as 
+Flow `MRI;s) which is lacking from data obtained 
+via gene sequences, blood, or tissue samples.  
+As expressed in an `q.Assessment of Imaging Informatics
+for Precision Medicine in Cancer,` for instance: |+|
+
+`displayquote,
+Educating clinicians on the benefits of
+imaging methods in clinical practice is key to
+their adoption [because] in many cases ... genomic
+analysis alone is sometimes inadequate.
+Genomic analysis will not reveal carcinoma
+versus benign growth and mutations analyses
+alone cannot provide a specific diagnosis.  
+[I]n the case of Leiomyoma (benign
+disease) vs. Leiomyosarcoma (cancer), the
+genetic mutation is the same, but human
+cognition and the use of microscopes are 
+required to accurately diagnose cancer versus
+benign growth ...  Spatial phenotypic
+heterogeneity is not captured by genomic
+data.  There is no way of understanding 
+interactions between the various cell types in a
+tumor microenvironment (`TME;).  If the cell
+composition is the same, but the interactions
+are different, in two different `TME;s, genomics
+cannot tell them apart.  Hence, the study of
+images, and their spatial data, is 
+crucial. `cite<[pages 6-7]ChakraChennubhotla>;
+`displayquote`
+This assessment also stresses the importance of sharing  
+image-based data and observations in a consistent manner:
+
+`displayquote,
+Integrating radiology, pathology, clinical, and -omics data
+requires that image annotations be stored in a
+standardized and interoperable manner. ... 
+Frequently, the annotations, created on commercial image viewing
+workstations, are collected and stored in either
+proprietary formats or as `DICOM; presentation state objects, which are like graphical
+overlay objects. This enables rendering the
+information visually, but does not support
+search of, and access to the annotations, nor
+any computation on them... 
+Consequently, ... there is no interoperability of image annotations across platforms
+and applications. To realize the potential value
+of integrative radiology-pathology-omics, it
+is vital that image annotations be stored in
+standardized interoperable formats such as
+the Annotation and Image Markup (`AIM;) standard or `DICOM; ... 
+`DICOM; Working Group 8
+is working to harmonize and unify the `AIM;
+and `DICOM; standards and create a `DICOM;
+Structured Reporting object to store `AIM; image annotations
+[and] provide a standardized
+interoperable format for image annotations (page 5).
+`displayquote`
+`p`
+
+`p.
+In short, bioimaging (including radiomics) is not likely 
+to entirely replace diagnostics/prognostics via 
+other means, but image biomarkers may well substitute 
+for other kinds of biomarkers in some contexts 
+(as a more cost-effective option, say) or may 
+serve to reinforce or confirm other analyses.
+In an overview of `q.radiogenomics,` for example,
+`cite<HuiLi>; expresses the value of radiomic markers 
+as follows: 
+
+`displayquote,
+`sqbracket.Whereas` `q.Radiomics` refers to the high-throughput 
+extraction of quantitative features from images, i.e., conversion
+of images to mineable data, and subsequently using these data for
+decision support, including patient outcome ... `q.Radiogenomics` or
+`q.imaging genomics` refers to the study of the associations
+between radiomic data (imaging features) and genomic 
+patterns. ... Such imaging data and associated radiomics may
+serve as a `q.virtual biopsy,` which is non-invasive, includes the
+entire tumor, and is repeatable ... and may yield a
+quantitative predictive signature for advancing precision
+medicine. (page 7)
+`displayquote`  
+`noindent;See also `cite<SandyNapel>;, which stresses the importance of quantitative imaging as a 
+`q.decision support` tool for 
+
+`displayquote,
+this era of personalized medicine in oncology [where] we have
+a responsibility to collect as much meaningful 
+information from different modalities as possible, which can help
+to make better informed decisions. ...  Quantitative imaging is able to contribute significantly 
+to decision support for 3 major reasons: 
+1) virtually every patient with cancer is imaged with CT, MRI,
+and/or PET; 2) these images are obtained from the entire
+tumor, along with metastases, and thus can be used to 
+describe and classify heterogeneity; and 3) these images can
+be obtained routinely longitudinally to monitor responses
+and to guide specific therapies. (page 12)
+`displayquote`
+`p`
+
+
+`p. 
+For these sorts of reasons, and also 
+because image-annotation marks a good 
+case-study for modular design,
+it is reasonable to consider scenarios where 
+user requests within clinical 
+software originate from a bioimaging 
+context.  That is, we will focus on patterns 
+where the specific software-operational sequences 
+under consideration begin with users 
+working within a bioimaging/image-annotation 
+module, and may then proceed to examine 
+other (related) content.
+`p`
+
+`p.
+Certainly there are numerous 
+pathways wherein an annotation-related 
+`GUI; object could be the origin point for 
+actions leading elsewhere.  For example, many 
+ground-images presented in the context of 
+bioimage annotations would presumably be 
+associated with an image series taken 
+in a diagnostic context and/or from a specific 
+patient; therefore, consistent with principles 
+of responsive User Interface design, 
+users could plausibly be given the opportunity 
+to request more information about the image 
+series, the diagnostic context, or the 
+relevant patient, from annotation-related 
+visual objects (e.g., context menus activated 
+relative to the ground image).  This could 
+potentially lead users to any genre of 
+data related to the patient or diagnosis 
+%-- information that might in turn encompass a wide range of data types, 
+some of which we will review here.
+`p`
+
+`subsection.Image Registration and Radiomics for Cardiac Care`
+`p.
+Our first overview will provide one example 
+of how image analysis generalizes to 
+other bioinformatic domains: we will 
+specifically look at cardiac diagnosis, 
+and in particular image feature-extraction 
+using techniques associated with 
+radiomics, which has been more widely 
+applied to cancer/oncology.  The 
+term `q.radiomics` overlaps with what 
+in more general contexts (not restricted 
+to bioimages) one might call feature-extraction 
+(adopting the `q.-omics` suffix to suggest 
+parallels with genomics, proteomics, transcriptomics, 
+and so forth `cite<[page 4]RobertJGillies>;), 
+although `i.radiomics` specifically 
+tends to be applied in contexts where 
+large feature-vectors are extracted and then 
+statistically analyzed to find diagnostic 
+correlations.  In short, radiomic 
+methods are not contingent on  
+`i.a priori` anticipations that any given  
+image feature would have an established biomedical 
+interpretation (the way that ground-glass 
+opacity on lung scans, for example, is clearly associated with Covid, 
+via well-understood biologic 
+mechanisms).
+`p`
+
+`p.
+In the cardiac case, several 
+studies have appeared in recent years which  
+attempted to disentangle correlations between 
+image features and disease expressions, 
+without those correlations being 
+known ahead of time `cite<IremCetin>;, 
+`cite<CarlosMartinIsla>;, `cite<CetinEtAl>;,
+`cite<CameronHassani>;.
+Concrete results in the cardiac-radiomics 
+literature have tended to focus on image-textures 
+indicating cardiac lesions and scarring 
+(associated with greater risk of adverse 
+events such as heart attack and strokes), 
+but researchers have also mined hundreds 
+of image-features for evidence of a select 
+few that seem definitively correlated 
+with heart disease.
+`p`
+
+
+`p.
+In one analysis based on over 5000 UK Biobank 
+patients, for example, `cite<CetinEtAl>; point 
+to `q.grey level heterogeneity` as a feature 
+associated with diabetes and smoking, and 
+possibly other sources of cardiac damage (page 9).  
+`q.Median` intensity (i.e., overall image-brightness) 
+was also elevated 
+in diabetic patients, from a statistical point of 
+view.  These results suggest that diabetes 
+(and possibly other cardiac risk facts) 
+`q.leads to a global alteration of the
+myocardial tissue and thus of the overall 
+myocardial appearance in CMR images` such that 
+bioimages of these tissues register as brighter 
+and less uniform than corresponding images 
+for healthy cohorts.  
+This is an example of 
+imaging patterns for which we can provide a 
+plausible clinical explanation.
+`p`
+
+`p.
+Multiple studies have attempted to 
+identify radiomic features that appear to be 
+diagnostically correlated with cardiac damage 
+along these lines.  For example, `cite<BettinaBaessler>; 
+found two signals that were especially strong 
+indicators of myocardial scarring, one involving 
+`q.autoregression models` for image textures, and 
+one which was histogram-based (we will consider 
+these metrics in slightly more detail momentarily).  
+The UK Biobank analysis also found strong correlations 
+`visavis; certain morphological and `q.morphometric` 
+(as compared to textural) features; for example, 
+healthy cardiac muscle is apparently correlated with 
+the Left Ventricle (LV) taking on a visible elliptical 
+shape.  Heart `i.disease`/, conversely, is indicated 
+by `q.spherical disproportion (i.e., the inverse of 
+sphericity) of the myocardium at end-diastole` (page 8), 
+meaning that the LV being more spherical 
+just before heart-contraction is a sign of 
+tissue damage.  Indeed, the authors also report 
+that the Left Ventricle has (according to image-based 
+calculations) relatively less surface area relative 
+to its volume in the presence of decreased 
+cardiac functioning; this intuitively fits the 
+pattern of sphericity, because spheres 
+minimize surface area for their corresponding 
+volume.  As the authors suggest, 
+the biologic mechanisms underlying these 
+morphological observations appear to be 
+related to LV hypertrophy: the ventricle 
+becoming enlarged due to exerting greater effort.
+In general, `cite<CetinEtAl>; endorse combining 
+morphological and textural features to develop 
+hybrid image biomarkers strongly predictive 
+of heart risks. 
+`p`
+
+`p.
+With respect to textural features, several 
+studies have noted the statistical significance 
+of Autoregression (AR) Models.  In the context of 
+image-segmentation, these models are based 
+on the technique of calculating pixel-intensities as 
+weighted sums of the intensity of neighboring 
+pixels.  In effect, rather than defining pixel 
+color as a free combination of red/green/blue 
+scalars (or those of some other color basis), 
+each pixel's color (or often just its intensity) 
+is determined as a linear combination of surrounding 
+pixels.  In the same way that two different 
+relatively monochrome regions will tend to have 
+similar color-vectors for pixels inside the region 
+%-- whereas comparing sample pixels from each 
+region yields vectors which are far apart in 
+color-space %-- two dissimilar textures within an image will 
+tend to have distinct patterns of linear weights, 
+so that these patterns can partition the image 
+into different regions (analogous to segmentation  
+based on color).  These principles give rise 
+to autoregression-based segmentation methods.
+`p`
+
+`p.  
+Radiomic studies suggest that 
+mathematical descriptions of linear weight-patterns 
+along these lines can also be used %-- apart 
+from image-segmentation %-- to quantify 
+characteristics of textures for comparison 
+across images, and therefore potentially as a 
+classificatory tool.  We mentioned `cite<BettinaBaessler>;'s 
+analysis which found that an AR-based 
+feature was one of two most strongly 
+diagnostically indicative (the other 
+was a first-percentile histogram, effectively 
+delineating the lowest intensity threshold where 
+a region is separated from its background).  
+In `cite<BettinaBaessler>; three other parameters 
+also showed noteworthy diagnostic correlations, 
+albeit less consistently than the two just 
+mentioned, so that `cite<BettinaBaessler>; 
+proposes in effect a five-part radiomic signature 
+that can be derived from patients' Cine MRI videos.  
+However, as a rule, extraction of radiomic signals does not 
+always point toward scientific `i.reasons`/, 
+or `q.biologic correlation` `cite<TomaszewskiGillies>;, for 
+why some imaging patterns and not others tend to 
+track disease conditions  
+(some analyses attempt 
+to bridge this gap; `i.see` `cite<PatrickGrossmann>;,
+`cite<StefaniaRizzo>;, `cite<[page 6]NikolaosPapanikolaou>;, etc.).
+`p`
+
+
+`p.
+It is not always obvious how to interpret such 
+image-feature diagnostic correlations biologically, 
+because the kind of work we have just summarized tends 
+to seek statistical patterns in large numbers 
+of radiomic signals, without anticipating 
+`i.a priori` which features are likely to be 
+presented differently in diseased tissues or 
+organs than healthy ones.  Some correlations 
+are intuitively plausible.  For example, 
+the five most-indicative parameters in `cite<BettinaBaessler>; 
+just mentioned include intensity histogram 
+variance, which measures the degree to which 
+brightness levels vary from place to 
+place within a Region of Interest (`RoI;).  
+The authors also found noticeable 
+signals related to `q.wavelets,` which
+generally measure the degree of homogeneity 
+or heterogeneity in an `RoI;, taking into 
+consideration pattern-(dis)similarity in 
+different directions reinforces 
+homogeneity (or the lack thereof).  Intuitively, 
+healthy tissues in many contexts may be 
+more homogeneous than damaged/diseased 
+tissue, or vice-versa.  In that sense one 
+might expect that there would be consistent 
+variation in radiomic features 
+derived from pictures of healthy and 
+diseased tissue, respectively, insofar 
+as those features are affected by 
+how textural heterogeneity presents 
+itself visually.  
+`p`
+
+
+`p.
+Other discriminative signals have less obvious 
+interpretations.  For example, `cite<CetinEtAl>;'s 
+findings with respect to autoregression and 
+intensity histograms found particularly 
+strong signals within several specific parameters that 
+are part of larger parameter groups %-- 
+e.g., the first percentile 
+was calculated to be statistically more pronounced 
+as a potential biomarker than alternatives 
+such as the 25th, 50th, 90th, or 99th (it 
+is not clear why a 1st-percentile intensity 
+threshold should be singled out in this context).  
+Also, in the case of 
+autoregression, their analysis implies that 
+patterns in the weight through which 
+pixel-color is influenced by neighboring 
+pixel-color was most pronounced in just one specific 
+direction.  It is not clear what geometric 
+phenomenon in cardiac muscle could account 
+for one autoregression direction being 
+more significant than others, without the 
+use of contextualizing techniques such as 
+those introduced by `cite<ShihongDeng>;.`footnote.
+Based on `cite<CetinEtAl>;'s description of 
+methods it seems most likely that they 
+used AR models built in to `MaZda;, their 
+analytic software which is also the basis 
+of numerous other cardiac-imaging studies, 
+which establishes `q.theta` parameters 
+according to directions that remain 
+constant across the `RoI;.
+`footnote`  On the face 
+of it, the fact that `q.first theta` parameters 
+in an AR model would form much stronger biomarkers  
+than features from other theta-directions 
+seems hard to account for. 
+`p`
+
+
+`p.
+Other studies which similarly look for 
+diagnostically significant image-features 
+have highlighted different 
+parameters, so there does not yet appear 
+to be a scientific consensus on which sorts 
+of feature-vectors provide bonafide biomarkers 
+for heart disease.  One factor which 
+likely contributes to this problem 
+is that image quality and metadata vary 
+from one dataset to another (`i.see`
+`cite<[page 3]MartonKolossvary>;, for 
+example, for an overview of variance based 
+on equipment and/or image-registration techniques, 
+or `cite<GiacomoTarroni>; for assessment 
+of quality-control methods).  
+According to 
+`cite<CameronHassani>;: |=|
+
+`displayquote,
+{[R]}econstructed images can vary markedly 
+not only in image quality but also in how
+the heart is presented on an image, including
+changes in orientation of the heart and 
+differences in the plane of imaging, signal 
+intensity of pixels, and degree of artifacts 
+present on the image.
+Artifacts or poor-quality imaging can degrade 
+radiomic image analysis.  The two image 
+quality factors with the greatest impact
+on texture analysis (TA) %-- the most 
+common type of radiomic analysis performed
+in cardiac MRI  %-- are spatial resolution and
+signal-to-noise ratio .... and numerous additional ones, 
+including MRI field strength and image slice
+thickness ...  [L]ittle to no study has been 
+done to discern how these factors specifically affect 
+cardiac MRI radiomics. These image 
+acquisition-related factors are a potential source of 
+error in published studies. (page 2)
+`displayquote` 
+`p`
+
+
+`p.
+These limitations, however, do not prevent us from 
+considering how the goals of radiomics 
+affect software design, with respect either 
+to applications used for initiating radiomic 
+analyses or those dedicated to showing their results.  
+Cardiac feature-extraction requires a 
+multi-stage image-processing workflow, which 
+would have to be designed in a standardized 
+(and at least semi-automated) fashion for 
+large-scale deployment of cardiac radiomics.  
+Cardiac imaging is usually carried out by 
+recording full `FourD; pictures of the heart 
+in action, so a preliminary step is always 
+to select particular `TwoD; frames from a 
+full `FourD; series.`footnote.Of course 
+analyses can be performed in three or four 
+dimensions directly, but much of the 
+existing literature is devoted to 
+feature-extraction in two dimensions only, 
+so that time and plane slices of the full 
+`FourD; data need to be computed ahead of 
+time.`  Each `TwoD; image accordingly 
+is associated with data concerning how 
+it is oriented within a `FourD; context.  
+This orientation is moreover defined 
+in terms of recurring patterns in the 
+hearts' rhythms, as well as the 
+hearts' own `ThreeD; morphology and 
+positioning `visavis; the human body.
+`p`
+
+
+`p.
+Terms of anatomical orientation, 
+such as `q.saggital,` `q.transverse,`
+and `q.coronal` (corresponding 
+to $yz$, $xy$, and $xz$ planes 
+if we consider the $x$ and $y$ axes 
+to extend left/right toward the arms and 
+front/back respectively, and $z$ to measure 
+height off the ground) are relevant for 
+contextualizing bioimages when the anatomic 
+positioning of the organs or tissues visible 
+in bioimages is consequential to their functioning,
+which of course applies to the heart.  The 
+heart's morphological details %-- divided 
+into left and right halves with distinct 
+shapes, and with the bulk of mass 
+concentrated in the myocardial 
+musculature enclosing the ventricles 
+%-- are also of significance insofar 
+as these details guide segmentation and 
+registration algorithms applied to 
+cardiac images.
+`p`
+
+`p.
+When multiple images are jointly utilized for a 
+diagnostic investigation, image-registration sets up 
+correspondences between points in one 
+image and the `q.same` points in a second 
+image, the equivalence between them defined 
+in terms of their underlying anatomical 
+locations.  Some registration methods 
+in the cardiac context specifically 
+are based on `q.control points` 
+(which can be manually or algorithmically identified) 
+defined in terms of the relatively fixed 
+morphology of the heart `cite<[page 120]GilbertSerra>;, 
+`cite<[page 2]YangmingOu>;, `cite<[page 14]LorraineMa>;, 
+`cite<[page 8]XiangChen>;, etc.  
+Image-registration is 
+often needed in the context of `TwoD; 
+freeze-frames from a single `FourD; cardiac image 
+because the heart's motion has the effect of 
+shifting the reference frame oriented to cardiac 
+anatomical features against the axes produced 
+by the imaging device `cite<[page 1012]TimoMakela>;, 
+`cite<[page 3]AlessaHering>;.
+`p`
+
+`p.
+Also, some analyses of single-patient data 
+employ registration algorithms to coordinate image 
+series acquired via different imaging devices, 
+on the premise that distinct image-acquisition 
+methods are more accurate for specific 
+analytic goals: `q.As each imaging
+modality provides unique information and overcomes
+only certain challenges in cardiac imaging, the physician
+usually prescribes more than one imaging procedure to
+gather as much information of the heart's condition
+before making a treatment decision.` 
+`cite<[page 1]AziraKhalil>;.
+Registration is also 
+used to normalize images obtained from `i.different` 
+patients so as to `q.normalize a population of hearts into a 
+common heart template space.` `cite<[page 31]OuSchuh>;
+`p`
+
+
+
+`p.
+Considering these registration and orientation 
+requirements, then, any `TwoD; cardiac 
+image has a fairly detailed anatomic context 
+which is established, or must in part be calculated, 
+prior to methods such as texture analysis 
+being applied.  Each image is oriented 
+from the spatial/geometric point of view 
+against our planar model of the human 
+torso (in the sense that these details 
+define how the `TwoD; region sits within 
+its enclosing `ThreeD; space) and against 
+morphological landmarks in cardiac anatomy.  
+Each image may be oriented to other 
+images either in the same series (showing 
+different time or planar slices) or 
+to other heart-images entirely (with the 
+goal of normalizing the image to a generic 
+heart-model or `q.cardiac atlas` `cite<FonsecaEtAl>;, 
+`cite<XingyuZhang>;, `cite<FrancesDuane>;, `cite<KathleenGilbert>;,
+`cite<PuyolEtAl>;, `cite<GhoshEtAl>;).  This registration-related 
+aspect of orientation produces metadata 
+reflecting how control points, deformation, or 
+axis transforms map the current image onto a 
+different target image.  Images are 
+also oriented temporally against the structured 
+sequence of cardiac rhythm.  The totality 
+of these aspects of orientation can potentially 
+be aggregated into data structures characterizing 
+the image `i.context` which is logically 
+anterior to image `i.features` obtained via 
+radiomic analysis.    
+`p`
+
+
+`p.
+At the other end of the radiomic pipeline, meanwhile, 
+one obtains feature vectors such as the 
+five-parameter aggregate identified 
+by `cite<BettinaBaessler>; as strong 
+diagnostic/classificatory signals.  
+We therefore have two varieties 
+of data structures which need to be 
+joined to particular images: `i.context` 
+data defining the image's situation in a 
+`FourD; cardiac representation (which is 
+largely `i.prior to` analysis logically speaking); 
+and `i.feature` data derived from morphological 
+and textural analysis (thus largely `i.after` 
+analysis logically speaking).  Connecting 
+these two is the radiomic workflow 
+itself: performing analyses which take 
+the image's context as parameters and 
+compute radiomic features against that background. 
+`p`
+
+
+`p.
+Consider these data structures from the point 
+of view of software implementations.  
+The `i.context` and `i.feature` data packages 
+bookend the radiomic analysis, and would 
+presumably be relevant to users of the software 
+whether initiating the analysis in the first 
+place or viewing the results.  Of course, 
+the (full) contextual data may itself be 
+available only after a complex process with 
+its own workflow, e.g. image-registration 
+possibly paired with manual `q.control point` 
+annotations.  We'll set this detail aside 
+for discussion and just consider the 
+context data as an overall package: a user 
+reviewing the image context would want to 
+obtain information about how the image 
+is oriented temporally and anatomically `visavis; 
+the beating heart, and could benefit from 
+seeing control-points or annotations 
+summarizing image-features employed during the 
+registration process.  Orientation 
+relative to the saggital, transverse, and coronal 
+planes can sometimes be visualized 
+via a `ThreeD; diagram of a schematic torso; 
+the `b.3DimViewer` application, for example, 
+which constructs `ThreeD; models from `TwoD; 
+image-series, uses a three-frame viewport 
+rendering an image for each of the three 
+anatomical planes and using a torso-figure 
+to track the position of the planes relative 
+to one another as users scroll on those frames 
+(`i.see` `cite<[page 87]JingjingDeng>;, for example).
+These orientations may also be presented 
+numerically.  
+`p`
+
+
+`p.
+From a modular point of view, a reasonable software 
+design might stipulate that `i.context` data 
+is presented in a secondary window which could 
+have some multi-media content, e.g., a torso-diagram 
+showing planar orientation and perhaps a 
+wave-illustration for temporal anchoring in the 
+heart rhythm, as well as rendering of numeric 
+values for these and other contextualization 
+parameters in key-value form.  If context-data 
+involves image annotations (such as control points) 
+these could be shown on the primary image-view, 
+but with the user having the option of hiding 
+those annotations (perhaps the context-data 
+annotations could be overlaid `makebox.semi-transparently 
+when the context-data window is visible`/).  `vspace<-1em>;
+`p`
+
+`p. 
+Similar principles could apply to `i.feature` data.  
+A secondary `q.feature` window might display 
+key-value data for radiomic parameters while also 
+showing radiomic features in visual form when 
+appropriate, e.g. via image-intensity histograms 
+for every Region of Interest.  Moreover, annotations on the 
+main image (such as overlays demarcating 
+texturally segmented RoIs) could be switched 
+`q.on` or `q.off` (and perhaps rendered semi-transparent 
+when the feature-data window is visible).  Context 
+menus and drag-and-drop 
+handlers (where warranted) could interconnect all three of these 
+relevant windows (main image, context 
+data, and feature data).   
+`p`
+
+
+`p.
+One goal when designing an image-annotation module 
+would be to furnish a common pattern for how 
+the module's windows are organized, and its 
+functionality accessed, which could be 
+reused by multiple applications.  When the 
+same module is found in multiple places, 
+those use-points gain the benefit of sharing 
+common interaction-patterns which may be helpful 
+to users (easing transition between applications, 
+for instance), particularly if the module 
+is well-designed and user-friendly.  Indeed, 
+one reason to describe the `i.data` that 
+would need to be handled by an image-annotation 
+module is so developers can get a handle 
+on what users will want to see when they 
+interact with windows provided by the module.  
+As an example, we have offered a very summarial 
+sketch of `q.context` and `q.feature` data 
+that would tend to accompany cardiac-imaging 
+use-cases. 
+`p`
+
+
+`p.
+In our basic outline, a primary image-window 
+would be supplemented with secondary 
+windows rendering `i.context` and 
+`i.feature` data when appropriate.  
+This setup could then be extended to 
+other secondary data profiles.  
+When using the module to `i.initiate` 
+radiomic workflows, one window could 
+provide a visual summary of the workflow, 
+and/or even a text editor where the user 
+may compose scripts defining the 
+workflow operationally; this window 
+could then be a starting-point for 
+workflow runs.  Of course, normally 
+the actual workflow implementation 
+would depend on other modules, so the 
+annotation module would need to 
+orchestrate data-export and cross-module 
+procedure protocols in coordination 
+with other modules (those data export 
+sites and formats would then be 
+modeled jointly within the module's data model 
+and procedural model).  Systematic 
+description of `GUI; requirements helps 
+translate data and procedural models 
+into user-friendly modular designs, 
+because (ideally) procedural capabilities 
+are exposed to end-users in a consistent 
+manner, one which presents the user with 
+similar experiences across different 
+applications and which is optimized 
+for the specific needs of the module's 
+domain.  For example, the part of image-annotation 
+data models related to image-registration 
+(exporting data to registration pipelines) 
+should be formalized in conjunction with 
+specifying how registration data should 
+be visualized (e.g., via control points as 
+annotations).
+`p`
+
+
+`p.
+In addition to workflow definitions, secondary 
+data for image-annotation modules might 
+step outside the imaging context entirely.  
+Recent research, for example, has 
+attempted to refine cardiac image-registration 
+methods by consulting simulation and 
+mathematical models of the heart's mechanics.  
+Mathematical descriptions of cardiac rhythms 
+%-- and of the associated structural changes 
+to the heart's shape during different phases 
+of the heart-beat %-- can identify constraints 
+which would also be apparent (projected onto 
+two dimensions, if working in a `TwoD; context) 
+in cardiac images.  The `q.unique combination of 
+... b-splines in the Fourier domain ... (BSF)` 
+introduced in `cite<HadiWiputra>;, for instance, 
+`q.aims to improve the
+tracking accuracy of myocardial motion by an add-on regularisation layer of pairwise image registrations.  The proposed framework is designed to enforce spatio-temporal smoothness, cyclic-nature of cardiac motion, and
+temporal consistency` that is `q.an `sq.add-on` 
+regularisation framework ... usable on any ... 
+registration algorithm` (page 2).  Virtual Reality 
+is likewise adopted in `cite<ArashAbiri>; 
+`q.to dynamically interrogate biophysical and
+biochemical events in the 4-D domain` (page 2) 
+yielding statistical signature of cardiac motion-patterns 
+(page 6).
+`p`
+
+`p.
+These are examples of cardiac 
+motion simulations yielding data which 
+can improve the accuracy of cardiac image-analysis 
+by defining mathematical constraints or statistical 
+properties of cardiac motion, and the heart's 
+geometry at different points in the beat-cycle.  
+Other simulations ground mathematical 
+cardiac models at smaller molecular/cellular 
+scales (`cite<DaisukeSato>;, `cite<NancyKDrew>;, 
+or `cite<SergeyFPravdin>;, for example).   
+As supplemental data complementing (and potentially 
+guiding analysis of) image data, such  
+simulations are analogous to  
+computational tumor models that we 
+discussed in Chapter 1.  
+In general, an
+image-annotation module might need to 
+establish a protocol for viewing 
+information about such simulations as a 
+peer data package (comparable 
+to context and feature data) and/or to 
+interface with a simulation-implementation 
+(analogous to serving as an entry-point 
+for a radiomic workflow).  We will return 
+to the `i.oncology` simulation 
+case later in the chapter.
+`p`
+
+
+
+`p.
+Before bringing the discussion back to oncology, 
+however, note one further detail in the 
+cardiac context: imaging data may sometimes 
+be integrated with more conventional 
+biomarkers drawn from biopsies, tissue samples, 
+or clinical health records.  In 
+`cite<IlesEtAl>;, for example, the 
+use of image processing to evaluate myocardial 
+fibrosis is double-checked against direct 
+examination of heart tissue (sampled 
+from explanted hearts, obtained 
+after heart-transplant surgery).  
+Programs such as Canada's 
+`q.HELP` (Human Explanted Heart Program) 
+`cite<HaoZhang>; and 
+the UK Biobank (referenced above; and 
+`i.see` `cite<ZahraRaisiEstabraghPetersen>;)
+encourage researchers to cross-reference cardiac 
+radiomics with other sorts of biomarkers.  
+In `cite<NayAung>;, data analyzed from the 
+UK Biobank reveals correlations between 
+genetic factors influencing details of 
+cardiac anatomy, such as left-ventricular 
+traits (page 1326), with image-derived 
+phenotypes (page 1320).   
+Genetic factors, specifically MicroRNAs, 
+were likewise correlated with 
+both image and tissue data in 
+`cite<[see page 9]IacopoFabiani>;. 
+In short, some research projects which 
+include cardiac imaging also require 
+analyzing tissue samples, biopsies, genetic 
+data, and other non-image biomarkers obtained 
+from patients in conjunction with 
+image-acquisition.
+`p`
+
+`p.
+From the software-engineering 
+point of view, this external data should be 
+linked to images when warranted based on how 
+study-designs provide context for image-acquisition, 
+even if managing that data is not the direct 
+responsibility of image-annotation modules.  
+This raises the question of how clinical, 
+genomic, or histological data should be 
+integrated with different kinds of bioinformatic 
+modules %-- how should this more general data 
+be packaged so that it may be presented to 
+the user in multiple application contexts, since 
+that data will be relevant in multiple 
+contexts?  How should modules request and render 
+data which lies outside their scope (e.g., 
+genetic data in an imaging context)?  These questions, 
+which we have noted in terms of cardiac imaging, 
+are also quite relevant to oncology.  
+`p`
+
+
+`subsection.From Image-Annotations to Image Biomarkers`
+`p.
+Some use-cases for diagnostic imaging require only 
+relatively low-level image scanning (by a person or 
+computer), such as visually confirming the presence of a 
+tumor or, say, bone fracture, or calculating a 
+tumor's width (or a fracture's degree of displacement).  
+Modern image-processing and Computer Vision applications, 
+however, allow for much more detailed 
+algorithms to integrate image data within 
+informations systems designed for predictive 
+analytics and precision medicine.  Textural 
+analysis of tumors or lesions, for example, 
+can yield fine-grained classifications of 
+different patient's particular cancers, which 
+may partition cancer patients into more rigorous 
+groups as criteria for selecting treatment 
+plans, or predicting patient outcomes in 
+light of different possible therapeutic interventions.
+`p`
+
+`p.
+The question for image-annotation is how to 
+describe the relationships between image data 
+proper and the textural patterns or image 
+features which are interpreted through 
+the lens of these fine-grained biomedical 
+details.  Annotation in the case 
+of simpler, visually evident image-patterns 
+(such as a tumor visible as a darker region 
+against a light background) need only be 
+visually marked or circled to call attention 
+to the Region of Interest, whose biomedical 
+significance is assumed to be evident to a 
+qualified diagnostician who inspects the 
+image.  Biomarkers derived from more 
+complex statistical processing of image-data, 
+however, can only be fully described by 
+representing the mathematical results 
+which result from sophisticated 
+image-processing algorithms.  The domain 
+of image `i.annotation`/, then, tends 
+to merge with that of feature 
+vectors and/or image-processing pipelines.
+`p`
+
+
+`p.
+For concrete examples of these issues, consider 
+cases such as tumor-microenvironment (`TME;) 
+research.  Radiomics can be 
+used to decode signals latent in tumor imaging 
+which indirectly describe how tumors are 
+biologically interacting with surrounding 
+tissue, measured in terms of parameters or processes 
+such as hypoxia (a situation where a tumor lacks 
+oxygen and tends to respond by more aggressively 
+expanding into surrounding tissue), angiogensis 
+and vascularization (where tumors try to coopt 
+blood supply by spawning new blood vessels) 
+and heterogeneity (reflecting different 
+genetic or morphological patterns in different 
+parts of a tumor, which can potentially 
+make the tumor more resistant to therapy). 
+`p`
+
+`p.
+One challenge when using image biomarkers in the context 
+of predictive/precision medicine is that of reducing 
+potentially multivariate feature-vectors into 
+signals of just one or two dimensions, which can 
+facilitate grouping patients into clusters of similar 
+diagnostic profiles.  For example, 
+`cite<KaleAksoy>; discuss hierarchical 
+image segmentation (with specific applications to 
+diagnosing cervical cancer) where contrasts between each region 
+and its enclosing `q.parent` region provide additional 
+data points (complementing those derived from 
+regions individually).  Some regions are composed 
+of smaller ones which have some level of differentiation, 
+and therefore are relatively heterogeneous, whereas 
+other regions are more homogeneous because their 
+subregions are similar to one another.  Measuring 
+heterogeneity and homogeneity across hierarchy-levels 
+allows algorithms to isolate regions which are large 
+enough to be biologically meaningful (smoothing out 
+over-sensitive segmentations that perceive large 
+numbers of small regions due to image `q.noise`/).
+`p`
+
+`p.
+In particular, important regions tend to be 
+homogeneous at their level and so on down the
+hierarchy but to be children of noticeably more 
+heterogeneous regions at the next higher level.  
+These considerations give rise to a scalar 
+`q.homogeneity measure` which can be provided 
+via a single formula.  In `cite<KaleAksoy>; 
+this measure is paired with a metric of 
+region shape based on the eccentricity of 
+ellipses which best approximate each region.  
+The authors call this measure `q.circularity,`
+which is larger for shapes similar to a circle 
+and smaller for shapes more like a straight 
+line.  The homogeneity and circularity measures 
+are single scalar values applicable to each 
+distinguished region.  In 
+`cite<KaleAksoy>;, `RoI;s are selected as regions 
+which are large in both homogeneity and circularity, 
+followed by a step where `RoI;s are further 
+classified (using other statistical parameters) 
+as corresponding to cell nuclei or cytoplasm.  
+In short, homogeneity-plus-circularity forms a 
+compact two-valued signature which serves 
+both as an analytic tool and a summarizing 
+device for cellular-scale image segmentation.
+`p`
+
+`p.  
+Once nuclei are isolated, cancer cells are 
+indicated by nuclei which are enlarged and 
+have irregular boundaries `cite<[page 4]SmithEtAl>;.  
+This phenomenon applies to many sorts of cancer, although the 
+diagnostic importance of nuclear morphology is 
+more pronounced in cervical cancer than elsewhere 
+because cervical cancer is commonly diagnosed via blood 
+samples (rather than via imaging solid tumors, for example).
+Different algorithms can be employed to quantify 
+nuclei deformity, but the common theme 
+is to quantify the deviation of the nuclear membrane 
+from a smooth curve which encloses a 
+similar region `cite<[pages 4 and 7]TangEtAl>;.`footnote.
+Informally speaking, techniques can start with a 
+complex contour %-- viz., the outer boundary enclosing a 
+region %-- and simplify it to a smooth curve, measuring 
+how much the original contour changes in the process; 
+or, one can proceed in the opposite direction, starting 
+with the curvature one would expect to find 
+on a smooth contour, and measuring how much the 
+actual boundary deviates from these expectation 
+in the neighborhood of individual points.  
+`footnote`  The end result is a single scalar estimate 
+of nuclear morphology, which can be applied to 
+all nuclei identified by the prior segmentation.  
+The presence of measurably irregular nuclei
+correlates with a likelihood of cancerous or pre-cancerous 
+cells, so that these measurements serve as an image 
+biomarker extracted via this form of Computer Vision pipeline. 
+`p`
+
+`p.
+This review presents merely one simplified 
+account of a full analytic pipeline.  There are 
+many different segmentation algorithms 
+which can be employed to isolate nuclei 
+and cytoplasm: `cite<[page 2]HoqueEtAl>; in a 
+recent (2021) study cite 15 papers describing 
+image-processing methods specific to 
+cervical cytology, and three others for 
+nuclear segmentation more broadly.  
+Image segmentation and then classification of 
+nucleus (and cytoplasm) regions are two separate 
+analyses where different methods for 
+each step can be combined independently.`footnote. 
+We are not aware if the algorithms described in the 
+specific papers we cited to summarize examples 
+of the segmentation 
+process and then the classification process have 
+in fact been used together, but they illustrate 
+the kind of workflow endemic to cytological 
+image analysis.
+`footnote`  Our main point for 
+the moment is that a key step in these analyses  
+is to convert numeric data whose significance 
+is confined to the intermediate stages of 
+image-processing into a small group of 
+numbers that can serve as image biomarkers, ultimately 
+integrated into bioinformatic contexts which 
+combine image biomarkers with other kinds of 
+data (genomic, biochemical, histological, and so forth).
+The analyses we summarized here yield (first) 
+`q.homogeneity` and `q.circularity` metrics for 
+each screened `RoI; and (second) `q.irregularity` 
+metrics for regions classified as nuclei.  
+This relatively simple system of three 
+parameters encapsulates image-processing 
+routines which could generate thousands 
+of (intermediate) data points during the 
+course of the pipeline.
+`p`
+
+
+`p.
+Although the goal of image-analysis is usually to 
+reduce complex analytic data into simpler, biologically 
+meaningful metrics, there are many different 
+kinds of derived quantities which can be 
+computed as consequential image-features.  
+In `cite<HoqueEtAl>; criteria such as 
+contour size, average intensity, `q.solidity` (defined here 
+as a quotient of contour-area against convex-hull area),  
+and `q.inertia ratio` (essentially the inverted 
+aspect ratio of an approximating ellipse) 
+are identified as 
+visually distinctive qualities 
+of nuclei (page 3) and 
+used for nucleus classification.
+In another recent review of extant 
+work, `cite<JieSu>; identifies several dozen feature varieties:
+
+|+|
+
+`displayquote,
+Some authors analyzed four parameters: area, integrated 
+optical density (`IOD;), eccentricity, and Fourier coefficients. 
+Other authors used 16 features: area of nucleus, area of cytoplasm, 
+nuclear gray level, cytoplasm's gray level, 
+and so forth.  Some authors acquired nine parameters: 
+mean intensity, variance, number of concave points, area, area ratio, perimeter, roundness, entropy, and intensity ratio.  Finally, some other authors used 27 parameters, which included contrast, energy, correlation, and homogeneity. ... It remains to be studied which parameters are more appropriate for cell classification.
+`displayquote`
+
+|.|
+
+`noindent;Any of these parameters could potentially be employed 
+as image-features that have some diagnostic/predictive  
+significance, which can result in a given image 
+yielding a diversity of realistic biomarkers, 
+even if most such features only have  
+biological interpretations in specific contexts.  
+Moreover, `cite<JieSu>;'s list of parameters 
+are centered largely on those characterizing 
+region `i.morphology`/; different metrics 
+can likewise be obtained for describing 
+image `i.textures` which are evident inside  
+regions, and which also may have biomedical 
+interpretations (e.g., for tumor-microenvironment 
+investigations as cited above `visavis; hypoxia, 
+heterogeneity, angiogenesis, and vascularization).  
+In the context of Covid-19 radiology, for 
+example, `cite<DonglinDi>;  
+describes an algorithm for assessing the probability 
+of SARS-CoV-2 infection from chest `CT; scans, 
+where hypernodes represent high-dimensional 
+vectors (191 dimensions overall) and hyperedges 
+represent k-nearest-neighbors; here each hypernode 
+represents an entire image, mapped to a 191-dimensional 
+feature-vector.  
+`p`
+
+`p.
+Some research can potentially close the 
+gap between statistically discerned 
+image-features and biological 
+interpretations/explanations or 
+`q.biologic correlates` 
+`cite<[see esp. page 1491\i{ff}]LubnerEtAl>; for their 
+statistical significance by simulating 
+cellular-scale or tissue-scale processes 
+which produce patterns latent in an image.  
+In `cite<GatenbyEtAl>;, for example, 
+a theory of `q.habitat characterization` 
+(page 13) 
+yields a scaffolding for image-feature 
+signatures and (incidentally) an account 
+of biodynamic mechanisms causing radiomic 
+patterns:
+
+`displayquote,  
+We contend that [image] 
+subregions represent distinct habitats
+within the tumor, each with a distinct
+set of environmental selection forces.
+These observations, along with the
+recent identification of regional 
+variations in the genetic properties of tumor
+cells, indicate the need to abandon the
+conceptual model of cancers as 
+bounded organlike structures. Rather than a
+single self-organized system, cancers
+represent a patchwork of habitats,
+each with a unique set of 
+environmental selection forces and cellular 
+evolution strategies.  For example, regions of
+the tumor that are poorly perfused can
+be populated by only those cells that
+are well adapted to low-oxygen, low-
+glucose, and high-acid environmental
+conditions.  Such adaptive responses
+to regional heterogeneity result in 
+microenvironmental selection and hence,
+emergence of genetic variations within
+tumors. The concept of adaptive 
+response is an important departure from
+the traditional view that genetic 
+heterogeneity is the product of increased 
+random mutations, which implies that 
+molecular heterogeneity is fundamentally
+unpredictable and, therefore, chaotic. (page 12)
+`displayquote` 
+`p`
+
+`p.
+It is worth noting that variable parameters 
+which govern how image-processing workflows 
+are executed can also serve as biomarkers, 
+or at least as metadata informing how biomarkers 
+should be interpreted (and as such 
+information that should be included in 
+biomarker packages).  In the case of 
+`cite<HoqueEtAl>;, the 
+authors outline seven `q.tunable parameters` 
+(page 7) which their computer code 
+takes into effect, and which can 
+determine the outcome of the 
+segmentation-and-classification 
+pipeline.  Since the image-features 
+which emerge from that workflow 
+are dependent on the initial 
+vector of seven predefined 
+parameters, those parameters 
+are also an intrinsic part of the 
+analytic data, and should be 
+recorded when integrating this 
+data into larger clinical contexts.  
+`p`
+
+`p.
+Our last few paragraphs, then, have presented 
+concrete examples of how radiomic 
+pipelines convert image data 
+(which has mathematical significance 
+only in the narrow context of 
+image statistics) into meaningful 
+biomarkers.  To the degree that 
+image `i.annotations` are used to 
+represent these biomarkers, the 
+annotations proper must be 
+connected with data structures 
+summarizing extracted image-features.  
+Annotations can interact with image-data 
+on several levels.  Since features are 
+often correlated with specific image segments 
+or `RoI;s, the demarcation of the `RoI; itself 
+constitutes an annotation which serves as a ground 
+for defining feature data.  Also, many `RoI;s 
+are computed by reference to simpler shapes that 
+are defined in their neighborhood, such as 
+ellipses approximating a region's extent, 
+or polygons forming their convex hull.  
+These simplified shapes can be directly 
+encoded as annotations using conventional 
+geometric descriptions.  Finally, 
+feature vectors might be encoded as 
+data structures associated with 
+an annotation in the sense that 
+the annotation describes the 
+region to which the feature-vector applies.  
+`p`
+
+
+`p.
+The fact that image-features are usually 
+associated with `i.regions` (not the entire 
+image) points to a close association between 
+feature-vectors and annotations.  On the other 
+hand, the scope of (even a general-purpose) 
+annotation framework does not necessarily 
+extend to thorough descriptions of 
+image-features in general, which may 
+require an entirely different set of  
+mathematical and bioinformatic concepts.  
+As the above discussion has hopefully pointed 
+out, there are literally dozens (if not hundreds) 
+of features that might be quantitatively extracted 
+from an image, and it would be difficult 
+to schematically define all such parameters 
+`i.a priori`/.  Moreover, different kinds 
+of image-features %-- and by extension different 
+image-processing techniques %-- tend to be 
+associated with different biomedical 
+domains.  Segmentation of cellular-scale 
+images for the purpose of nucleus and cytoplasm 
+classification is diagnostically important 
+for some clinical contexts, such as cervical 
+cancer.  Other kinds of processing, which 
+may involve very different algorithms, 
+have different clinical rationales.  
+For example, tumor-microenvironment 
+research is focused on images at a different 
+scale (e.g., solid tumors rather than 
+individual cells) and is oriented 
+toward texture analysis more than region-morphology.
+`p`
+
+
+`p.
+We can see the overall field of bioimaging as 
+partitioned into multiple (relatively autonomous) 
+contexts, where the image-acquisition modalities, 
+the applicable forms of Computer Vision, the 
+interpretations of image-features as biomarkers, 
+and the prototypical processing pipelines can 
+all vary from one context to another.  
+As such, it is premature to schematically 
+outline the domain of biomedical image processing 
+as a whole, rather than modeling 
+such different technological contexts individually.  
+Moreover, these contexts are not static; 
+new imaging technologies as well as new 
+software/computational methods can improve 
+upon existing radiomic techniques while 
+also consolidating algorithms and workflows which are 
+characteristic of specific diagnostic and investigative 
+domains.  For example, enhanced segmentation capabilities 
+emerging over the last decade have apparently 
+consolidated the nuclear-classification pipeline we 
+reviewed in this section as a canonical methodology 
+for cervical cancer detection.  Much of the terminology 
+and numerical details intrinsic to this use-case 
+would be less applicable to, say, tumor microenvironments.  
+`p`
+
+
+`p.
+These comments imply that the connections between image-annotations 
+and image-features should be left open-ended, 
+with detailed models of how annotations integrate 
+with biomarkers left to be represented more broadly 
+within computational environments where multiple 
+varieties of biomarkers are juxtaposed.  The 
+challenge for modular implementations is to 
+provide enough structure for an image-annotation 
+module and radiomics/Computer Vision modules 
+to interoperate, but simultaneously to 
+avoid pre-emptively restricting the kinds of 
+data and procedures which each module 
+can take on within its own domain.  Finding 
+the proper balance between data and procedural 
+expressiveness/open-endedness, on one 
+hand, and rigorous interoperating protocols, 
+on the other, is a crucial artistry within 
+modular design.  We will 
+examine this issue in more detail in later chapters.  
+`p`
+
+
+`subsection.Tumor Histopathology and Simulations`
+`p.
+As mentioned above, one line of cardiac research 
+has connected cardiac imaging to simulations and 
+mathematical models of heart-beat rhythms and 
+biomechanics.  
+A similar development may 
+be observed in oncology with respect to 
+computational models of tumor growth and 
+evolution.  Tumor imaging and simulations 
+can be mutually reinforcing, in that 
+simulations can help explain how biologic mechanisms 
+within the Tumor Microenvironment (`TME;) engender 
+patterns of tissues, vascularization, and tumor 
+growth that can be viewed on radiographic 
+images, while image analysis can at the same 
+time double-check simulations' accuracy.  
+Simulating tumor microenvironments (and other 
+pathological or histological processes) helps 
+expose the causative factors underlying cancer observations, including 
+those warranted by biomarkers.  One of the 
+clinical payoffs is more refined precision/personalized 
+medicine: multiscale 
+biological models may clarify the factors driving 
+categorizations such as benign/malignant and between 
+tumors which do or do not respond to radiation therapy, potentially 
+improving automated classifications in ways that are clinically 
+significant %-- ideally, selecting probabilistically advantageous treatment plans.
+`p`
+
+`p.When constructing biological models, many 
+tumor simulations combine models of biological processes (at the 
+histological, cellular, and molecular levels, often integrating 
+models at different physical scales) with spatial and geometric 
+simulations of tumor growth and evolution.  Such spatial simulations 
+yield geometric prototypes that can be cross-referenced against 
+image biomarkers.  That is, accurate tumor simulations may yield 
+predictions about how tumors with specific properties 
+(e.g. specific degrees/regions of hypoxia) would appear 
+observationally in the context of different imaging modalities, 
+such as conventional radiography or newer whole-slide imaging 
+or nano-radiomics: `q.modeling has provided mechanistic understanding of 
+phenomenological observations based on physical principles and helped 
+establish important quantitative relationships ... spanning several 
+biologically relevant scales in time and 
+space.` `cite<[page 2]PrashantDogra>;  To the degree that such models are
+correct, the predicted observable patterns could then be considered 
+as biomarkers for tumors having their simulated properties.  
+For example, if computational models suggest that tumors in 
+certain circumstances will acquire unevenly-distributed but consequential 
+hypoxia (sufficient to diminish the effectiveness of conventional 
+therapies) and predict that tumors in this context will exhibit 
+prototypical textural patterns, then image-processing tools 
+which detect such patterns can be deemed accurate in identifying 
+which tumors have levels and distributions of hypoxia that 
+should be factored in to treatment plans.`footnote.
+`i.See` `cite<DmitryCherezov>; for
+image-processing algorithms targeting 
+irregular hypoxia patterns.
+`footnote`
+`p`
+
+`p.
+As this example suggests, there is often potential for 
+identifying correlations 
+between simulations and image biomarkers: simulations help us to 
+understand `i.why` biomarkers actually signal the 
+conditions which they do, which in turn can help us improve 
+biomarkers' accuracy.  The synergy 
+between simulations and image biomarkers is accelerated further 
+by the inherently spatial and geometric nature of many algorithms 
+and modeling primitives employed in both areas.  For 
+instance, in `q.unstructured lattice` simulations individual cells 
+are modeled within a lattice grid and allowed to move independently,  
+subject to system constraints reflecting biological processes 
+(such as cells' access to nutrients, oxygen, and blood flow; 
+`i.see` `cite<YongChen>; for instance) and geometric constraints (such as proper spacing between cells) `cite<PaulVanLiedekerke>;.  Simulations in `cite<AbbasShirinifard>;  present an example of lattice-based models generalized to three dimensions.
+A structurally different lattice-based method, 
+one which permits (rather than forbids) multiple cells on one lattice site, is developed in `cite<GrazzielaFigueredo>;,
+providing a case-study in how related simulations may present different 
+modeling parameters, assumptions, and structural frameworks that need to be properly documented 
+when comparing simulation results and conclusions.  The structure 
+of the underlying grid, along with the specific evolutionary constraints 
+recognized for a given simulation, provide geometric and 
+data-field primitives which algorithmically generate the overall 
+model.  These examples illustrate how biophysical and 
+systems-biological models are often based on shared 
+(or at least analogous/contrastable) geometric primitives which 
+capture how large collections of smaller-scale units (such as cells and proteins) 
+aggregate into structures evincing holistic patterns (such as tissues and `ECM;) in the presence of local forces and generative rules.`footnote.
+Similar comments could be made for other mathematical 
+tissue-models, e.g. for surgical simulations; a good 
+overview is `cite<JinaoZhang>;, or `cite<TangWan>;, 
+`cite<KunQian>;, `cite<XiaJin>;, etc.
+`footnote`
+`p`
+
+`p.
+When comparing simulations and radiomics, it is also 
+worth considering how models are codified and documented.  Alongside 
+the code that executes computational-biology simulations %-- 
+or, correlatively, image-processing workflows %-- bioinformaticians have 
+also specified formats for representing models' parameters, assumptions, 
+and investigative purpose.  Popular model-description languages in 
+oncology and immunotherapy include `SBML; (Systems Biology Markup 
+Language), `BNGL; (the custom BioNetGen language), 
+`BioPAX; (Biological Pathway Exchange), `TumorML;, 
+`CellML;, `FieldML;, `ISML; (Insilico Modeling Language), 
+`MIRIAM; (Minimum Information Required In The Annotation of Models) 
+and `MIASE; (Minimum Information about a Simulation Experiment). 
+In addition to special description languages, 
+Object-Oriented methods for simulating tumor histology and 
+microenvironments via general-purpose programming 
+languages (such as `Cpp;) are analyzed in `cite<ConnorEtAl>; 
+(`i.see also` `cite<[page 138]DavidJohnson>;).
+A project such as the Digital Model 
+Repository which  
+`q.allows a model to be executed as an independent
+computer application` and will `q.in the future ... enable seamless
+integration of different computational modules based on the use of various accepted
+ontologies and semantically annotated objects/parameters exchanged between
+applications` `cite<[page 9]ZhihuiWang>; employs
+Semantic Web tools for data `i.representation` but 
+envisions (pages 7-8) `displayquote,having the models and data available in
+standardized formats with clearly stated dependencies 
+[to] 
+facilitate the creation of workflows that can generate model results to compare model
+predictions with experimental data, all in an automated fashion.  This task can be facilitated
+by collaborating with other groups developing standard formats for model exchange at
+different biological scales, such as the Systems Biology Markup Language (SBML) CellML, BioPAX, and FieldML.` `noindent;which 
+implies a modular design integrating parsers, simulators, 
+and analyzers cross-referenced with empirical data sources %-- 
+complex software systems that would almost certainly 
+be engineered on an Object-Oriented foundation.  
+Object-Oriented models of cancer-related simulations 
+(tumor formation, growth, morphology, microenvironment, angiogenesis, 
+vasculogenesis, histological properties, and so forth) 
+%-- and concurrently of radiomic biomarkers 
+(and biomarker-extraction techniques) %-- can 
+therefore play two complementary roles: to serve as a 
+basis for model descriptions via languages such as `SBML;, 
+`TumorML;, etc.; and to implement algorithms for 
+computational-biology simulations and/or image 
+processing.  
+In short, expressing modeling constraints 
+and parameters via Object-Oriented classes allows model description and 
+algorithm implementation to be tied together, 
+which can then streamline the inclusion of bioimaging 
+content  
+since the vast majority of image-processing libraries are based on 
+(Object-Oriented) `Cpp;.  
+`p`
+
+`p.
+These considerations suggest a programming strategy wherein 
+%-- staying with systems biology as a case-study %-- the building blocks 
+of systems-biology`slash;immunotherapy-related data sets or research 
+code libraries would be `Cpp; classes which simultaneously 
+provide model descriptions (that may be formalized via `SBML; 
+and related languages, potentially generating descriptive markup code 
+automatically via metatype reflection) and, via class methods, 
+provide algorithmic capabilities.  These building blocks could 
+then be composed and aggregated into heterogeneous data sets 
+and cross-disciplinary research programs, insofar as most 
+immunotherapy research combines multiple forms of 
+biomarkers, data sources, and/or investigative procedures.
+`p`
+
+`p. 
+So long as each component part of such hybrid models 
+are rooted in a coding method that integrates model-description 
+and algorithm-implementation, complex hybrid models 
+will have on aggregate a consistent interface for 
+descriptive modeling and for algorithmic logistics 
+(the testing, programming interface, data-acquisition 
+logic, and similar requirements for using implemented 
+algorithms scientifically).  If consistently adopted, such 
+Object-Oriented architecture would yield more 
+consistently designed and reusable Research Objects 
+(arguably more 
+so than current paradigms, where meta-models and operational 
+requirements are expressed and tested via a diverse and 
+disconnected array of incompatible tools and languages).
+`p`
+
+
+`p.
+As a concrete example, the study of tumor hypoxia 
+(decreased oxygen within tumor tissue, 
+a condition which generally makes solid-tumor cancers more dangerous 
+and resistant to conventional therapies) draws together 
+bioimage markers which can estimate hypoxia via 
+image textural analysis, mathematical and 
+cellular/histological simulations of tumor growth to advance 
+our understanding of how hypoxia emerges in heterogeneous and 
+anisotropic tumor microenvironments, genomic and proteomic 
+data relevant to proteins which influence tumor hypoxia, 
+and empirical clinical or lab data (including tissue samples and 
+disease progression to correlate with bioimages).  Most studies 
+of tumor hypoxia combine three or more of these 
+distinct data profiles.
+`p`
+
+`p.
+Given that this is 
+the case, it would be helpful to employ a common programming framework 
+to manage all of the data acquisition, modeling, and analysis requirements 
+which are distributed across these distinct domains.  For instance, assuming the 
+underlying programming environment is based on `Cpp;, all the pertinent 
+data structures integrated in a given tumor-hypoxia research project 
+could be expressed as `Cpp; objects.  These data structures might include 
+image annotations identifying regions of interest and 
+quantifiable features (vector fields, 
+diffusion measures, etc.) in tumor images; simulation kernels 
+and evolution parameters for tumor growth models which predict 
+how hypoxia manifests in tumors; clinical records for comparing predictive modeling with 
+actual disease progression; molecular models for proteins influencing tumor hypoxia; 
+and so forth.  By structuring all of these research parameters as 
+`Cpp; objects, scientists would then have a centralized paradigm for 
+describing all relevant observational or computational details contributing to theoretical models and 
+research findings, as compared to a diffuse 
+assembly of narrower models expressed in terms 
+of data-acquisition methods rather than 
+data models themselves (e.g., `XML; file types, 
+table formats, and so on).
+`p`
+
+
+`p.
+In the case of tumor hypoxia, 
+constructions such as textural image biomarkers and tumorogenesis 
+simulation parameters are theoretical posits that can be 
+concretized in Object-Oriented programming idioms, 
+providing a reusable and interactive 
+coding platform which is arguably more convenient and pedagogically 
+valuable %-- more conducive to experimentation --- than static 
+figure illustrations or opaque mathematical equations.  These 
+points are well illustrated by several existing publications 
+and code repositories which simulate tumor hypoxia via reusable code, 
+built on top of projects such as `b.PhysiCell`/.  The same 
+points similarly apply to other `TME; factors 
+such as angiogenesis and cellular density.  
+In short, a unified programming platform providing classes supporting 
+different aspects of tumor microenvironment research %-- from 
+image analysis and historical simulations to empirical clinical 
+records and proteomic or genomic database queries %-- would 
+serve both to facilitate implementation of research code and 
+to document research methods, which in turn would add rigor to 
+publications and data sets summarizing the research project.
+`p`
+
+`p.
+It is self-evident of course that `q.in silico` simulations 
+require computer code.  More to the point, simulations (at least in contexts such as cardiology or oncology) are not 
+performed in a vacuum, but rather connected to 
+clinical or pathological/diagnostic data either to provide 
+initial parameters to a simulation, or to double-check its 
+results (or both).    
+We'll mention several interesting examples: `cite<OlegMilberg>; describes the process 
+of constructing a `q.virtual patient` cohort by mining 
+real-world clinical data and then using this collection of 
+virtual-patient profiles as the basis for 
+a Quantitative Systems Pharmacology (`QSP;) 
+model simulating a tumor microenvironment 
+via biochemical equations, a simulation which propagates 
+to a model of tumor evolution that can be used to 
+investigate immunotherapy mechanisms.  
+A multi-part 
+research workflow as in `cite<MohammadJafarnejad>; 
+might combine genomic data 
+(specifically, Cancer Genomic Atlas sequences) 
+with cellular data (from the Broad Institute Cancer 
+Cell Line Encyclopedia), with protein abundance 
+metrics derived via mass cytometry, and with simulations of 
+intracellular signaling and of 
+therapy regimens targeting these signaling mechanisms.  
+The `i.brain` is used as a `q.control` standing 
+for `q.normal` tissue in a simulation comparing 
+tumor angiogensis in a hypoxic environment 
+against blood vessel emergence in non-cancerous 
+organs `cite<[page 4]LeeStantz>;.
+An `q.effort to integrate mathematical models of cancer with real
+data in an attempt to develop quantitative, predictive models` 
+`cite<PowathilEtAl>; 
+is combined with multi-scale mathematical modeling (this 
+article is a good reference overview on mathematical 
+simulations of hypoxia, invasiveness, and other 
+cancer details as well as documenting new multiscale 
+techniques; `i.see also` `cite<SaraHamis>; which applies
+these techniques in a context that also emulates 
+real-life patient `q.subpopulations,`
+in the sense of cohorts within a clinically and 
+sociodemographically diverse human community).  In 
+`cite<SteffenKlamt>;, hypergraph-analysis methods are 
+applied to several 
+datasets and mathematical models relevant to 
+systems biology, such as genetic regulatory networks, 
+human-disease networks, and protein complexes; for 
+example, `q.node statistics or motif
+detection` may be analyzed on hypergraphs 
+representing interactions between sets of 
+related genes and of related diseases (page 5).  
+Statistical analyses reported by `cite<KatherEtAl>; 
+introduce a rigorous quantitative definition of 
+angiogenic `q.hot spots` (fluctuations in the 
+density of vascular growth at different regions 
+in a tumor) and demonstrate that such fluctuations 
+are likely to manifest underlying biologic 
+processes rather than result from chance.    
+Next-Generation `RNA; sequencing is combined 
+with an analysis of tumor samples in `cite<FinotelloTrajanos>; 
+and `cite<PornpimolCharoentong>; 
+to calculate `q.a gene-specific model by
+fitting a smoothing spline with four degrees of freedom to
+transform RNA-seq data ... into `sq.microarrays-like` data`/; 
+from that transformed data the authors investigate 
+tumor-infiltrating immune cells via 
+microarray-based algorithms, research 
+ultimately targeted at leveraging anti-tumor 
+immune reactions to contain cancers and/or 
+amplify the benefits of cancer treatments 
+`cite<[page 1037]FinotelloTrajanos>;.  
+Empirical models of `q.hallmarks` %-- which are 
+patterns in gene-expression explaining genetic 
+contributions to cancer development that have been 
+incorporated into databases for cancer 
+research %-- are merged into 
+simulations of cancer development and progression 
+in `cite<NagornovKato>;.  
+Finally, `cite<ChangGong>; employs  
+decentralized Object-Oriented coding 
+techniques for `q.a computational multiscale 
+agent-based model capturing spatially explicit dynamics of tumour
+development in the presence of adaptive immune response` 
+(page 2).
+`p`
+
+`p.
+Characteristic of these various multi-methodological 
+studies is the recurrence of biomarker or prognostic 
+factors in different investigative modalities, 
+such as Microvessel Density (`MVD;) in 
+`cite<KatherEtAl>;, which can be expressed 
+in results from histological assays based on 
+immunostaining `cite<[page 19163]KatherEtAl>;, 
+in Whole Slide Imaging applied to tumor 
+cross-sections, and also as a simulated 
+emergent pattern in (e.g.) 
+`cite<YildirimKarslioglu>;.  The former paper 
+moreover presents a method for merging 
+and cross-referencing bioimaging on two 
+different scales (tumor radiography and 
+tumor histopathologic Whole Slide Imaging), 
+allowing `MVD; image biomarkers to be derived 
+via two different workflows.  In 
+`cite<MaolinXu>;, a proteomic biomarker 
+(associated with Ki-67, a protein 
+whose levels are correlated with 
+cell division, and in particular with 
+tumors' aggressiveness) and several other 
+Immunohistochemical (`IHC;) indicators (obtained 
+via tissue reception), as well as 
+basic clinical information (e.g. patient 
+age and `q.Menopause status`/), are juxtaposed with 
+`ADC;-based (Apparent Diffusion Coefficient) 
+image features, seeking a noninvasive tumor-growth 
+prognosis which would statistically mimic 
+the Ki-67 proliferation index in the context of 
+breast cancer.  In `cite<YuFu>;, histopathologic 
+image features are correlated with 
+genomic, transcriptomic and survival data 
+to derive a classification system for 
+cancer types.  The common theme of these 
+research projects is that underlying 
+genetic, biochemical, or biomechanical 
+processes can yield multiple biomarkers 
+expressed in different modes of observation 
+(e.g. tissue examination via lab assays versus 
+non-invasive diagnostic imaging).
+`p`
+
+`p.
+In the case of Ki-67, levels of the protein in 
+tumor cells signal the rate that these 
+cells are primed to subdivide (and therefore 
+the cancer's invasiveness).  As such, Ki-67 
+serves as a molecular indicator of tumor 
+characteristics which has prognostic significance.  
+An analogous molecular expression in the context 
+of tumor angiogenesis derives from the `q.ED-B` 
+isoform (variant) of the protein `b.fibronectin`/, 
+which in general is associated with such 
+functions as cell growth and vascular development.  
+The ED-B form is particularly involved in 
+embryonic development `cite<[page 1]IacopoPetrini>; 
+but is less present in adult tissue (in the absence 
+of cancer), so that antibodies against ED-B 
+can serve as a measure of tumor angiogenesis 
+`cite<[page 6]AsabellaEtAl>;.  Proteins 
+can of course be indirectly signaled by 
+antibodies against them as well as by genetic 
+factors, insofar as many proteins depend on 
+specific genes to produce them.  
+Personalized immunotherapy often depends on 
+evaluating genomic signatures marking the 
+characteristics of patients' cancers at a granular 
+level, allowing targeted interventional therapies 
+(as we discussed summarily in the previous two chapters).
+`p`
+
+`p. 
+Transcriptomic indicators (i.e., those based 
+on `RNA;) have also been widely studied for 
+oncology, yielding for instance biomarkers 
+for hypoxia in the context of cervical cancer, for 
+example `cite<AnjaNilsen>;, 
+as well as hypoxia as a complicating 
+factors in radiation and immunotherapy 
+for many kinds of cancer in 
+general `cite<[page 6]SorensenHorsman>;. 
+In sum, proteins, genes, and antibodies can all serve as 
+indicators allowing diagnosticians/pathologists 
+to infer details about cancer growth and 
+the tumor microenvironment, as well as genomic 
+or molecular factors in the cancer which may 
+have implications for treatment plans and 
+prognoses.
+`p`
+
+
+`p.
+Often similar details may also 
+potentially be gleaned from image-analysis at 
+one or more scales (e.g. radiographic scans of 
+tumors or microscopy images of cancerous tissue), 
+so that image-biomarkers could either reinforce 
+or take the place of lab-based blood work or 
+tissue analysis.`footnote.
+Of course, image-analysis can replace lab 
+methods in some context but reinforce them otherwise, 
+so that non-invasive imaging can be used 
+for diagnostic/prognostic purposes but direct 
+lab analysis used as well when patients 
+need to undergo invasive procedures anyhow; 
+and research comparing results from imaging 
+and from more invasive methods can also 
+be done to establish a baseline for 
+how (and how well) imaging results 
+correspond to lab-based results and vice-versa.
+`footnote`  Sources of information about 
+cancer properties and `TME; may 
+therefore involve some combination of   
+(1) non-invasive imaging; (2) tissue/blood lab analysis (proteins, genes, antibodies), 
+which in turn may entertain (2a) cytometry, or lab assays (whose diagnostic 
+mechanisms would comprise, say, color-tests and test-tubes), 
+(2b) image-analysis on tissues/cells (e.g., Whole Slide Imaging), or 
+(2c) genomic/transcriptomic sequencing; and (3) biochemical 
+or biomechanical simulations of tumor growth and evolution.  
+From the computational point of view, these diverse 
+observational modalities give rise to a distinction between 
+software components focused on simulations, imaging, and 
+clinical/lab data management, respectively 
+(see Figure~`ref<fig:triangle>;).  Many research projects 
+combine two or three of these modalities, so that 
+this figure (which we will discuss further in later chapters)
+presents component-types as (vaguely defined) 
+domains that tend to integrate and interoperate 
+in different combinations.
+`p`
+
+`input<fig-tri>;
+
+`p.
+Thus far in this chapter we have discussed the combination and 
+cross-referencing of image biomarkers with other clinical 
+and molecular disease-indicators.  The various examples and 
+case-studies that we have mentioned are of course only a sampling 
+of volumous research literature that could be summarized; a 
+review of the breadth of data-acquisition procedures, 
+observational modalities and research data sources for 
+cardiology or oncology is well beyond the 
+scope of one chapter.  Our overview and examples however 
+are hopefully sufficient to picture the information 
+landscape so as to present relevant software-design 
+issues.  As an organizing device, we have focused on 
+the theme of bioimaging, which translates over to 
+design considerations for software components 
+presenting images (and their annotations) and 
+potentially interfacing with image-processing workflows.  
+Given the correspondences between different forms 
+of biomarkers sketched out via Figure~`ref<fig:triangle>;,   
+the analogous software-engineering concerns derive 
+from the challenge of integrating 
+components devoted to the three `q.vertices` of 
+the triangle (imaging, simulations, and clinical/lab data), 
+which we will address in the rest of this chapter.     
+`p`
+
+

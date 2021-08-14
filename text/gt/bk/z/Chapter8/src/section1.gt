@@ -1,0 +1,1016 @@
+
+`hoctitle.Chapter 8: Image Annotation as a Multi-Aspect Case-Study`
+
+`section.Introduction`
+`p.
+The previous chapter indicated many questions that should be 
+answered by a comprehensive image-annotation framework.  
+This does not mean that frameworks should enforce some 
+choices at the expense of others, but they should at 
+least identify details where data models may diverge, 
+and encourage specific models and implementations 
+to document their individual policies.  In other words, a 
+framework does not need to be a definitive implementation; 
+it could also be a protocol identifying details which 
+particular implementations should take into consideration.
+`p`
+
+`subsection.Design Questions for Image-Annotation Modules`
+`p.
+For sake of discussion, we will reiterate in summarial 
+fashion a number of the questions which were indicated 
+last chapter.
+
+`enumerate,
+`item;  What number systems should be recognized for defining 
+magnitudes, so that basic quantitative data such as distance 
+between an image point and the image sides (allowing 
+image-locations to be identified) can be notated?  
+How many different number systems (integers, floating-point 
+values with different degrees of precision, non-standard 
+quasi-reals) should be recognized?
+
+`item;  Should an annotation system allow multiple number systems 
+to co-exist, e.g., an integer scale for image points but a 
+floating-point scale for ratios, angles, and other calculated 
+values which lie outside an integer pixel grid?
+
+`item;  What coordinate systems should be recognized for 
+dimensions which have a spatial interpretation, such as pairs 
+intended to represent horizontal and vertical position within an image?  
+Certainly Cartesian coordinates are ubiquitous, but one can also 
+consider homogeneous (projective) geometry, polar representation, 
+orthonormal vectors not parallel to image sides, and so forth.  
+Even with the most common orthogonal axes (parallel to the image sides)   
+there are multiple options for the origin point, including all 
+four image corners and the image-center (with direction of increase 
+typically upward and to the right).  Should arbitrary 
+Cartesian origin-points be allowed inside (or possibly outside) the 
+image interior, other than the center?  Where should the center 
+be located for an image with even pixel-height and/or width? 
+
+`item;  Should it be possible to designate points via 
+tuples representing coordinates under numerical transforms 
+such as logarithms, scaling factors, hyperbolic arcsines, 
+or biexponentials?
+
+`item;  Should annotations possess a zoom dimension which can vary 
+independently of the ground-image zoom?  That is, should annotations 
+support a transformation where they are rescaled while the 
+ground image remains the same (e.g., a circular or polygonal 
+shape expand or contract relative to its center), or should 
+any such change be executed simply by updating the point- 
+and/or length-set?  Likewise, should there be a mechanism for 
+representing the annotation-scale (whether or not it 
+mirrors the ground image) at different moments in time, 
+e.g., when the annotation was first created %-- as it 
+is currently being viewed %-- or are these presentation 
+data that need not be recorded in the annotation itself?
+
+`item;  What scale units should be recognized for 
+coordinate positions and intervals, such as the 
+nine possibilities standardized in `SVG; (centimeters, 
+inches, and so forth)?  Should annotation-sets 
+potentially mix two different such scales (e.g., 
+centimeters and percentages against image width/height)?  
+
+`item;  How should annotations' shape point-sets be ordered?  
+Should the ordering be left to the discretion of 
+any human user or software component which defines an 
+annotation?  Should annotations which are identical 
+modulo point-set permutations be deemed equivalent?  
+How should point-sets with three or more colinear 
+points be handled?
+
+`item;  Should annotation shape be constructed solely 
+via a point-set or should other magnitudes 
+(what we last chapter called a `q.length-set`/) be allowed 
+as a way of describing the geometrical qualities of 
+the annotation shape?
+
+`item;  How should special roles for particular points in a 
+point-set or lengths in a length-set be described?  Should 
+roles refer to numeric positions in point- or length-sets 
+modeled as ordered sequences, or should point/length sets 
+be provided instead as key-value or key-multivalue 
+associative arrays, or some combination?
+
+`item;  Should annotations be able to refer to 
+other annotations as a data point intrinsic to 
+the annotation data, as would be the case with 
+an arrow pointing to a separate annotation, for example?
+If so, how should annotations be uniquely identified?
+
+`item;  How should view-state data about 
+annotations, such as zoom factors, colors, 
+line widths, and cross-references between 
+annotations, be registered as data structures 
+complimenting annotations as opposed to 
+intrinsic data `i.within` annotations?  Which 
+properties are in fact intrinsic and which are presentational?
+
+`item;  How should we represent annotation-sets 
+or collections, and should such sets be nested?  
+Assuming that many low-level details (involving scales, 
+coordinates, point-set operations, and so forth) 
+are defined by the environment in which annotations 
+are constructed, and therefore applicable 
+to annotation-sets as a whole (rather than being 
+details of individual annotations), to what 
+degree should individual annotations be 
+capable of overwriting the default properties 
+of the set to which they belong?  Can a single 
+annotation use a different scale of measurement, 
+or coordinate system, for instance, or treat 
+as intrinsic data visual details which would normally 
+be considered presentational?  
+
+`item;  What mechanisms should be employed to describe 
+calculations performed as part of annotation data and/or 
+within parameters stipulated through annotation data 
+(e.g., the length of a line segment)?  How should 
+we attach representations of arbitrarily 
+complex mathematical expressions and/or algorithms 
+that may be involved in such calculations?  
+
+`item;  How should different kinds of 
+curves that could be algorithmically 
+described and/or rendered be supported 
+as annotation shapes?  Should an 
+annotation system represent only a 
+fixed selection of curve-types or 
+should the options be open-ended, with a 
+mechanism for supplying external 
+procedures to perform 
+calculations on special curve-types 
+whose mathematics are opaque to the system?
+
+`item;  What varieties of calculations should be recognized 
+by default as plausible operations that 
+would typically be possible for annotations in 
+general, such as area and perimeter, 
+boundary-crossing counts,  
+notions of geometric center (via minimum 
+circumscribed circle, say), and so forth?  
+Should the suite of such calculations be 
+fixed `i.a priori` or could one 
+facet of an annotation-environment 
+or annotation-set be the collection of 
+computations which could be 
+activated as operations on typical 
+annotations?  In the case of user-designed 
+curves, should implementations of 
+calculations matching a particular 
+purpose (e.g., area or perimeter) be required 
+as a `q.contract` for recognizing a 
+particular kind of curve as a valid shape-type?        
+
+`item;  How should textual data (whether free-form 
+or constrained by controlled vocabularies) be 
+represented when used to comment on or describe 
+the role or the salient features of an annotation?  
+Insofar as annotations are created to describe 
+biological phenomenon for which the ground image 
+is deemed to show evidence, how should annotation 
+data be connected with data structures that describe 
+such biological details in a rigorous fashion 
+%-- e.g., through standardized terminologies or indicators, 
+such as (say) `b.RadLex` diagnostic codes, or 
+should connections between annotations and bioinformatic 
+descriptions be asserted outside of annotations themselves?  
+
+`item;  How should details about the ground image 
+be represented within the annotation, and how should 
+the image which annotations target be 
+identified?  Should annotations targeting the 
+same image be grouped together such that 
+pertinent image-details (e.g., color depth 
+and dimensions) is available as data within the 
+group of annotations, or should that data 
+always be provided through a separate 
+object or structure representing the image itself?
+
+`item;  Should annotations always refer to 
+one single (ground) image, or should there be a mechanism 
+for defining annotations either as applicable 
+to more than one image (in the context of 
+image-processing pipelines, or perhaps multiple 
+similar `TwoD; slides from a `ThreeD; or `FourD; 
+resource) or as targeting 
+one image which is a transformed version of some 
+previous image (so as, typically, to facilitate 
+the derivation of annotations or the extraction 
+of features which the annotation calls attention 
+to, for instance when analysis is performed 
+on a morphological simplification of an 
+original ground image)?
+
+`item;  How should the provenance of annotations 
+be described %-- factors such as whether they 
+are created by people or algorithmically, 
+what is their diagnostic (or explanatory 
+or computational) purpose, their intended 
+use (are they visual cues to observed 
+features in an image or precise 
+mathematical representations of image features 
+or regions/segments)?
+
+`item;  How should annotations model 
+data which is best presented via 
+derivative images with a similar 
+format to the original image data, 
+rather than via geometric structures 
+such as shape data?  For example, 
+consider regions demarcated with a 
+black-and-white or (for fuzzy regions) 
+grayscale image overlaid on the 
+ground image; thereby partitioning the 
+ground into an interior point-space 
+(black) and exterior (white).  
+The purpose of a derived image in this 
+case is to replace a geometric 
+annotation-shape with a more 
+granular and precise machinery to 
+isolate distinguished regions.  How can annotations 
+defer their shape data to images in this sense? 
+
+
+
+
+`item;  How should annotations notate image 
+features evinced in regions demarcated 
+by the annotation, particularly in cases where 
+the region is segmented specifically because 
+it tracks the area where a given feature 
+is present %-- e.g., region boundaries are 
+the outermost points where a certain 
+texture exists in (some neighborhood within) the image, 
+or edges where the conformity of the image to a 
+textural pattern crosses below some threshold?  
+How should (potentially complex) computations 
+or data structures endemic to image-features 
+be oriented and connected to the annotation proper?   
+`enumerate`
+`p`
+
+`p.
+The above list amounts to circa 20 questions, or more 
+given that some above items span multiple more 
+specific questions.  This is not necessarily 
+an exhaustive list, but hopefully it indicates 
+the scope of detail which can arise when contemplating 
+a general-purpose framework.  It is also true that 
+frameworks may adopt narrower scope, which could 
+pre-emptively resolve some of the issues itemized 
+above.  For example, `AIM; does not deal extensively 
+with image features or with computational geometry 
+(apart from character-string notation of calculations), 
+which obviates the need to bridge annotations 
+with other kinds of computational data (at least 
+within annotation-data proper).  However, annotations 
+are typically used in software environments 
+which have a broader scope than annotations 
+alone, so the questions we have identified 
+may still be in effect, merely deferred 
+to the software utilizing the annotation 
+framework than encompassed in the circle of 
+concerns articulated by the framework proper.
+`p`
+
+`p.
+With that said, the problem of integrating 
+with other data domains and broader software 
+ecosystems is a good rationale for an 
+annotation framework to address a 
+relatively wider scope, which draws 
+in the suite of questions we have identified.  
+Assuming going forward that these are 
+all consequential questions, then, 
+we will make some general observations 
+about them.   
+`p`
+
+`subsection.Procedural Data Modeling (and 
+the limitations of Ontologies)`
+`p.
+Our first claim is that image-annotations provide a 
+case-study in the limitations of `q.Ontologies,` 
+at least in the Semantic Web `OWL; (Web Ontology Language) 
+sense (and certainly of specifications which 
+might be designed to play a role akin to 
+`q.light-weight` Ontologies, such as `XML; schemas 
+via Document-Type Declarations).  
+`p`
+
+`p.
+To be sure, it is possible to define an 
+Ontology-like network of classes 
+associated with image-annotations 
+(Figure~`ref<fig:outline>; outlines 
+the principal classes that might be 
+involved).  But such an outline does not 
+articulate the range of implementational 
+possibilities which are intrinsic to the 
+image-annotation domain (and summarized 
+in part by the above 20 or so questions).  
+Consider specifically, for example, 
+the notion of annotation `i.sets` 
+and annotation `i.environments`/.  
+The rationale for positing these 
+classes is first that many 
+low-level details concerning 
+how annotations are defined 
+(such as coordinate systems, 
+the details of point-set construction, 
+the range of recognized shapes, and so on) 
+are unlikely to vary from one 
+annotation to another.  If annotations 
+are constructed by a human user, 
+for example, most of these 
+details would probably be 
+defined by the software which 
+that user uses.  If they are 
+constructed via computer algorithms, 
+the code libraries providing those 
+algorithms might similarly 
+define a basic quantitative model 
+that would underlie the 
+overall process; this model would 
+presumably be shared 
+among all annotations generated 
+as such.
+`p`
+
+`p.
+It would then be memory 
+inefficient %-- and an inaccurate 
+logical representation of the 
+annotation framework %-- to 
+present low-level details 
+along these lines as data 
+structures `i.within` individual 
+annotations.  Even if it 
+were possible to override certain 
+defaults on an annotation-by-annotation 
+bases, the correct logical 
+gloss is still that a specific 
+quantitative model (reflecting 
+issues like coordinate systems 
+and shape-geometry options) 
+is endemic to the environment 
+where annotations are constructed 
+and will engender details 
+shared amongst annotations 
+by default.  These are, in 
+short, properties of annotations 
+grouped by a common origin or environment, 
+rather than properties sited in single 
+annotations (in the default cases).     
+`p`
+
+
+`p.
+This therefore points to one aspect wherein 
+annotations can be logically grouped 
+together %-- those that emerge 
+from a common environment will 
+tend to share low-level operational 
+and quantitative details.  However, 
+there are other criteria through 
+which annotations could be aggregates: 
+a common ground image or image-series, 
+or gathering all annotations on a 
+group of images brought together by 
+the human annotator.  Presumably, 
+one annotation `i.environment` could 
+include or engender many annotation 
+`i.sets` in this sense.  Insofar as 
+every set would inherit low-level 
+details from the environment where 
+it is created, such details logically 
+belong to the environment more 
+so than any specific set.  Moreover, 
+annotation-sets can be collected 
+for different reasons (e.g., a shared 
+image or image-series) and could 
+moreover be nested hierarchically; 
+the criteria for aggregation and 
+the parent/child relationships 
+would seem to be points of 
+information that are intrinsic 
+to annotation-sets but not 
+to annotation-environments 
+(insofar as the environment 
+defines the basic operational and 
+mathematical conditions wherein 
+annotations are constructed).  
+In this sense `i.sets` and 
+`i.environments` play conceptually 
+distinct roles, which is conveyed 
+by modeling them as distinct classes.
+`p`
+
+
+`p.
+However, such a rationale does 
+not settle the question of 
+what details should be modeled 
+at the environment level or 
+the set level, or indeed 
+(to the degree that they 
+may vary on a case-to-case basis) 
+at the annotation level itself.  
+Where, for instance, should 
+the coordinate system (at least for 
+default cases) and the Cartesian 
+zero-point be defined %-- as a 
+property of annotation environments 
+or sets (or even individual annotations)?  
+An Ontology could simply select a 
+`q.distribution` of information which 
+seems most appropriate for the widest 
+range of cases.  Ontologies need not 
+be completely open-ended; it is the possibility 
+of structural variations which allows there 
+to be different Ontologies.  But this 
+example illustrates how structural choices 
+are not isolated; the effects of choices 
+specifically local to one `q.part` of an Ontology can 
+propagate across the framework. 
+`p`
+
+`p.
+Assume, for example, that annotation `i.environments`/, 
+`i.sets`/, and individual `i.instances` have a 
+roughly hierarchical relationship: one environment 
+produces many sets, and sets contain multiple 
+instances.  Low-level details would typically 
+then be inherited from higher-up in the hierarchy 
+downward.  If information is distributed across all 
+three levels, then it is only possible to use individual 
+`i.instances` by taking information from the 
+`i.set` to which they belong and the `i.environment` 
+according to whose rules they are constructed.
+`p`
+
+`p.  
+In practice, this means that an application needs 
+to obtain an environment object as a 
+context for using an annotation `i.set`/, and 
+needs to obtain an annotation-set object as a 
+context for using single annotations.  
+Assume now that annotations are retrieved 
+from a database: the query interface to 
+that database would then have to be 
+organized so that objects correspond 
+to this order of initialization and inter-dependency.  
+How should a query which intrinsically returns 
+`i.one` annotation deal with the enclosing sets 
+and environments?  Should a query interface 
+start by loading an environment, using that 
+as a parameter to further queries, so that 
+the handle to an environment object is 
+prerequisite for a single annotation?  Or should  
+a query-result for individual annotations 
+be augmented with indicators for the annotations' 
+respective sets and environments so that 
+those objects can be retrieved if not already?  
+In the latter alternative, given query 
+results including multiple annotations, 
+how should data structures associating 
+annotations with their sets/environments 
+be described?  Query types that are 
+more complex (involving multi-layered 
+structures rather than individual 
+values or simple list-like collections) 
+require proportionately more 
+coding steps to parse. 
+`p`
+
+`p.
+Moreover, should environment and set-level defaults 
+be imposed uniformly, or should they be 
+overridable down the hierarchy?  The former option 
+yields a framework which could be too rigid for 
+some use-cases.  On the other hand, suppose 
+we opt to make a variety of implementation 
+defaults overridable.  This entails `i.first` 
+that procedures must be available to construct 
+the alternative setup where it departs from the 
+defaults.  And `i.second`/, because it then 
+cannot be assumed that annotations and sets 
+thereof inherit low-level details ubiquitously 
+from the environment, there must be a mechanism 
+to flag whether a given annotation does or does 
+not encompass any such overrides, and, if so, 
+to define them.  This book's demo code allows 
+annotations to include a `q.default override` 
+object which provides an interface for 
+declaring an environment for a given annotation 
+which differs from environment defaults 
+in various ways.  However, the demo annotation 
+class also uses pointer-union types to 
+restrict the memory-size of individual 
+annotations, considering that many data structures 
+needed by `i.some` annotations will be superfluous 
+for many others.  Analogous issues would 
+come into play for databases persisting 
+annotations: the flexibility of allowing 
+numerous extra structures (for overrides, 
+special curves, point/length-set roles, etc.) 
+for `i.some` annotations has to be balanced 
+by techniques for compactifying such 
+structures when they are `q.empty` or 
+unused `visavis; annotations where they 
+are unneeded. 
+`p`
+
+`p.
+In short, choices such as how to distribute 
+information across hierarchy levels tend to 
+propagate to implementation choices 
+involving memory organization, database queries, 
+procedural requirements for data types that 
+take on roles specified by Ontology classes, 
+and software engineering in general.  
+It is difficult at the Ontology level to represent the 
+details of implementation choices, 
+or the range of choices available to 
+an application `visavis; specific 
+concerns.  One might reply that 
+Ontologies are intended to be schematic 
+models of domains, not rigorous blueprints 
+for software implementations.  That is true 
+as far as it goes, but implementation choices 
+determine the degree to which software 
+components are interoperable: if a given 
+Ontology can be realized via architecturally 
+incompatible software, then Ontology 
+alignment alone (as opposed to 
+software-engineering and data-exchange protocols) 
+is not sufficient for interoperability.  
+`p`
+
+
+`p.
+The idea of `i.protocols` serving as a contrast 
+to `i.Ontologies` can be further illustrated 
+with an example we alluded to earlier: consider 
+the issue of annotations' point-set ordering.  
+An annotation `q.domain model` can recognize 
+different possibilities for enforcing or 
+interpreting the order present among points in 
+the annotation shape.  These can take the 
+form of axioms (all point-sets which are 
+permutations of each other should be considered 
+equivalent) or stipulations (point-sets should be 
+automatically ordered during construction) or 
+classifications (point-sets should be 
+subtyped as clockwise, counter-clockwise,  
+nonconvex, or self-intersecting, with different 
+ordering-specifications depending on the subtype).  
+However, implementation-wise these various 
+options become concretized through groups 
+of `i.procedures`/: procedures governing 
+how point-sets are modify upon inserting a new point, 
+in cases where it is required that 
+point-sets remain ordered; to 
+compute the proper position for a point relative 
+to an existing set; to permute a point-set into a 
+proper order; to determine whether an ordered point-set 
+is oriented clockwise or counter-clockwise; or to 
+determine if a point-set is orderable in 
+the first place in terms of vertices of a convex polygon.  
+Similar comments apply to questions about colinearity: 
+however that issue is addressed, any resolution 
+depends on procedures such as identifying 
+when a given point is colinearly between two 
+outer points, and filtering intermediate 
+colinear points out of a point-set when 
+that would be appropriate.  
+`p`
+
+
+`p.
+These examples point to how image-annotations are 
+a representative case-study for the general phenomenon 
+which we highlighted in Chapter 6: rigorous
+documentation of data models tends to depend 
+on code models which instantiate them.  
+In particular, code models can describe the roles 
+and pre-/post-conditions on individual procedures 
+as well as how procedures are interrelated into 
+logical groups.  Decisions concerning 
+how information is distributed among 
+annotation-environments, sets, and instances 
+translates into the procedures used to 
+construct an environment anterior to 
+individual annotations being processes, and 
+into procedures for overriding environment 
+defaults when necessary.  Decisions concerning 
+point-set orders and normalization become 
+manifest in procedures through which 
+point-sets are modified and geometrically 
+examined.  In these examples resolutions to concerns 
+examined abstractly within generic data models can 
+only be concretely documented at the procedural level.
+`p`
+
+
+`p.
+This book's demo code represents one possible implementation 
+of an annotation class; it is not a definitive 
+example of how annotations `i.should` be defined, 
+but it serves as a case-study in the `i.kinds` of 
+procedures that are intrinsic to defining a 
+relatively general-purpose annotation class.  
+This image-annotation class and its peers 
+use source-code annotations to document 
+logical relations between procedures, and 
+also employ various binary-representation 
+techniques to make annotation data 
+memory-efficient.  The resulting `i.code` 
+model is more fine-grained than an 
+annotation `i.data` model which is implicitly 
+instantiated by this code; it would be 
+possible to concretize similar data models 
+with a code library that differs 
+from our demo in many low-level details.  
+As a result, it might seem that the 
+particulars of our annotation-related classes 
+are implementation details that should be 
+separate from higher-level data models.  
+The purpose of data models is less implementation-specific, 
+but rather focused on defining common requirements 
+so that components whose low-level implementations 
+may differ can nonetheless interoperate 
+and exchange data. 
+`p`
+
+`p.
+The more that data models are abstracted from 
+implementation details, however, the more 
+that particular implementations may need 
+to provide bridge code which marshals 
+data into a common format for purpose of 
+networking and data sharing.  The degree 
+of extra code demanded to get two distinct 
+software components to interoperate 
+tends to be proportionate to the 
+degree to which their low-level 
+implementations diverge from one another.  
+The best data-integration protocols 
+tend to be receptive `i.both` to 
+abstract data models `i.and` to 
+implementation concerns, in that sensitivity 
+to propitious implementational design patterns 
+can help protocols adopt formulations 
+that minimize the bridge code needed 
+for implementations to participate 
+in the protocol.  
+`p`
+
+
+`subsection.Different Aspects of Image-Annotation Data`
+`p.
+As we have proposed, in multi-aspect modular design each module 
+is responsible for managing software concerns that 
+cut across multiple facets of software development.  
+We are focusing on the four aspects of 
+procedural exposure, data persistence, serialization, 
+and `GUI; design (which together fit into the 
+`q.Semiotic Saltire` schema that we introduced in 
+Chapter 6).  For sake of discussion, we will
+assume that a module responsible for 
+image-annotations adopts data models 
+similar to what we outlined earlier in the chapter, 
+with details involving ground images, 
+visual presentations, and annotation sets/environments 
+represented as contextual parameters coexisting 
+with annotation data proper (see 
+Figure~`ref<fig:outline>; for an outline).    
+`p`
+
+
+`p.
+Assuming that annotation data (and the relevant suite 
+of contextual data) is organized along those 
+lines, then, we can examine how this data model 
+projects onto the different concerns of the 
+`q.Saltire.`  Here is a summary:
+
+`description,
+
+`item ->> Visual Objects and GUI Design ;;  
+First and foremost, of course, annotations have to 
+be rendered against the background of their 
+ground image.  Analyzing `GUI; design patterns 
+in a modular context requires some care, because 
+it may not be obvious which `GUI; elements belong 
+to which modules.  In the simplest case, each 
+module would be responsible for its own 
+suite of self-contained `GUI; objects %-- particularly 
+autonomous windows.  That is, any given window within an 
+application would be designed and populated with 
+data entirely from a single module; insofar as the 
+application integrates multiple modules, then their 
+coexistence would be manifest in (potentially) 
+multiple windows being open at one time.  In practice, 
+however, modules may need to be more tightly coupled 
+that strict separation of windows allows, particularly 
+in the `GUI; context.  In the case of image-annotations, 
+it would be reasonable to factors details 
+of image `i.acquisition` outside the scope of the 
+annotation module, so that the latter  
+would not be responsible, for example, for 
+finding a specific image within an image-series or 
+archive, or giving users a chance to load a new 
+image to replace the one they are currently given.  
+Concerns for annotations proper would then be 
+woven with handlers for user actions involving 
+searching for and loading images themselves 
+(to be discussed further later this section).
+
+`input<fig-outline>;
+
+`item ->> Serialization ;;  We discussed some issues 
+related to serializing image-annotation data in the 
+context of `AIM; (the Annotation and Image Markup project) 
+in Chapter 6.  As we then intimated in Chapter 7,
+image-annotation data models could potentially be broadened 
+in scope and made significantly more flexible than 
+`AIM; itself, which would require extending `AIM;'s 
+serialization model to incorporate a wider range of 
+contextual data and annotation details.  Fine-grained 
+details of annotation serialization is outside the 
+scope of this chapter, but we can make a couple of 
+general points.  First of all, we contend that 
+the structural rigor of serialization formats should be 
+enforced by client libraries as much as (or more than) via 
+document-level constraints on serialized data.  In the case of 
+image-annotations, the primary role of serialization is 
+to encode annotations within one application so that 
+they may shared with other applications running 
+elsewhere and/or later.  Assuming that the receiving 
+application also obtains a copy of the relevant 
+ground image, the serialized encoding should permit 
+the second application to reconstruct the annotations
+in exactly the same form as they were 
+(within the original application) constructed 
+and superimposed on the ground image.
+
+`pseudopar;
+
+`pseudoIndent; The best way to achieve the proper 
+alignment between sending and receiving 
+components is to use the same code base on 
+both ends; therefore, to implement 
+low-level serialization details, it would be 
+good for image-annotation modules to provide a 
+code library that can be re-used across different 
+endpoints, insofar as annotation is shared in 
+serialized form (in principle such a library 
+should be isolated from and not dependent on the 
+module as a whole).  The canonical example of a 
+serialization-deserialization cycle would then 
+be a situation where two different applications both 
+use the same code library as the specific locale 
+for procedures directly responsible for constructing 
+and/or parsing the serialized formats.  
+
+`pseudopar;
+
+`pseudoIndent; Of course, one rationale for curating a standardized 
+serialization format is to free applications from 
+depending on one specific code library.  As a result, 
+the module's serialization format should be designed to 
+facilitate alternative libraries which could parse the 
+same data.  This is one reason why serialization 
+formats often stress standard models, such as an `XML; 
+Document Type Declaration (`DTD;), which can serve as a 
+reference-point for developing multiple different 
+code libraries that share a common serialization 
+format.  In general, confirming that a document 
+(i.e., a file or a character or binary stream) conforms 
+to a given serialization format is a separate process from 
+actually parsing such documents, and can serve as a useful 
+preliminary step (so that parsers can assume as a 
+precondition that any strings they are presented with 
+conform to the standard).  For these reasons, formats 
+(or meta-formats) such as `XML; are popular because these 
+kinds of preliminary checks can be simplified by 
+(say) `DTD;'s; however, `XML; (and other popular 
+formats, such as JavaScript Object Notation) can also 
+be limiting in some respects.  Modules could certainly 
+turn to more flexible and expressive data formats 
+instead.  It is resonable however in those cases to provide 
+code for document `i.validation` which is 
+less complete than (and preliminary to) full 
+parsing/deserialization.  In this manner alternative 
+libraries designed for other programming environments 
+(e.g., other programming languages) can mimic the 
+validation code, separately from emulating (to whatever 
+degree is appropriate) the actual parsers. 
+
+`pseudopar;
+
+`pseudoIndent; These comments apply 
+to serialization aspects in general.  For the 
+more specific issue of image-annotations, note 
+that data models in this context (at least insofar 
+as they roughly follow our outline from earlier this
+chapter) are characterized by a relatively
+large number of default options that will generally 
+be shared among multiple annotations, but with 
+the possibility of many defaults being overridden 
+on a case-by-case basis.  In this scenario 
+validation code for serialized documents may be relatively 
+complex, because the core serialization for 
+annotation proper may or may not have numerous 
+residual structures encoding extra details.  
+Techniques for managing variegated `q.shape constraints` 
+in this specific context (see \S{}6.4) are
+represented, albeit not with full rigor, in the demo 
+code accompanying this book.  
+
+`item ->> Data Persistence ;;  Questions about 
+database representations for image-annotations can 
+be intricate, because we have to identify which 
+portions of annotation data are `q.queryable,` 
+in the sense we discussed in Chapter 6 %-- that
+is, what parts of annotation data should be 
+visible to queries against a database.  Presumably, 
+there would be few occasions where geometric 
+minutiae (e.g., the precise details of annotation 
+shapes) would be the subject of database 
+queries.  However, the text labels/descriptions and 
+diagnostic information provided with annotations 
+could certainly be represented in a queryable 
+fashion.  The simplest scenario would be 
+encoding descriptions as ordinary textual data, 
+but there is also a rather extensive literature 
+on technologies such as `q.Semantic `DICOM;` `cite<JohanVanSoest>;, 
+which associate annotations with diagnostic  
+codes (including treatment plans) and/or controlled vocabularies (e.g., 
+RadLex, the `q.Radiology Lexicon`/).  Such 
+codifications are intended to make it possible to 
+search large-scale databases of annotated 
+biomedical images via diagnostic, treatment, 
+or biomarker terminologies.
+
+`pseudopar;
+
+`pseudoIndent; Annotation characteristics 
+such as `i.calculations` lie somewhere 
+on the spectrum of detail between 
+text and/or controlled-vocabulary  
+descriptions and granular geometric 
+representations of annotation-shapes.  Proposed 
+Semantic `DICOM; protocols include the ability 
+to query image data-sets for quantitative 
+data that can be defined within (or via) 
+annotations.  A canonical example, used on 
+the starting page of the `b.SeDI` project 
+(`bhref<https://semantic-dicom.com/starting-page/>;) 
+is `q.Display all patients with a bronchial carcinoma 
+bigger than 50 cm$^3$` (`i.see also`/, e.g., `cite<MollerMukherjee>;,
+`cite<ATraverso>;, `cite<Vining>;, `cite<PetrosKalendralis>;).  Calculations 
+depend on fine-grained geometric details, so making 
+this kind of quantitative data available for 
+`i.queries`/, where a query engine has to 
+scan over many different annotations (without 
+the option of reconstituting annotations individual 
+to precisely examine their geometric properties) 
+requires some functionality to classify calculations 
+into queryable categories (e.g., `q.tumor size`/).  
+We will not examine this process in detail, but note 
+that semantically this involves combining annotation-specific 
+data with biological interpretations, and therefore belongs 
+to the larger issue of representing biomedical 
+findings warranted `i.through` annotations alongside 
+annotations themselves.  In this broader guises we 
+will return to this issue later in the chapter.
+
+`pseudopar;
+
+`item ->> Procedural Exposure ;;   In keeping 
+with our discussion in Chapter 6, a good
+starting-point for considering which procedures 
+to `q.expose` for runtime reflection and remote-invocation 
+scenarios is to look at those procedures which 
+intrinsically implement, support, or operationalize 
+important details of a modules' `i.data` model that 
+informs its associated `i.code` model.  At 
+this point we can look at some concrete examples 
+in the image-annotation domain.
+`description`
+`p`
+
+`p.
+As we reviewed above, one concern for a 
+general-purpose annotation framework is how to 
+specify the numeric and measurement dimensions 
+applicable to annotations.  There are several options, 
+including using template classes which would be 
+specialized on number and scale types (e.g., 
+`b.double`/s and millimeters, as one possible 
+combination).  Alternatively, classes within 
+annotation data such as point-sets and length-sets 
+could be modeled as base classes for which 
+dimensional details are unspecified, allowing 
+subtypes to be implemented with specifics 
+such as (say) `b.double`//millimeter.  The demo 
+presents a third option, namely encoding a variety 
+of dimension/numeric configurations within individual 
+data types, which we will reference momentarily for sake of 
+discussion.
+`p`
+
+`p.
+The basic idea here is to use flags and/or 
+enumerations to differentiate number/scale possibilities 
+when these are ambiguous.  For example, the demo code 
+uses quasi-real types (which can be `b.typedef`/'d 
+to something other than `b.double`/) for 
+length and coordinate values, but supports a flag 
+restricting these values to integers.  
+When (but only when) that flag is in effect, 
+any procedure initializing a length or coordinate 
+value is truncating to an integer.`footnote.By 
+`q.coordinate value` here we mean one value 
+in a coordinate vector, canonically $x$ and $y$ 
+as pair-elements in an image location.`  
+This is an example of procedural locations enforcing a 
+data-modeling choice, and the procedures which 
+carry out these checks (as well as those manipulating 
+the relevant integer-only flag) are likely candidates 
+then for exposure.  Similar comments apply to 
+measurement-units.  The demo assumes that lengths and 
+coordinate values can be provided in numerous different 
+units, which are an intrinsic part of the 
+value,`footnote.I.e., each value encodes a magnitude and 
+also a code marking which measurement scale to apply to it`  
+but also provides procedures to convert each value to a 
+different choice of units, and to synchronize two 
+different values when it would be unreasonable to have a 
+mixture of disparate units (e.g., for arithmetic operations 
+and for composing coordinate pairs; one operand or element of the 
+pair is recalculated in terms of the other's unit scale).
+`p`
+
+
+`p.
+With respect to `GUI;s, determining the proper scope of an 
+annotation module's responsibilities is complicated by the 
+fact that image `i.annotations` might be separated from 
+management of `i.images` themselves.  Annotations and 
+ground images obviously have to be displayed together, but 
+other software-engineering aspects between the two 
+facets (images versus annotations) do not necessarily 
+coincide; serialization and data persistence for 
+annotations can be separated from the corresponding 
+operations for ground-images, apart from the 
+annotation maintaining a reference to the corresponding 
+ground image through some sort of identifying 
+code or file/web location. 
+`p`
+
+
+`p.
+This leaves open the question of how exactly to 
+implement `GUI; components when the visual artifacts 
+seen together may the responsibility of distinct 
+modules.  It would be theoretically possible for 
+multiple modules to interact within 
+single `GUI; components %-- for example, consider a 
+scenario where the ground image is a node on a 
+`b.QGraphicsScene` object (this assumes that the 
+relevant applications is composed in `Cpp; 
+with the `Qt; `GUI; libraries).  Annotations 
+can then be further nodes drawn on the same 
+graphics scene, and procedures in the 
+annotation model can be presented with 
+(a pointer or reference to) the `b.QGraphicsScene` 
+instance, without managing other `GUI; objects.   
+`p`
+
+
+`p.
+For sake of discussion, however, assume that the 
+image-annotation and ground-image handling modules 
+are more strictly separated, and that the 
+annotation module handles its own `GUI; windows.  
+In that sort of setup this module would receive an 
+object encapsulating a ground image (or perhaps a 
+binary package with the raw image data) but 
+would otherwise work in isolation to display 
+the image and then render annotations with reference 
+to it.  Most image-management operations, on 
+the other hand, 
+would be delegated to separate modules responsible 
+for images themselves, as will be outlined in the 
+next few paragraphs.
+`p`
+
+
+

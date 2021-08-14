@@ -1,0 +1,35 @@
+
+`abstract,
+`noindent;This chapter will more 
+substantially develop our approach 
+to Conceptual Space theory in natural 
+(as well as programming) language 
+contexts, that was initiated in 
+Chapter 6.  We present 
+further philosophical motivations 
+for the structural details of 
+our proposed `q.Syntagmatic 
+Graph` representations and examine 
+techniques for integrating 
+Conceptual Spaces with linguistic 
+paradigms such as Conceptual Role 
+Semantics and Situational Semantics.  
+Our central argument is 
+that the classical linguistic concept of 
+`q.thematic roles` provides an alternative 
+framework for analyzing the semantic 
+integration of multiple conceptual spaces, 
+contrasted with `q.quantitative blend` 
+models endemic to Conceptual Space theory 
+proper.  Therefore we propose  
+`q.role-indexed` Conceptual Space models 
+which have distinct semantic and syntactic 
+patterns, contrasting this theory 
+to existing formalizations of Conceptual Spaces 
+in (for example) Quantum `NLP;. 
+With that natural-language 
+foundation as a motivation, we 
+then consider semantic models 
+as they may be concretely 
+applied to scientific data sets.
+`abstract`

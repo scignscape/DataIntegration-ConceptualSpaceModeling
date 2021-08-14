@@ -1,0 +1,1698 @@
+
+`hoctitle.Chapter I: Introduction`
+
+`section.Preface`
+`p.
+On May 11, 2021, Dr. Rochelle Walensky, director of the 
+US Centers for Disease Control (C.D.C.), provided testimony to 
+a hearing of the Senate `q.HELP` (Health, Education, 
+Labor and Pensions) Committee 
+on the subject of Covid and outdoor activities which proved after the fact 
+to be surprisingly controversial.  At issue was how   
+Dr. Walensky defended the C.D.C.'s guidance on 
+outdoor activities by indirectly citing a study which was a 
+statistical outlier %-- later to be challenged by 
+the same authors whose work she 
+relied upon as a source of up-to-date information. 
+The senators questioning Dr. Walensky  
+focused on SARS-CoV-2 outdoor 
+transmissibility, particularly in the context of when 
+it was `q.safe` to reopen schools and summer camps.  
+Outside of the committee itself, however, commentators 
+attacked the C.D.C not only for 
+confusing guidelines, but also for how the C.D.C. director 
+(so it was claimed) misleadingly cited  
+the results of a recent scientific paper %-- 
+even though (on closer examination) transcripts reveal 
+that her comments were in line with the paper's  
+actual text.
+`p`
+
+
+`p.
+In retrospect, Dr. Walensky's statements did appear to give   
+improper weight to one of multiple studies 
+considered as part of a 
+Systematic Review.`footnote.
+`i.See` `bhref<https://www.nytimes.com/2021/05/26/briefing/CDC-outdoor-covid-risks-guidelines.html>; for an overview.
+`footnote`
+Hours after her testimony, one of the Systematic Review's authors 
+used twitter 
+to dispute the C.D.C. director's interpretation 
+of their results.  The specific issue in contention 
+was an estimation of the percentage of Covid-19 cases 
+that can be traced to outdoor rather than indoor 
+transmission.  This actual number is 
+likely to be below 1\%.`footnote.
+`i.See` the specific publication, 
+`q.Outdoor Transmission of SARS-CoV-2 and Other
+Respiratory Viruses: A Systematic Review,` for details 
+(`bhref.https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7798940`/).
+`footnote`  Dr. Walensky, however, cited the Systematic Review 
+paper as claiming a transmission rate of `i.less than 10\%`/, 
+a maximum bound derived from the statistical 
+extremum amongst all the articles reviewed 
+therein instead of a distributive average, 
+a calculation not attempted in the 
+literature review paper.
+`p`
+
+`p.
+It is worth noting that in the Systematic Review's very 
+first sentence the authors report 
+the same 10\% upper bound, 
+focusing readers' attention on that specific number, however 
+much the study's text later paints a more granular 
+statistical picture.  In an interview 
+with the New York Times, the author who criticized 
+Dr. Walensky's testimony nonetheless 
+argued that she and her co-authors 
+`q.were very clear we were not making a summary number` 
+with the 10\% upper bound, and that their paper 
+was technically a Systematic Review and not (as 
+Dr. Walensky described it) a Meta-Analysis.  
+From a scientific point of reference, as the New York Times correctly stated, 
+`q.a meta-analysis often includes a precise estimate ... 
+based on the data [whereas] a systematic review is more general.`
+`p`
+
+`p.
+In short, 
+the author implied that Dr. Walensky was misreading 
+the analytic methods of their paper and as a consequence 
+had presented a quantitative summary which was 
+significantly different from their actual findings.  
+Her 10\% estimate was later circulated in the 
+media, creating an impression that outdoor 
+transmissability proportion could be close to such an  
+upper bound, although the relevant statistical 
+distribution in scientific reports actually skews much lower.  
+`p`
+
+`p.
+Of all the points of contention surrounding Covid-19, this 
+particular controversy stands as little more than 
+a footnote in the annals of US Government response to the 
+pandemic (although confusing statements about 
+outdoor transmissions continue to be cited as 
+a contributing factor in the public's mistrust of the C.D.C.).  
+However minor it may be, though, this episode  
+raises interesting questions about how scientists 
+and policymakers utilize  
+scientific research.  After all, we certainly believe 
+that policies (especially in contexts related to 
+medicine and health care) should be informed 
+by empirical data.  Yet, how should policymakers 
+interpret research which actually produces 
+empirical data sets?  To the extent that many areas of 
+large-scale public concern (certainly Covid-19 is a 
+prime example) engender a number of different research 
+projects, often yielding inconsistent 
+results, how should such diverse data 
+be consolidated into a single model 
+for data-driven policy?  Or, is there some 
+threshold of divergence beyond which 
+government officials should simply acknowledge 
+that the science is inconclusive, and defer 
+to scientists to produce more consistent 
+findings before attempting to legitimize 
+policies on empirical terms?
+`p`
+
+
+`p.
+Insofar as multiple research projects often yield 
+conflicting results, citing one specific 
+research work can give a misleading overview 
+of the relevant field as a whole 
+%-- even if that work was conducted professionally 
+and responsibly.  In other words, our criteria 
+for assessing the merits of scientific work 
+inevitably shifts based on the relation of a 
+given research endeavor to others on similar 
+topics.  Individual scientists no doubt 
+can do no more than 
+conduct their own research according to disciplined 
+protocols, yielding results which are as 
+conclusive as possible.  In this sense    
+well-executed research can be deemed definitive 
+in the specific manner that it was conducted 
+responsibly and in accord with protocols 
+designed to minimize randomness and error.  
+Findings which are `i.methodologically` sound  
+may still be inaccurate.  
+Whenever multiple research projects 
+address similar themes, to the degree that their 
+findings can be contrasted, the totality of 
+results among multiple studies 
+should presumably be considered as a 
+context for assessing the claims of any 
+one study individually.  
+`p`
+
+
+`p.
+These points may seem obvious, even trivial, 
+but they raise interesting questions 
+under the general rubric of a philosophy 
+of science %-- research methods are 
+supposed to adhere to rigorous protocols 
+`i.so that` the corresponding work is 
+empirically persuasive.  Empirical science 
+is driven by the belief that we can arrive 
+at factually decisive results by conducting 
+research which is optimized to yield statistically 
+significant results.  It is therefore at least 
+philosophically uncomfortable when multiple 
+studies %-- all done correctly and professionally 
+%-- yield substantially incommensurate conclusions.  Unless 
+specific details in trial design or sample 
+populations (whatever these may be in the 
+research context) are identified which could 
+explain scientific discrepancies, how can we 
+be confident in the accuracy of 
+individual (even well-implemented) scientific 
+projects when history shows us many cases 
+of equally meritorious research work yielding 
+inconsistent results?
+`p`
+
+
+`p.
+In principle, aggregative compilations of 
+related research work %-- 
+whether these are called `q.systematic reviews,` 
+`q.meta-analyses,` or something else %-- can try to resolve 
+the discrepancies between multiple related 
+publications.  Philosophically, however, 
+we should consider whether this simply 
+translates the epistemological uncertainties 
+engendered by contradictory findings onto a 
+different scale.  After all, if multiple 
+(well-executed) papers yield divergent 
+results why should we expect a simply 
+numeric average across all such papers 
+to be more empirically accurate if we 
+have no explanatory mechanism for 
+what caused the discrepancies in the first place?
+`p`
+
+
+
+`p.
+In the case of Dr. Walensky's testimony, the 
+manner in which she drew conclusions from 
+the Systematic Review inadvertently 
+placed undue weight on one or two specific 
+papers included within that review %-- according 
+to the New York Times, the 10\% upper bound on outdoor 
+versus indoor Covid-19 transmission may have been 
+skewed by one Singaporean study among construction workers, 
+whose working conditions are not representative 
+of outdoor activities by everyday people in 
+general.  This demonstrates an 
+indirect version of the fallacy in citing 
+one single paper as a conclusive source when 
+its findings conflict with other similar papers.  
+And yet, data-driven policy has to draw facts 
+from `i.somewhere` to be empirically grounded 
+in the first place.  It is not methodologically 
+evident that some sort of quantitative 
+synthesis of multiple papers should be 
+deemed authoritatively more accurate than the 
+results of one single paper.  Is not 
+meta-analysis itself one form of research, 
+which can coexist with other meta-analyses 
+potentially yielding different results in 
+turn, and so on, `i.ad infinitum`/?
+`p`
+
+
+`p.
+Perhaps the best way to get beyond such an impasse is to be 
+more rigorous in how multiple research projects 
+are integrated.  To the degree that similar 
+research work yields a spectrum of discrepent results, 
+scientists should actually try to explain those 
+differences, rather than relying on some sort 
+of statistical averaging effect. 
+Thus, if findings from one project prove 
+difficult to reproduce, scientists 
+should try to identify the source 
+of this difficulty in either the original 
+work or the attempted replications, 
+or some combination thereof.  If one 
+(well-executed) paper appears to be a 
+statistical outlier, scientists should 
+attempt to explain its divergent results.
+`p`
+
+`p.  
+Of course, some of this interpretive 
+work doubtless occurs, informally and 
+colloquially, as scientists conduct 
+literature reviews or discuss the work of 
+others amongst themselves.  
+However, one could argue that more granular 
+research integration and meta-analysis 
+should be promoted as a formal 
+mechanism within publishing platforms 
+and scientific technology.  On this 
+theory, publishers 
+should curate the tools allowing 
+meta-analysis to be performed 
+(more rigorously than today) and 
+the software used to generate or analyze 
+scientific data-sets should more 
+aggressively implement procedures 
+to integrate data spanning multiple 
+research sources.  
+`p`
+
+
+`p.
+In recent years, the scientific community 
+has indeed increasingly embraced open-access paradigms 
+such as FAIR (Findable, Accessible, Interoperable, 
+Reusable) and the Research Object protocol, which 
+we will cite more explicitly in Chapter 2 and 
+elsewhere.  These initiatives are intended to 
+make scientific data more transparent 
+and open-access, promoting study replication 
+and/or multi-project syntheses.   To be sure, these 
+same paradigms can also apply to meta-analyses 
+themselves.  Even when merely 
+aggregating prior research work, there 
+are methodological options which can 
+affect the outcome of a meta-analysis, 
+and the tactics and limitations of aggregative 
+efforts can potentially be modeled systematically.  
+Antecedent research in a meta-analysis 
+(or systematic review) does not necessarily 
+neatly align; some interpretive effort and 
+data-marshaling may be needed to finesse 
+disparate publications and data sets.  A study of 
+Covid-19 transmissibility `i.among construction 
+workers in Singapore`/, for example, is not precisely 
+comparable to studies of outdoor SARS-CoV-D 
+infectiousness in general.  In order to have 
+sufficient data in the first place, it may be necessary to 
+rely on research which has certain 
+reciprocal methodological anomalies along 
+these lines.`footnote.
+As one example, the 
+authors of the controversy-inspiring 
+Systematic Review described in their paper having to exclude 
+many papers from their analysis to begin 
+with, which perhaps compelled them to retain the 
+anomalous `q.construction workers` source, 
+with an eye toward keeping a sufficiently 
+large data set.  
+`footnote`  Nevertheless, in each 
+case researchers can search for a 
+formal mechanism to annotate 
+and systematize the complications 
+which arise from unifying multiple 
+not-fully-compatible research 
+environments into one integrated picture.   
+`p`
+
+
+`sectionbox.Data Integration, Hypergraphs, and Type Theory`
+`p.
+There is, of course, no magic wand 
+which anyone could wave over the worlds of 
+science and publishing to re-engineer 
+meta-analytic paradigms in a single 
+historical inflection-point.  Paradigm-shifts 
+(notwithstanding Kuhnian narratives) 
+tend to happen gradually, and in a decentralized 
+manner.  Anyone writing a single chapter 
+or a single book can only hope to 
+predict potential paradigm-shifts or 
+articulate the disciplinary dynamics 
+which could motivate them.  Indeed, 
+in this book we are trying to take such an 
+evaluative perspective on the dynamic 
+flow of research applied to the 
+subject of biomedical data acquisition 
+and data-integration practices, in both 
+research and clinical settings.    
+`p`
+
+
+`p.
+Plenty of evidence suggests 
+that scientists are starting to take transparent 
+data sharing and research-replication seriously.  
+We will consider the idea of `q.replication crises` 
+in greater detail in Chapter 4; at present, though, 
+we postulate that science has been rocked by a recurring failure 
+to reproduce research results in follow-up studies, 
+even when the original research appears to be 
+well-executed.  Separate and apart from the 
+merits of a single research project, a 
+string of similar projects which yield convergent 
+findings have greater scientific weight 
+--- so that researchers have an incentive to 
+spur replication studies to solidify 
+the work they themselves publish.  
+It logically follows that an emergent criterion 
+for newly published research is  `i.how well 
+it facilitates` potential reproductions. 
+`p`
+
+
+`p.
+This situation does indeed portend a paradigm-shift 
+which has ramifications in numerous scientific 
+and technological domains.  The value of having 
+research consolidated through replication 
+can in many contexts outweigh the value of 
+keeping some data or methodological details 
+private %-- for example, to protect Intellectual Property %--  
+thereby helping to expand the scope of the open-access 
+data publishing ecosystem.  Many publishers 
+have likewise embraced an open-access publishing 
+model, which is also an example 
+of paradigm-shifts that  
+have pushed the scientific community 
+to embrace openness and transparency 
+in sharing research data and methods. 
+Scientists have a reputational stake 
+in exposing their protocols to 
+communal assessment, similar to 
+how computer programmers 
+profit more from open-access code 
+than from closed-source alternatives.`footnote. 
+Open-source projects get 
+vetted and refined by a larger community 
+of users and fellow developers; 
+commercially licensed versions of open-source 
+projects therefore have a trust factor which 
+closed-source projects frequently lack, making 
+open-source code often more competitive on the 
+open market.
+`footnote`
+`p`
+
+
+`p.
+Against this background we can, therefore, 
+see a certain narrative emerging in how 
+contemporary scientific research is 
+assessed: researchers have an interest 
+in producing work which is (to the 
+degree possible) easily replicable, 
+transparent about methods 
+and open `visavis; data access, and 
+poised to be integrated 
+with other projects on similar 
+topics.  Sometimes these paradigms 
+are explicitly enforced by publishers 
+or funding sources.  The Bill and Melinda 
+Gates foundation, for example, in their 
+`q.guidelines for authors` (published as 
+one specification within the 
+FAIRSharing Initiative) essentially 
+requires depositing open-access data sets 
+on popular hosting platforms such as 
+Dryad, Open Science Foundation, or GitHub 
+as a precondition for fieldwork grants.`footnote.
+`i.See` `bhref<https://gatesopenresearch.org/for-authors/data-guidelines>;.
+`footnote`
+Similarly, academic publishers strongly encourage authors 
+to submit data sets to open-access platforms 
+and to reference those platforms via `q.supplemental 
+materials` and/or `q.data availability` sections 
+of their articles.`footnote.
+`i.See` `bhref<https://www.elsevier.com/authors/tools-and-resources/research-data/data-guidelines>;, for example.
+`footnote`  In particular, the onus is on authors 
+to justify a `i.failure` to publicly share 
+research data, such that pairing 
+academic papers with open-access data is intended 
+to be the norm rather than the exception.  
+`p`
+
+`p.
+Aside from merely observing the industry trends toward 
+freely-shared research data and open-access research publications, 
+we can also draw lessons from studying `i.why` these trends are 
+becoming entrenched.  What do scientists actually 
+hope to accomplish by making research data publicly 
+available?  One facet of this trend involves 
+double-checking research (and also statistical/computational) 
+methods.  The text of an article may condense or 
+summarize findings into a single table or illustration, 
+even just a single number (say, a 1\% estimate 
+for the proportion of Covid-19 transmissions 
+which occur outdoors).  However, researchers 
+may find that these summaries are more convincing 
+when they can demonstrate their provenance 
+%-- perhaps by publishing data sets in their entirety 
+rather than just statistical overviews, as well 
+as sharing computer code (through which summarial calculations 
+are attained), data-acquisition protocol descriptions, 
+and so forth.  In sum, such transparency in data sharing, among 
+other benefits, can help prevent (or at least 
+retroactively clarify) misinterpretations 
+such as Dr. Walensky's testimonial statements 
+of outdoor Covid-19 infectiousness.     
+`p`
+
+
+`p.
+Aside from building trust in their research, 
+data-sharing helps research projects 
+prepare for potential replications, 
+as intimated earlier, as well as for 
+integration with comparable projects.  
+These factors also augment the 
+value of any one individual project.
+`p`
+
+
+`p.
+In short, among the factors driving 
+current data-curation and publishing 
+paradigms is the hope that new 
+research will be attentively reviewed, 
+synthesized with other research, and 
+potentially reproduced/replicated in 
+whole or in part, all of which 
+can make new research more valuable 
+to the relevant scientific community 
+that is in a position to judge the work.  
+In particular, `i.replication` and 
+`i.integration` are key goals of 
+new research: the potential 
+for replication (by follow-up studies) 
+and integration (with prior or future projects) 
+are among the criteria by which new 
+research is evaluated.
+`p`
+
+
+`p.
+To the degree that these are indeed compelling 
+motivations %-- researchers strive to model
+their text, data, and protocols to promote 
+replication and integration %-- we can 
+anticipate that research methods and tools 
+(including software and computational tools) 
+that amplify these aspects 
+of research's dissemination will be preferred.  
+This can plausibly be deemed 
+a driving factor in how scientific 
+software, data modeling paradigms, and 
+publication technologies will evolve 
+in the immediate future: technologies 
+will come to the fore to the degree that they  
+promote research data integration 
+and replication.
+`p`
+
+
+`p.
+For a concrete example of these issues, consider clinical 
+data-sharing networks such as `OMOP; 
+(Observational Medical Outcomes Partnership), 
+`PCOR; (Patient-Centered Outcomes Research Network) 
+or `CDISC; (the Clinical Data Interchange Standards Consortium).  
+These initiatives promote data-integration largely 
+through conventional relational-database mergers, relying 
+on Controlled Vocabularies or table-schema to 
+enforce data field names and table columns.  Conversely, 
+Semantic-Web based data-integration projects 
+such as the `OBO; (Open Biological and Biomedical Ontology) Foundry  
+pursue data-integration via more free-form 
+graph structures, regulated by Ontologies 
+or `q.shape constraints` rather than by static 
+table layouts (we discuss such indirect constraint 
+logics in Chapter 6).  A variation on graph-based 
+integration techniques, based on property-graphs 
+rather than Semantic Web networks, is 
+evident in the University of Pennsylvania 
+`q.Carnival` project, which we summarize in 
+Chapter 3.  Other model-sharing networks 
+emphasize data models prioritizing 
+computational simulations and Object-Oriented representations 
+(we will cite specific examples in Chapter 4).  
+Moreover, individual disciplines 
+within biomedicine and bioinformatics have 
+their own data-sharing protocols, often based 
+on special-purpose file types and domain-specific 
+software, several of which are reviewed 
+in Chapter 2.
+`p`
+
+
+
+`p.
+In short, researchers working in a biomedical 
+context have multiple options for preparing 
+publicly-shared data in preparation for 
+potential integration with other studies 
+(or with replication efforts seeking to 
+reproduce their own specific work).  Should
+data be modeled as relational tables, 
+Semantic Web style graphs, property 
+graphs, `q.objects` backed by 
+Object-Oriented computer code, or as 
+instances of domain-specific data formats?  
+All of these data-representations 
+coexist in contemporary technology 
+with more or less comparable equilibrium, 
+in the sense that no one paradigm dominates 
+the others.  How will data-representation 
+strategies evolve in the future? 
+`p`
+
+
+`p.
+Insofar as paradigm-shifts in science and publishing 
+are being driven, as we claim, by priorities 
+of data-integration and research-replication, 
+we can anticipate that technical details 
+such as data meta-models will evolve under 
+pressures from these scientific considerations.  
+Data representations which are conducive 
+to replication and integration will likely become 
+more widely used; less flexible 
+models, such as relational-database technologies, 
+may become deemphasized.  
+`p`
+
+
+`p.
+As large-scale initiatives such as `OMOP;, `CDISC;, 
+and `PCOR; evince, the conventional Relational Database 
+model remains influential.  Nonetheless, over the past two 
+generations the Semantic Web %-- and graph database 
+technology in general %-- was predicted to 
+substantially displace `SQL;-style technologies.  
+That has not actually happened (even if Semantic Web 
+formats such as `RDF; have indeed been widely used).  
+One explanation for why predictions centered on the Semantic 
+Web have fallen flat is that Semantic Web models, 
+intended to be flexible and conceptually realistic, 
+arguably fail by their own standards %-- this has 
+engendered a trickle of computer scientists 
+criticizing Semantic Web implementations 
+more than motives, and presenting alternative 
+models (such as Conceptual Spaces) which we 
+will analyze further in chapters 
+6 and 9.  Meanwhile, graph database technology 
+itself is more general than the Semantic Web 
+alone, and non-`RDF; formats (more expressive 
+or structurally detailed than labeled graphs 
+as such) have emerged as popular `NoSQL; database 
+models, including hypergraphs and property-graphs.  
+These technologies, too, may become 
+increasingly influential in structuring 
+how data is modeled for public 
+dissemination and publishing in the future. 
+`p`
+
+
+`p.
+In short, we can predict that paradigms such as 
+Conceptual Spaces, hypergraphs, and property-graphs 
+will potentially become more substantial 
+foundations for future data-sharing protocols 
+which deviate from both Relational-Database and 
+Semantic Web precedents.  Work which 
+synthesizes several of these developments 
+%-- such as hypergraphs and Conceptual 
+Space theory %-- is therefore especially 
+interesting.  One version of a unified 
+hypergraph/Conceptual Space model has 
+emerged in the context of Quantum 
+Natural Language Processing, 
+and our evaluation of that model's 
+assumptions, potential, and limitations 
+will be an important focus of Chapters 6 and 9.
+`p`
+
+
+`p.
+Supplemental materials for this book will be 
+deposited on the Open Science Foundation, 
+Dataverse, and GitHub.`footnote.
+`raggedright.For archive locations 
+please visit `bhref<https://github.com/scignscape/DataIntegration-ConceptualSpaceModeling>;.`
+`footnote`  These materials include 
+sample data sets which are encoded 
+and annotated using techniques we discuss in Chapters 6-9.  
+Such data sets are not intended for research purposes 
+themselves, but rather to illustrate ideas 
+about how data sets may be structured, to the degree 
+that scientists really do prioritize expressive 
+data models, microcitations (see below), 
+integration with machine-readable text, and 
+other data-publishing features mentioned in 
+this introduction and elsewhere in the book.  
+The supplemental repository also contains machine-readable 
+text of the book's individual chapters, encoded 
+as separate documents using a special 
+text-representation system designed to facilitate 
+cross-references between publications and data sets. 
+Finally, we include code libraries 
+targeted at the sample data sets, in keeping with design 
+patterns (discussed in later chapters) which assume that 
+data sets will in general be published alongside code libraries 
+providing functionality to read and manipulate the associated 
+data, including parsers for the data's serialization format. 
+`p`
+
+`p.
+By sharing code alongside data %-- optimized as necessary 
+for the specific information comprising a data set %-- 
+programmers can shift the burden of annotation 
+and documentation to the computer code rather than the 
+data itself.  As we will discuss in Chapter 6 and elsewhere, 
+source code presents a richer foundation (as compared 
+to static data models) for 
+pre- and post-condition annotations, requirements 
+engineering, and other technical details which 
+can express scientific theories and research protocols.  
+Equipping data sets with custom-designed code libraries 
+allows the data types uniquely instantiated via 
+those libraries' implementations to serve as 
+models and documentations for the data set's 
+specific profiles; such a type-theoretic foundation, 
+in particular, allows us to examine data set 
+organization in a systematic fashion.  We will 
+consider type theory as a data-modeling paradigm 
+in Chapters 5 and 6.   
+`p`
+
+`section.Philosophy and the Semantic Web`
+`p.
+Data-exchange formats might seem like a 
+mundane scientific topic, part of the minutia of 
+research practice which academics attend to as a 
+matter of professional competence, like 
+curating biobliographic references, but hardly 
+interesting outside its backstage role.  It is 
+curious, therefore, to consider that 
+the Semantic Web has a colorful philosophical 
+backstory and has had a relatively center-stage 
+position in debates over `AI;'s potentials and limits 
+%-- over whether human intelligence is mechanical 
+enough to be digitally simulated.
+`p`
+
+`p.
+The concept of Semantic Web `i.Ontologies` has become 
+rather conventionalized, such that so-called 
+Ontologies tend to serve essentially as 
+Controlled Vocabularies or Taxonomies, 
+constraining the classifications of data within 
+structured information spaces, and the labels 
+used to connect disparate data points.
+Ontologies are formally rooted in 
+graph database technologies (or 
+information spaces which emulate them, 
+such as the Semantic Web itself).  
+In this context, the principal elements of Ontologies 
+are enumerations of labels which 
+can be attached to graph nodes (providing 
+a classification of the data set embodied 
+by a graph) and graph edges 
+(classifying the kinds of interrelationships 
+that may be asserted between nodes).  Ontologies 
+are `i.controlled vocabularies` in the sense 
+that conformant graphs may only utilize 
+node or edge labels proscribed by Ontologies 
+applied to the graph.  
+They are `i.taxonomies` in that labeled 
+terms may be sorted `i.hierarchically`/: 
+labels can name classification 
+elements which are super- or subkinds, 
+relative to other elements in their respective Ontology.     
+`p`
+
+
+`p.
+Philosophers understand the 
+term `q.ontology` to name something of 
+much greater metaphysical weight 
+than just taxonomies on graph data-stores.  
+Notwithstanding that background, 
+the term `q.Ontology` was not chosen 
+by accident; every `i.domain-specific`  
+Ontology, essentially a data-model applied to 
+empirical data sets, is understood 
+by Semantic Web practitioners to be 
+potentially unified into more general 
+`q.upper` Ontologies, which have broader 
+(and more philosophical) scope.  Upper 
+Ontologies aspire to a global classification 
+of `q.objects` in general, both abstract 
+and concrete, so that in addition 
+to domain-specific concepts and definitions 
+(`i.carcinoma is a kind of cancer`/, say) 
+one has broader metaphysical annotations 
+(cancers are `q.disease processes,` 
+tissues are `q.spatially extended regions,` 
+and so forth).  The rationale for 
+this metaphysical superstructure is 
+rooted in `AI; %-- Ontologies seek 
+to endow scientific and technical data 
+(particularly biomedical data, where Ontologies 
+are especially popular) with a conceptual 
+scaffolding analogous to human intelligence, 
+insofar as we instinctively conceptualize 
+objects through the lens of spatiotemporal 
+extension, stasis and change, events 
+and processes, and so forth.
+`p`
+
+
+`p.
+Artificial Intelligence is, in fact, a 
+key component of Semantic Web architecture, 
+though in practice the role of `AI; is less 
+on this metaphysical scale, focusing instead 
+on the use of `i.axioms` and 
+other Ontology constructions adding structural 
+detail to Semantic data models.  Ontologies 
+employ axioms and annotations to assert constraints 
+or patterns on how classifications and relations 
+are used.  For instance, Ontologies may assert that 
+two relations are inverses (parenthood and 
+childhood, say), or that one relation conceptually 
+implies another %-- for instance, the relation of 
+two people being `i.divorced` necessitates 
+that they were previously `i.married`/, 
+such that at some prior point in time the 
+`i.marriage` relation held.  Instead of 
+just sets of graph nodes and edges, then, 
+Ontologies add logical structure to graph-form 
+data: the `i.divorce` relation, for example, 
+demonstrates how relations cluster into 
+logical networks.  Any database which 
+represents a divorce-instance, and which is 
+not fundamentally lacking data, would be 
+expected to provide data about the 
+necessarily antecedent `i.marriage`/.  
+We will return to `i.divorce` as a case-study 
+in `q.multi-part` relationships in Chapter 6.  
+`p`
+
+
+`p.
+Ontologies, in short, are not just taxonomies or 
+controlled vocabularies for graph databases; 
+they also introduce axioms and logical 
+constraints on graph-structured data.  These 
+extra constructions provide graph-based data 
+models with added expressivity and precision.  
+They also allow graph data structures to be 
+targets for `q.reasoning engines` and other 
+`AI;-driven analytics.  Reasoning over the 
+Semantic Web is analogous to query-evaluation, but 
+uses methods rooted in Symbolic `AI; rather than 
+the query-engine architectures typical 
+of relational (or even `NoSQL;) databases.  
+This is one sense in which the Semantic Web 
+as a whole represents a `q.project` or 
+even ideology closely aligned with 
+`AI; itself.  And the association between 
+`AI; and the Semantic Web has also been a 
+source of criticism, either from 
+perspectives which are skeptical about 
+the more holistic claims of `AI; 
+(or `q.Artificial `i.General` Intelligence`/) 
+visionaries, or those which feel that the Semantic Web's 
+fairly modest data-representation paradigms 
+do not fully harness the power of `AI; 
+(or some combination of the two).  
+`p`
+
+
+`p.
+This is some of the milieu in which 
+technical-sounding debates as to 
+optimal data-representation meta-models 
+become invested with unlikely 
+philosophical gravitas.  Some 
+of the influential figures in Semantic 
+Web evolution (and criticism) come 
+from the realm of philosophy and 
+humanities/linguistics, not from science 
+(or computer science), such as Barry Smith 
+--- a scholar whose earlier work was 
+grounded in Phenomenology and Central European 
+Philosophy, and who pivoted mid-career 
+to information science, spearheading the 
+`OBO; Foundry --- and Peter `Gardenfors;, 
+a linguist who originated Conceptual Space 
+theory and has catalyzed certain 
+counter-narratives critiquing the 
+Semantic Web (mentioned earlier).  
+`p`
+
+
+`p.
+At some level these are relatively minor 
+episodes in Intellectual History, 
+and of course the philosophical germination 
+of the Semantic Web has relatively little 
+bearing on a researcher who adopts a 
+specific `OBO; Ontology, for example, 
+as a structuring device for their 
+data.  But philosophical 
+controversies around the Semantic Web 
+help alert us to 
+what is at stake in data-sharing protocols.  
+Why is a vision such as the Semantic Web 
+--- a globally synthesized network of 
+knowledge subject to common meta-models 
+which can be concretized in domain-specific 
+standards, potentially synthesizing 
+data from myriad sources --- popular?  
+What lies behind its intuitive appeal?  The 
+underlying dynamic in debates about  
+(say) Conceptual Spaces versus Ontologies 
+appears to be rooted in scientists' search 
+for data `i.representations` which 
+seem to intuitively capture the 
+theoretical commitments and conceptual 
+architecture surrounding scientific 
+data, its research origins, and its 
+technical import.  In short, scientists 
+seem to consider research data not 
+only as a digital artifact to be shared, 
+but as an embodiment of a given 
+scientific perspective and research 
+environment.  Data sets, on this 
+point of view, should `i.communicate` 
+something about the science and research 
+that produce them, as well as 
+serving the practical goals of moving 
+data from one point to another.  
+`p`
+
+
+`p.
+Implicitly, then, in the following chapters 
+when we talk about `q.data sets` we will 
+usually be considering collections of 
+information which are more than just 
+`q.raw data.`  Data sets, specifically, 
+are organized and documented to convey 
+some details about the data set's scientific 
+origins.  The data `i.models` which 
+govern how data sets are encoded thereby 
+need to do more than simply digitize 
+raw data in an unambiguous fashion. 
+Instead, data models have to permit 
+data-set curators to use the 
+organizing principles and annotation mechanisms 
+within each data set as communicative 
+tools representing the appropriate scientific and 
+theoretical background.  Such requirements 
+point beyond the formats 
+typically used for data encoding 
+in the past (`XML;, `JSON;, `HDF;, `ASDF;, 
+and so forth); we will examine 
+criteria and architectures for more expansive 
+and conceptually intuitive formats in 
+later chapters.
+`p`
+
+`section.Covid, Philosophy, and Science`
+`p.
+A philosophical discussion which takes the 
+Covid pandemic as a point of departure  
+would be incomplete without acknowledging 
+how some facets of associated public-health policy, 
+such as mask or vaccination requirements, 
+have become politicized.  While Covid-19 
+serves as a catalyst and magnifier for some 
+of these issues, underlying questions 
+%-- about the reliability of scientific data, 
+the proper balance between public health 
+and individual rights, and so forth %-- 
+surely transcend any single disease.  
+It is worth 
+pointing out several representative controversies 
+where technical issues related to 
+scientific data and publishing are 
+directly relevant.
+`p`
+
+
+`p.
+In the context of vaccinations, for example, 
+consider the noteworthy case of a 
+retracted article which (not quite appropriately) 
+became widely cited by so-called 
+`q.anti-vaxxers` %-- that is to say, 
+embroiled in the political machinations of 
+vaccine policy.  The contested article (published 
+on June 24, 2021, in the journal `i.Vaccines`/) 
+attempted to quantify the correlation 
+between Covid-19 deaths prevented by 
+vaccination against deaths which `i.followed` 
+vaccination.  The 
+key detail appears to be conflicting interpretations 
+as to whether the authors claim that 
+vaccinations had `i.resulted in` 
+mortality or merely (acausally) `i.preceded` fatal outcomes 
+in some circumstances.
+`p`
+
+`p.
+After several editors' 
+resignations (some later returned to the journal),
+`i.Vaccines` retracted the article, prompting 
+in response a clarification from the authors which appeared 
+to walk back some of their claims.  According 
+to `i.Science Magazine`/, the authors 
+conceded that `q.Currently we only have association ... 
+we never said anything else.`/`footnote.
+`i.See` `bhref<https://www.sciencemag.org/news/2021/07/scientists-quit-journal-board-protesting-grossly-irresponsible-study-claiming-covid-19>;.
+`footnote`
+`p`
+
+`p.
+At issue is `i.first` estimating 
+the number of deaths `i.prevented by` vaccines (an 
+imperfect process, because one cannot precisely 
+quantify counter-factuals) and `i.second` distinguishing 
+deaths `i.caused by` vaccines as opposed to 
+fatal incidents which fit adverse-reaction criteria 
+%-- so they were `i.potentially`  
+vaccination side effects %-- but had 
+other feasible medical explanations as well.  Even with that 
+caveat, the authors cited a very low count of 
+fatal incidents (roughly 4 per 100,000) but also 
+(via likely flawed methods) derived a small figure 
+for the hypothetical number of fatal Covid-19 cases 
+prevented by vaccines, on average.  Combining 
+both numbers led the authors to summarize that 
+2 lives are lost for every 3 saved by vaccination, 
+an almost surely inaccurate calculation which 
+was seized upon by anti-vaxxers, who circulated this 
+figure outside its proper context and 
+methodological nascence.
+`p`
+
+
+`p.
+Competent scientists quickly pointed out 
+the article's misleading use of adverse-effect 
+reports as well as their dubious derivation of 
+vaccines' efficacy (based on a single 
+Israeli study comparing vaccinated and unvaccinated 
+cohorts), but the controversy lived on precisely 
+because scientists questioned how the paper 
+survived peer review in its later-to-be-retracted 
+form to begin with.  Even if non-scientists with a political 
+agenda selectively exploited certain details 
+without due consideration for context, 
+peer review did confer an imprimatur 
+of merit on the original work which proved to be 
+premature, but only after having already providing cover 
+for anti-vaccination claims. 
+`p`
+
+
+`p.
+A second controversy which presents thought-provoking 
+interpretive questions is the so-called 
+`q.lab leak` theory, according to which 
+SARS-CoV-2 escaped from a Wuhan research facility 
+rather than having a zoonotic origin.  
+The preponderance of scientific opinion 
+appears to be that theories of the virus 
+being manually engineered are `i.plausible`/, 
+but also that every epidemiological and 
+genomic factor cited as potential evidence 
+of non-zoonotic origins have alternative 
+(and more mundane) explanations.`footnote.
+`i.See`/, e.g., `bhref<https://www.nature.com/articles/d41586-021-01529-3>;.
+`footnote`  A notable incident 
+reflecting this dynamic involved Nobel laureate David Baltimore, 
+who was quoted characterizing certain  
+`RNA; details as `q.smoking gun` evidence that 
+SARS-CoV-2 was bioengineered.  One scientist 
+who led a team investigating 
+possible `q.genome-tampering,` Kristian 
+Andersen (of the Scripps Research institute), 
+refuted Baltimore's arguments by  
+pointing out that the `b.CCG` codon accounts for 
+about 3\% of the SARS-CoV-2 nucleotides encoding arginine 
+(an amino acid), which is the particular detail 
+most often claimed to arise only via human 
+manipulation (SARS-CoV-1 has an even higher 
+rate of this specific encoding, even though 
+little `q.bioweaponry` speculation accompanied that initial 
+SARS outbreak).  Baltimore in an email to 
+`i.Nature` then moderated his earlier comments, 
+claiming only that `q.there are other possibilities 
+and they need careful consideration, which is all 
+I meant to be saying.` 
+`p`
+
+
+`p.
+To some degree such give-and-take of claims and 
+interpretations is a natural (and healthy) 
+aspect of science, except that (most 
+scientists would probably agree) conducting this 
+exercise through public forums, in a politically 
+charged environment, ends up obscuring 
+the weight of scientific evidence.  Insofar as 
+those who wish to advance specific theories 
+or policies (opposing proof-of-vaccine mandates, 
+say, or trying to geopolitically leverage 
+claims that the Chinese government %--  
+whether out of malice or 
+incompetence %-- instigated the pandemic) can find backing for their 
+positions from tendentious peer-reviewed writing and/or 
+decorated experts, the possibility of 
+scientific evidence strongly indicating 
+certain interpretations over others becomes 
+diluted.
+`p`
+
+
+`p.
+At stake here is apparently, again, the contrast between 
+individual studies and the `q.preponderance of 
+evidence,` which in principle should 
+constrain the impact of any single investigation, 
+especially in areas where many research 
+projects overlap and where a particular 
+analysis contradicts the majority of 
+juxtaposable findings.  The general 
+maxim that multiple studies yielding 
+similar results carry proportionately 
+greater weight is straightforward, 
+but arguably it remains an 
+open question how to formalize this 
+intuition on a philosophical 
+or meta-scientific level.  Notions 
+such as the `q.weight of evidence` 
+aggregated across multiple studies, 
+or metrics of findings either 
+supporting or deviating from prior 
+research, have not been codified 
+at the meta-analytic scale with the 
+degree of entrenchment that 
+paradigms of `q.scientific method` are 
+accepted (philosophically as well as operationally) 
+for research projects singularly. 
+One can anticipate that such meta-scientific 
+questions will be explored more rigorously 
+as the overall paradigm of open/transparent 
+data sharing becomes further entrenched.
+`p`
+
+`section.How Cancer, Covid, and Cardiac Care May Accelerate Emerging 
+Research Trends`
+`p.
+It has been suggested that the Covid-19 pandemic 
+may have a lasting impact on many societies 
+partly by accelerating trends which were already 
+latent, such as allowing a greater proportion 
+of office-style work to be performed remotely.  
+In scientific terms, 
+it is hard to overestimate the significance 
+of rapid vaccine development: given that 
+most post-infection interventions have had 
+only limited success in serious cases, it was only 
+via mass vaccinations that fortunate 
+jurisdictions have been able (as of mid-2021) to 
+resume some semblance of normalcy.  Moreover, 
+companies were able to develop their vaccines 
+quickly because of considerable 
+research carried out, especially `visavis; 
+`RNA; vaccines, well before 2019.  The 
+lesson many scientists and policy-makers may 
+take away from this history is first that 
+an infrastructure should be put in place 
+for rapid vaccine testing, development, and 
+production %-- anticipating future 
+pandemics %-- and second that fundamental 
+science relevant to vaccines can pay dividends 
+in expected ways.  
+In the case of SARS-CoV-2, the science of 
+`mRNA; vaccines become consolidated just before 
+a disease would emerge for which that 
+science would prove invaluable.`footnote.
+`i.See` `bhref<https://www.statnews.com/2020/11/10/the-story-of-mrna-how-a-once-dismissed-idea-became-a-leading-technology-in-the-covid-vaccine-race>;.
+`footnote`
+`p`
+
+
+`p.
+One can speculate that the Covid-19 fallout will 
+also leave a residual effect in areas such as 
+scientific publishing, research data management, 
+and the interface between science and public 
+policy, for reasons already intimated.  We have cited 
+examples of civil administrators inciting unexpected 
+controversy even with 
+recommendations that are rooted in up-to-date science; 
+of peer-reviewed (and at least superficially 
+credible) research getting adopted by 
+anti-vaxxers with an agenda that is 
+`i.prima facie` fundamentally 
+anti-scientific; and of a Nobel laureate 
+essentially dialing back relatively 
+informal (but vaguely sensationalist) 
+comments that fed into the 
+spy-novelesque intrigue of germ warfare.   
+`p`
+
+
+`p.
+Trying to reach conclusions from such 
+disparate events may connote a fallacy 
+of some homogenous `q.publishing industry` 
+or `q.scientific community` or 
+`q.academic establishment,` all of which 
+are of course part of a diverse and decentralized 
+social/commercial milieu; nevertheless,  
+some cautious observations may 
+be warranted.
+`p`
+
+`p.
+One plausible point of argument is that 
+the proliferation of scientific 
+work `i.along with` the emergence of 
+data-sharing and data-curation 
+paradigms `i.jointly` imply that the 
+meaning and notion of `q.peer review` 
+is noticeably evolving.  In this 
+context it is worth referencing 
+analyses such as those by Todd Carpenter  
+(Executive Director of the National 
+Information Standards Organization) 
+on the very nature of peer review 
+applied to `i.data` rather than 
+`i.documents`/.`footnote.
+`i.See` `bhref<https://scholarlykitchen.sspnet.org/2017/04/11/what-constitutes-peer-review-research-data>;.
+`footnote`  As this (and similar) studies 
+point out, the process for assessing published 
+data sets %-- if we stay in the context of peer-review 
+for conventional scientific `i.literature` 
+%-- is much less standardized than for 
+publications themselves.
+`p`
+
+`p.
+In particular, the fact that 
+an author transparently presents research 
+data as supplemental materials to scientific 
+writings may check one box in a text's 
+favor; however, reviewers might not 
+then proceed (when vetting submissions in general) to 
+closely examine the data sets themselves, 
+with an eye toward measuring them  
+against disciplinary norms.  Some scientific 
+groups have accordingly proposed `q.quality standards` 
+based on factors such as ease of data/code reuse, 
+thoroughness of meta-data, adherence 
+to data-sharing protocols, and the 
+relevance of data to its associated articles.  
+Such standards may then  
+influence how scientific work is received 
+by government officials or the public 
+writ large, because the scientific community 
+could indicate whether publications have 
+been developed in the context of high-quality 
+(or, conversely, sub-par) data-curation, 
+adjoining that assessment to other factors 
+(such as peer review or journal reputation) 
+which individuals or policy-makers use 
+to construe scientists' merit in the 
+eyes of other scientists.
+`p`
+
+
+`p.
+Moreover, practically and logistically speaking, 
+we should recognize that 
+data-curation is time-consuming and, 
+in its most rigorous forms, embodies 
+disciplinary knowledge which stands 
+apart from natural sciences themselves.  
+To the degree that diligent data-curation 
+expectations serve as one criterion 
+of research merit, we can envision 
+an evolution in how research 
+teams and/or projects are set up, with proper 
+time and resources allotted to data-management 
+concerns alongside other priorities 
+(those implicated in data-acquisition 
+to begin with).
+`p`
+
+`p.
+One may, specifically, envision a gradual 
+conceptual shift away from reading 
+research papers as `q.static` documents, 
+insofar as data sets (and, where applicable, 
+research code) may cycle through multiple 
+versions even after publications appear 
+in final form.  Version-control 
+systems and branch/clone technologies 
+can allow scientists to keep track of 
+how data and/or code associated with a 
+specific project is evolving while 
+still maintaining the integrity of 
+data sets as citable assets.  In 
+this context, scientists may increasingly 
+perceive conventional publications as 
+summaries rather than the substantial core 
+of their research work, and place equal weight 
+on Research Object style resources 
+that can evolve more flexibly/dynamically and 
+over which they have greater editorial control.  
+Likewise, 
+interactive data-sets %-- which can embed 
+multi-media visualization capabilities 
+beyond the scope of ordinary print documents 
+%-- might become esteemed as pedagogical 
+tools helping researchers exposit their 
+methods and theories (we will revisit this point in Chapter 4). 
+`p`
+
+`p.
+Such a shift in priorities could potentially 
+complicate the concept and process of peer review, 
+since the `q.work` to be assessed becomes more 
+of a moving target %-- but at the same time 
+acknowledging the evolutionary nature 
+of research projects may help restore 
+public confidence in assessments of 
+scientific merit, because it would 
+signal the relevant industries' acknowledgement 
+that appraisals of scientific work 
+are inherently provisional.  Cases such as 
+`i.Vaccines`/'s retracted article actually 
+reveal science appropriately correcting itself; 
+however, such lingering controversies 
+suggest that non-scientists entertain a misguided 
+conception that research can be crisply 
+sorted into bins of `q.merit` and 
+`q.demerit,` a simplification which has 
+no basis in science itself.    
+`p`
+
+`p.
+One may also anticipate the emergence of more 
+rigorous meta-models for scientific data %-- 
+employing constructions such as type theory 
+or Object Models 
+to classify the basic units of data sets 
+insofar as these comprise resources with their 
+own histories and quality-control standards.  For example, 
+`q.microcitations` are understood to link 
+natural-language texts with `i.parts` of 
+data sets, but this definition is inexact: 
+what is a `q.part` in this context (one 
+record, data-point, measurement, calculation, etc.)?  
+In order 
+to standardize data-curation assessments, 
+scientists need to define basic formulations 
+such as data sets' version-history 
+(e.g., what are the units of change as a 
+data set gets updated) and overlap/reuse 
+(e.g., what are the units of content 
+which could adjudicate priority claims, 
+plagiarism, impact factor, and so forth)?  
+We explore type-theory in the 
+data curation context (mostly 
+in Chapters 5 and 6) partly because 
+these structural questions 
+seem poised to become increasingly important 
+for the relationship between data-curation 
+and the overarching scientific (and 
+publishing/dissemination) process.
+`p`
+
+
+`section.Navigating the Proliferation of Research Data`
+`p.
+Whatever the motivations of scientists in curating 
+research data, a further ineluctable detail 
+of contemporary science and publishing 
+is the large volume of (meritorious) work being 
+produced.  No doubt, it is better to have more good 
+science than less, but the sheer 
+scale of research work presents a challenge 
+both to individual scientists (who are charged with  
+making their contributions known to the 
+relevant communities that can leverage them) 
+and to technologies powering science as a 
+whole.  
+`p`
+
+`p.
+Since it is impossible for any one person 
+to read all scientific literature produced 
+at any one point in time %-- or even 
+all literature confined to a single 
+specialty area, such as oncology, cardiac 
+care, or Covid-19 %-- scientists envision 
+`AI; tools that could guide researchers 
+toward relevant papers and data sets.  
+More advanced search engines for 
+scientific documents %-- if these 
+can actually be implemented %-- would help 
+investigators cut through the 
+mass of literature and hone in on 
+specific studies which are precedents 
+or theoretical foundations for their 
+own work.  In short, better 
+search tools could 
+counteract the challenges posed 
+by rapid expansion in the voume of scientific work.  
+Scientists might then have the best of both worlds: 
+a vibrant scholarly community which 
+produces large quantities of 
+credible science and, simultaneously, 
+technologies to obviate information overload.  
+`p`
+
+
+`p.
+This is an encouraging idea, but there seems 
+to be little evidence that search tools 
+specifically designed for science perform 
+noticeably better than generic web searches.   
+At best, truly accurate publication-search 
+capabilities appear to 
+remain a project for the future.  A good 
+case-study in the current state and limitations 
+of publishing technology is offered by the 
+CORD-19 corpus, curated by the Allen Institute 
+of Artificial Intelligence, to promote text and 
+data mining targeted at literature related to 
+SARS-CoV-2 and (to the degree that they 
+may benefit Covid-19 research) coronavirus 
+studies in general.  The CORD-19 compilation 
+provides machine-readable full-text versions 
+of over 280,000 publications (as of mid-2021).  
+We review the features and architecture of 
+CORD-19 in Chapter 3.  For the moment we will simply 
+point out that the data scientists who formulated  
+CORD-19 openly acknowledge limitations in 
+their methodology to obtain full-text 
+representations and to curate them in a 
+searchable manner.  They even suggest the need for  
+`q.a call to action` encouraging publishers 
+to develop `q.distribution formats [for] 
+scientific papers` which are less 
+ambiguous than `PDF; (i.e., less opaque in text-encoding), to 
+share publication texts in `q.structured format[s] 
+like `JSON;, `XML;, or `HTML;,` and 
+to embrace `q.strict schemas` for 
+article meta-data.`footnote.
+`i.See` Lucy Lu Wang, `i.et al.`/,
+`q.CORD-19: The COVID-19 Open Research Dataset` 
+(`bhref<https://arxiv.org/pdf/2004.10706.pdf>;), 
+page 8.
+`footnote`  If the availability of 
+machine-readable text serves as a qualification  
+distinguishing which papers are included 
+in aggregative corpora %-- and also which 
+papers, once included, are more prominent 
+in search results due to their being 
+properly annotated (with demarcated 
+keyphrases, findable data links, and so forth) 
+%-- then publishers have an incentive to 
+adopt paradigms akin to those which the Allen Institute 
+is advocating in this context.
+`p`
+
+`p.
+Similar challenges confront finding and integrating 
+research data across disparate projects.  
+It is difficult to search within data sets 
+because there is no obvious foundation 
+to look for key phrases, for instance, the 
+way that search engines can match search 
+terms against the raw text of a publication.  
+There is, in general, no `q.raw text` within a 
+data set that can be scanned for keywords and 
+phrases.  A related problem is that multiple 
+data sets can be hard to aggregate together, 
+even if they use similar methods applied to similar 
+real-world problems.  Unless there is a 
+rigorous isomorphism between the statistical 
+parameters and data-types employed between
+two kindred research projects, there is 
+no automatic process to map one project's parameters 
+onto another's so that they may be analyzed 
+or visualized as a whole, 
+or subjected to integrated statistical 
+processing.  Even subtle differences in 
+parameters' variance, distributions, 
+ranges, and data-acquisition methods 
+complicate attempts at data aggregation spanning two or more 
+research projects.
+`p`
+
+
+`p.
+In light of these difficulties, scientists have 
+proposed numerous formats for 
+describing published data sets, with the 
+hope that common representations would make 
+data sets more searchable and interoperable.  
+One aspect of these standardization projects 
+is the notion of `q.microcitations` (viz.,  
+strategies to demarcate individual parts of a 
+dataset as citable references), analogous 
+to citations of specific pages within a published 
+document.  The process of forming 
+microcitation-targets in the context of specific 
+data sets, however, depends on the 
+format through which the data is encoded.  
+Object values in `JSON;, `SQL; table rows or columns, 
+`XML; document nodes, 
+or record-tuples for formats such as 
+`b.numpy` or `CSV; may all be feasible 
+microcitation sites.  Given that 
+data sets might employ any of these representations 
+(or many others) it is not unproblematic to standardize a 
+general-purpose micro-citation format.   
+`p`
+
+
+
+`p.
+These data-sharing and text-mining challenges are 
+significant, but they also give us a lens 
+through which to anticipate what kinds of 
+data curation and document-preparation technologies 
+will become popular in the next phase of 
+scientific publishing.  It is reasonable 
+to guess that scientists will benefit from 
+standardized, multi-disciplinary data 
+representations that support micro-citations, that 
+allow publication texts to cite specific 
+parts of data sets (much as they cite 
+other articles), and that allow code to be 
+re-used across multiple research projects as a 
+means to achieve data integration.  
+We consider this a hypothesis as to the 
+general priorities that will shape 
+scientific computing and publishing technologies 
+moving forward.  The actual software engineering 
+and data-modeling structures and design patterns 
+that might realize these general goals will be 
+the subject of much of our analyses 
+in several later chapters, particularly 
+Chapters 5, 6, and 9, and (in the 
+specific bioimaging context) Chapters 7 and 8 as well. 
+`p`
+
+`section.Summary`
+`p.
+Most of the chapters in this book will be focused on different 
+approaches to data modeling, such as Type Theory, 
+Conceptual Spaces, or Graph Database architectures.
+Our emphasis from a `i.theoretical` point of view 
+will be on data-modeling representational 
+paradigms whose goals and criteria are oriented toward 
+software engineering and the interoperation of 
+distinct software components.  That is to say, 
+we advocate for data-representations whose 
+rules and conventions prioritize the implementation 
+of software components which produce, share, and consume 
+the modeled data.  As an underlying assumption: 
+any database, data set, or information space should 
+be engineered with the expectation that multiple 
+(not fully isomorphic) software components will be 
+interacting with that data; and that parts whereof 
+will be passed and shared between such components, 
+implying that data should be structured to facilitate 
+cross-component communication.
+`p`
+
+`p.
+We propose that most of the theoretical constructions 
+introduced `visavis; hypergraph or code models may be concretely 
+instantiated through virtual machines via 
+which query-evaluation engines may be implemented.  
+A full exposition of the design and construction 
+of such virtual machines is outside the scope of 
+this book, but we present several 
+analyses here that serve as precursors to a 
+more formal elucidation of hypergraph-query 
+virtual-machines implementations.  More broadly, 
+we use the architecture of virtual 
+machines within this category as an organizing 
+motif for analyses conducted in Chapters 6 and 9.
+`p`
+
+`p.
+From a more practical or `q.applied` point of view, we will 
+call attention in particular to biomedical research projects 
+which synthesize information with variegated disciplinary 
+provenance and diverse data profiles.  Of course, much biomedical 
+research is inherently interdisciplinary.  However, 
+new breakthroughs and new research methods and technologies 
+have accelerated the cross-disciplinary insights of research 
+in several specific biomedical disciplines, yielding 
+diagnostic, prognostic, and explanatory models that 
+cut across biophysical scales (molecular, cellular, 
+tissues, organs) and data-acquisition modalities 
+(proteomics, genomics, biopsies, image processing, lab assays %-- 
+such as for biologic sample analysis %-- and so forth).  
+Examining literature where these integrative 
+studies are described, it becomes clear that 
+scientists often construct the software ecosystem 
+powering their research in ad-hoc ways, piecing 
+together diverse software components (sometimes 
+standalone applications, sometimes code libraries, or 
+some combination of the two) designed for specific 
+disciplinary contexts.
+`p`
+
+`p.
+We present arguments in later chapters to the effect 
+that the relatively informal   
+trial-and-error approach often taken to 
+integrating multi-disciplinary biomedical data 
+can act as an impediment to research replication 
+and the systematic evaluation of interdisciplinary 
+research findings.  This is one reason for engaging in a detailed 
+review of data profiles, data modeling paradigms, 
+and data integration techniques, so as to 
+lay the foundation for a software ecosystem 
+which can support the emerging paradigm of 
+transparent and replicable research data and 
+digital scientific resources.
+`p`
+
+`p.
+We do not claim any special insights into interdisciplinary 
+biomedical methods or data-sharing as such %-- it is 
+commonly acknowledged that data sharing is an 
+increasingly important part of both research and 
+clinical practice, and that breakthroughs 
+in fields such as oncology and immunotherapy will 
+depend on carefully calibrated multi-disciplinary 
+data integration.  
+However, while undoubtedly (in light of 
+today's highly interconnected digital-health ecosystem) 
+many biomedical and clinical data spaces are utilized 
+by multiple (independent) software components, 
+there are intricate design challenges which 
+confront the engineering of data sources 
+that allow autonomous components to leverage their 
+data in consistent (but flexible) ways.  
+Our biomedical software 
+ecosystem, we argue, still remains more fragmented and unsystematically 
+designed than would be warranted given  
+how profoundly different biomedical subdisciplines 
+have been interconnected in recent years.
+`p`
+
+`p.
+In particular, we examine circumstances through which 
+interoperability impediments contribute to 
+antipatterns we refer to as `q.ecosystem 
+fragmentation,` and (in Chapters 4, 7, and 8)  
+describe what we call `q.multi-aspect modules` as 
+potential corrective strategies.  We use 
+`i.multi-aspect` to qualify modular 
+design patterns aiming for components intermediate 
+in scale between domain-specific code libraries 
+and monolithic scientific applications.  
+Here the goal is to merge benefits of standalone 
+applications (in particular, combining multiple software-engineering 
+concerns, such as `GUI;s, data persistence, and 
+data sharing/serialization, into a single code base) 
+with those of smaller-scale code libraries 
+(viz., interoperability, and the flexibility of 
+mixing modules into standalone 
+applications in different combinations, 
+tailored to the needs of individual projects).   
+`p`
+
+`p.
+As for Dr. Rochelle Walensky's testimony whose 
+controversy was discussed earlier, 
+the C.D.C. director might be justly held accountable  
+for misrepresenting a specific 
+Covid-19 study, but she can hardly be 
+faulted for attempting to base her 
+testimony on peer-reviewed scientific 
+literature.  The problem is that %-- 
+although many people believe government 
+policies should be grounded on scientific 
+evidence and should respect scientific 
+consensus wherever possible %-- all too often 
+there simply `i.isn't` scientific consensus, 
+even in light of substantial real-world 
+data.  Such lack of consensus should not 
+inhibit policymakers from basing 
+government decision on data-driven,  
+empirically-minded deliberation, but it 
+implies that scientists need a 
+more sophisticated model of how to 
+translate scientific findings into 
+public policy insofar as the 
+science itself is sometimes 
+inconclusive and contradictory.
+`p`
+
+`p.
+One way to achieve this, as explicated in this volume, is 
+by formulating more sophisticated 
+presentations of research data, of 
+archives tracking multiple research projects, 
+and of document-preparation in conjunction with 
+data curation.  
+Equally important are the software and algorithms
+used to integrate
+disparate data sources (while also
+modeling the anomalies and structural
+anisomorphisms that can make integrations inexact) %-- 
+ideally leveraging 
+innovative ideas in query-engineering and data models 
+that come to the fore
+within the bounds of a sufficiently multi-disciplinary
+perspective, some of which we
+hope to have advanced here.
+`p`
+
+
+
+
+`p.
+
+`p`
+

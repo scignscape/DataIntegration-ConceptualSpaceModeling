@@ -1,0 +1,132 @@
+\begin{figure}[t]
+
+%% note this seems to throw error but comes out fine ...
+\caption[]{Diagram of a \q{Vending Machine} State 
+Chart\\Showing States' Partial Order (based on 
+total coin value)}
+
+\hspace{-3pt}\begin{tikzpicture}
+
+\node (dummy) at (0,1) {};
+
+\filldraw [fill=cyan!20,fill opacity=.2,draw opacity=0] (-4,-.2) rectangle  (4.78,-1.3);
+
+\filldraw [fill=cyan!20,fill opacity=.4,draw opacity=0] (-4,-1.3) rectangle  (4.78,-2);
+
+\filldraw [fill=cyan!30,fill opacity=.5,draw opacity=0] (-4,-2) rectangle  (4.78,-3.2);
+
+\filldraw [fill=cyan!40,fill opacity=.5,draw opacity=0] (-4,-3.2) rectangle  (4.78,-4);
+
+\filldraw [fill=cyan!50,fill opacity=.5,draw opacity=0] (-4,-4) rectangle  (4.78,-4.6);
+
+\filldraw [fill=cyan!60,fill opacity=.5,draw opacity=0] (-4,-4.6) rectangle  (4.78,-5.6);
+
+\filldraw [fill=cyan!70,fill opacity=.5,draw opacity=0] (-4,-5.6) rectangle  (4.78,-6.6);
+
+\filldraw [fill=blue!30,fill opacity=.5,draw opacity=0] (-4,-6.6) rectangle  (4.78,-8);
+
+\node  at (5.12,-1.1) {\textbf{5 \textcent{}}};
+\node  at (5.12,-1.9) {\textbf{10\textcent{}}};
+\node  at (5.12,-2.9) {\textbf{15\textcent{}}};
+\node  at (5.12,-3.7) {\textbf{20\textcent{}}};
+\node  at (5.12,-4.4) {\textbf{25\textcent{}}};
+\node  at (5.12,-5.4) {\textbf{30\textcent{}}};
+\node  at (5.12,-6.3) {\textbf{35\textcent{}}};
+\node  at (5.12,-7.6) {\textbf{50\textcent{}}};
+
+\node (zero) at (0,0) [draw, xscale=2,regular polygon,regular polygon sides=8,
+label=center:Start (0),minimum width=1cm,inner sep=-8pt,fill=white] {};
+
+\node (ten1) [below=9mm of zero,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{10};
+
+\node (five1) [left=2.3cm of ten1,yshift=10mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{5};
+
+\node (tf1) [right=2.3cm of ten1,yshift=-26mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{25};
+
+\draw (zero) [->,shorten <=3pt, shorten >=3pt] -- (ten1) node [midway,
+ fill=red!20!black,fill opacity=.2,xshift=-4mm,
+text=red!70!black,text opacity=1] {\footnotesize\textbf{add}};
+
+\draw (zero) [->,shorten <=3pt, shorten >=3pt] -- (five1) node [midway,
+ fill=red!20!black,fill opacity=.2,yshift=4mm,
+text=red!70!black,text opacity=1] {\footnotesize\textbf{add}};
+
+\draw (zero) [->,shorten <=3pt, shorten >=3pt] -- (tf1) node [midway,
+ fill=red!20!black,fill opacity=.2,xshift=4mm,
+text=red!70!black,text opacity=1] {\footnotesize\textbf{add}};
+
+
+\draw (4.4,-.1) [->,thick,draw=orange!70!blue,
+line width=1.5mm,shorten <=3pt, shorten >=3pt,
+>=stealth] -- (4.5,-6.9) node [midway,
+ fill=yellow!80!black,fill opacity=.9,yshift=29mm,xshift=-15mm,
+align=left,
+text=black,text opacity=1] {\footnotesize\textbf{states' partial order}};
+
+
+
+\node (ten2a) [below=15mm of five1, circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{10};
+
+\node (five2a)[left=2mm of ten2a,yshift=11mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{5};
+
+\node (tf2a) [right=2mm of ten2a,yshift=-25mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{25};
+
+
+\draw (five1) [->,shorten <=3pt, shorten >=3pt] -- (ten2a);
+
+\draw (five1) [->,shorten <=3pt, shorten >=3pt] -- (five2a);
+
+\draw (five1) [->,shorten <=3pt, shorten >=3pt] -- (tf2a);
+
+
+
+\node (ten2b) [below=14mm of ten1, circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{10};
+
+\node (five2b)[left=2mm of ten2b,yshift=9mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{5};
+
+\node (tf2b) [right=2mm of ten2b,yshift=-24mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{25};
+
+
+
+\draw (ten1) [->,shorten <=3pt, shorten >=3pt] -- (ten2b);
+
+\draw (ten1) [->,shorten <=3pt, shorten >=3pt] -- (five2b);
+
+\draw (ten1) [->,shorten <=3pt, shorten >=3pt] -- (tf2b);
+
+
+
+\node (ten2c) [below=12mm of tf1, circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{10};
+
+\node (five2c)[left=2mm of ten2c,yshift=8mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{5};
+
+\node (tf2c) [right=2mm of ten2c,yshift=-14mm,circle,fill=white,draw=black, inner sep=0pt,
+minimum size=16pt]{25};
+
+
+\draw (tf1) [->,shorten <=3pt, shorten >=3pt] -- (ten2c);
+
+\draw (tf1) [->,shorten <=3pt, shorten >=3pt] -- (five2c);
+
+\draw (tf1) [->,shorten <=3pt, shorten >=3pt] -- (tf2c);
+
+
+
+\end{tikzpicture}
+
+
+
+\label{fig:vend}
+\end{figure}
+

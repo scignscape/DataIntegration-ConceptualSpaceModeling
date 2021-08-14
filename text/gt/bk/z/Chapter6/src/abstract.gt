@@ -1,0 +1,31 @@
+
+`abstract,
+`noindent;This chapter will introduce a particular graph model 
+which we call `q.Syntagmatic` Graphs, applicable 
+to both natural-language parse-structures 
+and to modeling computer code.  We explore 
+some properties of queries over these 
+graphs and briefly consider features of a 
+Virtual Machine whose capabilities 
+would include operations forming 
+the foundation of syntagmatic-graph query-evaluation.  
+We argue that syntagmatic-graph queries are 
+structurally related to other software-engineering 
+constructions, such as Aspect-Oriented Programming, 
+and discuss implementation strategies for 
+static code analysis and runtime-reflection, 
+in the sense of exposing procedures 
+to scripting and Remote-Procedure 
+interfaces.  We then introduce a schematic 
+figure we call the `q.Semiotic Saltire,` which 
+informally classifies programming 
+concerns into four engineering `q.aspects` supplemental 
+to core type-implementations, namely `GUI; design, 
+serialization, (database) persistence, and 
+`q.procedural models,` the latter of which includes 
+details such as runtime reflection and remote-procedure call 
+capabilities, as well as annotative procedural 
+pre- and post-conditions.  We conclude by 
+introducing certain benefits of hypergraph-based 
+representations for data persistence.   
+`abstract`

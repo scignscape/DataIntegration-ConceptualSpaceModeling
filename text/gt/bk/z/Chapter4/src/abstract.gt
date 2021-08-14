@@ -1,0 +1,35 @@
+
+`abstract,
+`noindent;This chapter introduces 
+themes related to modular software 
+design, bioimage processing, 
+Computer Vision, and image-annotation, 
+that we will return to in subsequent 
+chapters.  Our goal here 
+is to conduct a fairly broad-ranging 
+survey of image-processing and radiomics 
+technologies in contexts such as 
+cardiac care and immuno-oncology, so 
+as to present an empirical background 
+as a precursor to discussing 
+image-annotations and radiomics in a 
+more theoretical vein.  We also 
+consider a few examples of computational 
+simulations applied to disease and 
+prognostic models (such as tumor growth) 
+and outline how cellular or tumor-scale 
+simulations can be double-checked 
+via cross-reference against image and 
+clinical data.  In general, we explore 
+the digital logistics of integrating 
+bioimage, simulations, and clinical data, 
+examining software-development practices 
+in fields such as Systems Biology 
+which often unify these distinct 
+forms of data into multi-disciplinary models.  
+We conclude by arguing for a 
+specific form of modular software design 
+as a useful paradigm for implementing 
+computer code appropriate for 
+these sorts of interdisciplinary syntheses.  
+`abstract`

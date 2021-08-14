@@ -1,0 +1,494 @@
+
+`section.Types as Conceptual Structures`
+`p.
+The types encountered in a type system `TyS; are 
+technical artifacts, but in many cases they also 
+are designed to model, or track information about, 
+concepts in the everyday world: fragments 
+of natural language (i.e., text); people; 
+places; colors; events; medical procedures and 
+diagnoses; demographic and government data; 
+scientific data and research findings; and so forth.  
+We can accordingly consider types (implemented 
+in software components) as `i.conceptual` artifacts, 
+but with the caveat that their conceptual 
+details have to be modeled within the constraints 
+of software environments and computational processes.
+`p`
+
+`p.
+Most real-world-based types are syntheses of 
+multiple dimensions, or `q.fields`/: a type 
+representing a person, say, might include 
+their name, date of birth, gender, marital 
+status, address, phone numbers and other 
+contact info, etc.  Or, consider how we 
+might lay out data for restaurant listings: 
+`GPS; coordinates to locate restaurants 
+on a map; street address; restaurants' 
+names, hours of operation, and phone numbers; 
+perhaps an indication of their relative priciness; 
+perhaps a categorization of their style of 
+cuisine (French, Italian, Chinese, Japanese ...).  
+The type might also have certain `q.flags` 
+with pieces of information in a yes/no format: 
+do they take reservations; are they wheelchair 
+accessible; do they accept credit cards; 
+do they serve alcohol.  An overall 
+`q.restaurant` type (say, `tyR;) would then 
+be a `q.product` of these various fields.  
+In Conceptual Space Theory, likewise,  
+concepts are defined by a crossing of 
+multiple dimensions, which collectively 
+define the space of variations which their 
+instances can occupy.  
+Conceptual analysis can then proceed by 
+isolating individual dimensions of various before 
+investigating how they unify to create our 
+impressions of conceptual similarity and 
+dissimilarity, how concepts are refined or 
+generalized, etc.  
+`p`
+
+`p.
+In formal types, fields have different structural or 
+extensional properties which influence their conceptual 
+status.  One obvious criteria derives from 
+the statistical distinction between `i.nominal`/, `i.ordinal`/, 
+`i.interval`/, and `i.ratio`/.  In describing a restaurant, 
+say, the field representing `q.kind of cuisine` is 
+presumably nominal, in that we identify certain terms 
+like Italian, Japanese, etc., and assign the restaurant 
+to one or another.  This field probably has no 
+`q.scale` or `q.metric` %-- French is not `i.more` or 
+`i.less` than Chinese.  A field representing `i.cost` 
+may similarly be broken down into discrete 
+options (inexpensive, moderate ...) but here there 
+`i.is` a notion of scale (we can rank `i.moderate` 
+as between `i.inexpensive` and `i.expensive`/, say; 
+and order restaurants from cheapest to costliest, 
+or vice-versa).  On the other hand, cost may also be 
+figured by a metric such as the average price of a 
+typical meal, which would be a straightforward, 
+increasing, whole-number scale; prices can be 
+ordered and degrees of difference calculated 
+%-- two restaurants are similarly expensive 
+if their average meal costs roughly the same amount.  
+Meanwhile, geospatial coordinates represent a 
+two-dimensional and (up to approximation) continuous 
+space which permits distances but not ordering, unless 
+we are taking distance from one central point 
+(e.g., someone looking for restaurants close to their 
+home).  Hours of operation, for their part, cannot 
+obviously be `q.ordered`/, though we can determine if 
+a restaurant is open at a particular time; we 
+can also rank establishments by how late they close, or 
+how early they open %-- in principle, hours are cyclic, but 
+when defining closing times we just need to consider the 
+window of hours during the evening and night 
+(respectively morning and afternoon for opening times).   
+`p`
+
+
+`p.
+For a hypothetical restaurant `tyR; type, then, we 
+can analyze their various fields in terms of their 
+propensity for `i.ordering` and/or `i.distance`/.  
+We can say, that is, that some fields allow 
+restaurants to be ranked in increasing or decreasing 
+measures for some fields (e.g. average cost of a meal); 
+and some fields permit the `q.difference` between 
+restaurants, within the dimension of the field, 
+to be quantified (average cost of a meal again, 
+or location).  Other fields allow for no 
+particular comparison except for matching 
+against single nominal values %-- unless we impose some 
+metric whereby, say, Chinese and Japanese restaurants 
+are deemed more similar to each other than to French or 
+Italian, the most we can say is that two Chinese 
+(etc.) restaurants are likely to be considered similar 
+by virtue of both serving Chinese cuisine.  Still 
+other fields allow for different kind of 
+comparison if someone is looking for a restaurant 
+meeting some criteria %-- that it accepts reservations, 
+say, or is open at 10p.m. on a weekday.
+`p`
+
+`p.
+The statistical or qualitative structure of fields, along 
+these lines, become implementationally significant if 
+we seek to derive algorithms to match `ty;-values 
+to `i.queries` (say, to find a restaurant matching 
+some customer's preferences), or to estimate whether 
+`ty;-values will be deemed similar or dissimilar 
+(if someone likes one restaurant, an engine might look 
+for `q.similar` restaurants to recommend).  
+These requirements, then, translate to 
+`ty;-values as a whole: can we quantify (perhaps by a single 
+distance metric) the degree of difference, or 
+similarity, between two values?  Can we order any collection 
+of `ty;s and, if so, ranked by which dimension?  
+Can we search a collection of `ty;s and find a list 
+of values that meet some search criteria?  To put 
+this last question differently, how can we define 
+parameters for searching `ty; collections?  Do we 
+create a hypothetical `ty; %-- say, an Italian 
+restaurant open at 10p.m. that serves wine %-- and 
+use that as a template for matching concrete values 
+in the collection?  Or do we create a different 
+data structure, with a different type, aggregating 
+search criteria against sets of `ty;s?  Should 
+we, correlated with `ty;, define a distinct type 
+for searches yielding `ty;s?  In the case of 
+restaurants, such a `q.search` type might 
+specify a range of price-points, maximum geospatial 
+distance from a central location, one or more 
+kinds of cuisine, and so forth %-- replacing 
+single fields in `tyR; with ranges and bounds. 
+`p`
+
+
+`p.
+In some ways, these operations of ordering, querying, 
+and measuring difference/similarity are consistent 
+with Conceptual Space Theory: they capture how 
+conceptual reasoning can be bound to 
+quantitative possibilities, using 
+quantitative relations %-- distances, orderings 
+%-- to reason through concepts' extensions.  
+On the other hand, such quantitative reasoning 
+does not constitute a full-fledged reduction of 
+these concepts to quasi-mathematical spaces 
+%-- it is not, say, that quantitative 
+fields in a restaurant `tyR; type reveal 
+how all conceptual details about restaurants 
+can be reduced to numeric patterns.  Instead, 
+quantitative structures fall out as the result 
+of `i.operations` on this type %-- operations 
+like ordering, querying, or measuring similarity.  
+We would argue that, as cognitive processes, 
+sorting and comparing are more fundamental 
+than construing relations numerically, 
+although numeric patterns may arise organically 
+in the manifestation of sorting/comparing 
+cognitions.  In short, the quantitative 
+picture of (in this example) restaurants 
+(or analogously we would say for many 
+concepts) is derivative upon rational 
+operations we perform `i.on` sets of 
+concept-instances, more than latent 
+mathematizations of an underlying 
+conceptual space.  
+`p`
+
+`p.
+Analogously for formal types, many 
+numeric structures come into play, not internally 
+within those types own fields or 
+structures, but in terms of operations 
+performed `i.on` types %-- and particular 
+on `i.collections` of `ty;-instances, 
+collections that can be ordered, queried, 
+clustered by degrees of similarity, and so forth.
+`p`
+
+`p.
+Suppose we have a restaurant database which tracks favorable 
+reviews, assigning each restaurant a `q.grade` from, say, 
+`Zero; to `OneHundred;.  Our `tyR; type thereby has another 
+scalar field, which can be combined, say, with an average-cost-of-meal, 
+yielding a two-dimensional space which restaurants can mapped 
+into.  From the distribution of the resulting points, we 
+could identify `q.good values` which are unusually highly-reviewed 
+for their price-point, or outliers in the opposite direction where 
+the review scores are lower than price would suggest.
+`p`
+
+`p.
+In other words, a sample-space of restaurants mapped into the 
+price/review space gives us a quantitative distribution, and 
+our ability to compare restaurants in this way is doubtless 
+a facet of restaurants' concept.  But these quantitative 
+details are only really salient when it comes to 
+`i.comparing` restaurants, and statistically reviewing 
+restaurant collections.  The numeric structures are less 
+conceptually foregrounded in our cognitive appraisals 
+of any `i.single` restaurant.  It is true that the 
+quantified comparisons are possible via 
+aspects which all restaurants have because of the 
+their conceptual `q.package`/, so to speak; 
+so mathematizable comparisons are latent in 
+restaurants' internal conceptualizations.  
+But these aspects only really become `i.quantitative` 
+in the context of comparisons, whether these are 
+explicit (e.g. analyses of a database) or more 
+mental and informal.  My judgment that a certain 
+establishment is pricey, say, or cheap, inevitably 
+results from a comparison (maybe subconscious) with 
+other restaurants we have visited, or at least heard about.
+`p`
+
+`p.
+The acknowledegment that quantitative structures thereby 
+arise in the course of conceptualizing `i.restaurants` 
+(in this case-study) does not accordingly demonstrate 
+that our conceptual activity representing restaurants 
+as cognitive acquaintances %-- as a feature of the 
+world we roughly understand, for which the concept serves 
+as an orchestrative tool %-- is at some fundamental 
+level essentially mathematical.  Instead, numeric 
+spaces and axes emerge from mental operations layered 
+on top of our basic restaurant-cognitions, particularly 
+insofar as our reasoning turns from thinking about 
+individual restaurants to their comparisons.  
+The analogous phenomenon in formal type theory 
+would be that quantitative models of types' 
+distributions come to the fore in conjunction 
+with operations for sorting and comparing type-instances.  
+We will now examine these kinds of operations in more detail. 
+`p`
+
+
+`subsection.Dimensional Analysis and Axiations`
+`p.
+Let us assume we direct attention to types in a 
+`TyS; which are characterized by numerous distinct 
+fields, and also that we are interested in 
+procedures for ranking and comparing `ty;-instances.  
+We can then analyze fields on the basis of how 
+they might contribute to such comparative operations.  
+We will use 
+the phrase `i.intratype comparisons` to refer 
+collectively to various ordering, comparing, 
+querying, clusters, and measuring-dissimilarity 
+operations. 
+`p`
+
+`p.
+A `ty;'s fields can then be classified according to 
+how they may contribute to intratype comparisons.  
+In the abstract, such an analysis would be provisional, 
+because certain type-implications may have their own 
+peculiarities.  For instance, it is reasonable to 
+say that a restaurants' `i.name` is not a factor in 
+estimating similarity: two restaurants with similar names 
+are not especially likely to be similar in other respects.  
+However, we can envision scenarios where textual 
+similarity `i.would` be taken into account 
+(e.g., a search engine trying to accommodate 
+spelling errors).  Or, consider the question we mentioned 
+earlier as to whether factors like Chinese/Japanese 
+or French/Italian similarities (as styles of cuisine) 
+should be modeled so as, in effect, to yield a 
+distance metric on a nominal `q.kind of cuisine` 
+dimension.  These examples show that anticipating 
+exactly how clustering or distance algorithms would 
+be designed, in any concrete case, is rather 
+speculative.  Nevertheless, we think it is possible to 
+make some broad claims about how data fields 
+`i.usually` work in the intertype-comparison context. 
+`p`
+
+`p.
+On that basis, then, we propose to distinguish five rough 
+sorts of data fields, as follows:
+
+`enumerate,
+`item; Digital/Internal fields: Computational artifacts, such 
+as globally unique identifiers, which are employed by 
+code managing type-instances behind the scenes but do 
+not typically embody real-world concepts related to 
+the type, and are not typically salient in intertype comparisons.
+
+`item; Textual fields: Natural Language artifacts such as 
+names and descriptions, which would not normally be 
+used directly for intertype comparisons.  Ordering or 
+measuring similarity on collections of textual contents 
+tends to be difficult, or to have little actually 
+conceptual resonance, unless some sort of Natural Language Processing 
+is used to extract structured data.  For example, there 
+is probably little conceptual significance attached to (dis)similarity 
+or ordering among restaurant names, except perhaps if it is desired 
+to list restaurants alphabetically (which in any case is a 
+presentational matter more than a comparative one).
+
+`item; `q.Axiatropic` fields: We use this term to represent any fields 
+which have nominal, statistical, scalar, or in any sense 
+quantitative qualities that can be leveraged for comparisons.  
+We include nominal fields (enumerations) because these are 
+relevant to similarity %-- consider two restaurants both labeled 
+`q.Chinese` %-- and also nominal dimensions can sometimes 
+have extra comparative structure (e.g., an inexpensive-moderate-expensive 
+scale is ordered by increasing cost).  Other than enumerations, 
+we define axiatropic fields as any dimension with numeric 
+values where numeric properties are consequential for 
+ordering or for measuring similarity %-- excluding, say, numeric 
+id's where numbering has not structural meaning other than uniqueness, 
+but including `q.locally` ordered scales like time points, as well as 
+`q.globally` ordered dimensions such as integer magnitudes 
+(e.g., prices), and spaces which have no particular ordering but 
+which can be ordered via distances (like geospatial locations).  
+Axiatropic fields can be seen as `q.axes` to which 
+type-instances can be project, and the union of `ty;s 
+axiatropic fields, which we propose to call `ty;s 
+`i.axiatropic structure`/, defines a multi-dimensional 
+space wherein `ty;s are mapped to individual points.  
+The tuple of values obtained from these fields 
+we call an `i.axiatrope`/, and the points to which a 
+given `ty;-axiatrope projects we call an `i.axiatropic image`/.  
+If desired, axes can be annotated with details such as 
+valid ranges and units of measurement (consistent 
+with, for instance, Conceptual Space Markup Language, 
+to be discussed in later chapters).
+
+`item; Flags: We separate out boolean values 
+%-- along the lines of whether a restaurant is wheelchair 
+accessible, or takes reservations %-- because these pieces 
+of information are more likely to be used to match 
+candidate values against criteria than for comparisons 
+between values.  This does not preclude some similarity 
+algorithm from ranking, say, two restaurants that serve 
+liquor, or take reservations, as a little more alike  
+%-- i.e., these data points may add to a metric 
+of similarity (or inversely subtract from a metric of 
+difference) when they agree between instances, or 
+contrariwise when they disagree.  However, we would 
+argue that conceptually these kinds of factors are 
+more pertinent to building a sufficiently detailed 
+picture of an instance than to intratype comparisons; 
+on that premise we distinguish `q.flag fields` as a 
+separate field grouping.    
+
+`item; `q.Mereotropic` fields: These fields represent 
+collections of values (lists, tuples, and so forth) rather than 
+single values.  In general, tuples are less conducive 
+to direct comparison, without further analysis 
+%-- say, comparing two students' grades by comparing 
+their average; or comparing two lists by counting 
+the elements they have in common.  Similarity 
+metrics, then, can employ collections fields, 
+but the calculations are more involved than just projecting 
+type instances onto points in a mathematical space.  
+We leave open the possibility that collections may 
+have elements that are themselves collections, so that 
+mereotropic fields can give rise to `q.mereological`/, 
+or part-whole, hierarchical structures.
+`enumerate` 
+
+These different genre of fields are reflection in 
+different compartments to a type's interface; 
+to this list we would then add the 
+portion of the interface related to 
+constructing `ty;-instances: constructors, 
+co-constructors, and related functionality for 
+testing the validity of a data structure and/or 
+`q.deconstructing` values into a construction 
+pattern.  Collectively we will refer to 
+this last aspect %-- which does not involve 
+fields `i.per se` %-- `ty;s `i.constructive interface` 
+or (with apologies if the neologisms are getting a 
+little heavy-handed) its `i.nomotropic interface`/.  
+The fields (textual, flags, binary) which are 
+neither axiatropic nor collections-based we will 
+call `i.endotropic`/.  We will then call 
+procedures related to restructuring or re-presenting 
+`ty;-values for analysis, `GUI; or visual 
+rendering, serialization and deserialization, 
+or database persistence, as collectively 
+a `i.morphotropic` interface.  We then have a partition 
+of types' interface into five facets: 
+nomotropic, axiatopic, morphotropic, endotrophic, mereotropic.
+`p`
+
+`p.  
+The `i.axiatropic` aspect of type-extensions may seem like a 
+jargony designation of rather mundane statistical 
+distributions of a set of values, since projecting 
+data structures onto common axis-sets which permit 
+quantitative comparisons is the bread-and-butter of 
+data analytics.  Such projects themselves certainly 
+aren't a new theoretical posit.  However, we wish to 
+emphasize that in most types (especially ones 
+modeling real-world objects) the process of 
+setting up such statistical comparisons involves 
+`i.filtering` fields so as to focus on statistically 
+malleable information in each type-instance.  
+`webel; It should be emphasized that the 
+application of statistical metrics to 
+value-sets constitutes a `i.projection` of each 
+value onto a restricted axiated space which 
+supports quantitative dimensions, whereas 
+many types will `i.also` have qualitative data 
+which is more difficult to accommodate numerically. 
+`p`
+
+`p.
+The fields which are likely relevant to comparing or querying 
+`ty;s are facets of `ty; that need to 
+be deliberately engineered.  Implementers, 
+in short, have to anticipate and provide 
+procedures for client code %-- software using 
+the type implementation %-- to interact 
+with `ty;s fields: iterating over collections, 
+dynamically calculating views, 
+querying against a prototype, ordering 
+on one or another field, etc.  
+These considerations inform the process of 
+designing an `i.interface` for `ty;  
+Overall, a `i.ty` interface covers various 
+tasks, such as constructing `ty; instances 
+in the first place, or integrating 
+`ty;s with other kinds of software components 
+(serializing and deserializing `ty;s for 
+data sharing; sending `ty;s to a database; 
+showing `ty;s in a `GUI;; etc.).  
+We will use the term `i.paratropic interface` 
+to that portion of a `ty;s interface 
+which concerns sorting, comparing, and 
+querying `ty;s (or sets of `ty;s). 
+`p`
+
+`p.
+In practice, the field-classification we proposed 
+earlier would most likely be applicable to a 
+type's `q.paratropic interface`/: it would 
+help implementers reason about what data points to 
+expose for a `ty; and how precisely to 
+set up the logistics for obtaining this data 
+from `ty; values.  Taken in conjunction with 
+the principle that formal types are (often) 
+modeling artifacts which approximate real-world 
+concepts, this discussion then suggests that 
+such conceptual goals are mostly operative in the 
+interface `i.to` types.  That is, when considering 
+how to use formal artifacts to proxy real-world, 
+human concepts, the point is not only to 
+assemble a list of particular details to keep 
+track of (for a restaurant: name, location, cost, 
+etc.).  A type's effectiveness in representing 
+human concepts is equally dependent on a programming 
+interface which allows digital operations to be 
+performed; operations which reflect how we conceptualize 
+real-world phenomena, including by actions of 
+ranking and comparing instances of the same concept. 
+`p`
+
+`p.
+We think this perspective is also consistent with 
+natural-language: a conceptual account of `i.nouns`/, 
+for instance, should be oriented in the 
+pragmatic employments of concepts as 
+cognitive tools; the idea that we mentally 
+`i.do things with` concepts.  Perhaps there is a 
+certain correlation between the idea that formal 
+types' are conceptually defined by their 
+`i.interface` and that, cognitively, concepts 
+are constituted essentially by their 
+intellectual-functional roles.  
+We will explore `q.conceptual roles` further 
+in Chapter 9.
+`p`
+
+
+
+

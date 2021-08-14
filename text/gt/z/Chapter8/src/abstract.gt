@@ -1,31 +1,32 @@
 
 `abstract,
-`noindent;This chapter serves as a 
-follow-up to Chapter 7, continuing and 
-summarizing our prior discussion of 
-`q.multi-aspect` modular design in an 
-image-annotation context.  Chapter 8 
-focuses on certain themes that were 
-elided in earlier chapters, particular 
-4 and 7 insofar as these also 
-considered the subject of 
-(software) modularity.  This chapter, 
-for example, includes a discussion about 
-defining a proper scope for modules 
-and the trade-offs between modules 
-which are relatively broad or narrow.  
-As a concrete example we consider 
-the range of data-types and features 
-which may be applicable to 
-image-annotation, and consider how 
-data structures and user-interaction 
-patterns `visavis; bioimages compare 
-with similar patterns in other 
-bio-investigative modalities, such as 
-Flow Cytometry and lab assays.  
-We also provide an overview of one 
-specific image-annotation format, 
-the Annotation and Image Markup 
-initially developed as part of the caBIG 
+`noindent;This chapter serves 
+to expand the discussion of the prior 
+chapter, continuing and
+summarizing our discussion of
+`q.multi-aspect` modular design in an
+image-annotation context.  We
+focus on certain themes that were
+elided in earlier chapters, particularly 
+the subject of
+(software) modularity.  The current chapter 
+includes a discussion about
+defining a proper scope for modules
+and the trade-offs between modules
+which are relatively broad or narrow.
+As a concrete example we consider
+the range of data-types and features
+which may be applicable to
+image-annotation, and we consider how
+data structures and user-interaction
+patterns `visavis; bioimages compared 
+with similar patterns in other
+bio-investigative modalities, such as
+Flow Cytometry and lab assays.
+We also continue from earlier chapters
+an analysis of one
+specific image-annotation format,
+the Annotation and Image Markup that was 
+initially developed as part of the caBIG
 (cancer Biomedical Informatics Grid) project.
 `abstract`

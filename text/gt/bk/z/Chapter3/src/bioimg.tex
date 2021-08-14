@@ -1,0 +1,482 @@
+
+\section{Precision Medicine and Bioimaging}
+
+\p{Patient-centered research in the radiological 
+context is centered on improving the precision of 
+diagnostic-imaging techniques and corresponding 
+clinical interventions.  Indeed, the goal of contemporary 
+radiology is not only to confirm diagnoses, 
+but also to extract cues from 
+medical images that suggest which course of 
+treatment has the highest probability of 
+favorable outcomes.  A related 
+goal is curating collections of diagnostic 
+images so as to improve our ability to 
+identify such diagnostic and prognostic cues, potentially 
+using Machine Learning and/or Artificial 
+Intelligence applied to large-scale 
+image repositories.}
+
+\p{The goal of building \q{searchable} image repositories 
+has inspired projects such as the Semantic Dicom Ontology 
+(\SeDI{})\footnote{See \bhref{https://bioportal.bioontology.org/ontologies/SEDI}.} and the \ViSion{} \q{structured 
+reporting} system.\footnote{See \bhref{https://epos.myesr.org/esr/viewing/
+index.php?module=viewing_poster&task=&pi=155548}.}  
+As explained in the context of \SeDI{}: 
+
+\begin{displayquote}
+\makebox{[If]} a user has a CT scan, and wants to retrieve the [corresponding] radiation treatment plan ... he has to search for the 
+RTSTRUCT object based on the specific CT scan, and from there 
+search for the RTPLAN object based on the RTSTRUCT object.  This is an inefficient operation because all RTSTRUCT [and] RTPLAN files for the patient need to be processed to find the correct treatment 
+plan. \cite[page 1]{JohanVanSoest}
+\end{displayquote}  Even relatively simple queries such as 
+\q{display all patients with a
+bronchial carcinoma bigger than 50 cm$^3$} cannot 
+be processed by \PACS{} systems: \q{although there are various powerful clinical applications to process image data and image data series to create significant clinical analyses, none of these analytic results can be merged with the clinical data of a single patient.}\footnote{See 
+\bhref{https://semantic-dicom.com/starting-page/}.}
+These 
+limitations partly reflect the logistics of how 
+information is transferred between clinical institutions 
+and radiology labs.  In response, and in an effort 
+to advance the science 
+of diagnostic image-analysis, organizations such as 
+the Radiological Society of North America 
+(\RSNA{}) have curated open-access data sets encompassing 
+medical images as well as image-annotations (encoding feature 
+vectors) that can serve as reference sets and test 
+corpora for investigating analytic methods.  Such 
+repositories are designed to integrate data from 
+multiple hospitals and multiple laboratories --- bypassing 
+the conventional data flows wherein radiological 
+information is shared between clinicians 
+and radiologists, but is not also merged into broad-spectrum 
+corpora.}
+
+\p{This renewed focus on patient outcomes 
+has intriguing consequences for the scope and 
+requirements of diagnostic-imaging software.  
+In particular, the domain of radiological applications 
+is no longer limited to \PACS{} workstations 
+where pathologists perform their diagnostic analysis, 
+with the results transferred back to the referring institution 
+(and subsequently available only through that institution's 
+medical records, if at all).  In the older,  
+conventional workflow, radiographic images are requested by 
+some medical institution for diagnostic purposes.  
+Relevant information is therefore shared between 
+two end-points: the institution which prescribes 
+a diagnostic evaluation and the radiologist or 
+laboratory which analyzes the resulting images.  
+Building radiographic data repositories complicates 
+this workflow because a third entity becomes 
+involved --- the organization responsible 
+for aggregating images and analyses is generally 
+distinct from both the prescribing institution and 
+the radiologists themselves.  As a result, both radiologists and prescribing 
+institutions, upon participation in the formation 
+of the target repository, must identify which image 
+series and which patient data are proper candidates 
+for the relevant repository.}
+
+\p{For a concrete example, \RSNA{} has announced the 
+forthcoming publication of an open-access image 
+repository devoted to 
+Covid-19 (specifically the organization established 
+two \q{task forces} in 2020; as of mid-2021 the overall 
+project appears still to be under development, although 
+several recent studies on Covid-19 in general 
+have been published in \RSNA{} 
+journals).\footnote{See \bhref{https://www.rsna.org/covid-19}.}  
+This repository is being curated in collaboration with 
+multiple European, Asian, and South American organizations 
+so as to collect data from hospitals treating 
+Covid-19 patients.  Such a collaboration requires 
+protocols both for data submission and for patient privacy 
+and security.}
+
+\subsection{The Basic Synthesis Between Bioimaging and Precision Medicine}
+\p{\noindent{}Patient-centered research in 
+the radiological context has several dimensions, 
+including analysis of the rationales for diagnostic 
+imaging in the first place: how well does image-based 
+diagnostics actually correlate with improved patient 
+outcomes?  How can we quantify the experience of 
+image-based testing itself (e.g., to identify 
+factors such as cost, discomfort, and 
+radiation danger which can rank some tests 
+as less desirable than others, as one parameter 
+to consider when deciding whether to prescribe 
+imaging, and which modality)?  These were 
+among the questions addressed by 
+the Patient-Centered Outcomes Research Institute's 
+(\PCORI{}'s) \q{Patient-Centered Research for Standards 
+of Outcomes in Diagnostic Tests} (\PROD{}) study 
+\cite{ZigmanSuchsland}, 
+which also established a useful protocol for how 
+medical institutions could provide reports 
+on the experience and effectiveness of imaging 
+from a patient's as well as clinician's 
+perspective.}
+
+\p{Assuming diagnostic imaging of a given 
+modality \textit{is} 
+appropriate, an additional priority should then 
+be to structure the diagnostic workflow --- the 
+image procurement, analysis, and data/metadata sharing 
+protocols --- to maximize the probability 
+that subsequent clinical interventions are 
+chosen which promote favorable outcomes on 
+multiple patient-centered criteria, including 
+quality of life and patient engagement.  In 
+the best case scenario, the goal of radiology is 
+not only to confirm a diagnosis, 
+but also to extract cues from 
+medical images that suggest which course of 
+treatment has the highest probability of 
+favorable treatment outcomes.}
+
+\p{While most radiologists and pathologists 
+would probably agree with this assessment 
+--- that in the best-case scenario 
+image-processing can yield predictive 
+analytics which would sort patient populations 
+into groups steered toward distinct treatments 
+deemed most likely to be effective --- 
+there are technological and operational 
+challenges to making patient-centered 
+perspectives a central feature of diagnostic-imaging 
+methodology.  Effectively cross-referencing 
+imaging and outcomes data requires integrating 
+heterogeneous information obtained at different 
+times and places.  Some clinical data is associated 
+with each patient at the time that a radiological 
+(or other imaging) study is prescribed.  The 
+images themselves, and subsequent diagnostic  
+reports, then provide layers of data that exist prior to the initiation 
+of a course of treatment.  Moreover, a rigorous 
+data-integration protocol would need to incorporate 
+information emerging \textit{after} the treatment 
+starts: descriptions and assessments of clinical outcomes, 
+and, potentially, new data garnered by applying 
+different image-analysis techniques.  
+In brief, data-management protocols must be 
+in effect before, during, and after image-analysis itself.}
+
+\p{Ideally, image analysis can be powerful enough 
+not only to identify a pathology, but to 
+classify diagnoses into clusters based on 
+recommended course of treatment.  In order 
+for analytic techniques to achieve this 
+level of detail, however, it is necessary 
+to arrive at a feedback loop where known clinical 
+outcomes are associated with prior images, 
+so that developers have those outcomes available 
+as a further dimension of clinical data 
+that may be statistically cross-referenced 
+with image analysis.}
+
+
+\p{The \PROD{} 
+study demonstrates that experiential 
+factors should be evaluated --- both in 
+terms of testing itself (and its risks/costs) 
+and in terms of post-diagnostic quality of 
+life --- as part of the data modeling 
+treatment outcomes, and the comparative 
+effectiveness of a selected course of treatments 
+compared to alternative diagnostic 
+methods and/or clinical interventions.  
+From the perspective of standard 
+data models, initiatives to cross-reference 
+imaging and outcomes data include several 
+Semantic Web ontologies, such as the Semantic \DICOM{} Ontology 
+(\SeDI{}) and the \ViSion{} \q{structured 
+reporting} system (both referenced earlier). 
+The purpose of these ontologies is to 
+standardize the terms through which 
+radiographic procedures, analyses, and 
+recommendations are described --- more 
+precisely or predictably than older 
+technologies such as \DICOM{} headers, 
+\DICOMRT{}, and the \RadLex{} lexicon.  
+By properly aligning image metadata 
+spanning multiple patients, it is possible 
+to create \q{searchable} image archives such 
+that images can be selected or classified 
+within a larger image collection, 
+yielding image series or patient cohorts 
+that can be studied through the lens of 
+predictive modeling or patient-centered 
+outcomes.  Projects such as \SeDI{} 
+implement \q{semantic} \PACS{} workstations 
+where the space of known images is defined 
+by a particular \PACS{} system, but analogous 
+techniques could be used to construct 
+larger-scale image corpora as well, for 
+research purposes, data mining, or as 
+test-beds for code and algorithms.  
+Patient-centered data points, such as 
+those formulated via \PROD{}, may then 
+be incorporated as supplemental 
+data.}  
+
+\subsection{Case Study: The Cancer Imaging Phenomics Toolkit}
+\p{At the forefront of diagnostic imaging 
+are new analytic techniques which statistically 
+analyze image data, often detecting signals that 
+are invisible to the naked eye, or at 
+least processing groups of image-series on a scale 
+beyond the reach of human radiologists.  The proliferation of 
+image-analysis methodologies places a new emphasis 
+on \textit{extensibility,} in which the 
+capabilities of bioimaging software can be 
+expanded in a decentralized, modular fashion.}
+
+\p{A representative example of 
+this new paradigm is \CaPTk{} (Cancer Imaging  
+Phenomics Toolkit), which provides 
+a primary component supplying a centralized User Interface and 
+taking responsibility for acquiring and loading 
+radiographic/microscopy images, paired with multiple \q{peer} 
+applications which can be launched from \CaPTk{}'s main window, 
+or alternatively used as standalone programs \cite[especially 
+section 4]{ChristosDavatzikos}.  
+In particular, \CaPTk{} provides an implementation 
+(apparently the only \Cpp{}-based implementation) 
+of the Common Workflow Language (\CWL{}), 
+using this workflow model in 
+conjunction with the \Qt{} Reflective Programming 
+system to implement workflows connecting the 
+central \CaPTk{} application with its analytic 
+extensions.\footnote{No native \sC{} or \sCpp{} 
+libraries are described on the \sCWL{} website 
+among the tools and parsers available for \sCWL{}, 
+but \sCaPTk{} is mentioned on a corresponding discussion 
+thread concerning \sCpp{} libraries.  It seems 
+therefore that the \sCaPTk{} \q{utilities} repository 
+provides the de-facto standard \sCpp{} implementation of 
+\sCWL{}, at least according to the \sCWL{} group 
+themselves.}   In effect, \CaPTk{} achieves a 
+workflow and messaging protocol for what they 
+term \q{native,} \q{standalone} applications, 
+yielding an extensible architecture through 
+which new image-analysis techniques can be 
+integrated into an underlying \PACS{} system
+(a detailed discussion of \CaPTk{} module 
+implementation 
+is outside the scope of this chapter, but 
+this book's supplemental materials include a 
+more technical overview of \CaPTk{}; for now 
+we just use \CaPTk{} as a case-study 
+in modular design for bioimaging). }
+
+\p{Taking the \RSNA{} Covid-19 repository as a case study for 
+promoting research into post-diagnostic outcomes, 
+this repository is possible because an international 
+team of hospitals and institutions have agreed to 
+pool radiological data relevant to SARS-CoV-2 infection 
+according to a common protocol.  Taking \CaPTk{} as a 
+case-study in multi-modal image analysis, this 
+system is likewise possible because analytic modules 
+can be wrapped into a plugin mechanism which allows 
+many different algorithms to be bundled into a common 
+software platform.  Of course, these two areas 
+of data-sharing overlap: one mission of repositories 
+such as the \RSNA{}'s is to permit many different 
+analyses to be performed on the common image 
+assets.  The results of these analyses then become 
+additional information which enlarges the 
+repository proportionately.}
+
+\p{The \CaPTk{} project serve as a useful 
+case-study for the analytic convergence 
+or cross-referencing between image-analysis 
+and outcomes/patient-centered data 
+because is extensible as part of 
+its essential design (although in terms of large-scale adoption 
+more conventional \PACS{} clients may also 
+be used simply because \CaPTk{} has certain 
+software-engineering innovations which 
+make it an outlier from an 
+implementational point of view).  Analysis 
+of the aforementioned \RSNA{} Covid-19 images, 
+for example, could be enacted via 
+specialized \CaPTk{} modules, which 
+could in turn be provisioned with 
+Patient Outcomes and Comparative Effectiveness Research (\CER{}) 
+capabilities.  That is, modular design 
+at the image-processing level can be 
+leveraged to incorporate \CER{} and 
+predictive-analytic information sources 
+(such as clinical records and 
+immunological profiles) alongside 
+image data proper (such as feature vectors 
+calculated via Computer Vision algorithms).}
+
+\p{A further level of 
+integration between \CaPTk{} and \CER{} initiatives 
+(again, staying with \CaPTk{} as a 
+representative example of bioimaging applications in general) 
+can be achieved if one observes that clinical 
+outcomes may be part of the analytic parameters 
+used by \CaPTk{} modules.  As presently constituted, 
+\CaPTk{} analytic tools are focused on extracting 
+quantitative (or quantifiable) features from 
+image themselves, without considering additional 
+patient-centered context.  There is no technical 
+limitation, however, which would prevent the 
+\CaPTk{} system from sharing more detailed clinical 
+information with its modules, allowing these 
+analytic components to cross-reference image features 
+with clinical or patient information.  This 
+then raises general questions about sharing 
+clinical data \i{as well as} information 
+derived from bioimage analysis, bringing 
+us to more general themes in 
+lab/clinical data-sharing.}
+
+\subsection{Multi-Application Networks in the Context of 
+Scientific Research Data}
+\p{Architecturally, the pattern of organization 
+just described --- semi-autonomous applications 
+linked together (often by virtue of being common 
+extensions to an overarching \q{core} software 
+platform) --- is 
+analogous to the collection of software components 
+that may share access to a data repository or 
+a research-data corpus, include a corpus of 
+medical/diagnostic images.  The purpose of 
+research data archives --- particularly when 
+they embrace contemporary open-access standards 
+such as \FAIR{} (Findable, Accessible, Interoperable, 
+Reusable) \cite{TrifanOliveira}  
+and the Research Object 
+Protocol\footnote{see \bhref{http://www.researchobject.org/scopes/}} --- is to promote reuse and reproduction of 
+published data and findings, such that multiple subsequent research 
+projects could be based on data originally published 
+to accompany one book or article.  As a result, it is 
+expected that numerous projects may overlap in their 
+use of a common underlying data set, which potentially 
+means a diversity of software components implementing 
+a diversity of analytic techniques, each offering a unique 
+perspective on the underlying data.}
+
+
+\p{Implementing a robust research-data software 
+framework involves integrating multiple scientific 
+applications, but also (ideally) extending these 
+applications with features specifically 
+of interest to those conducting or reviewing 
+research using published data sets and/or 
+described in academic literature: for 
+instance, capabilities to download data sets 
+from open-access scientific portals; to 
+parse microcitation formats; and to interoperate 
+with document viewers.  This review of data-publishing technology is 
+relevant to radiology and to Patient-Centered 
+Outcomes because it typifies the emerging ecosystem 
+where scientific research and open-access data 
+is being disseminated.  
+The architecture employed by \CaPTk{} 
+is a useful example of how multiple autonomous, 
+stand-alone, native 
+applications can be federated into a decentralized 
+but unified platform, logistically embodying the kinds of application networks 
+appropriate for the technology supporting 
+archives of research data (including 
+diagnostic-imaging repositories).}
+
+\p{Initiatives such as Research Objects and 
+\FAIR{} advocate for a technological infrastructure 
+characterized by a diverse software ecosystem 
+paired with open-access research data sets \cite{KhalidBelhajjame}.
+Although formats such as Research Objects have been 
+standardized over the last decade, there has not 
+been a comparable level of attention given to 
+formalizing how multiple software applications 
+should interoperate when manipulating 
+overlapping data.  The Common Workflow Language 
+(\CWL{}), which has been explicitly included in the 
+Research Object 
+model,
+documents one layer of inter-application messaging, 
+including the encoding of parameters via command-line 
+arguments (as mentioned earlier, 
+\CaPTk{} provides the most complete \Cpp{} implementation of 
+\CWL{}, using it to pass initial data between 
+modules).  Serializing larger-scale data structures 
+is of course a generic task of canonical encoding 
+formats such as \JSON{}, \XML{}, \RDF{}, and 
+Protocol Buffers --- not to mention text or binary 
+resources serialized directly from runtime objects 
+via, for instance, \textbf{QTextStream} and \textbf{QDataStream.}  
+This means that some level of inter-application 
+communications is enabled via \CWL{}, and 
+that essentially any computationally tractable 
+data structure can be encoded via formats such 
+as \XML{}.  These solutions, however, are 
+sub-optimal: \XML{} (as well as \JSON{} and analogous 
+formats) is limited because it takes additional 
+development effort to compose the code that marshals 
+data between runtime and serial formats.  
+Similarly, although \CWL{} can model information 
+passed between applications, it provides 
+only an indirect guide for programmers implementing 
+each application's \q{operational semantics} --- 
+viz., the procedures which must be executed 
+before and after the event wherein data is 
+actually passed between endpoints.}
+
+\p{In the context of \CaPTk{}, for example, 
+integrating peer modules with the \CaPTk{} core 
+application involves more than simply 
+ensuring that these endpoints communicate 
+via a standardized data-serialization format: 
+the plugins must be \textit{registered} 
+with the core application, which affects the 
+core in several areas, including the build/compile 
+process and construction of the main \GUI{} 
+window.  Modeling the interconnections between 
+semi-autonomous modules, as \CaPTk{} demonstrates, 
+therefore requires more detail than simply 
+modeling their shared data encodings; it 
+is furthermore necessary to represent all 
+procedural and User Interface requirements 
+in each component that may be affected by 
+the others.  Despite the standardization 
+efforts that have been invested in 
+Research Objects and the Common Workflow Language, 
+we contend that this fully detailed 
+protocol for multi-application interop has not 
+yet been rigorously formalized.}
+
+
+\p{Rigorous models of application networks among semi-autonomous 
+components acquire an extra level of complexity precisely 
+because of this intermediate status: protocol definitions 
+have to specify both the functional interdependence 
+and the operational autonomy of different parts of 
+the application network.  Although 
+one application does not need detailed 
+knowledge of the other's internal procedure 
+signatures (which would break encapsulation), the 
+functional interdependence between applications can 
+accordingly be modeled by defining protocols which 
+must be satisfied by procedure-sets internal 
+to each end-point --- the relevant information 
+from an integrative standpoint is not the 
+actual procedures involved, but confirmation 
+that the relevant procedure sets adhere 
+to the relevant multi-procedural protocol.\footnote{Reviewing the source code and documentation 
+for \CaPTk{} confirms that multi-application 
+messaging along these lines is implicitly adopted 
+by \CaPTk{}; \i{see} for example 
+\bhref{https://www.med.upenn.edu/cbica/assets/user-content/images/captk/2018\_ISBI\_CaPTk .0404.Part2.pdf}, particularly 
+the material starting on the 30th slide of that presentation.}} 
+
+\p{While we have initially approached multi-application networking 
+from the bioimaging perspective, this topic is equally 
+applicable to multi-site trial architecture, the theme of next section.}
+
+
+

@@ -1,0 +1,282 @@
+`hoctitle.Chapter 9: Conceptual Spaces and Scientific Data Models`
+
+`section.Introduction`
+`p.
+In the two decades since Conceptual Space 
+theory was first proposed (in a mostly 
+cognitive-linguistic setting), 
+researchers working in a more 
+strictly computational framework 
+have adopted, extended, or formalized 
+`Gardenfors;'s approach in several 
+different ways.  Some have focused 
+on potential `AI; applications; others 
+on data-modeling and the systematization 
+of scientific data descriptions; and some 
+computational linguists (including 
+via Quantum `NLP;) have proposed 
+developing a computationally tractable 
+semantics rooted in Conceptual Spaces.
+`p`
+
+`p.  
+Work such as Coecke `i.et al.` 
+`cite<InteractingConceptualSpaces>;, which 
+we emphasized in Chapter 6, intimates
+that Conceptual Spaces offer a path toward 
+resolving the `q.grounding problem` wherein 
+mechanical systems can never truly 
+have semantics in the first place %-- 
+there is never a deliberate or conscious 
+correlation of system state to external 
+objects/situations %-- but merely a 
+simulacrum of semantics engineered 
+to force `q.internal` and `q.external` 
+state into a rough alignment, with the 
+effect of endowing `AI; machines with 
+certain behavioral tendencies that 
+we associate with language-use 
+(and human intelligence in general).  
+Investigations related to `q.solving` 
+the grounding problem have been among 
+the primary motivations for incorporating 
+Conceptual Spaces in an `AI; context 
+(`i.see` `cite<Gardenfors>;, `cite<GardenforsWeb>;,
+`cite<DietzeDomingue>;, `cite<PaulaGudwin>;, 
+`cite<JohnTRickard>;,
+`cite<BechbergerKuhnberger>;, 
+or `cite<BechbergerKypridemo>; for good examples).  
+On the other hand, work such as Coecke `i.et al.` 
+also suggests Conceptual Space applications 
+to the issue of `i.construction semantics`/, 
+or clarifying how meaning-compositions 
+(which we can also characterize as 
+`i.concept blends` so long as there is no 
+confusion with other uses of this phrase, 
+notably Gilles Fauconnier's and Mark 
+Turner as in `cite<Fauconnier>;, `cite<FauconnierTurner>;) 
+such as `q.dark red,` `q.red square,`
+`q.wedding ring,` `q.fake diamond,`
+and so forth, signify a compound idea 
+that structurally integrates its parts.
+`p`
+
+`p.
+The possibility of finding quantitative 
+dimensions within concept-extensions serves a 
+useful purpose with respect both to 
+concept-grounding and concept-blending.  
+With respect to grounding, dimensional quantification 
+gives us an idea of how concepts may take shape 
+from recurring exposure to certain perceptual 
+or situational patterns, as well as 
+concrete models of concept-learning 
+that could be simulated via neural 
+networks.  With respect to 
+concept-blending, dimensional models 
+are obviously applicable to constructions 
+such as `i.dark red` and `i.red square` where 
+concept-blends present intersections or unions of dimensions in 
+straightforward ways (darker hues 
+of red and red-hues plus square-shapes, 
+respectively).
+`p`
+
+`p.
+Classifying constructions 
+according to dimensional interactions 
+(e.g., intersection, union, or contrastive) 
+presents a useful semantic outline 
+that applies to many forms of constructions.`footnote.
+`i.See` for example `cite<[page 9]RaubalAdams>;;
+contrast classes are modifiers which tend to 
+restrict the scope of a conceptual space 
+down to a subregion, as in examples like 
+the `q.small` of `i.small planet`/, but do 
+not have dimensional structures themselves, 
+because `i.small` for example can imply many 
+different size-ranges depending on the 
+scale of object to which it is applied 
+(`i.small planet` vs. `i.small molecule`/). 
+`footnote` 
+As we argued in Chapter 6, an equally
+important construction genre is 
+more exactly modeled by considering 
+concepts playing different roles 
+in larger situations, in which case 
+the `i.union` between multiple concepts 
+is characterized by concepts being 
+indexed by roles with relatively 
+little inter-dimensional interaction.  
+With that caveat, though, 
+Conceptual Space models seem to have a 
+solid place in the general system 
+of situational semantics (viz., semantics 
+of situations in general, including 
+but not restricted to information-theoretic 
+situation theory associated with Jon Barwise,
+John Perry, and Joe Seligman).  
+`p`
+
+`p.
+The form of syntax/semantics interface 
+pursued by Coecke `i.et al.` which 
+we reviewed in Chapter 6 has
+been developed by the same research 
+team in relation to several different 
+semantic paradigms, including statistical 
+word-use correlations which do not 
+purport to offer a bonafide semantics at 
+all (an `AI; agent which infers properties 
+such as topic-relevance based on statistical 
+correlations across document corpora, without 
+attempting to reason about the `q.meaning` 
+of any words apart from noting how likely 
+or unlikely they are to appear in a given 
+context, is not `q.grounding` symbols at all, 
+but rather using probabilities to approximate 
+the behavior of a cognitive system).  
+Coecke `i.et al.` therefore 
+explicitly state that one motivation 
+for pursuing Conceptual Spaces as the 
+foundation for their semantic layer 
+is to provide a more cognitive semantics 
+to pair with a grammar based on hypergraph categories.  
+In this sense, their research fits within the 
+`q.grounding` topic in terms of the methodological 
+rationale for incorporating Conceptual Spaces.  
+In substance, however, the models they 
+actually formulate %-- which can be glossed 
+as employing a Category-Theoretic framework 
+to formalize the basic idea that 
+syntactic constructions represented via 
+hypergraph categories can engender 
+semantic constructions analyzed via 
+concept-blending (recall the specific sense of 
+`i.engender` we adopted in Chapter 6)
+%-- are thematically aligned more with 
+construction semantics.
+`p`
+
+`p.
+In the context 
+of natural-language theories, to be sure, 
+grounding and constructions can be 
+philosophically interconnected: 
+cognitive construals of integrated 
+situations obviously emerge from 
+cognitive-perceptual discernment of 
+phenomenologically fundamental concepts 
+(so Gregor Strle, for instance, considers 
+the possible role of Conceptual Spaces as 
+`q.a mediating level between symbolic
+and subconceptual representations,`
+albeit less crisp in actual cognition 
+than in the artificially-simplified 
+terms of the theory: `q.methods and models ... are
+... explanatory tools, i.e. instruments used to explore, 
+simulate or explain
+particular aspects of cognition, not 
+mechanisms of human mind.` `cite<[page 18]GregorStrle>;)
+As the last quote intimates, neat quantitative 
+models of concept-acquisition/emergence need not 
+be read as realistic simulations of cognitive 
+processes; instead, this like any other 
+theory presents an unrealistically simplified 
+but explanatorily useful model of 
+the actual systems it seeks to clarify.  
+The real conceptual `q.spaces` in the mind may 
+have many more dimensions, with less obvious 
+numerical encodings, than colors or spatial configurations. 
+`p`
+
+`p.
+If we accept the simplifying gestures of 
+axis-like concept-dimensions as an imprecise 
+but heuristic gloss on cognitive explanantia, 
+then we can imagine `i.something like` 
+an emergence of concepts by dynamic 
+clustering of similar experiences 
+(and resolving borderline cases 
+intermediate between related concepts) 
+being among the key driving forces 
+of cognitive symbol-grounding.  
+Likewise we can picture convolution 
+between different concepts' dimensions 
+as defining the contours of the 
+hybrid concepts resulting from semantic 
+blends (and hence semantic constructions, 
+engendered by syntactic concatenations 
+between concept-words).  The cognitive 
+dynamics and dimensional structures in 
+both cases are similar (governed by 
+the same Conceptual Space models), 
+which suggests %-- even if we 
+assume that real-world cognitive 
+processing is much subtler than 
+such toy models articulate %-- 
+that there is some cognitive resonance, 
+some redeployment of a common 
+neurological architecture, in the 
+primitive concept-grounding 
+phenomenon as well as the more 
+mentally sophisticated construction-semantics 
+hermeneutic.
+`p`
+
+`p.
+Arguably, however, issues of grounding and constructions 
+are more strictly separate when considering 
+the `q.semantics` of formal data structures, or, 
+in practice, developing working semantic 
+models for resources such as scientific data sets.  
+Certain themes which are central to 
+Conceptual Space theory clearly have 
+direct applications to computational 
+data modeling, such as dimension/domain structures 
+and region-based classification within and 
+among concepts (for prototypes, concept extensions, 
+borderline-case disambiguation, and so forth).  However, 
+rigorous dimensional modeling and geometric 
+clustering are hardly unique to Conceptual Space theory, 
+and when considering applications of this specific 
+theory to formal data semantics we should 
+attempt to isolate philosophical features 
+endemic to the Conceptual Space lineage in itself 
+(as opposed to broadly-applicable statistical 
+paradigms).  Conceptual Space theory's manifestations  
+in the specific natural-language concerns 
+of symbol-grounding and construction-semantics 
+do not necessarily carry over to formal data 
+semantics, or to such practical applications 
+as query-engine implementation or data-set annotation semantics.
+`p`
+
+`p.
+In this chapter, by contrast, we will consider the degree to which 
+different use-cases or adoptions of 
+Conceptual Space theory in a computational setting 
+`i.can` be synthesized and integrated, focusing 
+attention on practical application within 
+the general scope of `i.data` semantics.  Part of 
+this analysis involves generalizing 
+Coecke `i.et al.`/'s model of the syntax/semantics 
+interface to, potentially, the realm of 
+formal/programming languages, continuing Chapter 6's
+`q.Syntagmatic Graph` model.  That model provides a 
+framework for codifying the relation 
+between formal-language `i.syntax` with `i.semantics` 
+in terms of a notion of `q.information content` 
+(which we will make more precise).  We will argue 
+that this framework presents a foundation 
+for integrating the data-modeling and scientific-computing 
+Conceptual Space use-cases, and in particular 
+that the relevant notions of information content 
+provide an additional formalization of 
+notions central to the original `Gardenfors; theory 
+(such as dimensional separability and 
+domain correlation).      
+`p`
+
+
+
